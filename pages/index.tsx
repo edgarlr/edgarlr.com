@@ -1,3 +1,4 @@
+import { ArrowLeft, Dribbble, Twitter } from '@components/icons'
 import { getAllPosts } from '@lib/posts'
 import { GetStaticProps } from 'next'
 import type { TPost } from 'types'
@@ -17,6 +18,9 @@ const Home = ({ posts }: Props) => (
         {date}
       </li>
     ))}
+    <Twitter />
+    <Dribbble size={50} />
+    <ArrowLeft />
   </div>
 )
 export default Home
