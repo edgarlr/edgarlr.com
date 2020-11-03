@@ -1,3 +1,4 @@
+import { Layout } from '@components/core'
 import { ArrowLeft, Dribbble, Twitter } from '@components/icons'
 import { getAllPosts } from '@lib/posts'
 import { GetStaticProps } from 'next'
@@ -8,7 +9,8 @@ type Props = {
 }
 
 const Home = ({ posts }: Props) => (
-  <div>
+  <Layout>
+    <h1>Edgar López</h1>
     {posts.map(({ slug, date, title }) => (
       <li key={slug}>
         {title}
@@ -21,7 +23,8 @@ const Home = ({ posts }: Props) => (
     <Twitter />
     <Dribbble size={50} />
     <ArrowLeft />
-  </div>
+    <code>useCallback</code>
+  </Layout>
 )
 export default Home
 

@@ -1,3 +1,4 @@
+import { Footer, Header } from '..'
 import styles from './Layout.module.css'
 
 type Props = {
@@ -5,7 +6,13 @@ type Props = {
 }
 
 const Layout = ({ children }: Props) => {
-  return <div className={styles.root}>{children}</div>
+  return (
+    <>
+      <Header />
+      <main className={styles.root}>{children}</main>
+      <Footer />
+    </>
+  )
 }
 
 export default Layout
