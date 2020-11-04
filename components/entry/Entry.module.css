@@ -1,0 +1,32 @@
+.header {
+  margin: 8rem 0 4rem;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+}
+
+.info > a > p {
+  font-size: var(--font-size-s);
+}
+
+.date {
+  font-style: italic;
+  margin-left: var(--gap);
+  padding-left: var(--gap);
+  border-left: 1px solid var(--borders);
+}
+
+/* Bottom Nav*/
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: var(--gap-triple) 0;
+}
+.navButton {
+  max-width: 45%;
+}
+.navHeader {
+  display: flex;
+}

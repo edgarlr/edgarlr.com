@@ -1,22 +1,36 @@
 .root {
   background: var(--header-bg);
-  font-size: var(--font-size-l);
   font-weight: var(--font-weight-bold);
-  padding: 1rem 1.5rem;
+  padding: var(--gap-half) var(--gap-15);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   backdrop-filter: saturate(180%) blur(5px);
+  display: flex;
+  align-items: center;
 }
 
 .title {
+  font-size: var(--font-size-m);
   opacity: 0;
-  transform: translateY(5px);
+  transform: translateY(8px);
   transition: var(--transition-long);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 80%;
 }
 
 .show {
   opacity: 1;
   transform: translateY(0);
+}
+
+.backButton {
+  line-height: 0;
+  padding: 0;
+  padding-right: var(--gap-75);
+  margin-right: var(--gap-75);
+  border-right: 1px solid var(--borders);
 }

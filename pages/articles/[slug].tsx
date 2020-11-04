@@ -1,4 +1,7 @@
 import { Layout } from '@components/core'
+import ArticleHeader from '@components/core/Header/ArticleHeader'
+import BottomNav from '@components/entry/BottomNav'
+import EntryHeader from '@components/entry/EntryHeader'
 import markdownToHtml from '@lib/markdownToHtml'
 import { getAllPosts, getPostBySlug } from '@lib/posts'
 import type { TPost } from 'types'
@@ -9,13 +12,10 @@ type Props = {
 
 const Article = ({ post }: Props) => {
   return (
-    <Layout>
-      {post.title}
-      <br />
-      {post.slug}
-      <br />
-      {post.date}
+    <Layout header={<ArticleHeader text={post.title} />}>
+      <EntryHeader title={post.title} date={post.date} author="edgarlr_" />
       <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      <BottomNav />
     </Layout>
   )
 }
