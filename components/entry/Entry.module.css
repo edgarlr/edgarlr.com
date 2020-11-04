@@ -1,5 +1,5 @@
 .header {
-  margin: 8rem 0 4rem;
+  margin: 8rem 0 2rem;
 }
 
 .info {
@@ -22,7 +22,7 @@
 .navContainer {
   display: flex;
   justify-content: space-between;
-  margin: var(--gap-triple) 0;
+  margin: 5rem 0;
 }
 .navButton {
   max-width: 45%;

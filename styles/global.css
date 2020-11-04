@@ -1,6 +1,7 @@
 @import './variables.css';
 @import './classes.css';
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;1,300&display=swap');
+@import './markdown.css';
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap');
 
 * {
@@ -97,8 +98,12 @@ span {
   font-style: italic;
 }
 
-button {
+button,
+a {
   cursor: pointer;
+}
+
+button {
   outline: none;
   background: transparent;
   border: none;

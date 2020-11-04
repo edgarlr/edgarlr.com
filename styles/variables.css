@@ -44,6 +44,10 @@
   /* transitions */
   --transition-short: 0.1.5s;
   --transition-long: 0.3s;
+
+  /* Others */
+  --border-radius: 5px;
+  --border: 1px solid var(--borders);
 }
 
 /* Dark Theme Colors */

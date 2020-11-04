@@ -14,7 +14,7 @@ const Article = ({ post }: Props) => {
   return (
     <Layout header={<ArticleHeader text={post.title} />}>
       <EntryHeader title={post.title} date={post.date} author="edgarlr_" />
-      <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      <article dangerouslySetInnerHTML={{ __html: post.content }} />
       <BottomNav />
     </Layout>
   )

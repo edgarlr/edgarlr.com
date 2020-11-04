@@ -1,0 +1,97 @@
+article {
+  max-width: 100%;
+  line-height: 1.9;
+}
+article > * + p {
+  color: var(--fg);
+  margin: var(--gap-15) 0;
+}
+
+article img {
+  max-width: 100%;
+  width: auto;
+  margin: auto;
+  display: block;
+  border-radius: var(--border-radius);
+}
+
+article h2 {
+  margin-top: 4rem;
+}
+
+article h3 {
+  margin-top: var(--gap-triple);
+}
+
+article hr {
+  border-top: var(--borders);
+}
+
+/* Blockquote*/
+article blockquote {
+  margin: 0;
+  padding: var(--gap-half) 0;
+}
+
+article blockquote * {
+  color: var(--fg-light);
+}
+
+article blockquote p {
+  font-style: italic;
+  font-size: var(--font-size-s);
+  line-height: 1.25;
+}
+
+/* Code Snippets */
+article *:not(pre) > code {
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-bold);
+  padding: 0 6px;
+}
+
+article *:not(pre) > code::before,
+article *:not(pre) > code::after {
+  user-select: none;
+}
+
+article pre {
+  overflow-x: auto;
+  background: var(--overlay);
+  border-radius: var(--inline-radius);
+  line-height: 1.8;
+  padding: var(--gap) var(--gap-15);
+  font-size: var(--font-size-xs);
+}
+
+/* List */
+article ul {
+  padding: 0 var(--gap-75);
+  list-style-position: inside;
+  list-style-type: circle;
+}
+
+article ol {
+  padding: var(--gap-half);
+  list-style-position: outside;
+}
+
+article li {
+  margin-top: var(--gap);
+}
+
+article ul li {
+  list-style-type: disc;
+  color: var(--fg-light);
+  font-style: italic;
+  font-size: var(--font-size-s);
+  line-height: 1.25;
+}
+
+article ul li strong {
+  color: var(--fg);
+}
+
+article ul li strong {
+  color: var(--fg);
+}

@@ -4,6 +4,10 @@
 
 .entry {
   margin: var(--gap) 0;
+  cursor: pointer;
+}
+.entry:hover {
+  opacity: 0.5;
 }
 
 .date {
