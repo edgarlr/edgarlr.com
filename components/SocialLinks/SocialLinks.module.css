@@ -1,5 +1,8 @@
 .root {
   display: flex;
-  width: 80%;
   margin: 0 auto;
+}
+
+.root a {
+  margin: var(--gap);
 }

@@ -3,3 +3,9 @@
   justify-content: center;
   align-items: center;
 }
+
+.label {
+  margin-left: var(--gap-half);
+  font-size: var(--font-size-m);
+  font-style: italic;
+}

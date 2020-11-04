@@ -6,16 +6,16 @@ import s from './SocialLinks.module.css'
 const SocialLinks = () => {
   return (
     <div className={s.root}>
-      <IconLink href={GithubURL} label="Github">
+      <IconLink href={GithubURL}>
         <Github />
       </IconLink>
-      <IconLink href={TwitterURL} label="twitter">
+      <IconLink href={TwitterURL}>
         <Twitter />
       </IconLink>
-      <IconLink href={FigmaURL} label="Figma">
+      <IconLink href={FigmaURL}>
         <Figma />
       </IconLink>
-      <IconLink href={DribbbleURL} label="Dribbble">
+      <IconLink href={DribbbleURL}>
         <Dribbble />
       </IconLink>
     </div>
