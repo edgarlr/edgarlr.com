@@ -40,6 +40,10 @@
   --gap-doble: 2rem;
   --gap-triple: 3rem;
   --section-space: 6rem 0 7.5rem;
+
+  /* transitions */
+  --transition-short: 0.1.5s;
+  --transition-long: 0.3s;
 }
 
 /* Dark Theme Colors */

@@ -4,4 +4,19 @@
   font-weight: var(--font-weight-bold);
   padding: 1rem 1.5rem;
   position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  backdrop-filter: saturate(180%) blur(5px);
+}
+
+.title {
+  opacity: 0;
+  transform: translateY(5px);
+  transition: var(--transition-long);
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
 }
