@@ -1,0 +1,22 @@
+.root {
+  padding: var(--gap-doble) 0;
+}
+
+.entry {
+  margin: var(--gap) 0;
+}
+
+.date {
+  font-size: var(--font-size-s);
+}
+
+.button {
+  font-weight: var(--font-weight-bold);
+  text-decoration: underline;
+  margin: 5rem auto 0;
+}
+
+.button:hover,
+.button:disabled {
+  opacity: 0.4;
+}

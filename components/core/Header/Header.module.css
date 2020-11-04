@@ -1,0 +1,7 @@
+.root {
+  background: var(--header-bg);
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-bold);
+  padding: 1rem 1.5rem;
+  position: fixed;
+}

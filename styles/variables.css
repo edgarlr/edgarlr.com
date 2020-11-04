@@ -30,6 +30,16 @@
   --borders: #e3e5ea;
   --header-bg: rgba(255, 255, 255, 0.45);
   --highlight: #00ffe0;
+
+  /* Spacing */
+  --gap-quarter: 0.25rem;
+  --gap-half: 0.5rem;
+  --gap-75: 0.75rem;
+  --gap: 1rem;
+  --gap-15: 1.5rem;
+  --gap-doble: 2rem;
+  --gap-triple: 3rem;
+  --section-space: 6rem 0 7.5rem;
 }
 
 /* Dark Theme Colors */

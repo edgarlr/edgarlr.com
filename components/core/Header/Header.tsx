@@ -1,7 +1,6 @@
-import React from 'react'
-
+import s from './Header.module.css'
 const Header = () => {
-  return <header>This is a header</header>
+  return <header className={s.root}>Edgar López</header>
 }
 
 export default Header

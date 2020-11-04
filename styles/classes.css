@@ -1,0 +1,36 @@
+.italic {
+  font-style: italic;
+}
+
+.subtitle {
+  font-size: var(--font-size-l);
+}
+
+.bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 98vh;
+}
+
+.align-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.inline-icon {
+  margin: 0;
+  margin-right: var(--gap-half);
+}
+
+.vertical-margin-half {
+  margin: var(--gap-half) 0;
+}

@@ -1,0 +1,11 @@
+.root {
+  padding: var(--section-space);
+}
+
+.root:not(:last-of-type) {
+  border-bottom: 1px solid var(--borders);
+}
+
+.span {
+  margin-left: var(--gap-half);
+}

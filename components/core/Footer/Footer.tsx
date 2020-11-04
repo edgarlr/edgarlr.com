@@ -1,5 +1,11 @@
+import SocialLinks from '@components/SocialLinks/SocialLinks'
+
 const Footer = () => {
-  return <footer>Footer</footer>
+  return (
+    <footer>
+      <SocialLinks />
+    </footer>
+  )
 }
 
 export default Footer
