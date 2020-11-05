@@ -1,3 +1,5 @@
+import { Figma, Github } from '@components/icons'
+import { IconLink } from '@components/ui'
 import s from './Project.module.css'
 
 type Props = {
@@ -6,9 +8,21 @@ type Props = {
   href: string
   description: string
   info: string
+  imageUrl: string
+  githubLink?: string
+  figmaLink?: string
 }
 const Project = (props: Props) => {
-  const { title, linkLabel, href, description, info } = props
+  const {
+    title,
+    linkLabel,
+    href,
+    description,
+    info,
+    imageUrl,
+    githubLink = null,
+    figmaLink = null,
+  } = props
   return (
     <section className={s.root}>
       <a href={href} target="_blank" rel="noreferrer">
@@ -19,7 +33,19 @@ const Project = (props: Props) => {
       </a>
       <p>{description}</p>
       <span className={s.info}>{info}</span>
-      <div>Image</div>
+      <div className={s.links}>
+        {githubLink && (
+          <IconLink href={githubLink}>
+            <Github />
+          </IconLink>
+        )}
+        {figmaLink && (
+          <IconLink href={figmaLink}>
+            <Figma />
+          </IconLink>
+        )}
+      </div>
+      <img className={s.img} src={imageUrl} />
     </section>
   )
 }

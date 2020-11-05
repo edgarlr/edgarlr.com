@@ -13,3 +13,18 @@
 .span {
   color: var(--fg-light);
 }
+
+.img {
+  max-width: 100%;
+  display: block;
+  margin: 3rem auto 0;
+}
+
+.links {
+  display: flex;
+  margin: var(--gap-15) 0;
+}
+
+.links a {
+  margin-right: var(--gap);
+}

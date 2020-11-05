@@ -1,9 +1,9 @@
 .root {
-  padding: var(--gap-doble) 0;
+  padding: var(--gap-half) 0;
 }
 
 .entry {
-  margin: var(--gap) 0;
+  margin: var(--gap-doble) 0;
   cursor: pointer;
 }
 .entry:hover {
@@ -12,6 +12,7 @@
 
 .date {
   font-size: var(--font-size-s);
+  color: var(--fg-light);
 }
 
 .button {

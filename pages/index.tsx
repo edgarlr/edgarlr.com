@@ -3,7 +3,7 @@ import { Layout } from '@components/core'
 import { MapPin } from '@components/icons'
 import Project from '@components/project'
 import { SectionContainer } from '@components/ui'
-import { PodcastsAppURL } from '@lib/constants'
+import { FigmaURL, PodcastsAppURL } from '@lib/constants'
 import { getAllPosts } from '@lib/posts'
 import { GetStaticProps } from 'next'
 import type { TPost } from 'types'
@@ -29,21 +29,26 @@ const Home = ({ posts }: Props) => (
     </div>
     <Project
       title="rooms"
-      linkLabel="Demo"
+      linkLabel="Live Demo"
       href={PodcastsAppURL}
       description="Rooms based aplication for group 
       comminucation. UI Design."
       info="React, SSR, Webpack, Styled Components, WebRTC, 
       Socket.io, Redux, React-Query,  Reach router, Passport, 
       JWT, Cypress, jest, "
+      imageUrl="/images/rooms.png"
+      figmaLink={FigmaURL}
+      githubLink="https://github.com/edgarlr/rooms"
     />
     <Project
       title="Podcasts"
-      linkLabel="Demo"
+      linkLabel="Live demo"
       href={PodcastsAppURL}
       description="No auth needed podcasts web app"
       info="React, Next.js, SWR, Styled Jsx, PropTypes, Sentry, 
       Cypress, Jest"
+      imageUrl="/images/podcasts.png"
+      githubLink="https://github.com/edgarlr/podcasts"
     />
     <Project
       title="Déjame te cuento"
@@ -52,6 +57,7 @@ const Home = ({ posts }: Props) => (
       description="Digital Magazine Webapp"
       info="React, Next.js, Typescript, GraphQL, Apollo, StrapiCMS, 
       AMP, PWA Google Analythics, Cypress, Jest."
+      imageUrl="/images/podcasts.png"
     />
 
     <SectionContainer
