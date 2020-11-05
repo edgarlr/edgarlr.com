@@ -33,6 +33,13 @@ const ArticleHeader = ({ text }: Props) => {
         </button>
       </Link>
       <div className={`${s.title} ${isShowed && s.show}`}>{text}</div>
+
+      {/* backdrop support for other browsers */}
+      <style jsx>{`
+        header {
+          -webkit-backdrop-filter: saturate(180%) blur(10px);
+        }
+      `}</style>
     </header>
   )
 }

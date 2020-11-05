@@ -21,6 +21,13 @@ const Header = () => {
   return (
     <header className={s.root}>
       <div className={`${s.title} ${isShowed && s.show}`}>Edgar López</div>
+
+      {/* backdrop support for other browsers */}
+      <style jsx>{`
+        header {
+          -webkit-backdrop-filter: saturate(180%) blur(10px);
+        }
+      `}</style>
     </header>
   )
 }
