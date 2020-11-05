@@ -99,8 +99,11 @@ span {
 }
 
 button,
-a {
+a,
+select {
   cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 button {

@@ -1,0 +1,22 @@
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 5rem 0;
+}
+.navButton {
+  max-width: 45%;
+  cursor: pointer;
+  transition: var(--transition-short);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.navButton:hover {
+  opacity: 0.6;
+}
+.navHeader {
+  display: flex;
+  align-items: center;
+}
+.navHeader h4 {
+  padding: 0 var(--gap-quarter);
+}

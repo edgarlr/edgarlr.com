@@ -9,3 +9,19 @@
 .root > select {
   margin: var(--gap) 0;
 }
+
+.themeSelect {
+  padding: var(--gap-quarter) var(--gap-half);
+  background: transparent;
+  width: 7rem;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  color: var(--fg);
+  font-size: var(--font-size-s);
+  outline: none;
+  transition: var(--transition-short);
+}
+
+.themeSelect:hover {
+  border: 1px solid var(--fg);
+}

@@ -7,8 +7,10 @@ import { RepoUrl } from '@lib/constants'
 const Footer = () => {
   return (
     <footer className={s.root}>
-      <select>
-        <option>system</option>
+      <select className={s.themeSelect}>
+        <option value="system">System</option>
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
       </select>
       <SocialLinks />
       <IconLink href={RepoUrl} label="Source">

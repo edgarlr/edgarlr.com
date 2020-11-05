@@ -12,6 +12,7 @@ const Figma = ({ size = 24, color = '#131414' }: TIcon) => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      className="icon-stroke"
     >
       <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z" />
       <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z" />

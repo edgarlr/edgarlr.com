@@ -1,28 +1,40 @@
 import { ArrowLeft, ArrowRight } from '@components/icons'
 import Link from 'next/link'
-import s from './Entry.module.css'
+import { TPostLink } from 'types/post'
+import s from './BottomNav.module.css'
 
-const BottomNav = () => {
+type Props = {
+  prev: TPostLink
+  next: TPostLink
+}
+
+const BottomNav = ({ prev, next }: Props) => {
   return (
     <div className={s.navContainer}>
-      <Link href="/">
-        <div className={s.navButton}>
-          <div className={s.navHeader}>
-            <ArrowLeft />
-            <h4>Older</h4>
+      {prev ? (
+        <Link href={`/articles/${prev.slug}`}>
+          <div className={s.navButton}>
+            <div className={s.navHeader}>
+              <ArrowLeft />
+              <h4>Older</h4>
+            </div>
+            {prev.title}
           </div>
-          this is a post example
-        </div>
-      </Link>
-      <Link href="/">
-        <div className={s.navButton} style={{ textAlign: 'right' }}>
-          <div className={s.navHeader} style={{ justifyContent: 'flex-end' }}>
-            <h4>Newer</h4>
-            <ArrowRight />
+        </Link>
+      ) : (
+        <div />
+      )}
+      {next && (
+        <Link href={`/articles/${next.slug}`}>
+          <div className={s.navButton} style={{ textAlign: 'right' }}>
+            <div className={s.navHeader} style={{ justifyContent: 'flex-end' }}>
+              <h4>Newer</h4>
+              <ArrowRight />
+            </div>
+            {next.title}
           </div>
-          this is a post example
-        </div>
-      </Link>
+        </Link>
+      )}
     </div>
   )
 }

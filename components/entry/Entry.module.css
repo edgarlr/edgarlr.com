@@ -17,16 +17,3 @@
   padding-left: var(--gap);
   border-left: 1px solid var(--borders);
 }
-
-/* Bottom Nav*/
-.navContainer {
-  display: flex;
-  justify-content: space-between;
-  margin: 5rem 0;
-}
-.navButton {
-  max-width: 45%;
-}
-.navHeader {
-  display: flex;
-}

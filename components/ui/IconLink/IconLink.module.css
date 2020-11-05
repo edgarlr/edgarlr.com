@@ -4,6 +4,11 @@
   align-items: center;
 }
 
+.root:hover {
+  opacity: 0.6;
+  transition: var(--transition-short);
+}
+
 .label {
   margin-left: var(--gap-half);
   font-size: var(--font-size-m);

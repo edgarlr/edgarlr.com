@@ -12,6 +12,7 @@ const ArrowRight = ({ size = 24, color = '#131414' }: TIcon) => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      className="icon-stroke"
     >
       <line x1="5" y1="12" x2="19" y2="12" />
       <polyline points="12 5 19 12 12 19" />

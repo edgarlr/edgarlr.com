@@ -9,3 +9,7 @@
 .span {
   margin-left: var(--gap-half);
 }
+.info,
+.span {
+  color: var(--fg-light);
+}

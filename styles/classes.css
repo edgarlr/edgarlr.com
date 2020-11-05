@@ -34,3 +34,11 @@
 .vertical-margin-half {
   margin: var(--gap-half) 0;
 }
+
+.icon-stroke {
+  stroke: var(--fg);
+}
+
+.icon-fill {
+  fill: var(--fg);
+}

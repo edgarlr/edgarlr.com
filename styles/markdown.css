@@ -27,6 +27,13 @@ article hr {
   border-top: var(--borders);
 }
 
+article em {
+  display: block;
+  text-align: center;
+  font-size: var(--font-size-xs);
+  color: var(--fg-light);
+}
+
 /* Blockquote*/
 article blockquote {
   margin: 0;
@@ -41,6 +48,10 @@ article blockquote p {
   font-style: italic;
   font-size: var(--font-size-s);
   line-height: 1.25;
+}
+
+article blockquote p code {
+  font-style: normal;
 }
 
 /* Code Snippets */
@@ -86,10 +97,6 @@ article ul li {
   font-style: italic;
   font-size: var(--font-size-s);
   line-height: 1.25;
-}
-
-article ul li strong {
-  color: var(--fg);
 }
 
 article ul li strong {

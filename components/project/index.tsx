@@ -18,7 +18,7 @@ const Project = (props: Props) => {
         </h2>
       </a>
       <p>{description}</p>
-      <span>{info}</span>
+      <span className={s.info}>{info}</span>
       <div>Image</div>
     </section>
   )

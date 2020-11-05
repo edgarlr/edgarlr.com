@@ -12,6 +12,7 @@ const ChevronDown = ({ size = 24, color = '#131414' }: TIcon) => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      className="icon-stroke"
     >
       <polyline points="6 9 12 15 18 9" />
     </svg>

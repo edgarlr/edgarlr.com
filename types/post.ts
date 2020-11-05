@@ -9,3 +9,8 @@ export type TPost = {
   }
   content: string
 }
+
+export type TPostLink = {
+  slug: string
+  title: string
+}
