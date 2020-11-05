@@ -33,12 +33,6 @@ body {
   font-family: var(--font-sans);
 }
 
-p,
-li {
-  font-size: var(--font-size-m);
-  margin: 0.25rem 0;
-}
-
 h1,
 h2,
 h3,
@@ -67,25 +61,51 @@ h4 {
   font-size: var(--font-size-m);
 }
 
-pre,
-code {
-  font-family: var(--font-mono);
-  background-color: var(--overlay);
-}
-
-a {
-  text-decoration: none;
-  color: var(--fg);
+p,
+li {
+  font-size: var(--font-size-m);
+  margin: 0.25rem 0;
 }
 
 p a {
   text-decoration: underline;
 }
 
+a {
+  text-decoration: none;
+  color: var(--fg);
+  transition: var(--transition-short);
+}
+
 a:hover,
 a:focus,
 a:active {
-  color: var(--fg-light);
+  opacity: var(--hover-opacity);
+}
+
+button,
+a,
+select {
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+select {
+  outline: none;
+  background: transparent;
+  border: none;
+  display: block;
+  font-size: var(--font-size-xs);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  transition: var(--transition-short);
+}
+
+select:hover,
+button:hover {
+  border: 1px solid var(--fg);
 }
 
 img {
@@ -98,18 +118,8 @@ span {
   font-style: italic;
 }
 
-button,
-a,
-select {
-  cursor: pointer;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-button {
-  outline: none;
-  background: transparent;
-  border: none;
-  display: block;
-  font-size: var(--font-size-xs);
+pre,
+code {
+  font-family: var(--font-mono);
+  background-color: var(--overlay);
 }

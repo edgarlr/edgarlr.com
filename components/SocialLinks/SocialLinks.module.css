@@ -5,4 +5,9 @@
 
 .root a {
   margin: var(--gap);
+  color: var(--fg-light);
+}
+
+.root a {
+  color: var(--fg);
 }

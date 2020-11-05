@@ -9,9 +9,10 @@
   transition: var(--transition-short);
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+  opacity: var(--hover-opacity);
 }
 .navButton:hover {
-  opacity: 0.6;
+  opacity: 1;
 }
 .navHeader {
   display: flex;

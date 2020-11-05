@@ -8,16 +8,26 @@
 
 .span {
   margin-left: var(--gap-half);
+  transition: var(--transition-short);
 }
+
+.root a:hover .span {
+  color: var(--fg);
+}
+
 .info,
 .span {
   color: var(--fg-light);
 }
 
 .img {
-  max-width: 100%;
-  display: block;
   margin: 3rem auto 0;
+  transition: var(--transition-long);
+  transform: scale(1);
+}
+
+.img:hover {
+  transform: scale(1.03);
 }
 
 .links {

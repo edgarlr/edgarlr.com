@@ -2,11 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0.4;
+  transition: var(--transition-short);
 }
 
 .root:hover {
-  opacity: 0.6;
-  transition: var(--transition-short);
+  opacity: 1;
 }
 
 .label {

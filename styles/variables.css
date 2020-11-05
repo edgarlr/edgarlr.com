@@ -42,12 +42,13 @@
   --section-space: 6rem 0 7.5rem;
 
   /* transitions */
-  --transition-short: 0.1s;
+  --transition-short: 0.15s;
   --transition-long: 0.3s;
 
   /* Others */
   --border-radius: 5px;
   --border: 1px solid var(--borders);
+  --hover-opacity: 0.3;
 }
 
 /* Dark Theme Colors */

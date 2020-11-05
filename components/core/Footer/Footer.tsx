@@ -14,7 +14,7 @@ const Footer = () => {
       </select>
       <SocialLinks />
       <IconLink href={RepoUrl} label="Source">
-        <Github size={20} />
+        <Github size={16} />
       </IconLink>
     </footer>
   )

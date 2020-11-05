@@ -45,7 +45,9 @@ const Project = (props: Props) => {
           </IconLink>
         )}
       </div>
-      <img className={s.img} src={imageUrl} />
+      <a href={href} target="_blank" rel="noreferrer">
+        <img className={s.img} src={imageUrl} />
+      </a>
     </section>
   )
 }

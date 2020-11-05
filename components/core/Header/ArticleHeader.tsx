@@ -28,9 +28,9 @@ const ArticleHeader = ({ text }: Props) => {
   return (
     <header className={s.root}>
       <Link href="/">
-        <button className={s.backButton}>
+        <a className={s.backButton}>
           <ArrowLeft />
-        </button>
+        </a>
       </Link>
       <div className={`${s.title} ${isShowed && s.show}`}>{text}</div>
 
