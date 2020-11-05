@@ -19,7 +19,7 @@ const ArticlesList = ({ posts, paginate }: Props) => {
         .slice(0, paginate ? loadedArticles : undefined)
         .map(({ slug, date, title }) => (
           <Link href={`/articles/${slug}`} key={slug}>
-            <div className={s.entry}>
+            <div className={`${s.entry} no-user-select`}>
               <h4>{title}</h4>
               <p className={`italic ${s.date}`}>{dateFormatter(date)}</p>
             </div>

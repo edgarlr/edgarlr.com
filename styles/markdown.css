@@ -57,8 +57,7 @@ article blockquote p code {
 /* Code Snippets */
 article *:not(pre) > code {
   font-size: var(--font-size-s);
-  font-weight: var(--font-weight-bold);
-  padding: 0 6px;
+  padding: 0 8px;
 }
 
 article *:not(pre) > code::before,

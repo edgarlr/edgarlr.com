@@ -9,9 +9,10 @@ type Props = {
   description: string
   info: string
   imageUrl: string
-  githubLink?: string
-  figmaLink?: string
+  githubLink: string | null
+  figmaLink: string | null
 }
+
 const Project = (props: Props) => {
   const {
     title,

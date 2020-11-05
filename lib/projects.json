@@ -1,0 +1,41 @@
+[
+  {
+    "slug": "rooms",
+    "title": "rooms",
+    "linkType": "Live Demo",
+    "description": "Rooms based aplication for group comminucation. UI Design.",
+    "tech": "React, SSR, Webpack, Styled Components, WebRTC, Socket.io, Redux, React-Query, Reach router, Passport, JWT, Cypress, jest",
+    "urls": {
+      "main": "https://podcast-app.now.sh",
+      "image": "/images/rooms.png",
+      "github": "https://github.com/edgarlr/rooms",
+      "figma": "https://github.com/edgarlr/rooms"
+    }
+  },
+  {
+    "slug": "podcasts",
+    "title": "Podcasts",
+    "linkType": "Live Demo",
+    "description": "No auth needed podcasts web app",
+    "tech": "React, Next.js, SWR, Styled Jsx, PropTypes, Sentry, Cypress, Jest",
+    "urls": {
+      "main": "https://podcast-app.now.sh",
+      "image": "/images/podcasts.png",
+      "github": "https://github.com/edgarlr/podcasts",
+      "figma": null
+    }
+  },
+  {
+    "slug": "dejame-te-cuento",
+    "title": "Déjame te cuento",
+    "linkType": "Live Site",
+    "description": "Digital Magazine Webapp",
+    "tech": "React, Next.js, Typescript, GraphQL, Apollo, StrapiCMS, AMP, PWA Google Analythics, Cypress, Jest",
+    "urls": {
+      "main": "https://podcast-app.now.sh",
+      "image": "/images/podcasts.png",
+      "github": null,
+      "figma": null
+    }
+  }
+]

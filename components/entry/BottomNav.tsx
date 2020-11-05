@@ -13,7 +13,7 @@ const BottomNav = ({ prev, next }: Props) => {
     <div className={s.navContainer}>
       {prev ? (
         <Link href={`/articles/${prev.slug}`}>
-          <div className={s.navButton}>
+          <div className={`${s.navButton} no-user-select`}>
             <div className={s.navHeader}>
               <ArrowLeft />
               <h4>Older</h4>
@@ -26,7 +26,10 @@ const BottomNav = ({ prev, next }: Props) => {
       )}
       {next && (
         <Link href={`/articles/${next.slug}`}>
-          <div className={s.navButton} style={{ textAlign: 'right' }}>
+          <div
+            className={`${s.navButton} no-user-select`}
+            style={{ textAlign: 'right' }}
+          >
             <div className={s.navHeader} style={{ justifyContent: 'flex-end' }}>
               <h4>Newer</h4>
               <ArrowRight />

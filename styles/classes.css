@@ -2,10 +2,6 @@
   font-style: italic;
 }
 
-.subtitle {
-  font-size: var(--font-size-l);
-}
-
 .bold {
   font-weight: var(--font-weight-bold);
 }
@@ -41,4 +37,13 @@
 
 .icon-fill {
   fill: var(--fg);
+}
+
+.no-user-select {
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.low-opacity {
+  opacity: 0.6;
 }

@@ -7,8 +7,6 @@
   max-width: 45%;
   cursor: pointer;
   transition: var(--transition-short);
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
   opacity: var(--hover-opacity);
 }
 .navButton:hover {
