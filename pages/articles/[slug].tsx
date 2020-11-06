@@ -15,7 +15,7 @@ type Props = {
 
 const Article = ({ post, prev, next }: Props) => {
   return (
-    <Layout header={<ArticleHeader text={post.title} />}>
+    <Layout header={<ArticleHeader text={post.title} />} isArticle>
       <EntryHeader title={post.title} date={post.date} author="edgarlr_" />
       <article dangerouslySetInnerHTML={{ __html: post.content }} />
       <BottomNav prev={prev} next={next} />

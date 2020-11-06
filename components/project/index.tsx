@@ -26,25 +26,27 @@ const Project = (props: Props) => {
   } = props
   return (
     <section className={s.root}>
-      <a href={href} target="_blank" rel="noreferrer">
-        <h2>
-          {title}
-          <span className={s.span}>{linkLabel}</span>
-        </h2>
-      </a>
-      <p>{description}</p>
-      <span className={s.info}>{info}</span>
-      <div className={s.links}>
-        {githubLink && (
-          <IconLink href={githubLink}>
-            <Github />
-          </IconLink>
-        )}
-        {figmaLink && (
-          <IconLink href={figmaLink}>
-            <Figma />
-          </IconLink>
-        )}
+      <div className={s.projectInfo}>
+        <a href={href} target="_blank" rel="noreferrer">
+          <h2>
+            {title}
+            <span className={s.span}>{linkLabel}</span>
+          </h2>
+        </a>
+        <p>{description}</p>
+        <span className={s.info}>{info}</span>
+        <div className={s.links}>
+          {githubLink && (
+            <IconLink href={githubLink}>
+              <Github />
+            </IconLink>
+          )}
+          {figmaLink && (
+            <IconLink href={figmaLink}>
+              <Figma />
+            </IconLink>
+          )}
+        </div>
       </div>
       <a href={href} target="_blank" rel="noreferrer">
         <img className={s.img} src={imageUrl} />

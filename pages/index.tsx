@@ -23,7 +23,7 @@ const Home = ({ posts, projects }: Props) => (
       </p>
       <div className="italic flex vertical-margin-half low-opacity">
         <div className="inline-icon low-opacity">
-          <MapPin size={20} />
+          <MapPin size={18} />
         </div>
         Mexico City, CDMX.
       </div>

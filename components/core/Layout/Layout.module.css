@@ -1,5 +1,21 @@
 .main {
-  margin: 0 1.5rem;
-  padding-bottom: 3rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem;
   min-height: 100vh;
+}
+
+@media screen and (min-width: 678px) {
+  .main {
+    width: 65%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .main {
+    width: 80%;
+  }
+  .article {
+    width: 50%;
+  }
 }

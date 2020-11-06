@@ -38,3 +38,20 @@
 .links a {
   margin-right: var(--gap);
 }
+
+@media screen and (min-width: 1440px) {
+  .root {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .root:nth-child(2n) {
+    flex-direction: row-reverse;
+  }
+  .projectInfo {
+    max-width: 40%;
+  }
+  .img {
+    max-width: 35vw;
+  }
+}

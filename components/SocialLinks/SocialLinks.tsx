@@ -11,22 +11,23 @@ import {
 import s from './SocialLinks.module.css'
 
 const SocialLinks = () => {
+  const ICON_SIZE = 20
   return (
     <div className={s.root}>
       <IconLink href={GithubURL}>
-        <Github />
+        <Github size={ICON_SIZE} />
       </IconLink>
       <IconLink href={TwitterURL}>
-        <Twitter />
+        <Twitter size={ICON_SIZE} />
       </IconLink>
       <IconLink href={EmailURL}>
-        <Email />
+        <Email size={ICON_SIZE} />
       </IconLink>
       <IconLink href={FigmaURL}>
-        <Figma />
+        <Figma size={ICON_SIZE} />
       </IconLink>
       <IconLink href={DribbbleURL}>
-        <Dribbble />
+        <Dribbble size={ICON_SIZE} />
       </IconLink>
     </div>
   )

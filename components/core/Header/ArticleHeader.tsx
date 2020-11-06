@@ -26,7 +26,7 @@ const ArticleHeader = ({ text }: Props) => {
   }, [])
 
   return (
-    <header className={s.root}>
+    <header className={`${s.root} ${s.article}`}>
       <Link href="/">
         <a className={s.backButton}>
           <ArrowLeft />

@@ -35,3 +35,25 @@
   margin-right: var(--gap-75);
   border-right: 1px solid var(--borders);
 }
+
+@media screen and (min-width: 678px) {
+  .root {
+    padding: var(--gap-half) 19.8%;
+  }
+  .article {
+    padding: var(--gap-half) 15%;
+  }
+  .backButton {
+    padding-right: var(--gap);
+    margin-right: var(--gap-doble);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .root {
+    padding: var(--gap-half) 11.5%;
+  }
+  .article {
+    padding: var(--gap-half) 23.8%;
+  }
+}

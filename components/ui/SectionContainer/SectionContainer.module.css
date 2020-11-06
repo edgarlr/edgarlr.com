@@ -1,3 +1,17 @@
 .root {
   padding: var(--section-space);
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 678px) {
+  .root {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .root {
+    width: 50%;
+  }
 }
