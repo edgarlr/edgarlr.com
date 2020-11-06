@@ -7,7 +7,19 @@
 
 @media screen and (min-width: 678px) {
   .main {
-    width: 65%;
+    width: 75%;
+  }
+  .article {
+    width: 75%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .main {
+    width: 85%;
+  }
+  .article {
+    width: 60%;
   }
 }
 

@@ -10,6 +10,12 @@
   }
 }
 
+@media screen and (min-width: 1024px) {
+  .root {
+    width: 60%;
+  }
+}
+
 @media screen and (min-width: 1440px) {
   .root {
     width: 50%;

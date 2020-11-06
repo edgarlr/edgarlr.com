@@ -38,14 +38,23 @@
 
 @media screen and (min-width: 678px) {
   .root {
-    padding: var(--gap-half) 19.8%;
+    padding: var(--gap-half) 15.5%;
   }
   .article {
-    padding: var(--gap-half) 15%;
+    padding: var(--gap-half) 10.5%;
   }
   .backButton {
     padding-right: var(--gap);
     margin-right: var(--gap-doble);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .root {
+    padding: var(--gap-half) 10%;
+  }
+  .article {
+    padding: var(--gap-half) 18.5%;
   }
 }
 

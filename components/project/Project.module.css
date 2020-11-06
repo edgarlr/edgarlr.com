@@ -39,7 +39,13 @@
   margin-right: var(--gap);
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 678px) {
+  .img {
+    margin-top: 5rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
   .root {
     display: flex;
     justify-content: space-between;
@@ -49,9 +55,16 @@
     flex-direction: row-reverse;
   }
   .projectInfo {
-    max-width: 40%;
+    max-width: 45%;
   }
   .img {
     max-width: 35vw;
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .projectInfo {
+    max-width: 40%;
   }
 }
