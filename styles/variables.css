@@ -52,6 +52,17 @@
 }
 
 /* Dark Theme Colors */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #181a1b;
+    --fg: #ffffff;
+    --fg-light: rgba(255, 255, 255, 0.6);
+    --overlay: #242526;
+    --borders: #313335;
+    --header-bg: rgba(24, 26, 27, 0.45);
+    --highlight: #6100ff;
+  }
+}
 [data-theme='dark'] {
   --bg: #181a1b;
   --fg: #ffffff;

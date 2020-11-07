@@ -14,7 +14,7 @@ class MyDocument extends Document {
   }
   render() {
     return (
-      <Html data-theme="dark">
+      <Html>
         <Head />
         <body>
           <Main />

@@ -26,6 +26,7 @@ body {
   color: var(--fg);
   font-size: var(--font-size-s);
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {

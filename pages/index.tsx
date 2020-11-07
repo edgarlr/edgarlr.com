@@ -13,45 +13,47 @@ type Props = {
   projects: TProject[]
 }
 
-const Home = ({ posts, projects }: Props) => (
-  <Layout>
-    <div className="hero">
-      <h1>Edgar López</h1>
-      <p>
-        Frontend developer, I build web applications. I just start{' '}
-        <a href="#articles">writting</a>
-      </p>
-      <div className="italic flex vertical-margin-half low-opacity">
-        <div className="inline-icon low-opacity">
-          <MapPin size={18} />
+const Home = ({ posts, projects }: Props) => {
+  return (
+    <Layout>
+      <div className="hero">
+        <h1>Edgar López</h1>
+        <p>
+          Frontend developer, I build web applications. I just start{' '}
+          <a href="#articles">writting</a>
+        </p>
+        <div className="italic flex vertical-margin-half low-opacity">
+          <div className="inline-icon low-opacity">
+            <MapPin size={18} />
+          </div>
+          Mexico City, CDMX.
         </div>
-        Mexico City, CDMX.
       </div>
-    </div>
 
-    {projects.map(({ slug, title, linkType, description, urls, tech }) => (
-      <Project
-        key={slug}
-        title={title}
-        linkLabel={linkType}
-        href={urls.main}
-        description={description}
-        info={tech}
-        imageUrl={urls.image}
-        githubLink={urls.github}
-        figmaLink={urls.figma}
-      />
-    ))}
+      {projects.map(({ slug, title, linkType, description, urls, tech }) => (
+        <Project
+          key={slug}
+          title={title}
+          linkLabel={linkType}
+          href={urls.main}
+          description={description}
+          info={tech}
+          imageUrl={urls.image}
+          githubLink={urls.github}
+          figmaLink={urls.figma}
+        />
+      ))}
 
-    <SectionContainer
-      id="articles"
-      title="Articles"
-      subtitle="This that I've been learning along the road."
-    >
-      <ArticlesList posts={posts} paginate />
-    </SectionContainer>
-  </Layout>
-)
+      <SectionContainer
+        id="articles"
+        title="Articles"
+        subtitle="This that I've been learning along the road."
+      >
+        <ArticlesList posts={posts} paginate />
+      </SectionContainer>
+    </Layout>
+  )
+}
 export default Home
 
 export const getStaticProps: GetStaticProps = async () => {
