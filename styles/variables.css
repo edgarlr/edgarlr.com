@@ -22,15 +22,6 @@
   --font-line-height-l: 1.75;
   --font-line-height-xl: 1.9;
 
-  /* Light Theme Colors */
-  --bg: #ffffff;
-  --fg: #131414;
-  --fg-light: rgba(19, 20, 20, 0.6);
-  --overlay: #fafafa;
-  --borders: #e3e5ea;
-  --header-bg: rgba(255, 255, 255, 0.45);
-  --highlight: #00ffe0;
-
   /* Spacing */
   --gap-quarter: 0.25rem;
   --gap-half: 0.5rem;
@@ -49,9 +40,28 @@
   --border-radius: 5px;
   --border: 1px solid var(--borders);
   --hover-opacity: 0.3;
+
+  /* Light Theme Colors */
+  --bg: #ffffff;
+  --fg: #131414;
+  --fg-light: rgba(19, 20, 20, 0.6);
+  --overlay: #fafafa;
+  --borders: #e3e5ea;
+  --header-bg: rgba(255, 255, 255, 0.45);
+  --highlight: #00ffe0;
 }
 
 /* Dark Theme Colors */
+[data-theme='dark'] {
+  --bg: #181a1b;
+  --fg: #ffffff;
+  --fg-light: rgba(255, 255, 255, 0.6);
+  --overlay: #242526;
+  --borders: #313335;
+  --header-bg: rgba(24, 26, 27, 0.45);
+  --highlight: #6100ff;
+}
+
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
     --bg: #181a1b;
@@ -62,13 +72,4 @@
     --header-bg: rgba(24, 26, 27, 0.45);
     --highlight: #6100ff;
   }
-}
-[data-theme='dark'] {
-  --bg: #181a1b;
-  --fg: #ffffff;
-  --fg-light: rgba(255, 255, 255, 0.6);
-  --overlay: #242526;
-  --borders: #313335;
-  --header-bg: rgba(24, 26, 27, 0.45);
-  --highlight: #6100ff;
 }

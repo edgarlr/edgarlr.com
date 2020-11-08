@@ -32,7 +32,7 @@ const ArticleHeader = ({ text }: Props) => {
           <ArrowLeft />
         </a>
       </Link>
-      <div className={`${s.title} ${isShowed && s.show}`}>{text}</div>
+      <div className={`${s.title} ${isShowed ? s.show : ''}`}>{text}</div>
 
       {/* backdrop support for other browsers */}
       <style jsx>{`

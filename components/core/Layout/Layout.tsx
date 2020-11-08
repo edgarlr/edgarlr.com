@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { Footer, Header } from '..'
 import s from './Layout.module.css'
 
@@ -10,8 +11,13 @@ type Props = {
 const Layout = ({ children, header = null, isArticle }: Props) => {
   return (
     <>
+      <Head>
+        <title>Edgar López</title>
+      </Head>
       {header ? header : <Header />}
-      <main className={`${s.main} ${isArticle && s.article}`}>{children}</main>
+      <main className={`${s.main} ${isArticle ? s.article : ''}`}>
+        {children}
+      </main>
       <Footer />
     </>
   )

@@ -1,0 +1,6 @@
+.root {
+  width: 7rem;
+  padding: var(--gap-quarter) var(--gap-half);
+  color: var(--fg);
+  font-size: var(--font-size-s);
+}

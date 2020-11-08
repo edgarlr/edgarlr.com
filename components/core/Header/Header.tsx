@@ -20,7 +20,7 @@ const Header = () => {
 
   return (
     <header className={s.root}>
-      <div className={`${s.title} ${isShowed && s.show}`}>Edgar López</div>
+      <div className={`${s.title} ${isShowed ? s.show : ''}`}>Edgar López</div>
 
       {/* backdrop support for other browsers */}
       <style jsx>{`
