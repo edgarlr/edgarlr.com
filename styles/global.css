@@ -106,7 +106,7 @@ select {
 
 select:hover,
 button:hover {
-  border: 1px solid var(--fg);
+  border: var(--border-hover);
 }
 
 img {

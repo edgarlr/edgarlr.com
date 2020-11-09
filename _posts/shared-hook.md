@@ -113,11 +113,11 @@ SWR is mainly used to manage remote data requests, but it also provides a powerf
 
 ---
 
-<div id="footnote"></div>
-
 1. Two components using the same React hook [**don't share state by default**](https://reactjs.org/docs/hooks-custom.html#:~:text=Do%20two%20components%20using%20the%20same%20Hook%20share%20state).
 
 2. SWR uses a client-side only cache, so your data won't persist between sessions or windows unless you keep external state like `localStorage`, at which point SWR may not be useful.
 
 > Unfortunately, trying to use `:focus` limits what you can do: you can style the input or siblings that come after the input… but that’s it.
 > — [Initializing focus state in React](https://exogen.github.io/blog/focus-state)
+
+<div id="footnote">this is a footnote</div>

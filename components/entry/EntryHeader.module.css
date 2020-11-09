@@ -15,5 +15,6 @@
   font-style: italic;
   margin-left: var(--gap);
   padding-left: var(--gap);
-  border-left: 1px solid var(--borders);
+  border-left: var(--border);
+  color: var(--fg-light);
 }

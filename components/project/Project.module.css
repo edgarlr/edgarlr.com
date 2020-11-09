@@ -3,7 +3,7 @@
 }
 
 .root:not(:last-of-type) {
-  border-bottom: 1px solid var(--borders);
+  border-bottom: var(--border);
 }
 
 .span {

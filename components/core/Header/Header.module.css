@@ -33,7 +33,7 @@
   padding: 0;
   padding-right: var(--gap-75);
   margin-right: var(--gap-75);
-  border-right: 1px solid var(--borders);
+  border-right: var(--border);
 }
 
 @media screen and (min-width: 678px) {

@@ -2,7 +2,7 @@ import { Twitter } from '@components/icons'
 import { IconLink } from '@components/ui'
 import { TwitterURL } from '@lib/constants'
 import dateFormatter from '@lib/dateFormatter'
-import s from './Entry.module.css'
+import s from './EntryHeader.module.css'
 
 type Props = {
   title: string

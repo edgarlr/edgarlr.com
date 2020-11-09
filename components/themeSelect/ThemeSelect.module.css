@@ -1,6 +1,31 @@
 .root {
+  position: relative;
+}
+
+.select {
   width: 7rem;
   padding: var(--gap-quarter) var(--gap-half);
   color: var(--fg);
   font-size: var(--font-size-s);
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  bottom: 6px;
+  top: 6px;
+  display: flex;
+  align-items: center;
+  right: 0;
+  padding: var(--gap-half);
+  border-left: var(--border);
+  pointer-events: none;
+  transition: var(--transition-short);
+}
+
+.root:hover .icon {
+  border-left: var(--border-hover-light);
 }

@@ -36,9 +36,13 @@
   --transition-short: 0.15s;
   --transition-long: 0.3s;
 
-  /* Others */
+  /* Borders */
   --border-radius: 5px;
-  --border: 1px solid var(--borders);
+  --border: 1px solid var(--borders-color);
+  --border-hover: 1px solid var(--fg);
+  --border-hover-light: 1px solid var(--fg-light);
+
+  /* Effects */
   --hover-opacity: 0.3;
 
   /* Light Theme Colors */
@@ -46,7 +50,7 @@
   --fg: #131414;
   --fg-light: rgba(19, 20, 20, 0.6);
   --overlay: #fafafa;
-  --borders: #e3e5ea;
+  --borders-color: #e3e5ea;
   --header-bg: rgba(255, 255, 255, 0.45);
   --highlight: #00ffe0;
 }
@@ -57,7 +61,7 @@
   --fg: #ffffff;
   --fg-light: rgba(255, 255, 255, 0.6);
   --overlay: #242526;
-  --borders: #313335;
+  --borders-color: #313335;
   --header-bg: rgba(24, 26, 27, 0.45);
   --highlight: #6100ff;
 }
@@ -68,7 +72,7 @@
     --fg: #ffffff;
     --fg-light: rgba(255, 255, 255, 0.6);
     --overlay: #242526;
-    --borders: #313335;
+    --borders-color: #313335;
     --header-bg: rgba(24, 26, 27, 0.45);
     --highlight: #6100ff;
   }
