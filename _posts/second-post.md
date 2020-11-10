@@ -1,5 +1,6 @@
 ---
 title: 'When to Use Static Generation v.s. Server-side Rendering'
+description: 'An deep-dive on SSG and SSR, when to useit and when not to'
 date: 'Jan 01 2019 11:13:09 GMT-0600'
 ---
 

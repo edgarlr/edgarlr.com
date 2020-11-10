@@ -2,11 +2,8 @@ export type TPost = {
   slug: string
   title: string
   date: string
-  coverImage: string
-  excerpt: string
-  ogImage: {
-    url: string
-  }
+  description: string
+  image?: string
   content: string
 }
 

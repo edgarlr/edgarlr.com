@@ -1,4 +1,5 @@
-import Head from 'next/head'
+import Head from '@components/core/Head'
+import { DefaultImg } from '@lib/constants'
 import { Footer, Header } from '..'
 import s from './Layout.module.css'
 
@@ -6,14 +7,28 @@ type Props = {
   children: React.ReactNode
   header?: React.ReactNode
   isArticle?: boolean
+  title?: string
+  description?: string
+  image?: string
 }
 
-const Layout = ({ children, header = null, isArticle }: Props) => {
+const defaultTitle = 'Edgar López'
+
+const Layout = ({
+  children,
+  header = null,
+  isArticle,
+  title,
+  description = "Hey, I'm Edgar, Frontend developer and designer",
+  image = DefaultImg,
+}: Props) => {
   return (
     <>
-      <Head>
-        <title>Edgar López</title>
-      </Head>
+      <Head
+        title={title ? `${title} | ${defaultTitle}` : defaultTitle}
+        description={description}
+        image={image}
+      />
       {header ? header : <Header />}
       <main className={`${s.main} ${isArticle ? s.article : ''}`}>
         {children}

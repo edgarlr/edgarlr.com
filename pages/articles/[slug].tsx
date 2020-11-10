@@ -15,7 +15,13 @@ type Props = {
 
 const Article = ({ post, prev, next }: Props) => {
   return (
-    <Layout header={<ArticleHeader text={post.title} />} isArticle>
+    <Layout
+      header={<ArticleHeader text={post.title} />}
+      title={post.title}
+      description={post.description}
+      image={post.image}
+      isArticle
+    >
       <EntryHeader title={post.title} date={post.date} author="edgarlr_" />
       <article dangerouslySetInnerHTML={{ __html: post.content }} />
       <BottomNav prev={prev} next={next} />
@@ -47,7 +53,14 @@ type Params = {
 }
 
 export async function getStaticProps({ params }: Params) {
-  const post = getPostBySlug(params.slug, ['title', 'content', 'slug', 'date'])
+  const post = getPostBySlug(params.slug, [
+    'slug',
+    'title',
+    'description',
+    'image',
+    'date',
+    'content',
+  ])
   const content = await markdownToHtml(post.content || '')
 
   const posts = getAllPosts(['slug', 'title'])

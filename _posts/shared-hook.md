@@ -2,7 +2,6 @@
 title: Shared Hook State with SWR
 description: Using useSWR to share state between hook calls.
 date: May 9, 2020
-og: true
 ---
 
 > Unfortunately, trying to use `:focus` limits what you can do: you can style the input or siblings that come after the input… but that’s it.
