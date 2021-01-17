@@ -10,7 +10,11 @@ const Footer = () => {
     <footer className={s.root}>
       <ThemeSelect />
       <SocialLinks />
-      <IconLink href={RepoUrl} label="Source">
+      <IconLink
+        href={RepoUrl}
+        label="Source"
+        ariaLabel="Link to source code on github"
+      >
         <Github size={16} />
       </IconLink>
     </footer>

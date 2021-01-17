@@ -37,19 +37,24 @@ const Project = (props: Props) => {
         <span className={s.info}>{info}</span>
         <div className={s.links}>
           {githubLink && (
-            <IconLink href={githubLink}>
+            <IconLink href={githubLink} ariaLabel="Link to gihub">
               <Github />
             </IconLink>
           )}
           {figmaLink && (
-            <IconLink href={figmaLink}>
+            <IconLink href={figmaLink} ariaLabel="Link to figma">
               <Figma />
             </IconLink>
           )}
         </div>
       </div>
-      <a href={href} target="_blank" rel="noreferrer">
-        <img className={s.img} src={imageUrl} />
+      <a
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`Link to ${title}`}
+      >
+        <img className={s.img} src={imageUrl} alt={`${title} screenshot`} />
       </a>
     </section>
   )

@@ -5,12 +5,13 @@ import { ChevronDown } from '@components/icons'
 const ThemeSelect = () => {
   const { theme, setTheme } = useTheme()
   return (
-    <div className={s.root}>
+    <label className={s.root}>
       <select
         className={s.select}
         value={theme}
         onChange={(e) => setTheme(e.target.value)}
         id="themeSelect"
+        aria-label="Change theme color"
       >
         <option value="auto">System</option>
         <option value="dark">Dark</option>
@@ -19,7 +20,7 @@ const ThemeSelect = () => {
       <span className={s.icon}>
         <ChevronDown size={14} />
       </span>
-    </div>
+    </label>
   )
 }
 

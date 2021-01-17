@@ -20,7 +20,7 @@ const ArticlesList = ({ posts, paginate }: Props) => {
         .map(({ slug, date, title }) => (
           <Link href={`/articles/${slug}`} key={slug}>
             <div className={`${s.entry} no-user-select`}>
-              <h4>{title}</h4>
+              <p className={s.title}>{title}</p>
               <p className={`italic ${s.date}`}>{dateFormatter(date)}</p>
             </div>
           </Link>

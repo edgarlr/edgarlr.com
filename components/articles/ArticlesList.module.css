@@ -26,3 +26,11 @@
 .button:disabled {
   opacity: var(--hover-opacity);
 }
+
+.title {
+  margin: 0.25rem 0;
+  font-size: var(--font-size-m);
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--font-line-height-s);
+}
