@@ -1,7 +1,7 @@
 .root {
   background: var(--header-bg);
   font-weight: var(--font-weight-bold);
-  padding: var(--gap-half) var(--gap-15);
+  padding: var(--gap-75) var(--gap-15) var(--gap-half);
   position: fixed;
   top: 0;
   left: 0;
