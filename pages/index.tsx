@@ -19,14 +19,14 @@ const Home = ({ posts, projects }: Props) => {
       <div className="hero">
         <h1>Edgar López</h1>
         <p>
-          Frontend developer, I build web applications. I just start{' '}
+          Frontend developer, I build web applications. I just started{' '}
           <a href="#articles">writting</a>
         </p>
         <div className="italic flex vertical-margin-half low-opacity">
           <div className="inline-icon low-opacity">
             <MapPin size={18} />
           </div>
-          Mexico City, CDMX.
+          Mexico City, MX.
         </div>
       </div>
 
@@ -47,7 +47,7 @@ const Home = ({ posts, projects }: Props) => {
       <SectionContainer
         id="articles"
         title="Articles"
-        subtitle="This that I've been learning along the road."
+        subtitle="Things that I've been learning along the road."
       >
         <ArticlesList posts={posts} paginate />
       </SectionContainer>

@@ -2,12 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--gap) 0;
+  padding: var(--gap-15) 0;
 }
 
-.root > a,
-.root > select {
-  margin: var(--gap) 0;
+.root > a {
+  margin: 0;
 }
 
 .root > a p {
