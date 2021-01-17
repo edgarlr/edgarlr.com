@@ -15,7 +15,11 @@ const EntryHeader = ({ title, date, author }: Props) => {
     <div className={s.header}>
       <h2>{title}</h2>
       <div className={s.info}>
-        <IconLink href={TwitterURL} label={author}>
+        <IconLink
+          href={TwitterURL}
+          label={author}
+          ariaLabel="Link to author's twitter"
+        >
           <Twitter size={20} />
         </IconLink>
         <div className={s.date}>{dateFormatter(date)}</div>
