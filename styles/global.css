@@ -1,8 +1,8 @@
 @import './variables.css';
 @import './classes.css';
 @import './markdown.css';
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;1,400&display=optional');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono&display=optional');
 
 * {
   box-sizing: border-box;
