@@ -12,7 +12,7 @@ If your are using CMS it's highly probable you want to continue adding content w
 
 Strapi has a really easy way to help us with this. Once on the Content-Type Builder, on each field you can go to advanced settings and check the "Required field".
 
-![Strapi required Field](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b69f9ec4-6f5e-441c-8d06-282ee534007a/Screen_Shot_2021-02-15_at_12.25.09.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210223%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210223T233555Z&X-Amz-Expires=86400&X-Amz-Signature=516202dd333b9a150893a4242449012d1775897ee2d04080c7d03bcdd8313db8&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screen_Shot_2021-02-15_at_12.25.09.png%22)
+![Strapi required Field](https://res.cloudinary.com/dliiwavlg/image/upload/v1614123922/Screen_Shot_2021-02-15_at_12.25.09.png_xejin0.png)
 _Strapi required Field option_
 
 Now, Strapi is not gonna allow you publish the content without filling all the required fields.
@@ -57,17 +57,17 @@ This will improve your app or website SEO and user experience by having "pretty 
 
 We can do this by simply adding a new `UID` field
 
-![Content type builder](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6d92a782-c3c2-48b2-80e2-1f165112de64/Screen_Shot_2021-02-15_at_13.31.19.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210223%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210223T233806Z&X-Amz-Expires=86400&X-Amz-Signature=b901454a437037ddebe70134c677a7b706edf4a50f84cbabfec1fcd464681352&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screen_Shot_2021-02-15_at_13.31.19.png%22)
+![Content type builder](https://res.cloudinary.com/dliiwavlg/image/upload/v1614123933/Screen_Shot_2021-02-15_at_13.31.19.png_qlpiu6.png)
 _Content type builder_
 
 Now, we can add it a name and attach it to the title.
 
-![New UID field](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1b6100ab-3b46-4822-ab44-f52c25f8e0ef/Screen_Shot_2021-02-15_at_13.32.57.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210223%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210223T233847Z&X-Amz-Expires=86400&X-Amz-Signature=6b5e1c3807efd37a5f8fcb4322cd266455c8d9b143a7f9302b7b49dc7c9ea61a&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screen_Shot_2021-02-15_at_13.32.57.png%22)
+![New UID field](https://res.cloudinary.com/dliiwavlg/image/upload/v1614123945/Screen_Shot_2021-02-15_at_13.32.57.png_haycm9.png)
 _New UID field_
 
 Don't forget of set it as a required field.
 
-![Advanced Settings](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1cbb7576-a4e8-4fcf-bb4d-dd1477cf59c1/Screen_Shot_2021-02-15_at_13.33.41.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210223%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210223T233925Z&X-Amz-Expires=86400&X-Amz-Signature=f65484a96bb11c2bd358bfeef89a075cf5690dce069d44d381d2e82a7b1aca25&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screen_Shot_2021-02-15_at_13.33.41.png%22)
+![Advanced Settings](https://res.cloudinary.com/dliiwavlg/image/upload/v1614123972/Screen_Shot_2021-02-15_at_13.33.41.png_nhum4x.png)
 _UID Field Advanced Settings_
 
 Now, each time we create a new entry the slug is gonna be auto-generated for us based on our title.
@@ -78,7 +78,7 @@ Again, in a lot of cases we are not gonna have full control over who and how is 
 
 On "Advanced settings" we can specify which types are allowed for each field and prevent having unexpected file types in our app.
 
-![Media Types Allowed](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6ddba132-3108-4793-ad99-b3cfbc1ce88e/Screen_Shot_2021-02-15_at_13.20.11.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210223%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210223T233958Z&X-Amz-Expires=86400&X-Amz-Signature=21374f8e31d19f903bee832feb0016462d661401328e57ba9733dfca8c2858a3&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screen_Shot_2021-02-15_at_13.20.11.png%22)
+![Media Types Allowed](https://res.cloudinary.com/dliiwavlg/image/upload/v1614123993/Screen_Shot_2021-02-15_at_13.20.11.png_gjgeol.png)
 _Allowed Media Types_
 
 ## GraphQL

@@ -50,12 +50,12 @@ This will work, but there're a couple of problems with it.
 
 If we run a performance test we'll notice that this animation is taking a lot of time on rendering and painting.
 
-![Devtools Performace results](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/0e5092f2-6ffc-44cf-bf8e-e37a1c771b14/Screen_Shot_2021-02-14_at_16.41.30.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210223%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210223T231219Z&X-Amz-Expires=86400&X-Amz-Signature=eee12bc87919aa7de395b40d23de1e85fb643b59844903031b8ccac356cfed87&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screen_Shot_2021-02-14_at_16.41.30.png%22)
+![Devtools Performace results](https://res.cloudinary.com/dliiwavlg/image/upload/v1614123855/Screen_Shot_2021-02-14_at_16.41.30.png_t2cvwn.png)
 _Devtools Performance results_
 
 Actually, if we go to the "Experience section" there's a warning about [Cumulative Layout Shift](https://web.dev/cls/) too
 
-![Cumulative Layout Shift warning](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2c1488af-5396-4ceb-8466-0762a8a45c4a/Screen_Shot_2021-02-14_at_15.42.39.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210223%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210223T232527Z&X-Amz-Expires=86400&X-Amz-Signature=6fc771c6ca7fc92d83433268da336f09cafb275673c255106d82dd0fe3c9be24&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screen_Shot_2021-02-14_at_15.42.39.png%22)
+![Cumulative Layout Shift warning](https://res.cloudinary.com/dliiwavlg/image/upload/v1614123866/Screen_Shot_2021-02-14_at_15.42.39.png_ln1m8n.png)
 _Cumulative Layout Shift warning_
 
 You can try it yourself. On chrome, you only need to:
@@ -65,7 +65,7 @@ You can try it yourself. On chrome, you only need to:
 - Go to the Performance tab, and start recording.
 - I'd recommend you changing the CPU configuration to "6x slowdown". This will allow you simulate how is gonna perform on slower devices.
 
-![Devtools performace tab](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e321d7b6-50ef-4b02-8d8e-b30fe010a660/Screen_Shot_2021-02-14_at_15.51.46.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210223%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210223T232731Z&X-Amz-Expires=86400&X-Amz-Signature=ad8fe70a02574acf9832f7ad257624883595043f52b7420e6e730d806cc8e986&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screen_Shot_2021-02-14_at_15.51.46.png%22)
+![Devtools performace tab](https://res.cloudinary.com/dliiwavlg/image/upload/v1614123876/Screen_Shot_2021-02-14_at_15.51.46.png_kvmkqn.png)
 _Devtools performance tab_
 
 This is happening because the browser is recalculating the layout position of the element on each frame and then is repainting it.
@@ -98,10 +98,10 @@ Now we can update or code using `transform` and run a performance test again.
 }
 ```
 
-![Devtools performance results](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6b63d1b3-6a60-4f60-aab0-cb828386578a/Screen_Shot_2021-02-14_at_16.42.39.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210223%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210223T233135Z&X-Amz-Expires=86400&X-Amz-Signature=5c241758781de13d38f882d006dbd805120b0322a86d2ecfc34871d46a548a7a&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screen_Shot_2021-02-14_at_16.42.39.png%22)
+![Devtools performance results](https://res.cloudinary.com/dliiwavlg/image/upload/v1614123886/Screen_Shot_2021-02-14_at_16.42.39.png_hfbupd.png)
 _Devtools performance results_
 
-![Rendering waterfall](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7ced80b9-01bc-476b-a014-fc613b5ee56a/Screen_Shot_2021-02-14_at_16.43.03.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210223%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210223T233211Z&X-Amz-Expires=86400&X-Amz-Signature=1bf964cf7e48e9d1a865fa8e73001e5e35eb2a3fb2791cf0f45f446361fd9241&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screen_Shot_2021-02-14_at_16.43.03.png%22)
+![Rendering waterfall](https://res.cloudinary.com/dliiwavlg/image/upload/v1614123903/Screen_Shot_2021-02-14_at_16.43.03.png_m3gmpv.png)
 _Rendering Waterfall_
 
 After that minor change, we can see the difference, the waterfall rendering is less expensive, the rendering and the painting now are close to 0ms and the Cumulative Layout Shift warning is also gone.
