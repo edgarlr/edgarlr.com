@@ -1,6 +1,7 @@
-import Head from '@components/core/Head'
+import Head from '@components/common/Head'
 import { DefaultImg } from '@lib/constants'
-import { Footer, Header } from '..'
+import { Footer } from '../Footer'
+import { Header } from '../Header'
 import s from './Layout.module.css'
 
 type Props = {

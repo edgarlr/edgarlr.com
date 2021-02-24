@@ -1,5 +1,5 @@
 import ArticlesList from '@components/articles/ArticlesList'
-import { Layout } from '@components/core'
+import { Layout } from '@components/common/Layout'
 import MapPin from '@components/icons/MapPin'
 import { ProjectCard } from '@components/project'
 import SectionContainer from '@components/ui/SectionContainer/SectionContainer'

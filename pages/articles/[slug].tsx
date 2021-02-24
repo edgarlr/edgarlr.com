@@ -1,5 +1,5 @@
-import { Layout } from '@components/core'
-import ArticleHeader from '@components/core/Header/ArticleHeader'
+import ArticleHeader from '@components/common/Header/ArticleHeader'
+import { Layout } from '@components/common/Layout'
 import BottomNav from '@components/entry/BottomNav'
 import EntryHeader from '@components/entry/EntryHeader'
 import markdownToHtml from '@lib/markdownToHtml'
