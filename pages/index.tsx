@@ -1,8 +1,8 @@
 import ArticlesList from '@components/articles/ArticlesList'
 import { Layout } from '@components/core'
 import MapPin from '@components/icons/MapPin'
-import Project from '@components/project'
-import { SectionContainer } from '@components/ui'
+import { ProjectCard } from '@components/project'
+import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
 import { getAllPosts } from '@lib/posts'
 import { getProjects } from '@lib/projects'
 import { GetStaticProps } from 'next'
@@ -30,7 +30,7 @@ const Home = ({ posts, projects }: Props) => {
       </div>
 
       {projects.map(({ slug, title, linkType, description, urls, tech }) => (
-        <Project
+        <ProjectCard
           key={slug}
           title={title}
           linkLabel={linkType}

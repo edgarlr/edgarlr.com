@@ -1,9 +1,9 @@
 import s from './Footer.module.css'
 import SocialLinks from '@components/SocialLinks/SocialLinks'
-import { IconLink } from '@components/ui'
 import { RepoUrl } from '@lib/constants'
 import ThemeSelect from '@components/themeSelect'
 import Github from '@components/icons/Github'
+import IconLink from '@components/ui/IconLink/IconLink'
 
 const Footer = () => {
   return (
