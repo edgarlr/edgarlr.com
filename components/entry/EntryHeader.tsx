@@ -1,5 +1,5 @@
 import Twitter from '@components/icons/Twitter'
-import IconLink from '@components/ui/IconLink/IconLink'
+import { IconLink } from '@components/ui/IconLink'
 import { TwitterURL } from '@lib/constants'
 import dateFormatter from '@lib/dateFormatter'
 import s from './EntryHeader.module.css'

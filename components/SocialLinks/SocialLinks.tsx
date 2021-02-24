@@ -3,7 +3,7 @@ import Email from '@components/icons/Email'
 import Figma from '@components/icons/Figma'
 import Github from '@components/icons/Github'
 import Twitter from '@components/icons/Twitter'
-import IconLink from '@components/ui/IconLink/IconLink'
+import { IconLink } from '@components/ui/IconLink'
 import {
   DribbbleURL,
   FigmaURL,

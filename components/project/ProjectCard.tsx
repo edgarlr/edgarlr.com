@@ -1,6 +1,6 @@
 import Figma from '@components/icons/Figma'
 import Github from '@components/icons/Github'
-import IconLink from '@components/ui/IconLink/IconLink'
+import { IconLink } from '@components/ui/IconLink'
 import s from './Project.module.css'
 
 type Props = {
