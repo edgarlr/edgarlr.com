@@ -1,27 +1,27 @@
 [
   {
-    "slug": "rooms",
-    "title": "rooms",
-    "linkType": "Live Demo",
-    "description": "Rooms based aplication for group comminucation. UI Design.",
-    "tech": "React, SSR, Webpack, Styled Components, WebRTC, Socket.io, Redux, React-Query, Reach router, Passport, JWT, Cypress, jest",
+    "slug": "podcasts",
+    "title": "Podcasts",
+    "linkType": "Live Site",
+    "description": "No auth needed podcasts web app",
+    "tech": "React, Typescript, Next.js, SWR, Styled Jsx",
     "urls": {
       "main": "https://podcast-app.now.sh",
-      "image": "/images/rooms.png",
-      "github": "https://github.com/edgarlr/rooms",
-      "figma": "https://github.com/edgarlr/rooms"
+      "image": "https://res.cloudinary.com/dliiwavlg/image/upload/v1614128197/Image_3_shwnhd.png",
+      "github": "https://github.com/edgarlr/podcasts",
+      "figma": "https://www.figma.com/community/file/945882274406205263/Podcasts---UI-Kit"
     }
   },
   {
-    "slug": "podcasts",
-    "title": "Podcasts",
+    "slug": "magazine",
+    "title": "Magazine Starter",
     "linkType": "Live Demo",
-    "description": "No auth needed podcasts web app",
-    "tech": "React, Next.js, SWR, Styled Jsx, PropTypes, Sentry, Cypress, Jest",
+    "description": "Online Magazine Starter Kit",
+    "tech": "React, Next.js, Typescript, StrapiCMS, PWA, CSS Modules, Tailwind, Workbox, IndexedDB, Google Analythics",
     "urls": {
-      "main": "https://podcast-app.now.sh",
+      "main": "https://magazine-starter.vercel.app",
       "image": "/images/podcasts.png",
-      "github": "https://github.com/edgarlr/podcasts",
+      "github": "https://github.com/edgarlr/magazine",
       "figma": null
     }
   },
@@ -30,12 +30,12 @@
     "title": "Déjame te cuento",
     "linkType": "Live Site",
     "description": "Digital Magazine Webapp",
-    "tech": "React, Next.js, Typescript, GraphQL, Apollo, StrapiCMS, AMP, PWA Google Analythics, Cypress, Jest",
+    "tech": "React, Next.js, Typescript, StrapiCMS, PWA, CSS Modules, Tailwind, Workbox, IndexedDB, Google Analythics",
     "urls": {
-      "main": "https://podcast-app.now.sh",
-      "image": "/images/podcasts.png",
-      "github": null,
-      "figma": null
+      "main": "https://dejametecuento.vercel.app/",
+      "image": "https://res.cloudinary.com/dliiwavlg/image/upload/v1614128284/Frame_11_1_wiuwks.png",
+      "github": "https://github.com/dejametecuento/dejametecuento-site",
+      "figma": "https://www.figma.com/community/file/930872073422001170/Magazine-Mobile-UI-Kit"
     }
   }
 ]
