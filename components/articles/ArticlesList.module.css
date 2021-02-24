@@ -17,13 +17,15 @@
 }
 
 .button {
+  border: none;
   font-weight: var(--font-weight-bold);
   text-decoration: underline;
-  margin: 5rem auto 0;
+  margin: 3.5rem auto 0;
 }
 
 .button:hover,
 .button:disabled {
+  border: none;
   opacity: var(--hover-opacity);
 }
 
