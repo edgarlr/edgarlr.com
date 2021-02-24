@@ -18,6 +18,7 @@
 
 .button {
   border: none;
+  color: var(--fg);
   font-weight: var(--font-weight-bold);
   text-decoration: underline;
   margin: 3.5rem auto 0;

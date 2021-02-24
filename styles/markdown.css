@@ -38,7 +38,9 @@ article em {
 /* Blockquote*/
 article blockquote {
   margin: 0;
-  padding: var(--gap-half) 0;
+  padding: var(--gap) var(--gap-15);
+  border-left: 4px solid var(--fg);
+  background-color: var(--overlay);
 }
 
 article blockquote * {
@@ -57,7 +59,7 @@ article blockquote p code {
 
 /* Code Snippets */
 article *:not(pre) > code {
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-xs);
   padding: 0 8px;
 }
 
@@ -93,8 +95,7 @@ article li {
 
 article ul li {
   list-style-type: disc;
-  color: var(--fg-light);
-  font-style: italic;
+  color: var(--fg);
   font-size: var(--font-size-s);
   line-height: 1.25;
 }
