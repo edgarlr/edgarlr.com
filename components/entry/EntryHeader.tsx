@@ -1,4 +1,4 @@
-import { Twitter } from '@components/icons'
+import Twitter from '@components/icons/Twitter'
 import { IconLink } from '@components/ui'
 import { TwitterURL } from '@lib/constants'
 import dateFormatter from '@lib/dateFormatter'
@@ -20,7 +20,7 @@ const EntryHeader = ({ title, date, author }: Props) => {
           label={author}
           ariaLabel="Link to author's twitter"
         >
-          <Twitter size={20} />
+          <Twitter width="20" height="20" />
         </IconLink>
         <div className={s.date}>{dateFormatter(date)}</div>
       </div>

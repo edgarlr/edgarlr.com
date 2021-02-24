@@ -1,6 +1,6 @@
 import ArticlesList from '@components/articles/ArticlesList'
 import { Layout } from '@components/core'
-import { MapPin } from '@components/icons'
+import MapPin from '@components/icons/MapPin'
 import Project from '@components/project'
 import { SectionContainer } from '@components/ui'
 import { getAllPosts } from '@lib/posts'
@@ -23,7 +23,7 @@ const Home = ({ posts, projects }: Props) => {
         </p>
         <div className="italic flex vertical-margin-half low-opacity">
           <div className="inline-icon low-opacity">
-            <MapPin size={18} />
+            <MapPin width="18" height="18" style={{ marginBottom: '-2px' }} />
           </div>
           Mexico City, MX.
         </div>

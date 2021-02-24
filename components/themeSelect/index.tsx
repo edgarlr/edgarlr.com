@@ -1,6 +1,6 @@
 import s from './ThemeSelect.module.css'
 import { useTheme } from '@lib/useTheme'
-import { ChevronDown } from '@components/icons'
+import ChevronDown from '@components/icons/ChevronDown'
 
 const ThemeSelect = () => {
   const { theme, setTheme } = useTheme()
@@ -18,7 +18,7 @@ const ThemeSelect = () => {
         <option value="light">Light</option>
       </select>
       <span className={s.icon}>
-        <ChevronDown size={14} />
+        <ChevronDown width="14" height="14" />
       </span>
     </label>
   )

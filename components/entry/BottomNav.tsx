@@ -1,4 +1,5 @@
-import { ArrowLeft, ArrowRight } from '@components/icons'
+import ArrowLeft from '@components/icons/ArrowLeft'
+import ArrowRight from '@components/icons/ArrowRight'
 import Link from 'next/link'
 import s from './BottomNav.module.css'
 

@@ -1,4 +1,4 @@
-import { ArrowLeft } from '@components/icons'
+import ArrowLeft from '@components/icons/ArrowLeft'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import s from './Header.module.css'

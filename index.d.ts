@@ -25,8 +25,3 @@ type TPostLink = {
   slug: string
   title: string
 }
-
-type TIcon = {
-  size?: number
-  color?: string
-}

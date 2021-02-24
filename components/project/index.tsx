@@ -1,4 +1,5 @@
-import { Figma, Github } from '@components/icons'
+import Figma from '@components/icons/Figma'
+import Github from '@components/icons/Github'
 import { IconLink } from '@components/ui'
 import s from './Project.module.css'
 

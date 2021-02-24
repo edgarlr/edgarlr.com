@@ -1,9 +1,9 @@
 import s from './Footer.module.css'
 import SocialLinks from '@components/SocialLinks/SocialLinks'
 import { IconLink } from '@components/ui'
-import { Github } from '@components/icons'
 import { RepoUrl } from '@lib/constants'
 import ThemeSelect from '@components/themeSelect'
+import Github from '@components/icons/Github'
 
 const Footer = () => {
   return (
@@ -15,7 +15,7 @@ const Footer = () => {
         label="Source"
         ariaLabel="Link to source code on github"
       >
-        <Github size={16} />
+        <Github width="16" height="16" />
       </IconLink>
     </footer>
   )
