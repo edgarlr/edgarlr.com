@@ -6,7 +6,6 @@ import { SectionContainer } from '@components/ui'
 import { getAllPosts } from '@lib/posts'
 import { getProjects } from '@lib/projects'
 import { GetStaticProps } from 'next'
-import type { TPost, TProject } from 'types'
 
 type Props = {
   posts: TPost[]

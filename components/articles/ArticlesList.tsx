@@ -1,7 +1,6 @@
 import dateFormatter from '@lib/dateFormatter'
 import Link from 'next/link'
 import { useState } from 'react'
-import { TPost } from 'types'
 import s from './ArticlesList.module.css'
 
 type Props = {

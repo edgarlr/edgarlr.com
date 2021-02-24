@@ -4,8 +4,6 @@ import BottomNav from '@components/entry/BottomNav'
 import EntryHeader from '@components/entry/EntryHeader'
 import markdownToHtml from '@lib/markdownToHtml'
 import { getAllPosts, getPostBySlug } from '@lib/posts'
-import type { TPost } from 'types'
-import { TPostLink } from 'types/post'
 
 type Props = {
   post: TPost

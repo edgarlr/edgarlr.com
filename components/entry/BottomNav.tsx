@@ -1,6 +1,5 @@
 import { ArrowLeft, ArrowRight } from '@components/icons'
 import Link from 'next/link'
-import { TPostLink } from 'types/post'
 import s from './BottomNav.module.css'
 
 type Props = {
