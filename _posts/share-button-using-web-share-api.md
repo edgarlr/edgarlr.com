@@ -339,7 +339,7 @@ You need to replace all the `url` variables with `fullURL`
 Now, we can use our component and only pass it the path.
 
 ```jsx
-// Make shure to use the leading slash on the path
+// You must use the leading slash for the path
 <ShareButton
   path="/article-slug"
   title="Article Title"
