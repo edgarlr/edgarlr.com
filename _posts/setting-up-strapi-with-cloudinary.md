@@ -1,7 +1,7 @@
 ---
 title: 'Setting up Strapi with Cloudinary and deploying to Heroku'
 description: 'An deep-dive on SSG and SSR, when to useit and when not to'
-date: 'Dec 18 2020 14:13:09 GMT-0600'
+date: 12-18-2020
 ---
 
 Strapi is part of a new generation of Content Management Systems called headless CMS. This type of CMS will allows us to work, deploy and maintain it as an independent project and we only communicate with from the fronted trough the exposed API.

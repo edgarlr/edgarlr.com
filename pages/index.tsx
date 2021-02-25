@@ -3,8 +3,7 @@ import { Layout } from '@components/common/Layout'
 import MapPin from '@components/icons/MapPin'
 import { ProjectCard } from '@components/project'
 import { SectionContainer } from '@components/ui/SectionContainer'
-import { getAllPosts } from '@lib/posts'
-import { getProjects } from '@lib/projects'
+import { getAllPosts, getProjects } from '@lib/api'
 import { GetStaticProps } from 'next'
 
 type Props = {

@@ -1,7 +1,7 @@
 ---
 title: 'React Carousel using Hooks and CSS Scroll Snap'
 description: 'An deep-dive on SSG and SSR, when to useit and when not to'
-date: 'Jan 07 2021 11:13:09 GMT-0600'
+date: January 07, 2021
 ---
 
 For a project I was working on, I needed an carousel with scroll indicator and arrow buttons to go back and forward trough it, I started looking up at the options and I found out a lot of great libraries to accomplish this, but, to be honest, adding an external library seemed a little too much for me on this case so I preferred to build the component myself.

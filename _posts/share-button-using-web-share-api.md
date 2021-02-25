@@ -1,7 +1,7 @@
 ---
 title: 'Share Button using Web Share API and unsupported fallback'
 description: 'An deep-dive on SSG and SSR, when to useit and when not to'
-date: 'Dec 27 2020 16:04:09 GMT-0600'
+date: 12-27-2020
 ---
 
 The [Web Share API](https://www.w3.org/TR/web-share/) provides us an easy way to trigger the native share menu.

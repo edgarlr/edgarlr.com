@@ -1,7 +1,7 @@
 ---
 title: "Quick Fix to CSS Animation's performance"
 description: 'An deep-dive on CSS Variables and how to use them on scalable workflows'
-date: 'Dec 03 2020 12:38:09 GMT-0600'
+date: 11-28-2020
 ---
 
 If you're gonna start adding css animations to your projects or if you're using them already, there's a few tips you should now that will help you improve your animation performance, optimize the rendering and prevent using unnecessary GPU.
