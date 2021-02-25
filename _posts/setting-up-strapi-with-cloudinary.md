@@ -80,7 +80,7 @@ module.exports = ({ env }) => ({
 })
 ```
 
-## Clodudinary upload provider.
+## Clodudinary upload provider
 
 For production we are gonna also use cloudinary as the upload provider, if you don't have a cloudinary account you can create a free one on [cloudinary.com](https://cloudinary.com/)
 
@@ -154,7 +154,7 @@ If you haven't added another script, the scripts inside our `package.json` will 
   },
 ```
 
-## Adding heroku deploy button.
+## Adding heroku deploy button
 
 This is an extra step and will add an easy way to deploy our project directly from the github repo.
 

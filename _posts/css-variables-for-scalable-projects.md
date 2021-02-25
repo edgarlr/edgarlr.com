@@ -6,7 +6,7 @@ date: 11-09-2020
 
 When your start working on a bit more complex projects and specially if you're working with a designer, you will realize that is indispensable to standardize the way you work with your styles. This will help you having a more consistent website and each time you need to add or change some value, you're gonna have a more simple way to do it by only changing one value instead of searching and replacing all places where you're using it.
 
-## JS Objects.
+## JS Objects
 
 A lot of developers prefer this way of handling all the theme styles and it is a great alternative, however, I'm personally not the biggest fan of this approach. One of the main problems to me is that we are gonna need to import the objects and files on each of our components. This might not sound like a big deal, but as your project keeps growing, and if you don't have a way to configure absolute imports, your files will start looking like this.
 
@@ -35,7 +35,7 @@ These, as they are a native part of css, makes easy to work with in all css work
 }
 ```
 
-### Cascade style declarations:
+### Cascade style declarations
 
 This means that we can redeclare our variables as we need them at different levels of specificity.
 
@@ -121,7 +121,7 @@ We can even use `var()` along with `calc()` to perform calculations to determina
 }
 ```
 
-### Build up values and tokens.
+### Build up values and tokens
 
 You might be thinking, why not use as part of an constructive token like
 

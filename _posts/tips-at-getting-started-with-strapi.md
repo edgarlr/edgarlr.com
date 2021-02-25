@@ -6,7 +6,7 @@ date: 12-13-2020
 
 I've been using Strapi CMS on a several projects now and there's a few tips and things I've been learning that had helped me get the best out of it and that also had prevented me from run into unexpected errors.
 
-## Required fields.
+## Required fields
 
 If your are using CMS it's highly probable you want to continue adding content without writing code. Actually, there're will be a lot of cases where the people who's will be continue adding content aren't even developers, so, you don't want them to break the site each time they forgot to fill some field.
 
@@ -17,13 +17,13 @@ _Strapi required Field option_
 
 Now, Strapi is not gonna allow you publish the content without filling all the required fields.
 
-## Components and some caveats.
+## Components and some caveats
 
 If you are creating a complex project, there might be a lot repeatable parts on your content types such as your page info, the SEO sections, etc. On this cases you can create a component with all the repetitive fields and then you can simply added to your content types.
 
 Before jumping into the next tip, there're some caveats with the components you might want to know, at least at `strapi v3.4.5`. Although you can configure the component as a "required field", you will find out that this only applies once you've open the component, if you haven't open it yet, you will be able to save it and published without the content or the information required, and this will probably ran you into some errors, specially if the component info is an important data for your app like the `slugs` or the page names. I would recommend you only use them for your not-key information and even in this cases you should make sure you're handling all case where the component info could be empty or undefined.
 
-## Keep your development configuration simple.
+## Keep your development configuration simple
 
 Using the `--quick-start` configuration for development is gonna keep your development workflow faster and easy to work with.
 
@@ -31,7 +31,7 @@ Then, for production you can add the database and upload provider you need.
 
 I wrote a post on how to do this using postgress and cloudinary for production.
 
-## Renaming field's names.
+## Renaming field's names
 
 I run into this bug a few times and it's one of the main caveats at starting with SQLite.
 
@@ -51,7 +51,7 @@ Let's say you have a blog and you have a content type for articles and another f
 
 That might sound a little repetitive and obvious at this point, but it's really important, specially if you don't have full control over who is gonna be adding the content. You need to handle the scenarios where some field could be `null` or `undefined`. Configuring the required fields for all the key informations will really help you, but you also need handle this cases for all the other information.
 
-## Use a slug system.
+## Use a slug system
 
 This will improve your app or website SEO and user experience by having "pretty urls" that are more descriptive than the "id" based routes.
 
@@ -72,7 +72,7 @@ _UID Field Advanced Settings_
 
 Now, each time we create a new entry the slug is gonna be auto-generated for us based on our title.
 
-## Configure the MediaTypes allowed.
+## Configure the MediaTypes allowed
 
 Again, in a lot of cases we are not gonna have full control over who and how is gonna be adding new content, if your are using media types for photos, videos or files, strapi have a dedicated field for it, but this field is gonna accept all three types by default.
 

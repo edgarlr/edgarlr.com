@@ -76,7 +76,7 @@ But this is not a problem of the `left` property only, this is also gonna happen
 
 You can check the [csstriggers.com](https://csstriggers.com) website which includes information for most CSS properties and how the rendering waterfall is triggered by each one.
 
-## The `transform` property.
+## The `transform` property
 
 The main difference between using `transform` and other properties like `margin`or `left` is that `transform` is rendered on their own layer and this will prevent it from triggering a layout recalculation.
 

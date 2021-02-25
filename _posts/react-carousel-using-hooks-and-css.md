@@ -70,7 +70,7 @@ Let's add some other key styles to the carousel.
 }
 ```
 
-### Scroll indicator.
+### Scroll indicator
 
 We need to use `useRef` and create a different component, this because we are gonna add a `useEffect` and a scroll event listener and we don't want to re-render our whole component each time the scroll listener is triggered.
 

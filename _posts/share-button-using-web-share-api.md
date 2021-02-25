@@ -6,7 +6,7 @@ date: 12-27-2020
 
 The [Web Share API](https://www.w3.org/TR/web-share/) provides us an easy way to trigger the native share menu.
 
-## Before getting started.
+## Before getting started
 
 There're a few things we should know before we get started.
 
@@ -172,7 +172,7 @@ const ShareButton = ({title, text, url }) => {
 }
 ```
 
-### Copy to the clipboard.
+### Copy to the clipboard
 
 We are gonna use the `navigator.clipboard` which is supported by most of the modern browsers.
 
