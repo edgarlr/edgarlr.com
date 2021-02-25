@@ -20,7 +20,7 @@
     "tech": "React, Next.js, Typescript, StrapiCMS, PWA, CSS Modules, Tailwind, Workbox, IndexedDB, Google Analythics",
     "urls": {
       "main": "https://magazine-starter.vercel.app",
-      "image": "/images/podcasts.png",
+      "image": "https://res.cloudinary.com/dliiwavlg/image/upload/v1614128197/Image_3_shwnhd.png",
       "github": "https://github.com/edgarlr/magazine",
       "figma": null
     }

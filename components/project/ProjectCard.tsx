@@ -2,6 +2,7 @@ import Figma from '@components/icons/Figma'
 import Github from '@components/icons/Github'
 import { IconLink } from '@components/ui/IconLink'
 import s from './Project.module.css'
+import Image from 'next/image'
 
 type Props = {
   title: string
@@ -26,24 +27,24 @@ const Project = (props: Props) => {
     figmaLink = null,
   } = props
   return (
-    <section className={s.root}>
+    <div className={s.root}>
       <div className={s.projectInfo}>
         <a href={href} target="_blank" rel="noreferrer">
           <h2>
             {title}
-            <span className={s.span}>{linkLabel}</span>
+            <span className={s.headingLabel}>{linkLabel}</span>
           </h2>
         </a>
         <p>{description}</p>
         <span className={s.info}>{info}</span>
         <div className={s.links}>
           {githubLink && (
-            <IconLink href={githubLink} ariaLabel="Link to gihub">
+            <IconLink href={githubLink} ariaLabel="Link to github repo">
               <Github />
             </IconLink>
           )}
           {figmaLink && (
-            <IconLink href={figmaLink} ariaLabel="Link to figma">
+            <IconLink href={figmaLink} ariaLabel="Link to figma file">
               <Figma />
             </IconLink>
           )}
@@ -54,10 +55,18 @@ const Project = (props: Props) => {
         target="_blank"
         rel="noreferrer"
         aria-label={`Link to ${title}`}
+        className={s.imgContainer}
       >
-        <img className={s.img} src={imageUrl} alt={`${title} screenshot`} />
+        <Image
+          src={imageUrl}
+          alt={`${title} screenshot`}
+          width={450}
+          height={450}
+          objectFit="contain"
+          className={s.img}
+        />
       </a>
-    </section>
+    </div>
   )
 }
 
