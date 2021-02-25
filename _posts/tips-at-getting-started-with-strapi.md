@@ -1,6 +1,6 @@
 ---
 title: 'Tips at Getting Started with Strapi'
-description: 'An deep-dive on SSG and SSR, when to useit and when not to'
+description: 'A few tips that will help you with Strapi'
 date: 12-13-2020
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: 'Setting up Strapi with Cloudinary and deploying to Heroku'
-description: 'An deep-dive on SSG and SSR, when to useit and when not to'
+title: 'Setting up Strapi with Cloudinary and to Heroku'
+description: 'Setting up a production-ready workflow for Strapi CMS'
 date: 12-18-2020
 ---
 

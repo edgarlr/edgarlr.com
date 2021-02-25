@@ -1,6 +1,6 @@
 ---
-title: 'React Carousel using Hooks and CSS Scroll Snap'
-description: 'An deep-dive on SSG and SSR, when to useit and when not to'
+title: 'Carousel using React Hooks and CSS Scroll Snap'
+description: 'Carousel Component with scroll indicator and next and prev buttons'
 date: January 07, 2021
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Quick Fix to CSS Animation's performance"
-description: 'An deep-dive on CSS Variables and how to use them on scalable workflows'
+description: "Testing and improving CSS animation's performance"
 date: 11-28-2020
 ---
 

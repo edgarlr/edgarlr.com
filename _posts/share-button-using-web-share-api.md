@@ -1,6 +1,6 @@
 ---
-title: 'Share Button using Web Share API and unsupported fallback'
-description: 'An deep-dive on SSG and SSR, when to useit and when not to'
+title: 'Share button using React, Web Share API and unsupported fallback'
+description: 'Share Button Component built with React'
 date: 12-27-2020
 ---
 
