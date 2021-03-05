@@ -21,8 +21,12 @@ const Home = ({ posts, projects }: Props) => {
           <a href="#articles">writting</a>
         </p>
         <div className="italic flex vertical-margin-half low-opacity">
-          <div className="inline-icon low-opacity">
-            <MapPin width="18" height="18" style={{ marginBottom: '-2px' }} />
+          <div className="inline-icon">
+            <MapPin
+              width="18"
+              height="18"
+              style={{ opacity: '0.8', marginBottom: '-2px' }}
+            />
           </div>
           Mexico City, MX.
         </div>

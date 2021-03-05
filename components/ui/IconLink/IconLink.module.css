@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0.5;
+  opacity: 0.6;
   transition: var(--transition-short);
 }
 
