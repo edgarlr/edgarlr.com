@@ -1,7 +1,7 @@
 ---
 title: 'Carousel using React Hooks and CSS Scroll Snap'
 description: 'Carousel Component with scroll indicator and next and prev buttons'
-date: January 07, 2021
+date: January 19, 2021
 ---
 
 For a project I was working on, I needed an carousel with scroll indicator and arrow buttons to go back and forward trough it, I started looking up at the options and I found out a lot of great libraries to accomplish this, but, to be honest, adding an external library seemed a little too much for me on this case so I preferred to build the component myself.

@@ -1,6 +1,6 @@
 ---
-title: "Quick Fix to CSS Animation's performance"
-description: "Testing and improving CSS animation's performance"
+title: 'Quick Fix to CSS Animation performance'
+description: 'Testing and improving CSS animation performance'
 date: 11-28-2020
 ---
 
