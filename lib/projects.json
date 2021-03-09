@@ -26,16 +26,16 @@
     }
   },
   {
-    "slug": "dejame-te-cuento",
-    "title": "Déjame te cuento",
+    "slug": "papermatter",
+    "title": "The Paper Matter",
     "linkType": "Live Site",
-    "description": "Digital Magazine Webapp",
-    "tech": "React, Next.js, Typescript, StrapiCMS, PWA, CSS Modules, Tailwind, Workbox, IndexedDB, Google Analythics",
+    "description": "3D Visual Studio Website",
+    "tech": "React, Gatsby, Styled Components, PropTypes, StrapiCMS",
     "urls": {
-      "main": "https://dejametecuento.vercel.app/",
-      "image": "https://res.cloudinary.com/dliiwavlg/image/upload/v1614128284/Frame_11_1_wiuwks.png",
-      "github": "https://github.com/dejametecuento/dejametecuento-site",
-      "figma": "https://www.figma.com/community/file/930872073422001170/Magazine-Mobile-UI-Kit"
+      "main": "https://papermatter.xyz",
+      "image": "https://res.cloudinary.com/dliiwavlg/image/upload/v1615250067/papermatter_kwtoss.png",
+      "github": "https://github.com/papermatter/papermatter.xyz",
+      "figma": null
     }
   }
 ]
