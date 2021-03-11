@@ -15,12 +15,12 @@
   {
     "slug": "magazine",
     "title": "Magazine Starter",
-    "linkType": "Live Demo",
+    "linkType": "Demo",
     "description": "Online Magazine Starter Kit",
     "tech": "React, Next.js, Typescript, StrapiCMS, PWA, CSS Modules, Tailwind, Workbox, IndexedDB, Google Analythics",
     "urls": {
       "main": "https://magazine-starter.vercel.app",
-      "image": "https://res.cloudinary.com/dliiwavlg/image/upload/v1614128197/Image_3_shwnhd.png",
+      "image": "https://res.cloudinary.com/dliiwavlg/image/upload/v1615422432/magazine_aqiq35.png",
       "github": "https://github.com/edgarlr/magazine",
       "figma": null
     }
