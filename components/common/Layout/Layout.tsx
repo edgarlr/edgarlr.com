@@ -7,10 +7,11 @@ import s from './Layout.module.css'
 type Props = {
   children: React.ReactNode
   header?: React.ReactNode
-  isArticle?: boolean
   title?: string
   description?: string
   image?: string
+  type?: 'website' | 'article'
+  date?: string
 }
 
 const defaultTitle = 'Edgar López'
@@ -18,10 +19,11 @@ const defaultTitle = 'Edgar López'
 const Layout = ({
   children,
   header = null,
-  isArticle,
   title,
   description = "Hey, I'm Edgar, Frontend developer and designer",
   image = DefaultImg,
+  type = 'website',
+  date,
 }: Props) => {
   return (
     <>
@@ -29,9 +31,11 @@ const Layout = ({
         title={title ? `${title} | ${defaultTitle}` : defaultTitle}
         description={description}
         image={image}
+        type={type}
+        date={date}
       />
       {header ? header : <Header />}
-      <main className={`${s.main} ${isArticle ? s.article : ''}`}>
+      <main className={`${s.main} ${type === 'article' ? s.article : ''}`}>
         {children}
       </main>
       <Footer />

@@ -18,7 +18,8 @@ const Article = ({ post, prev, next }: Props) => {
       title={post.title}
       description={post.description}
       image={post.image}
-      isArticle
+      type="article"
+      date={new Date(post.date).toISOString()}
     >
       <EntryHeader title={post.title} date={post.date} author="edgarlr_" />
       <article dangerouslySetInnerHTML={{ __html: post.content }} />
