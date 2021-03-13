@@ -58,16 +58,6 @@ article blockquote p code {
 }
 
 /* Code Snippets */
-article *:not(pre) > code {
-  font-size: var(--font-size-xs);
-  padding: 0 8px;
-}
-
-article *:not(pre) > code::before,
-article *:not(pre) > code::after {
-  user-select: none;
-}
-
 article pre {
   overflow-x: auto;
   background: var(--overlay);
@@ -75,6 +65,19 @@ article pre {
   line-height: 1.8;
   padding: var(--gap) var(--gap-15);
   font-size: var(--font-size-xs);
+}
+
+article *:not(pre) > code {
+  font-size: var(--font-size-xs);
+  padding: 0 8px;
+  background: none;
+}
+
+article *:not(pre) > code::before,
+article *:not(pre) > code::after {
+  content: '\`';
+  color: var(--fg);
+  user-select: none;
 }
 
 /* List */
