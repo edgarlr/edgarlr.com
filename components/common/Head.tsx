@@ -63,6 +63,8 @@ const Head = ({ title, description, image, type, date }: Props) => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:image" content={image} />
       <meta name="twitter:site" content="@edgarlr_" />
+
+      <meta name="author" content="Edgar López" />
       <meta property="article:author" content="https://twitter.com/edgarlr_" />
       {date && <meta property="article:published_time" content={date} />}
 
