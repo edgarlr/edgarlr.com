@@ -4,7 +4,7 @@
     "title": "Podcasts",
     "linkType": "Live Site",
     "description": "No auth needed podcasts web app",
-    "tech": "React, Typescript, Next.js, SWR, Styled Jsx",
+    "tech": "React, Typescript, Next.js, SWR, Styled Jsx, Sentry",
     "urls": {
       "main": "https://podcast-app.now.sh",
       "image": "https://res.cloudinary.com/dliiwavlg/image/upload/v1615252490/podcasts_dirbxp.png",
