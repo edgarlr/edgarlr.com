@@ -1,15 +1,17 @@
-import Dribbble from '@components/icons/Dribbble'
+// import Dribbble from '@components/icons/Dribbble'
 import Email from '@components/icons/Email'
 import Figma from '@components/icons/Figma'
 import Github from '@components/icons/Github'
+import Linkedin from '@components/icons/Linkedin'
 import Twitter from '@components/icons/Twitter'
 import { IconLink } from '@components/ui/IconLink'
 import {
-  DribbbleURL,
+  // DribbbleURL,
   FigmaURL,
   GithubURL,
   TwitterURL,
   EmailURL,
+  LinkedinURL,
 } from '@lib/constants'
 import s from './SocialLinks.module.css'
 
@@ -28,8 +30,11 @@ const SocialLinks = () => {
       <IconLink href={FigmaURL} ariaLabel="Link to figma">
         <Figma width="20" height="20" />
       </IconLink>
-      <IconLink href={DribbbleURL} ariaLabel="Link to dribble">
+      {/* <IconLink href={DribbbleURL} ariaLabel="Link to dribble">
         <Dribbble width="20" height="20" />
+      </IconLink> */}
+      <IconLink href={LinkedinURL} ariaLabel="Link to Linkedin">
+        <Linkedin width="20" height="20" />
       </IconLink>
     </div>
   )
