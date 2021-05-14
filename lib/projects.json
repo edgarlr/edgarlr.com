@@ -17,7 +17,7 @@
     "title": "Magazine Starter",
     "linkType": "Demo",
     "description": "Online Magazine Starter Kit",
-    "tech": "React, Next.js, Typescript, StrapiCMS, PWA, CSS Modules, Tailwind, Workbox, IndexedDB, Google Analythics",
+    "tech": "React, Next.js, Typescript, StrapiCMS, PWA, CSS Modules, Tailwind, Workbox, IndexedDB, Google Analytics",
     "urls": {
       "main": "https://magazine-starter.vercel.app",
       "image": "https://res.cloudinary.com/dliiwavlg/image/upload/v1615423117/magazine_he7vqh.png",
