@@ -1,5 +1,6 @@
 import Figma from '@components/icons/Figma'
 import Github from '@components/icons/Github'
+import ArrowRight from '@components/icons/ArrowRight'
 import { IconLink } from '@components/ui/IconLink'
 import s from './Project.module.css'
 import Image from 'next/image'
@@ -32,7 +33,10 @@ const Project = (props: Props) => {
         <a href={href} target="_blank" rel="noreferrer">
           <h2>
             {title}
-            <span className={s.headingLabel}>{linkLabel}</span>
+            <span className={s.headingLabel}>
+              {linkLabel}
+              <ArrowRight width={14} height={14} />
+            </span>
           </h2>
         </a>
         <p>{description}</p>

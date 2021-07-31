@@ -22,6 +22,18 @@
 .root a:hover .headingLabel {
   color: var(--fg);
   text-decoration: underline;
+  display: inline-block;
+}
+
+.root a .headingLabel svg {
+  margin-left: 0.3rem;
+  vertical-align: middle;
+  transform: translateX(0);
+  transition: transform 0.1s;
+}
+
+.root a:hover .headingLabel svg {
+  transform: translateX(3px);
 }
 
 .links {
