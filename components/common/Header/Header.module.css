@@ -36,6 +36,15 @@
   border-right: var(--border);
 }
 
+.backButton svg {
+  transform: translateX(0);
+  transition: transform .1s;
+}
+
+.backButton:hover svg {
+  transform: translateX(-4px);
+}
+
 @media screen and (min-width: 678px) {
   .root {
     padding: var(--gap-half) 15.5%;
