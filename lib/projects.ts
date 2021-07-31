@@ -53,7 +53,7 @@ const projects: TProject[] = [
   },
   {
     slug: 'papermatter',
-    title: 'The Paper Matter',
+    title: 'Paper Matter',
     linkType: 'Live Site',
     description: '3D Visual Studio Website',
     tech: 'React, Gatsby, Styled Components, PropTypes, StrapiCMS',
