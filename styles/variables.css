@@ -61,7 +61,7 @@
   --fg: #ffffff;
   --fg-light: rgba(255, 255, 255, 0.6);
   --overlay: #242526;
-  --borders-color: #313335;
+  --borders-color: #2d3033;
   --header-bg: rgba(24, 26, 27, 0.45);
   --highlight: #6100ff;
 }
@@ -71,7 +71,7 @@
     --bg: #181a1b;
     --fg: #ffffff;
     --fg-light: rgba(255, 255, 255, 0.6);
-    --overlay: #242526;
+    --overlay: #1f2021;
     --borders-color: #313335;
     --header-bg: rgba(24, 26, 27, 0.45);
     --highlight: #6100ff;

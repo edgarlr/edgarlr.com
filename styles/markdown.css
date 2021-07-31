@@ -39,7 +39,7 @@ article em {
 article blockquote {
   margin: 0;
   padding: var(--gap) var(--gap-15);
-  border-left: 4px solid var(--fg);
+  border-left: 4px solid var(--highlight);
   background-color: var(--overlay);
 }
 
@@ -49,7 +49,7 @@ article blockquote * {
 
 article blockquote p {
   font-style: italic;
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-xs);
   line-height: 1.25;
 }
 
