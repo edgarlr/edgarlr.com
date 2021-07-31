@@ -4,12 +4,20 @@ type TProject = {
   linkType: string
   description: string
   tech: string
-  urls: {
-    main: string
-    image: string
-    github: string | null
-    figma: string | null
-  }
+  projectUrl: string
+  image: TImage
+  links: TProjectLink[]
+}
+
+type TImage = {
+  url: string
+  altText?: string
+}
+
+type TProjectLink = {
+  url: string
+  icon: 'Github' | 'Figma'
+  title: string
 }
 
 type TPost = {

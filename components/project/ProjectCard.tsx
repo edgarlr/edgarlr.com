@@ -11,22 +11,18 @@ type Props = {
   href: string
   description: string
   info: string
-  imageUrl: string
-  githubLink: string | null
-  figmaLink: string | null
+  image: TImage
+  links: TProjectLink[]
 }
 
 const Project = (props: Props) => {
-  const {
-    title,
-    linkLabel,
-    href,
-    description,
-    info,
-    imageUrl,
-    githubLink = null,
-    figmaLink = null,
-  } = props
+  const { title, linkLabel, href, description, info, image, links } = props
+
+  const projectLinkIcons = {
+    Figma,
+    Github,
+  }
+
   return (
     <div className={s.root}>
       <div className={s.projectInfo}>
@@ -39,19 +35,23 @@ const Project = (props: Props) => {
             </span>
           </h2>
         </a>
+
         <p>{description}</p>
         <span className={s.info}>{info}</span>
         <div className={s.links}>
-          {githubLink && (
-            <IconLink href={githubLink} ariaLabel="Link to github repo">
-              <Github />
-            </IconLink>
-          )}
-          {figmaLink && (
-            <IconLink href={figmaLink} ariaLabel="Link to figma file">
-              <Figma />
-            </IconLink>
-          )}
+          {links.map(({ icon, url, title }: TProjectLink) => {
+            const IconComp = projectLinkIcons[icon]
+            return (
+              <IconLink
+                href={url}
+                ariaLabel={`Link to ${title}`}
+                key={url}
+                title={title}
+              >
+                <IconComp />
+              </IconLink>
+            )
+          })}
         </div>
       </div>
       <a
@@ -62,8 +62,8 @@ const Project = (props: Props) => {
         className={s.imgContainer}
       >
         <Image
-          src={imageUrl}
-          alt={`${title} screenshot`}
+          src={image.url}
+          alt={image.altText}
           width={450}
           height={450}
           objectFit="contain"

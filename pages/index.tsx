@@ -3,15 +3,15 @@ import { Layout } from '@components/common/Layout'
 import MapPin from '@components/icons/MapPin'
 import { ProjectCard } from '@components/project'
 import { SectionContainer } from '@components/ui/SectionContainer'
-import { getAllPosts, getProjects } from '@lib/api'
+import { getAllPosts } from '@lib/api'
 import { GetStaticProps } from 'next'
+import projects from '@lib/projects'
 
 type Props = {
   posts: TPost[]
-  projects: TProject[]
 }
 
-const Home = ({ posts, projects }: Props) => {
+const Home = ({ posts }: Props) => {
   return (
     <Layout>
       <div className="hero">
@@ -32,19 +32,29 @@ const Home = ({ posts, projects }: Props) => {
         </div>
       </div>
 
-      {projects.map(({ slug, title, linkType, description, urls, tech }) => (
-        <ProjectCard
-          key={slug}
-          title={title}
-          linkLabel={linkType}
-          href={urls.main}
-          description={description}
-          info={tech}
-          imageUrl={urls.image}
-          githubLink={urls.github}
-          figmaLink={urls.figma}
-        />
-      ))}
+      {projects.map(
+        ({
+          slug,
+          title,
+          linkType,
+          description,
+          tech,
+          projectUrl,
+          image,
+          links,
+        }: TProject) => (
+          <ProjectCard
+            key={slug}
+            title={title}
+            linkLabel={linkType}
+            href={projectUrl}
+            description={description}
+            info={tech}
+            image={image}
+            links={links}
+          />
+        )
+      )}
 
       <SectionContainer
         id="articles"
@@ -60,12 +70,8 @@ export default Home
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = getAllPosts(['slug', 'title', 'date'])
-  const projects = getProjects()
 
   return {
-    props: {
-      posts,
-      projects,
-    },
+    props: { posts },
   }
 }
