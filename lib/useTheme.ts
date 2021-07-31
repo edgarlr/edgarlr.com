@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { useIsomorphicLayoutEffect } from './hooks/use-isomorphic-layout-effect'
 import { useLocalStorage } from './useLocalStorage'
 
 export const useTheme = () => {
@@ -6,7 +7,7 @@ export const useTheme = () => {
 
   const [theme, setTheme] = useState(storedValue)
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     setLocalStorage(JSON.stringify(theme))
     document.documentElement.dataset.theme = theme
   }, [theme])
