@@ -15,7 +15,7 @@ const BottomNav = ({ prev, next }: Props) => {
         <Link href={`/articles/${prev.slug}`}>
           <div className={`${s.navButton} no-user-select`}>
             <div className={s.navHeader}>
-              <ArrowLeft />
+              <ArrowLeft className={s.leftArrow} />
               <h4>Older</h4>
             </div>
             {prev.title}
@@ -32,7 +32,7 @@ const BottomNav = ({ prev, next }: Props) => {
           >
             <div className={s.navHeader} style={{ justifyContent: 'flex-end' }}>
               <h4>Newer</h4>
-              <ArrowRight />
+              <ArrowRight className={s.rightArrow} />
             </div>
             {next.title}
           </div>

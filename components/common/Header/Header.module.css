@@ -38,7 +38,7 @@
 
 .backButton svg {
   transform: translateX(0);
-  transition: transform .1s;
+  transition: transform 0.1s;
 }
 
 .backButton:hover svg {
