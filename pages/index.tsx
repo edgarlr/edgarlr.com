@@ -17,8 +17,8 @@ const Home = ({ posts, projects }: Props) => {
       <div className="hero">
         <h1>Edgar López</h1>
         <p>
-          Frontend developer, I build web applications. I just started{' '}
-          <a href="#articles">writting</a>
+          UI Developer, I build web applications. I just started{' '}
+          <a href="#articles">writting</a>.
         </p>
         <div className="italic flex vertical-margin-half low-opacity">
           <div className="inline-icon">
@@ -49,7 +49,7 @@ const Home = ({ posts, projects }: Props) => {
       <SectionContainer
         id="articles"
         title="Articles"
-        subtitle="Things that I've been learning along the road."
+        subtitle="Things that I have learned along the road."
       >
         <ArticlesList posts={posts} paginate />
       </SectionContainer>
