@@ -1,7 +1,7 @@
 ---
 title: 'Share button using React, Web Share API and unsupported fallback'
 description: 'Share Button Component built with React'
-date: 12-27-2020
+date: 12/27/2020
 ---
 
 The [Web Share API](https://www.w3.org/TR/web-share/) provides us an easy way to trigger the native share menu.

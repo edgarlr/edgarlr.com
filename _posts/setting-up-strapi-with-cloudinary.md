@@ -1,7 +1,7 @@
 ---
 title: 'Setting up Strapi with Cloudinary and to Heroku'
 description: 'Setting up a production-ready workflow for Strapi CMS'
-date: 12-18-2020
+date: 12/18/2020
 ---
 
 Strapi is part of a new generation of Content Management Systems called headless CMS. This type of CMS will allows us to work, deploy and maintain it as an independent project and we only communicate with from the fronted trough the exposed API.

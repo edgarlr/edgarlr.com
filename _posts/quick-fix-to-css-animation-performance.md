@@ -1,7 +1,7 @@
 ---
 title: 'Quick Fix to CSS Animation performance'
 description: 'Testing and improving CSS animation performance'
-date: 11-28-2020
+date: '11/28/2020'
 ---
 
 If you're gonna start adding css animations to your projects or if you're using them already, there's a few tips you should now that will help you improve your animation performance, optimize the rendering and prevent using unnecessary GPU.
