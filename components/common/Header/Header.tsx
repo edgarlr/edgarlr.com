@@ -37,15 +37,17 @@ const Header: React.FC<Props> = ({ title, isArticle, showBackButton }) => {
 
   return (
     <header className={headerClasses}>
-      {showBackButton ? (
-        <Link href="/">
-          <a className={s.backButton}>
-            <ArrowLeft />
-          </a>
-        </Link>
-      ) : null}
+      <div className={s.headerContent}>
+        {showBackButton ? (
+          <Link href="/">
+            <a className={s.backButton}>
+              <ArrowLeft />
+            </a>
+          </Link>
+        ) : null}
 
-      <div className={titleClasses}>{title}</div>
+        <div className={titleClasses}>{title}</div>
+      </div>
 
       {/* backdrop support for other browsers */}
       <style jsx>{`

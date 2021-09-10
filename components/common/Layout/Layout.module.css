@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 0 1.5rem 3rem;
   min-height: 100vh;
+  max-width: 1280px;
 }
 
 @media screen and (min-width: 678px) {
@@ -26,7 +27,6 @@
 @media screen and (min-width: 1440px) {
   .main {
     width: 80%;
-    max-width: 1280px;
   }
   .article {
     width: 50%;
