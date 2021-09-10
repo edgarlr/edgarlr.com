@@ -1,3 +1,4 @@
+import { SiteURL } from '@lib/constants'
 import { useRouter } from 'next/dist/client/router'
 import NextHead from 'next/head'
 
@@ -46,13 +47,13 @@ const Head = ({ title, description, image, type, date }: Props) => {
       <meta name="robots" content="follow, index" />
 
       <meta name="description" content={description} />
-      <link rel="canonical" href={`https://edgarlr.com${router.asPath}`} />
+      <link rel="canonical" href={`${SiteURL}${router.asPath}`} />
 
       <meta property="og:type" content={type} />
       <meta property="og:site_name" content="Edgar López" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:url" content={`https://edgarlr.com${router.asPath}`} />
+      <meta property="og:url" content={`${SiteURL}${router.asPath}`} />
       <meta property="og:image" content={image} />
 
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
