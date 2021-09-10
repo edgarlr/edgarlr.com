@@ -1,26 +1,51 @@
 import { useEffect, useState } from 'react'
 import s from './Header.module.css'
-const Header = () => {
+import ArrowLeft from '@components/icons/ArrowLeft'
+import Link from 'next/link'
+import cn from 'classnames'
+
+type Props = {
+  title: string
+  isArticle: boolean
+  showBackButton: boolean
+}
+
+const Header: React.FC<Props> = ({ title, isArticle, showBackButton }) => {
   const [isShowed, setIsShowed] = useState(false)
 
-  const showText = () => {
-    if (window.scrollY > 320) {
-      setIsShowed(true)
-    } else {
-      setIsShowed(false)
-    }
-  }
-
   useEffect(() => {
-    window.addEventListener('scroll', showText)
+    const offset = isArticle ? 180 : 320
+
+    const showText = () => {
+      if (window.scrollY > offset) return setIsShowed(true)
+      return setIsShowed(false)
+    }
+
+    window.addEventListener('scroll', showText, { passive: true })
     return () => {
       window.removeEventListener('scroll', showText)
     }
   }, [])
 
+  const headerClasses = cn(s.root, {
+    [s.article]: isArticle,
+  })
+
+  const titleClasses = cn(s.title, {
+    [s.show]: isShowed,
+  })
+
   return (
-    <header className={s.root}>
-      <div className={`${s.title} ${isShowed ? s.show : ''}`}>Edgar López</div>
+    <header className={headerClasses}>
+      {showBackButton ? (
+        <Link href="/">
+          <a className={s.backButton}>
+            <ArrowLeft />
+          </a>
+        </Link>
+      ) : null}
+
+      <div className={titleClasses}>{title}</div>
 
       {/* backdrop support for other browsers */}
       <style jsx>{`

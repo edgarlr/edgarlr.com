@@ -1,4 +1,3 @@
-import ArticleHeader from '@components/common/Header/ArticleHeader'
 import { Layout } from '@components/common/Layout'
 import BottomNav from '@components/entry/BottomNav'
 import EntryHeader from '@components/entry/EntryHeader'
@@ -14,7 +13,6 @@ type Props = {
 const Article = ({ post, prev, next }: Props) => {
   return (
     <Layout
-      header={<ArticleHeader text={post.title} />}
       title={post.title}
       description={post.description}
       image={post.image}

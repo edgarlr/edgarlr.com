@@ -13,8 +13,8 @@ type Props = {
 
 const Home = ({ posts }: Props) => {
   return (
-    <Layout>
-      <div className="hero">
+    <Layout showBackButton={false}>
+      <section className="hero">
         <h1>Edgar López</h1>
         <p>
           Frontend developer, sometimes designer. I just started{' '}
@@ -30,31 +30,33 @@ const Home = ({ posts }: Props) => {
           </div>
           Mexico City, MX.
         </div>
-      </div>
+      </section>
 
-      {projects.map(
-        ({
-          slug,
-          title,
-          linkType,
-          description,
-          tech,
-          projectUrl,
-          image,
-          links,
-        }: TProject) => (
-          <ProjectCard
-            key={slug}
-            title={title}
-            linkLabel={linkType}
-            href={projectUrl}
-            description={description}
-            info={tech}
-            image={image}
-            links={links}
-          />
-        )
-      )}
+      <section>
+        {projects.map(
+          ({
+            slug,
+            title,
+            linkType,
+            description,
+            tech,
+            projectUrl,
+            image,
+            links,
+          }: TProject) => (
+            <ProjectCard
+              key={slug}
+              title={title}
+              linkLabel={linkType}
+              href={projectUrl}
+              description={description}
+              info={tech}
+              image={image}
+              links={links}
+            />
+          )
+        )}
+      </section>
 
       <SectionContainer
         id="articles"

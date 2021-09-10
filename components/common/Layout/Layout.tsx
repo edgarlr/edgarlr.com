@@ -3,28 +3,35 @@ import { DefaultImg } from '@lib/constants'
 import { Footer } from '../Footer'
 import { Header } from '../Header'
 import s from './Layout.module.css'
+import cn from 'classnames'
 
 type Props = {
   children: React.ReactNode
-  header?: React.ReactNode
   title?: string
   description?: string
   image?: string
   type?: 'website' | 'article'
   date?: string
+  showBackButton?: boolean
 }
 
 const defaultTitle = 'Edgar López'
 
 const Layout = ({
   children,
-  header = null,
-  title,
-  description = "Hey, I'm Edgar, Frontend developer and designer",
+  title = 'Edgar López',
+  description = "Hey, I'm Edgar! Frontend developer, sometimes designer. I just started writting.",
   image = DefaultImg,
   type = 'website',
   date,
+  showBackButton = true,
 }: Props) => {
+  const isArticle = type === 'article'
+
+  const mainClasses = cn(s.main, {
+    [s.article]: isArticle,
+  })
+
   return (
     <>
       <Head
@@ -34,10 +41,12 @@ const Layout = ({
         type={type}
         date={date}
       />
-      {header ? header : <Header />}
-      <main className={`${s.main} ${type === 'article' ? s.article : ''}`}>
-        {children}
-      </main>
+      <Header
+        title={title}
+        showBackButton={showBackButton}
+        isArticle={isArticle}
+      />
+      <main className={mainClasses}>{children}</main>
       <Footer />
     </>
   )

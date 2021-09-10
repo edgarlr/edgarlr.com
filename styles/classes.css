@@ -48,6 +48,11 @@
   height: 85vh;
 }
 
+/* .projects-section {
+  margin: 0 auto;
+  max-width: 1280px;
+} */
+
 @media screen and (min-width: 768px) {
   .hero {
     height: 98vh;
