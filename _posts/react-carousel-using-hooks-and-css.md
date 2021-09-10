@@ -4,9 +4,11 @@ description: 'Carousel Component with scroll indicator and next and prev buttons
 date: January 19, 2021
 ---
 
-For a project I was working on, I needed an carousel with scroll indicator and arrow buttons to go back and forward trough it, I started looking up at the options and I found out a lot of great libraries to accomplish this, but, to be honest, adding an external library seemed a little too much for me on this case so I preferred to build the component myself.
+We all know how difficult is to build an accessible, user friendly and mantainable carousel, specially from stracth. Well, for a project I was working on, I needed to build one. The carousel specs also included a scroll indicator, arrow buttons to go back and forward trought for desktop devices, but support touch scroll support in mobile, and finally, it needed to be performant and accessible.
 
-Let's focus on the component structure first. We are gonna try make this component as reusable as possible. Our base structure looks like this:
+At this point, a great option would have been to use one of the many great react-carousel libraries out there and that could have been it. End of this entry. But I also took it as a great opportunity to try and build one from  scratch and fully understand how to develop it using only modern css and React. I mean, if that hadn't gone well, I could always go back and use a library, right?
+
+But let's fully dive in and start the coding. We are gonna try make this component as reusable as possible. So let's take a look at our base structure first:
 
 ```jsx
 const Carousel = ({ children, count }) => {
@@ -20,7 +22,7 @@ const Carousel = ({ children, count }) => {
 
 ## CSS Scroll Snap
 
-This property allows us to get more control over the scroll experience by setting different snap positions.
+I told you we will use modern CSS. This CSS property provide us a way to get more control over the scroll experience by setting different snap positions.
 
 ### `scroll-snap-type`
 
@@ -36,9 +38,9 @@ We use this property in our container to specify the direction and the behavior 
 
 ## `scroll-snap-align`
 
-This is for all the inside cards and is used for defining the alignment that could be set as `center`, `start`, and `end`. For this example, we are gonna use `start`.
+This is for all cards the inside and is used to define the alignment which could be set as `center`, `start`, and `end`. For this example, we are gonna use `start`.
 
-To keep the ability of handle the childs outside the component, we are gonna use the `> *` selector to style all the directed childs of `.container`
+To keep the ability of allowing all types of childs outside the component, we are gonna use the `> *` selector to style only all the direct children of `.container`
 
 ```css
 .carousel > * {
@@ -72,7 +74,7 @@ Let's add some other key styles to the carousel.
 
 ### Scroll indicator
 
-We need to use `useRef` and create a different component, this because we are gonna add a `useEffect` and a scroll event listener and we don't want to re-render our whole component each time the scroll listener is triggered.
+We'll work on a seperate component and use `useEffect` and a scroll event listener. Also, `useRef` will be needed to prevent a re-render of our whole component each time the scroll listener is triggered.
 
 ```jsx
 const Carousel = ({ children, count }) => {
@@ -90,7 +92,7 @@ const Carousel = ({ children, count }) => {
 }
 ```
 
-As we are passing a ref to another component, we need to use `forwardRef` in our `ScrollIndicator` component.
+As we are passing a ref from the parent component, we need to use `forwardRef` in the `ScrollIndicator` component.
 
 ```jsx
 const ScrollIndicator = forwardRef(({ count }, carouselRef) => {
@@ -103,8 +105,7 @@ const ScrollIndicator = forwardRef(({ count }, carouselRef) => {
   )
 })
 ```
-
-We are using `[...Arra(count).keys()]` to create an array based on the `count` number and setting the keys as the values. e.g. `count = 2` `array = [0, 1]`
+`[...Array(count).keys()]` is used to create an array based on the `count` number but also setting the keys as values. e.g. `count = 2` `array = [0, 1]`
 
 ```css
 .dots-container {
@@ -124,7 +125,7 @@ We are using `[...Arra(count).keys()]` to create an array based on the `count` n
 }
 ```
 
-Inside the `ScrollIndicator` component we need to add a local state for the scroll progress and some way to updated each time the user scrolls on our component. For this we are gonna use `useState`, `useEffect` and the `sliderRef.`
+Inside the `ScrollIndicator` component we need to add a local state for the scroll progress and some way to update it each time the user scrolls on the carousel. For this we are gonna use `useState`, `useEffect` and the `sliderRef`.
 
 ```jsx
 const ScrollIndicator = forwardRef(({ count }, carouselRef) => {
@@ -144,7 +145,7 @@ const ScrollIndicator = forwardRef(({ count }, carouselRef) => {
       return setScrollProgress((windowScroll / totalWidth) * 100)
     }
 
-    element.addEventListener('scroll', scrollListener)
+    element.addEventListener('scroll', scrollListener, { passive: true })
     return () => element.removeEventListener('scroll', scrollListener)
   }, [])
 
@@ -158,14 +159,14 @@ const ScrollIndicator = forwardRef(({ count }, carouselRef) => {
 
 To break it down,
 
-- First, the `carouselRef` is been using to read the element properties needed to calculate the state of the scroll.
+- First, the `carouselRef` is used to read the element properties and calculate the state of the scroll.
 - `element.scrollLeft` is the position of the scrollbar from the leftmost point of the container.
 - `element.scrollWidth - element.clientWidth` is the maximum position for the scrollbar to scroll based on the total width of the container.
 - `(windowScroll / totalWidth) * 100)` is the percentage scrolled by the user.
-- we are attaching this whole function to the `scroll` event at the end of the `useEffect`
-- And finally, we are using the `const activeDot = Math.floor((scrollProgress * count) / 110)` for calculate the active dot based on the `scrollProgress` and the total number of elements.
+- We are attaching this whole function to the `scroll` event at the end of the `useEffect`
+- And finally, we are using the `const activeDot = Math.floor((scrollProgress * count) / 110)` to calculate the active dot based on the `scrollProgress` and the total number of elements.
 
-Now, we can add an `active` class and bind it to the `activeDot` const.
+Now, we can add an `active` class and bind it to const `activeDot`.
 
 ```jsx
 const ScrollIndicator = forwardRef(({ count }, carouselRef) => {
@@ -186,6 +187,8 @@ const ScrollIndicator = forwardRef(({ count }, carouselRef) => {
 ```
 
 ### Scroll to buttons
+
+This part is a bit Tricky and unfortunately does not have the greatest browser Support Yet, but nothing that a polyfill can't solve.
 
 Inside our parent element, we need to add two buttons and the onClick function for each of them.
 
@@ -224,11 +227,11 @@ const Carousel = ({ children, count }) => {
 }
 ```
 
-We are using `scrollBy()` to scroll inside our element using the `carouselRef.current.clientWidth` for reading the width of the screen.
+We are using `scrollBy()` to scroll inside our element and `carouselRef.current.clientWidth` to read the width of the screen.
 
 ### Caveats
 
-At the point I'm writing this post `scrollBy` and the `smooth` scroll property aren't highly supported by all the browser but you can use some polyfill to easily solve this problem.
+At the point I'm writing this post `scrollBy` and `smooth` scroll property aren't highly supported by all the browser but you can use some polyfill to easily solve this problem.
 
 ### Usage
 
