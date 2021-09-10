@@ -1,31 +1,5 @@
 const projects: TProject[] = [
   {
-    slug: 'podcasts',
-    title: 'Podcasts',
-    linkType: 'Live Site',
-    description: 'No auth needed podcasts web app',
-    tech: 'React, Typescript, Next.js, SWR, Styled Jsx, Sentry',
-    projectUrl: 'https://podcast-app.now.sh',
-    image: {
-      url:
-        'https://res.cloudinary.com/dliiwavlg/image/upload/v1615252490/podcasts_dirbxp.png',
-      altText: 'Podcast app UI',
-    },
-    links: [
-      {
-        url: 'https://github.com/edgarlr/podcasts',
-        icon: 'Github',
-        title: 'Github Repo',
-      },
-      {
-        url:
-          'https://www.figma.com/community/file/945882274406205263/Podcasts---UI-Kit',
-        icon: 'Figma',
-        title: 'Figma File',
-      },
-    ],
-  },
-  {
     slug: 'magazine',
     title: 'Magazine Starter',
     linkType: 'Demo',
@@ -48,6 +22,32 @@ const projects: TProject[] = [
         url: 'https://github.com/edgarlr/magazine-api',
         icon: 'Github',
         title: 'Strapi CMS Repo',
+      },
+    ],
+  },
+  {
+    slug: 'podcasts',
+    title: 'Podcasts',
+    linkType: 'Live Site',
+    description: 'No auth needed podcasts web app',
+    tech: 'React, Typescript, Next.js, SWR, Styled Jsx, Sentry',
+    projectUrl: 'https://podcast-app.now.sh',
+    image: {
+      url:
+        'https://res.cloudinary.com/dliiwavlg/image/upload/v1615252490/podcasts_dirbxp.png',
+      altText: 'Podcast app UI',
+    },
+    links: [
+      {
+        url: 'https://github.com/edgarlr/podcasts',
+        icon: 'Github',
+        title: 'Github Repo',
+      },
+      {
+        url:
+          'https://www.figma.com/community/file/945882274406205263/Podcasts---UI-Kit',
+        icon: 'Figma',
+        title: 'Figma File',
       },
     ],
   },
