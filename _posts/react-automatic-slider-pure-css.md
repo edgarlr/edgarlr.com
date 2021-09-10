@@ -13,7 +13,7 @@ _Slider on [Next.js website](https://nextjs.org/)_
 
 The effect is really simple and it consists on an automatic scroll moving from right to left on an infinite loop.
 
-We are gonna try to make the component as reusable and flexible as possible so you can pass whatever you wants to it. Images, texts, cards, anything! 
+We are gonna try to make the component as reusable and flexible as possible so you can pass whatever you wants to it. Images, texts, cards, anything!
 
 But first, let's start with the basic markup. The easiest way to achieve this effect is by duplicating the content.
 
@@ -117,7 +117,6 @@ const Slider = ({ children, durationInMs = 100 }) => {
 }
 ```
 
-
 ### Starting position
 
 On the Next.js example we can see there're two parallels sliders and each of them has a different starting position.
@@ -147,6 +146,7 @@ const Slider = ({ children, duration = '12s', start = 0 }) => {
 And that's it.
 
 ### Usage
+
 This is how our final component API will look like
 
 ```jsx

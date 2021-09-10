@@ -6,7 +6,7 @@ date: January 19, 2021
 
 We all know how difficult is to build an accessible, user friendly and mantainable carousel, specially from stracth. Well, for a project I was working on, I needed to build one. The carousel specs also included a scroll indicator, arrow buttons to go back and forward trought for desktop devices, but support touch scroll support in mobile, and finally, it needed to be performant and accessible.
 
-At this point, a great option would have been to use one of the many great react-carousel libraries out there and that could have been it. End of this entry. But I also took it as a great opportunity to try and build one from  scratch and fully understand how to develop it using only modern css and React. I mean, if that hadn't gone well, I could always go back and use a library, right?
+At this point, a great option would have been to use one of the many great react-carousel libraries out there and that could have been it. End of this entry. But I also took it as a great opportunity to try and build one from scratch and fully understand how to develop it using only modern css and React. I mean, if that hadn't gone well, I could always go back and use a library, right?
 
 But let's fully dive in and start the coding. We are gonna try make this component as reusable as possible. So let's take a look at our base structure first:
 
@@ -105,6 +105,7 @@ const ScrollIndicator = forwardRef(({ count }, carouselRef) => {
   )
 })
 ```
+
 `[...Array(count).keys()]` is used to create an array based on the `count` number but also setting the keys as values. e.g. `count = 2` `array = [0, 1]`
 
 ```css
