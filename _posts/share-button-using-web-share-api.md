@@ -8,23 +8,23 @@ The [Web Share API](https://www.w3.org/TR/web-share/) provides us an easy way to
 
 ## Before getting started
 
-There're a few things we should know before we get started.
+There're a few things we should know before start coding.
 
-First, browser support, and this is the main problem. Web Share API doesn't have the greatest support right now.
+First, browser support, and this is the main problem. Web Share API doesn't have the greatest support yet.
 
 ![Web share api on caniuse.com](https://res.cloudinary.com/dliiwavlg/image/upload/v1614125553/Screen_Shot_2021-02-15_at_15.34.15.png_xwbmed.png)
 _Web Share API on [caniuse.com](https://caniuse.com/?search=share%20API)_
 
-However, it's supported on the main mobile browsers and is really easy to add a fallback to all the unsupported browsers.
+However, it's supported on the main mobile browsers and is we can add a fallback option to all the unsupported browsers.
 
-Apart from that, the other limitations are:
+Apart from that, some other limitations are:
 
 - It can only be used on sites served over HTTPS.
 - It must be triggered in response to some user action such as click.
 
 ## Web Sharing API
 
-To share content we are gonna used the promise-based `.share()` method but we need to check if it's supported first.
+To trigger the share menu we are gonna used the promise-based method `.share()`. but, as I said before and because is not fully supported, let's check if is supported on the browser first.
 
 ```jsx
 const onShareClick = (e) => {
@@ -41,12 +41,12 @@ const onShareClick = (e) => {
 }
 ```
 
-Now, we can add it into the onClick event of our component and pass the information via props.
+Now, we can attached to the the onClick event of our component and pass the information via props.
 
 ```jsx
 const ShareButton = ({ title, text, url }) => {
-  const onShareClick = (e) => {
-    e.preventDefault()
+  const onShareClick = (event) => {
+    event.preventDefault()
     if (navigator.share) {
       navigator
         .share({
@@ -64,9 +64,9 @@ const ShareButton = ({ title, text, url }) => {
 
 ## Providing fallback
 
-For the fallback we are gonna add the options to share on facebook, twitter and copy the url to the clipboard. Let's dive in.
+As I said earlier, let's add a second option for all the other browsers. On this case we'll add options for sharing on facebook, twitter and copy the url to the clipboard. Let's code that.
 
-We need to add the state and trigger it whenever `navigator.share` is unsupported.
+We can add a state and trigger it whenever `navigator.share` is unsupported.
 
 ```jsx
 const ShareButton = ({ title, text, url }) => {
@@ -83,7 +83,7 @@ const ShareButton = ({ title, text, url }) => {
         })
         .catch(console.error)
     } else {
-      setIsShowed((oldState) => !oldState)
+      setIsShowed((currentIsShowed) => !currentIsShowed)
     }
   }
 
@@ -99,13 +99,13 @@ const ShareButton = ({title, text, url}) => {
   return (
     <div>
       <button onClick={onShareClick}>Share</button>
-      {isShowed && (
+      {isShowed ? (
         <ul>
           <li><button>Share on facebook</button></li>
           <li><button>Share on twitter</button></li>
           <li><button>Copy to the clipboad</button></li>
         </ul>
-      )}
+      ) : null}
     <div>
   )
 }
@@ -113,7 +113,7 @@ const ShareButton = ({title, text, url}) => {
 
 ### Share on facebook
 
-For facebook there actually a lot of ways to do it but some options seem a little too complex for this case, you can give it a look if you want but for this case I don't want to add the sdk and I don't need to track all the shares from the page so we are gonna do it by using the `facebook.com/sharer`
+For facebook there actually a lot of ways to do it, but some options seem a bit overwhelming, you can give it a look if you want to, but in this case I don't want to add the sdk and I don't need to track all the shares from the page so we are gonna do it by using `facebook.com/sharer`
 
 ```jsx
 const ShareButton = ({title, text, url }) => {
@@ -130,14 +130,14 @@ const ShareButton = ({title, text, url }) => {
   return (
     <div>
       { /* ... */}
-      {isShowed && (
+      {isShowed ? (
         <ul>
           <li>
             <button onClick={onFacebookShare}>Share on facebook</button>
           </li>
           { /* ... */}
         </ul>
-      )}
+      ) : null}
     <div>
   )
 }
@@ -145,7 +145,7 @@ const ShareButton = ({title, text, url }) => {
 
 ### Share on twitter
 
-For this one actually is easier just use an `<a>` tag and handle it as an external link.
+This one is actually really easy, just need to use an `<a>` tag and handle it as an external link.
 
 ```jsx
 const ShareButton = ({title, text, url }) => {
@@ -153,7 +153,7 @@ const ShareButton = ({title, text, url }) => {
   return (
     <div>
       { /* ... */}
-      {isShowed && (
+      {isShowed ? (
         <ul>
           { /* ... */}
           <li>
@@ -166,7 +166,7 @@ const ShareButton = ({title, text, url }) => {
             </a>
           </li>
         </ul>
-      )}
+      ) : null}
     <div>
   )
 }
@@ -174,7 +174,7 @@ const ShareButton = ({title, text, url }) => {
 
 ### Copy to the clipboard
 
-We are gonna use the `navigator.clipboard` which is supported by most of the modern browsers.
+And finally, we are gonna use the `navigator.clipboard` which is supported by most of the modern browsers.
 
 ![navigator clipboard support on mozilla.com](https://res.cloudinary.com/dliiwavlg/image/upload/v1614125566/Screen_Shot_2021-02-15_at_17.27.48.png_bpzpz0.png)
 _`Navigator.Clipboard` support on [developr.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API)_
@@ -196,13 +196,12 @@ const ShareButton = ({title, text, url }) => {
     }
   }
 
-  // We are gonna restart the copy state after a few seconds
+  // Restarts the copy state after a few seconds
   useEffect(() => {
-    // Early return when isCopied is false.
     if (!isCopied) return
 
     const timer = setTimeout(() => {
-      setIsCopied(oldState => !oldState)
+      setIsCopied(currentIsCopied => !currentIsCopied)
     }, 3000)
 
     return () => clearTimeout(timer)
@@ -211,22 +210,22 @@ const ShareButton = ({title, text, url }) => {
   return (
     <div>
       { /* ... */}
-      {isShowed && (
+      {isShowed ? (
         <ul>
           { /* ... */}
           <li>
             <button onClick={onCopyToClipboard}>
-              {!isCopied ? 'Copy to clipboard' : 'Copied!'}
+              {isCopied ? 'Copied!' : 'Copy to clipboard'}
             </button>
           </li>
         </ul>
-      )}
+      ) :  null}
     <div>
   )
 }
 ```
 
-Now, you only need to add your styles and that's it.
+Now, you only need to add some styles and that's it.
 
 The full version of our component will look like this.
 
@@ -245,7 +244,7 @@ const ShareButton = ({title, text, url }) => {
       })
       .catch(console.error)
     } else {
-      setIsShowed(oldState => !oldState)
+      setIsShowed(currentIsShowed => !currentIsShowed)
     }
   }
 
@@ -268,13 +267,11 @@ const ShareButton = ({title, text, url }) => {
     }
   }
 
-  // We are gonna restart the copy state after a few seconds
   useEffect(() => {
-    // Early return when isCopied is false.
     if (!isCopied) return
 
     const timer = setTimeout(() => {
-      setIsCopied(oldState => !oldState)
+      setIsCopied(currentIsCopied => !currentIsCopied)
     }, 3000)
 
     return () => clearTimeout(timer)
@@ -283,7 +280,7 @@ const ShareButton = ({title, text, url }) => {
   return (
     <div>
       <button onClick={onShareClick}>Share</button>
-      {isShowed && (
+      {isShowed ? (
         <ul>
           <li>
             <button onClick={onFacebookShare}>Share on facebook</button>
@@ -299,11 +296,11 @@ const ShareButton = ({title, text, url }) => {
           </li>
           <li>
             <button onClick={onCopyToClipboard}>
-              {!isCopied ? 'Copy to clipboard' : 'Copied'}
+              {isCopied ? 'Copied' : 'Copy to clipboard'}
             </button>
           </li>
         </ul>
-      )}
+      ) : null}
     <div>
   )
 }
@@ -334,7 +331,7 @@ const ShareButton = ({ title, text, path }) => {
 }
 ```
 
-You need to replace all the `url` variables with `fullURL`
+You'll need to replace all the `url` variables with `fullURL`
 
 Now, we can use our component and only pass it the path.
 
