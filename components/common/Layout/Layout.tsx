@@ -19,7 +19,7 @@ const defaultTitle = 'Edgar López'
 
 const Layout = ({
   children,
-  title = 'Edgar López',
+  title,
   description = "Hey, I'm Edgar! Frontend developer, sometimes designer. I just started writting.",
   image = DefaultImg,
   type = 'website',
@@ -42,7 +42,7 @@ const Layout = ({
         date={date}
       />
       <Header
-        title={title}
+        title={title ?? defaultTitle}
         showBackButton={showBackButton}
         isArticle={isArticle}
       />
