@@ -16,21 +16,14 @@ const Head = ({ title, description, image, type, date }: Props) => {
     <NextHead>
       <link
         rel="preload"
-        href="/fonts/fira-sans-latin-regular.woff2"
+        href="/fonts/Inter.var.woff2"
         as="font"
         type="font/woff2"
         crossOrigin="anonymous"
       />
       <link
         rel="preload"
-        href="/fonts/fira-sans-latin-700.woff2"
-        as="font"
-        type="font/woff2"
-        crossOrigin="anonymous"
-      />
-      <link
-        rel="preload"
-        href="/fonts/fira-sans-latin-italic.woff2"
+        href="/fonts/Newsreader-Italic.var.woff2"
         as="font"
         type="font/woff2"
         crossOrigin="anonymous"
