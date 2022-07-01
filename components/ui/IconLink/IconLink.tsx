@@ -1,3 +1,4 @@
+import { ArrowUpRight } from '@components/icons/ArrowUpRight'
 import { AnchorHTMLAttributes } from 'react'
 import s from './IconLink.module.css'
 
@@ -20,6 +21,9 @@ const IconLink = ({ children, label, href, ariaLabel, ...rest }: Props) => {
     >
       {children}
       {label && <p className={s.label}>{label}</p>}
+      <span className={s.arrowIcon}>
+        <ArrowUpRight width={14} height={14} />
+      </span>
     </a>
   )
 }

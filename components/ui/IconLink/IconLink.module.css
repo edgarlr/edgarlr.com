@@ -2,16 +2,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0.6;
   transition: var(--transition-short);
+  font-size: var(--font-size-xs);
+  gap: var(--gap-half);
+}
+
+.arrowIcon {
+  transform: translate(0);
+  vertical-align: middle;
+  transition: transform 0.1s;
 }
 
 .root:hover {
-  opacity: 1;
+  text-decoration: none;
+}
+
+.root:hover .arrowIcon {
+  transform: translate(3px, -3px);
 }
 
 .label {
-  margin-left: var(--gap-half);
   font-size: var(--font-size-m);
   font-style: italic;
 }
