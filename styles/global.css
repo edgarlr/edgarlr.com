@@ -46,24 +46,26 @@ h6 {
 }
 
 h1 {
-  font-size: var(--font-size-xll);
+  font-size: var(--font-size-xl);
+  font-family: var(--font-serif);
+  font-weight: var(--font-weight-regular);
 }
 
 h2 {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-md);
 }
 
 h3 {
-  font-size: var(--font-size-l);
+  font-size: var(--font-size-md);
 }
 
 h4 {
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-md);
 }
 
 p,
 li {
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-md);
   margin: 0.25rem 0;
 }
 
@@ -80,7 +82,7 @@ a {
 a:hover,
 a:focus,
 a:active {
-  opacity: var(--hover-opacity);
+  text-decoration: underline;
 }
 
 button,
@@ -90,7 +92,7 @@ select {
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
-
+/*
 button,
 select {
   outline: none;
@@ -101,12 +103,7 @@ select {
   border: var(--border);
   border-radius: var(--border-radius);
   transition: var(--transition-short);
-}
-
-select:hover,
-button:hover {
-  border: var(--border-hover);
-}
+} */
 
 img {
   max-width: 100%;

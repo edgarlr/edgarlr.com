@@ -3,11 +3,9 @@ declare module 'classnames'
 type TProject = {
   slug: string
   title: string
-  linkType: string
   description: string
   tech: string
   projectUrl: string
-  image: TImage
   links: TProjectLink[]
 }
 
