@@ -1,0 +1,46 @@
+.buttonList {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--gap-half);
+}
+
+.buttonHover {
+  background-color: rgba(0, 0, 0, 0.12);
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 0;
+  border-radius: var(--border-radius);
+  height: calc(100% - 12px);
+  transition: 150ms ease;
+  transition-property: width, transform, opacity;
+}
+
+.buttonTrigger {
+  padding: 0.85em;
+  font-size: var(--font-size-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: color 150ms;
+  background-color: transparent;
+  border: none;
+}
+
+.buttonTrigger:hover,
+.buttonTrigger[aria-selected='true'] {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.buttonTrigger[aria-selected='true']::after {
+  content: '';
+  position: absolute;
+  inset: auto 12px 0;
+  height: 2px;
+  background-color: black;
+  border-radius: 5px 0;
+}
