@@ -17,8 +17,9 @@ const Home = ({ posts }: Props) => {
       <section className="hero">
         <h1>Edgar López</h1>
         <p>
-          Frontend developer, sometimes designer. I just started{' '}
-          <a href="#articles">writting</a>.
+          Developer, sometimes designer. Working on Web Optimization, Growth and
+          passionate about UI Interface, micro-interactions and DX. I{' '}
+          <a href="#articles">write</a> once in a while.
         </p>
         <div className="italic flex vertical-margin-half low-opacity">
           <div className="inline-icon">
@@ -34,24 +35,13 @@ const Home = ({ posts }: Props) => {
 
       <section>
         {projects.map(
-          ({
-            slug,
-            title,
-            linkType,
-            description,
-            tech,
-            projectUrl,
-            image,
-            links,
-          }: TProject) => (
+          ({ slug, title, description, tech, projectUrl, links }: TProject) => (
             <ProjectCard
               key={slug}
               title={title}
-              linkLabel={linkType}
               href={projectUrl}
               description={description}
               info={tech}
-              image={image}
               links={links}
             />
           )
