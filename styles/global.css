@@ -69,20 +69,9 @@ li {
   margin: 0.25rem 0;
 }
 
-p a {
-  text-decoration: underline;
-}
-
 a {
   text-decoration: none;
   color: var(--fg);
-  transition: var(--transition-short);
-}
-
-a:hover,
-a:focus,
-a:active {
-  text-decoration: underline;
 }
 
 button,
@@ -92,8 +81,7 @@ select {
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
-/*
-button,
+
 select {
   outline: none;
   background: transparent;
@@ -103,16 +91,11 @@ select {
   border: var(--border);
   border-radius: var(--border-radius);
   transition: var(--transition-short);
-} */
+}
 
 img {
   max-width: 100%;
   display: block;
-}
-
-span {
-  font-size: var(--font-size-xs);
-  font-style: italic;
 }
 
 pre,
