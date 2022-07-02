@@ -3,25 +3,27 @@
   justify-content: center;
   align-items: center;
   transition: var(--transition-short);
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-sm);
   gap: var(--gap-half);
+  opacity: 0.6;
+  padding: 0.25rem 0.5rem;
 }
 
 .arrowIcon {
   transform: translate(0);
   vertical-align: middle;
   transition: transform 0.1s;
+  display: grid;
+  place-content: center;
 }
 
 .root:hover {
   text-decoration: none;
+  opacity: 1;
+  border-radius: var(--border-radius);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .root:hover .arrowIcon {
   transform: translate(3px, -3px);
-}
-
-.label {
-  font-size: var(--font-size-m);
-  font-style: italic;
 }
