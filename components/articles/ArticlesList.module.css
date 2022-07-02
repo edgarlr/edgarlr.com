@@ -69,8 +69,8 @@
   text-decoration: underline;
 }
 
-@media screen and (min-width: 1024px) {
-  .root {
+@media screen and (min-width: 768px) {
+  .entry {
     grid-template-columns: 3fr 9fr;
     gap: 1rem;
   }
