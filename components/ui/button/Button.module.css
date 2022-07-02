@@ -6,7 +6,7 @@
 }
 
 .buttonHover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--fg-100);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -38,7 +38,7 @@
 
 .buttonTrigger:hover,
 .buttonTrigger[aria-selected='true'] {
-  color: rgba(0, 0, 0, 0.2);
+  color: var(--fg-200);
   text-decoration: none;
   color: var(--fg);
   opacity: 0.9;

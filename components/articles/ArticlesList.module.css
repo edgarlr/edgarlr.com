@@ -43,7 +43,7 @@
   text-decoration: none;
   opacity: 1;
   border-radius: var(--border-radius);
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--fg-100);
 }
 
 .title {
