@@ -1,20 +1,22 @@
 .header {
-  margin: 8rem 0 2rem;
+  margin: 6rem 0 2rem;
+}
+
+.header h2 {
+  font-size: var(--font-size-lg);
 }
 
 .info {
   display: flex;
   align-items: center;
-}
-
-.info > a > p {
-  font-size: var(--font-size-s);
+  margin-top: 0.5rem;
 }
 
 .date {
-  font-style: italic;
-  margin-left: var(--gap);
-  padding-left: var(--gap);
-  border-left: var(--border);
   color: var(--fg-light);
+}
+@media screen and (min-width: 678px) {
+  .header {
+    margin: 8rem 0 2rem;
+  }
 }
