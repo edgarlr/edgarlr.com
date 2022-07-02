@@ -1,11 +1,11 @@
 import ArticlesList from '@components/articles/ArticlesList'
 import { Layout } from '@components/common/Layout'
-import MapPin from '@components/icons/MapPin'
 import { ProjectCard } from '@components/project'
 import { SectionContainer } from '@components/ui/SectionContainer'
 import { getAllPosts } from '@lib/api'
 import { GetStaticProps } from 'next'
 import projects from '@lib/projects'
+import SocialLinks from '@components/SocialLinks/SocialLinks'
 
 type Props = {
   posts: TPost[]
@@ -19,17 +19,13 @@ const Home = ({ posts }: Props) => {
         <p>
           Developer, sometimes designer. Working on Web Optimization, Growth and
           passionate about UI Interface, micro-interactions and DX. I{' '}
-          <a href="#articles">write</a> once in a while.
+          <a href="#articles" className="inlineLink">
+            write
+          </a>{' '}
+          once in a while.
         </p>
-        <div className="italic flex vertical-margin-half low-opacity">
-          <div className="inline-icon">
-            <MapPin
-              width="18"
-              height="18"
-              style={{ opacity: '0.8', marginBottom: '-2px' }}
-            />
-          </div>
-          Mexico City, MX.
+        <div className="flex vertical-margin-half">
+          <SocialLinks />
         </div>
       </section>
 
@@ -48,11 +44,7 @@ const Home = ({ posts }: Props) => {
         )}
       </section>
 
-      <SectionContainer
-        id="articles"
-        title="Articles"
-        subtitle="Things I've learned along the road."
-      >
+      <SectionContainer id="posts" title="Posts">
         <ArticlesList posts={posts} paginate />
       </SectionContainer>
     </Layout>
