@@ -65,8 +65,8 @@
   left: 0;
   transition: all 0.15s;
   content: ' ';
-  background-color: black;
-  opacity: 0.15;
+  background-color: var(--fg);
+  opacity: 0.35;
 }
 
 .inlineLink::before {
@@ -76,7 +76,7 @@
   bottom: -2px;
   transition: all 0.15s;
   content: ' ';
-  background-color: black;
+  background-color: var(--fg);
 }
 
 .inlineLink:hover::before {
