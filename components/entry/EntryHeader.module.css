@@ -15,7 +15,7 @@
 .date {
   color: var(--fg-light);
 }
-@media screen and (min-width:768px) {
+@media screen and (min-width: 768px) {
   .header {
     margin: 8rem 0 2rem;
   }

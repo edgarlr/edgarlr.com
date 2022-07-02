@@ -51,8 +51,8 @@
   /* Light Theme Colors */
   --bg: #ffffff;
   --fg: #131414;
-  --fg-100: rgba(19, 20, 20 ,0.1);
-  --fg-200: rgba(19, 20, 20 ,0.2);
+  --fg-100: rgba(19, 20, 20, 0.1);
+  --fg-200: rgba(19, 20, 20, 0.2);
   --fg-light: rgba(19, 20, 20, 0.6);
   --overlay: #fafafa;
   --borders-color: #e3e5ea;
@@ -63,9 +63,9 @@
 /* Dark Theme Colors */
 [data-theme='dark'] {
   --bg: #181a1b;
-  --fg: rgba(255,255,255,0.95);
-  --fg-100: rgba(255,255,255,0.1);
-  --fg-200: rgba(255,255,255,0.2);
+  --fg: rgba(255, 255, 255, 0.95);
+  --fg-100: rgba(255, 255, 255, 0.1);
+  --fg-200: rgba(255, 255, 255, 0.2);
   --fg-light: rgba(255, 255, 255, 0.6);
   --overlay: #242526;
   --borders-color: #2d3033;
