@@ -1,6 +1,6 @@
 .root {
-  padding: var(--section-space);
-  border-bottom: var(--border);
+  padding: 2rem 0;
+
   display: grid;
 }
 
@@ -16,6 +16,7 @@
 .info,
 .icon {
   color: var(--fg-light);
+  font-size: var(--font-size-xs);
 }
 
 .projectTitle h2 {
@@ -23,12 +24,12 @@
 }
 
 .projectBody p {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-md);
+  margin: 0;
 }
 
 .root a:hover .icon {
   color: var(--fg);
-  text-decoration: underline;
   display: inline-block;
 }
 
@@ -45,11 +46,37 @@
 
 .links {
   display: flex;
-  margin: var(--gap-15) 0;
+  margin: var(--gap-half) -0.5rem 0;
+}
+
+.links a {
+  font-size: var(--font-size-xs);
 }
 
 .imgContainer {
   margin: 0 auto;
+}
+
+.projectLink {
+  position: relative;
+}
+
+.projectLink:hover {
+  text-decoration: none;
+}
+
+.projectLink::before {
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  transition: all 0.15s;
+  content: ' ';
+  background-color: black;
+}
+
+.projectLink:hover::before {
+  width: 100%;
 }
 
 @media screen and (min-width: 1024px) {
