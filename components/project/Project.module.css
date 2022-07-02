@@ -72,7 +72,7 @@
   bottom: -2px;
   transition: all 0.15s;
   content: ' ';
-  background-color: black;
+  background-color: var(--fg);
 }
 
 .projectLink:hover::before {
