@@ -31,7 +31,7 @@ article hr {
 article em {
   display: block;
   text-align: center;
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-sm);
   color: var(--fg-light);
 }
 
@@ -49,7 +49,7 @@ article blockquote * {
 
 article blockquote p {
   font-style: italic;
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-sm);
   line-height: 1.25;
 }
 
@@ -64,11 +64,11 @@ article pre {
   border-radius: var(--border-radius);
   line-height: 1.8;
   padding: var(--gap) var(--gap-15);
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-sm);
 }
 
 article *:not(pre) > code {
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-sm);
   padding: 0 8px;
   background: none;
 }
@@ -99,10 +99,45 @@ article li {
 article ul li {
   list-style-type: disc;
   color: var(--fg);
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-sm);
   line-height: 1.25;
 }
 
 article ul li strong {
   color: var(--fg);
+}
+
+article a {
+  position: relative;
+  text-decoration: none;
+}
+
+article a:hover {
+  text-decoration: none;
+}
+
+article a::after {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -1px;
+  left: 0;
+  transition: all 0.15s;
+  content: ' ';
+  background-color: black;
+  opacity: 0.15;
+}
+
+article a::before {
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -1px;
+  transition: all 0.15s;
+  content: ' ';
+  background-color: black;
+}
+
+article a:hover::before {
+  width: 100%;
 }
