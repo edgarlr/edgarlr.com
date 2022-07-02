@@ -19,12 +19,12 @@ const projects: TProject[] = [
       {
         url: 'https://github.com/edgarlr/magazine',
         icon: 'Github',
-        title: 'Web',
+        title: 'Github (Frontend)',
       },
       {
         url: 'https://github.com/edgarlr/magazine-api',
         icon: 'Github',
-        title: 'CMS',
+        title: 'Github (CMS)',
       },
     ],
   },
@@ -38,7 +38,7 @@ const projects: TProject[] = [
       {
         url: 'https://github.com/edgarlr/podcasts',
         icon: 'Github',
-        title: 'Github Repo',
+        title: 'Github (Webapp)',
       },
       {
         url:
