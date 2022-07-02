@@ -36,17 +36,15 @@
   max-width: max-content;
   align-self: center;
   margin-top: 3rem;
-  color: var(--fg)
+  color: var(--fg);
 }
-
 
 .button:hover {
   text-decoration: none;
   opacity: 1;
-  border-radius: var(--border-radius);  
+  border-radius: var(--border-radius);
   background-color: rgba(0, 0, 0, 0.1);
 }
-
 
 .title {
   margin: 0.25rem 0;
@@ -63,12 +61,11 @@
   transition: all 0.15s;
 }
 
-
-.entry:hover .icon{
+.entry:hover .icon {
   transform: translateX(5px);
 }
 
-.entry:hover .title{
+.entry:hover .title {
   text-decoration: underline;
 }
 
