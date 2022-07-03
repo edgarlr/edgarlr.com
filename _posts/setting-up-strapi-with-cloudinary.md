@@ -4,11 +4,11 @@ description: 'Setting up a production-ready workflow for Strapi CMS'
 date: 12/18/2020
 ---
 
-Strapi is part of a new generation of Content Management Systems called headless CMS. This type of CMS will allows us to work, deploy and maintain it as an independent project and we only communicate with from the fronted trough the exposed API.
+Strapi is part of a new generation of Content Management Systems called headless CMS. These type of Content Management Systems will allows us to work, deploy and maintain our CMS as an independent project where we only communicate with the fronted through the exposed API.
 
 Strapi is really fast to get started with and easy to customize, the [official docs](https://strapi.io/documentation/developer-docs/latest/getting-started/introduction.html) are really good and easy to follow.
 
-On this post we are gonna take a look at a few scripts and configurations that will help us get our project production-ready and configure it as a template for easy clone and deploy to external developers (In case we need it)
+On this post we are gonna take a look at a few scripts and configurations that will help you get you project production-ready and configure it as a template for easy clone and deploy for external developers (In case you need it)
 
 First, we'll need to create our strapi project. we can bootstrap it by using `--quick-start`. This command will pre-configure a strapi project and set up a SQLite database for sample content on development.
 
