@@ -17,10 +17,10 @@ const Home = ({ posts }: Props) => {
       <section className="hero">
         <h1>Edgar López</h1>
         <p>
-          Developer, sometimes designer. Working on Web Optimization, Growth and
-          passionate about UI Interface, micro-interactions and DX. I{' '}
+          Developer, sometimes designer. I&apos;m passionate about user
+          interfaces, interactions, design systems, and web experiences. I{' '}
           <a href="#posts" className="inlineLink">
-            write
+            write about it
           </a>{' '}
           once in a while.
         </p>

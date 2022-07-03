@@ -5,8 +5,7 @@
   position: relative;
   transition: height 0.15s;
   height: var(--rootHeight);
-  overflow-x: visible;
-  overflow-y: hidden;
+  overflow: hidden;
   max-height: max-content;
 }
 
