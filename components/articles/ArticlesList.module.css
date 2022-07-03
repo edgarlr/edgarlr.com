@@ -2,13 +2,31 @@
   padding: var(--gap-half) 0;
   display: flex;
   flex-direction: column;
+  position: relative;
+  transition: height 0.15s;
+  height: var(--rootHeight);
+  overflow-x: visible;
+  overflow-y: hidden;
+  max-height: max-content;
+}
+
+.root::before {
+  content: '';
+  position: absolute;
+  top: 2rem;
+  bottom: 0.75rem;
+  left: 2.5px;
+  width: 1px;
+  background-color: var(--fg-light);
 }
 
 .entry {
-  margin: var(--gap-15) 0;
+  padding: var(--gap-15) 0;
   cursor: pointer;
   transition: var(--transition-short);
   display: grid;
+  position: relative;
+  padding-left: 1.5rem;
   position: relative;
 }
 
@@ -19,6 +37,27 @@
 .date {
   font-size: var(--font-size-xs);
   color: var(--fg-light);
+  display: flex;
+  align-items: center;
+}
+
+.entry::before {
+  content: '';
+  position: absolute;
+  left: -rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 9999999px;
+  border: 1px solid var(--fg-light);
+  background-color: var(--bg);
+  transition: background-color 0.15s;
+}
+
+.entry:hover::before,
+.entry:focus::before {
+  background-color: var(--fg);
 }
 
 .button {
@@ -35,7 +74,7 @@
   background-color: transparent;
   max-width: max-content;
   align-self: center;
-  margin-top: 3rem;
+  margin: 3rem auto 0;
   color: var(--fg);
 }
 
@@ -50,7 +89,7 @@
   margin: 0.25rem 0;
   font-size: var(--font-size-m);
   font-family: var(--font-sans);
-  font-weight: var(--font-weight-bold);
+  font-weight: 600;
   line-height: var(--font-line-height-s);
   display: flex;
   justify-content: space-between;
@@ -59,6 +98,7 @@
 .icon {
   transform: translateX(0);
   transition: all 0.15s;
+  padding-right: 0.25rem;
 }
 
 .entry:hover .icon {
@@ -69,9 +109,20 @@
   text-decoration: underline;
 }
 
+.buttonWrapper {
+  width: 100%;
+}
+
 @media screen and (min-width: 768px) {
   .entry {
     grid-template-columns: 3fr 9fr;
     gap: 1rem;
+    padding-left: 0;
+  }
+  .root::before {
+    left: 9rem;
+  }
+  .entry::before {
+    left: calc(9rem - 3px);
   }
 }
