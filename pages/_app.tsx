@@ -1,6 +1,7 @@
 // import App from "next/app";
 import type { AppProps /*, AppContext */ } from 'next/app'
 import { useEffect } from 'react'
+import { ThemeProvider } from 'next-themes'
 
 import '@styles/global.css'
 import '@styles/chrome-bug.css'
@@ -10,7 +11,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     document.body.classList?.remove('loading')
   }, [])
 
-  return <Component {...pageProps} />
+  return (
+    <ThemeProvider>
+      <Component {...pageProps} />
+    </ThemeProvider>
+  )
 }
 
 // Only uncomment this method if you have blocking data requirements for

@@ -15,9 +15,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="es">
-        <Head>
-          <script src="/theme.js"></script>
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />

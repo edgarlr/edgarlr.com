@@ -1,5 +1,5 @@
 import s from './ThemeSelect.module.css'
-import { useTheme } from '@lib/useTheme'
+import { useTheme } from 'next-themes'
 import ChevronDown from '@components/icons/ChevronDown'
 
 const ThemeSelect = () => {
@@ -13,7 +13,7 @@ const ThemeSelect = () => {
         id="themeSelect"
         aria-label="Change theme color"
       >
-        <option value="auto">System</option>
+        <option value="system">System</option>
         <option value="dark">Dark</option>
         <option value="light">Light</option>
       </select>
