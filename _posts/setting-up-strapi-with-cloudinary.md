@@ -10,7 +10,7 @@ Strapi is really fast to get started with and easy to customize, the [official d
 
 On this post we are gonna take a look at a few scripts and configurations that will help you get you project production-ready and configure it as a template for easy clone and deploy for external developers (In case you need it)
 
-First, we'll need to create our strapi project. we can bootstrap it by using `--quick-start`. This command will pre-configure a strapi project and set up a SQLite database for sample content on development.
+First, we'll need to create our Strapi project. we can bootstrap it by using `--quick-start`. This command will pre-configure a strapi project and set up a SQLite database for sample content on development.
 
 > [Getting started docs](https://strapi.io/documentation/developer-docs/latest/getting-started/quick-start.html#_1-install-strapi-and-create-a-new-project) on Strapi
 
@@ -24,7 +24,7 @@ npx create-strapi-app my-project --quickstart
 
 Go to the admin panel on [http://localhost:3000/admin](http://localhost:3000) and create an account (This user is the one you're gonna be using on development)
 
-Now you can start creating your content types and adding some sample data.
+Now you can start creating the content types and adding some sample data.
 
 I wrote a post about a few tips at getting started with Strapi if you want to give it a look.
 
