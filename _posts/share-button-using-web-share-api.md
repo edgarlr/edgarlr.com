@@ -4,18 +4,18 @@ description: 'Share Button Component built with React'
 date: 12/27/2020
 ---
 
-The [Web Share API](https://www.w3.org/TR/web-share/) provides us an easy way to trigger the native share menu.
+The [Web Share API](https://www.w3.org/TR/web-share/) provides an easy way to trigger the native share menu.
 
 ## Before getting started
 
 There're a few things we should know before start coding.
 
-First, browser support, and this is the main problem. Web Share API doesn't have the greatest support yet.
+First, browser support, and this is probably its main problem. Web Share API doesn't have the greatest support yet.
 
 ![Web share api on caniuse.com](https://res.cloudinary.com/dliiwavlg/image/upload/v1614125553/Screen_Shot_2021-02-15_at_15.34.15.png_xwbmed.png)
 _Web Share API on [caniuse.com](https://caniuse.com/?search=share%20API)_
 
-However, it's supported on the main mobile browsers and is we can add a fallback option to all the unsupported browsers.
+However, it's supported on the main mobile browsers and we can add a fallback option to all the unsupported browsers.
 
 Apart from that, some other limitations are:
 
@@ -24,7 +24,7 @@ Apart from that, some other limitations are:
 
 ## Web Sharing API
 
-To trigger the share menu we are gonna used the promise-based method `.share()`. but, as I said before and because is not fully supported, let's check if is supported on the browser first.
+To trigger the share menu we are gonna used the promise-based method `.share()`. But, as I said before and because is not fully supported, let's check if It's supported on the browser first.
 
 ```jsx
 const onShareClick = (e) => {
@@ -113,7 +113,7 @@ const ShareButton = ({title, text, url}) => {
 
 ### Share on facebook
 
-For facebook there actually a lot of ways to do it, but some options seem a bit overwhelming, you can give it a look if you want to, but in this case I don't want to add the sdk and I don't need to track all the shares from the page so we are gonna do it by using `facebook.com/sharer`
+For facebook there actually a lot of ways to do it, but some options seem a bit overwhelming. You can give it a look if you want to, but in this case I don't want to add the sdk because I don't need to track all the shares from the page, so we are gonna do it by using `facebook.com/sharer`
 
 ```jsx
 const ShareButton = ({title, text, url }) => {

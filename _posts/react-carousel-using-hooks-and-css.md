@@ -4,9 +4,9 @@ description: 'Carousel Component with scroll indicator and next and prev buttons
 date: January 19, 2021
 ---
 
-We all know how difficult is to build an accessible, user friendly and mantainable carousel, specially from stracth. Well, for a project I was working on, I needed to build one. The carousel specs also included a scroll indicator, arrow buttons to go back and forward trought for desktop devices, but support touch scroll support in mobile, and finally, it needed to be performant and accessible.
+We all know how difficult it is to build an accessible, user friendly and mantainable carousel, specially from scratch. Well, for a project I was working on, I needed to build one. The carousel specs also included a scroll indicator, arrow buttons to go back and forward trought for desktop devices, but support touch scroll support in mobile, and finally, it needed to be performant and accessible.
 
-At this point, a great option would have been to use one of the many great react-carousel libraries out there and that could have been it. End of this entry. But I also took it as a great opportunity to try and build one from scratch and fully understand how to develop it using only modern css and React. I mean, if that hadn't gone well, I could always go back and use a library, right?
+At this point, a great option would have been to use one of the many great react-carousel libraries out there and that could have been it. End of this entry. But I also took this as a great opportunity to try and build one from scratch and fully understand how to develop it using only modern css and React. I mean, If that hadn't gone well, I could always go back and use a library, right?
 
 But let's fully dive in and start the coding. We are gonna try make this component as reusable as possible. So let's take a look at our base structure first:
 
@@ -38,7 +38,7 @@ We use this property in our container to specify the direction and the behavior 
 
 ## `scroll-snap-align`
 
-This is for all cards the inside and is used to define the alignment which could be set as `center`, `start`, and `end`. For this example, we are gonna use `start`.
+This is for all cards and is used to define the alignment which could be set as `center`, `start`, and `end`. For this example, we are gonna use `start`.
 
 To keep the ability of allowing all types of childs outside the component, we are gonna use the `> *` selector to style only all the direct children of `.container`
 

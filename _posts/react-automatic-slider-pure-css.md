@@ -49,7 +49,7 @@ Now we add some base css.
 }
 ```
 
-We are gonna use CSS animatons for this. I wrote a post on how to improve performance in CSS animations if you want to take a look at it as well. Is kinda cool.
+We are gonna use CSS animatons for this. I wrote a post on how to improve performance in CSS animations if you want to take a look at it as well. It's kinda cool.
 
 > [Quick Fix to CSS Animation performance](https://edgarlr.com/articles/quick-fix-to-css-animation-performance)
 

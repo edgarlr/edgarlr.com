@@ -4,9 +4,9 @@ description: 'Testing and improving CSS animation performance'
 date: '11/28/2020'
 ---
 
-If you're gonna start adding css animations to your projects or if you're using them already, there's a few tips you should now that will help you improve your animation performance, optimize the rendering and prevent using unnecessary GPU.
+If you're gonna start adding css animations to your projects or if you're using them already, there's a few tips you should know that will help you improve your animation performance, optimize the rendering and prevent using unnecessary GPU.
 
-In case you need complex animations or transitions, I would really recommend you checking other alternatives like [framer's motion](https://github.com/framer/motion) for react, or similar dedicated libraries. This post is only gonna focus on pure CSS animations.
+In case you need complex animations or transitions, I would really recommend you checking other alternatives like [framer's motion](https://github.com/framer/motion) for react, or similar dedicated libraries. This post will focus on pure CSS animations.
 
 ## Perfomance on animations
 
@@ -61,7 +61,7 @@ _Cumulative Layout Shift warning_
 You can try it yourself. On chrome, you only need to:
 
 - Create a new html file and copy the code
-- Open it in your browser and then open the devtools
+- Open it on your browser and then open the devtools
 - Go to the Performance tab, and start recording.
 - I'd recommend you changing the CPU configuration to "6x slowdown". This will allow you simulate how is gonna perform on slower devices.
 
@@ -80,7 +80,7 @@ You can check the [csstriggers.com](https://csstriggers.com) website which inclu
 
 The main difference between using `transform` and other properties like `margin`or `left` is that `transform` is rendered on their own layer and this will prevent it from triggering a layout recalculation.
 
-This works similar as `color` and `opacity` on triggering a repainting, where opacity, at being rendered on their own layout, will be less expensive.
+This works similar as `color` and `opacity` on triggering a repainting, where opacity, at being rendered on their own layer, will be less expensive.
 
 > [Mozilla - CSS Property cost](https://developer.mozilla.org/en-US/docs/Web/Performance/Animation_performance_and_frame_rate#css_property_cost)
 
