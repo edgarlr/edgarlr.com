@@ -9,6 +9,7 @@
   cursor: pointer;
   transition: var(--transition-short);
   opacity: var(--hover-opacity);
+  font-size: var(--font-size-sm);
 }
 @media screen and (min-width: 768px) {
   .navButton {
@@ -37,5 +38,6 @@
   align-items: center;
 }
 .navHeader h4 {
+  font-size: var(--font-size-sm);
   padding: 0 var(--gap-half);
 }

@@ -41,7 +41,7 @@ const Header: React.FC<Props> = ({ title, isArticle, showBackButton }) => {
         {showBackButton ? (
           <Link href="/">
             <a className={s.backButton}>
-              <ArrowLeft />
+              <ArrowLeft width={20} height={20} />
             </a>
           </Link>
         ) : null}

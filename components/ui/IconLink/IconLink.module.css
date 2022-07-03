@@ -2,16 +2,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0.6;
   transition: var(--transition-short);
+  font-size: var(--font-size-sm);
+  gap: var(--gap-half);
+  opacity: 0.6;
+  padding: 0.25rem 0.5rem;
+}
+
+.arrowIcon {
+  transform: translate(0);
+  vertical-align: middle;
+  transition: transform 0.1s;
+  display: grid;
+  place-content: center;
 }
 
 .root:hover {
+  text-decoration: none;
   opacity: 1;
+  border-radius: var(--border-radius);
+  background-color: var(--fg-100);
 }
 
-.label {
-  margin-left: var(--gap-half);
-  font-size: var(--font-size-m);
-  font-style: italic;
+.root:hover .arrowIcon {
+  transform: translate(3px, -3px);
 }

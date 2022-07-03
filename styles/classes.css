@@ -48,6 +48,41 @@
   height: 85vh;
 }
 
+.inlineLink {
+  position: relative;
+  text-decoration: none;
+}
+
+.inlineLink:hover {
+  text-decoration: none;
+}
+
+.inlineLink::after {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  transition: all 0.15s;
+  content: ' ';
+  background-color: var(--fg);
+  opacity: 0.35;
+}
+
+.inlineLink::before {
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  transition: all 0.15s;
+  content: ' ';
+  background-color: var(--fg);
+}
+
+.inlineLink:hover::before {
+  width: 100%;
+}
+
 /* .projects-section {
   margin: 0 auto;
   max-width: 1280px;

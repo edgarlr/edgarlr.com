@@ -1,16 +1,19 @@
 :root {
   /* Typography */
-  --font-sans: 'Fira Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  --font-serif: 'Newsreader', -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
   --font-mono: 'DM Mono', 'Consolas', 'Liberation Mono', 'Menlo', monospace;
 
   /* Font Size */
-  --font-size-xs: 0.875rem;
-  --font-size-s: 1rem;
-  --font-size-m: 1.125rem;
-  --font-size-l: 1.25rem;
-  --font-size-xl: 2rem;
-  --font-size-xll: 2.25rem;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-xll: 2rem;
 
   /* Font Weight */
   --font-weight-regular: 400;
@@ -48,6 +51,8 @@
   /* Light Theme Colors */
   --bg: #ffffff;
   --fg: #131414;
+  --fg-100: rgba(19, 20, 20, 0.1);
+  --fg-200: rgba(19, 20, 20, 0.2);
   --fg-light: rgba(19, 20, 20, 0.6);
   --overlay: #fafafa;
   --borders-color: #e3e5ea;
@@ -58,7 +63,9 @@
 /* Dark Theme Colors */
 [data-theme='dark'] {
   --bg: #181a1b;
-  --fg: #ffffff;
+  --fg: rgba(255, 255, 255, 0.95);
+  --fg-100: rgba(255, 255, 255, 0.1);
+  --fg-200: rgba(255, 255, 255, 0.2);
   --fg-light: rgba(255, 255, 255, 0.6);
   --overlay: #242526;
   --borders-color: #2d3033;

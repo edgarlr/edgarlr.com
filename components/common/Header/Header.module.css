@@ -13,14 +13,17 @@
 }
 
 .title {
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-md);
   opacity: 0;
   transform: translateY(8px);
   transition: var(--transition-long);
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  max-width: 80%;
+  margin: auto;
+  width: 100%;
+  font-family: var(--font-serif);
+  font-weight: var(--font-weight-regular);
 }
 
 .show {
@@ -34,6 +37,12 @@
   padding-right: var(--gap-75);
   margin-right: var(--gap-75);
   border-right: var(--border);
+  opacity: 0.5;
+  transition: opacity 0.15s;
+}
+
+.backButton:hover {
+  opacity: 1;
 }
 
 .backButton svg {
@@ -50,18 +59,18 @@
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  max-width: 1280px;
+  max-width: 768px;
+  width: 100%;
   margin: 0 auto;
 }
 
-@media screen and (min-width: 678px) {
+@media screen and (min-width: 768px) {
   .root,
   .article {
     padding: var(--gap-half) 0;
   }
   .root .headerContent {
-    width: 75%;
-    padding: 0 1.5rem;
+    padding: 0;
   }
 
   .article .headerContent {
@@ -70,25 +79,6 @@
 
   .backButton {
     padding-right: var(--gap);
-    margin-right: var(--gap-doble);
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .root .headerContent {
-    width: 85%;
-  }
-  .article .headerContent {
-    width: 60%;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .root .headerContent {
-    padding: 0 24px;
-    width: 80%;
-  }
-  .article .headerContent {
-    width: 50%;
+    margin-right: var(--gap-15);
   }
 }

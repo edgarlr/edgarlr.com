@@ -46,41 +46,32 @@ h6 {
 }
 
 h1 {
-  font-size: var(--font-size-xll);
+  font-size: var(--font-size-xl);
+  font-family: var(--font-serif);
+  font-weight: var(--font-weight-regular);
 }
 
 h2 {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-md);
 }
 
 h3 {
-  font-size: var(--font-size-l);
+  font-size: var(--font-size-md);
 }
 
 h4 {
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-md);
 }
 
 p,
 li {
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-md);
   margin: 0.25rem 0;
-}
-
-p a {
-  text-decoration: underline;
 }
 
 a {
   text-decoration: none;
   color: var(--fg);
-  transition: var(--transition-short);
-}
-
-a:hover,
-a:focus,
-a:active {
-  opacity: var(--hover-opacity);
 }
 
 button,
@@ -91,7 +82,6 @@ select {
   -webkit-tap-highlight-color: transparent;
 }
 
-button,
 select {
   outline: none;
   background: transparent;
@@ -103,19 +93,9 @@ select {
   transition: var(--transition-short);
 }
 
-select:hover,
-button:hover {
-  border: var(--border-hover);
-}
-
 img {
   max-width: 100%;
   display: block;
-}
-
-span {
-  font-size: var(--font-size-xs);
-  font-style: italic;
 }
 
 pre,

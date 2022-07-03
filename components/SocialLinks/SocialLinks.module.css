@@ -1,13 +1,5 @@
 .root {
   display: flex;
-  margin: var(--gap) auto var(--gap-75);
-}
-
-.root a {
-  margin: var(--gap);
-  color: var(--fg-light);
-}
-
-.root a {
-  color: var(--fg);
+  margin: 0 -0.5rem;
+  gap: var(--gap);
 }

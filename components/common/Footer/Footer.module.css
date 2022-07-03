@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   padding: var(--gap-15) 0 var(--gap-triple);
+  gap: var(--gap-15);
 }
 
 .root > a {

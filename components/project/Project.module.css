@@ -1,83 +1,89 @@
 .root {
-  padding: var(--section-space);
-  border-bottom: var(--border);
-  display: flex;
-  flex-wrap: wrap;
+  padding: 2rem 0;
+  display: grid;
 }
 
 .root:last-of-type {
   border: none;
 }
 
-.headingLabel {
+.icon {
   margin-left: var(--gap-half);
   transition: var(--transition-short);
+  vertical-align: middle;
 }
 
 .info,
-.headingLabel {
+.icon {
   color: var(--fg-light);
+  font-size: var(--font-size-xs);
 }
 
-.root a:hover .headingLabel {
+.projectTitle h2 {
+  vertical-align: middle;
+}
+
+.projectBody p {
+  font-size: var(--font-size-md);
+  margin: 0;
+}
+
+.root a:hover .icon {
   color: var(--fg);
-  text-decoration: underline;
   display: inline-block;
 }
 
-.root a .headingLabel svg {
-  margin-left: 0.3rem;
+.root a .icon svg {
+  margin-left: 0.15rem;
   vertical-align: middle;
-  transform: translateX(0);
+  transform: translate(0);
   transition: transform 0.1s;
 }
 
-.root a:hover .headingLabel svg {
-  transform: translateX(3px);
+.root a:hover .icon svg {
+  transform: translate(3px, -3px);
 }
 
 .links {
   display: flex;
-  margin: var(--gap-15) 0;
+  margin: var(--gap-half) -0.5rem 0;
 }
 
 .links a {
-  margin-right: var(--gap-15);
+  font-size: var(--font-size-xs);
 }
 
 .imgContainer {
   margin: 0 auto;
 }
 
-.img {
+.projectLink {
+  position: relative;
+}
+
+.projectLink:hover {
+  text-decoration: none;
+}
+
+.projectLink::before {
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  transition: all 0.15s;
+  content: ' ';
+  background-color: var(--fg);
+}
+
+.projectLink:hover::before {
   width: 100%;
-  transform: scale(1);
-  transition: var(--transition-long);
-}
-
-.img:hover {
-  transform: scale(1.03);
-}
-
-@media screen and (min-width: 678px) {
-  .imgContainer {
-    margin-top: 2rem;
-  }
 }
 
 @media screen and (min-width: 1024px) {
   .root {
-    justify-content: space-between;
+    grid-template-columns: 1fr 3fr;
     align-items: center;
-  }
-  .root:nth-child(even) {
-    flex-direction: row-reverse;
-  }
-  .projectInfo {
-    flex: 0 0 40%;
-  }
-  .imgContainer {
-    flex: 0 0 1;
-    margin: 0;
+    gap: 1rem;
+    place-items: start;
   }
 }
