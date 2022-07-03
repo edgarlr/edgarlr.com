@@ -1,6 +1,5 @@
 .root {
   padding: 2rem 0;
-
   display: grid;
 }
 
@@ -11,6 +10,7 @@
 .icon {
   margin-left: var(--gap-half);
   transition: var(--transition-short);
+  vertical-align: middle;
 }
 
 .info,

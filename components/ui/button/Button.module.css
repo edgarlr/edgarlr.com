@@ -58,6 +58,7 @@
   place-content: center;
   transform: translate(0, 0);
   transition: transform 0.15s;
+  pointer-events: none;
 }
 
 .buttonTrigger:hover .arrowIcon {
