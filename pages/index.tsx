@@ -19,7 +19,7 @@ const Home = ({ posts }: Props) => {
         <p>
           Developer, sometimes designer. Working on Web Optimization, Growth and
           passionate about UI Interface, micro-interactions and DX. I{' '}
-          <a href="#articles" className="inlineLink">
+          <a href="#posts" className="inlineLink">
             write
           </a>{' '}
           once in a while.
