@@ -6,7 +6,7 @@ date: '11/28/2020'
 
 If you're gonna start adding css animations to your projects or if you're using them already, there's a few tips you should know that will help you improve your animation performance, optimize the rendering and prevent using unnecessary GPU.
 
-In case you need complex animations or transitions, I would really recommend you checking other alternatives like [framer's motion](https://github.com/framer/motion) for react, or similar dedicated libraries. This post wil focus on pure CSS animations.
+In case you need complex animations or transitions, I would really recommend you checking other alternatives like [framer's motion](https://github.com/framer/motion) for react, or similar dedicated libraries. This post will focus on pure CSS animations.
 
 ## Perfomance on animations
 
