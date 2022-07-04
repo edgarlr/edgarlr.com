@@ -1,7 +1,7 @@
 // Meta Links
 export const SiteURL = 'https://edgarlr.com'
 export const DefaultImg =
-  'https://res.cloudinary.com/dliiwavlg/image/upload/v1615591735/edgarlr_og_dfrvam.jpg'
+  'https://res.cloudinary.com/dliiwavlg/image/upload/v1656947753/edgarlr_og_i0mzqy.jpg'
 
 // Social Links
 export const TwitterURL = 'https://twitter.com/edgarlr_'

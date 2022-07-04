@@ -4,7 +4,7 @@ const projects: TProject[] = [
     title: 'Metria',
     description: 'Documentation tools for modern workflows',
     tech:
-      'React, Next.js, Typescript, TurboRepo, CSS Modules, Tailwind, ProseMirror, Node.js, Prisma, UI component Library, Auth, Jest, Cypress, CI/CD Github Actions.',
+      'React, Next.js, Typescript, Node.js, Prisma, Zod, CSS Modules, Tailwind, ProseMirror, Jest, Cypress, CI/CD, Github Actions.',
     projectUrl: 'https://www.metria.so',
     links: [],
   },
