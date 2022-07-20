@@ -30,18 +30,9 @@ const Home = ({ posts }: Props) => {
       </section>
 
       <section>
-        {projects.map(
-          ({ slug, title, description, tech, projectUrl, links }: TProject) => (
-            <ProjectCard
-              key={slug}
-              title={title}
-              href={projectUrl}
-              description={description}
-              info={tech}
-              links={links}
-            />
-          )
-        )}
+        {projects.map((project: TProject) => (
+          <ProjectCard key={project.slug} {...project} />
+        ))}
       </section>
 
       <SectionContainer id="posts" title="Posts">
