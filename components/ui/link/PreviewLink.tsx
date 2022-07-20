@@ -19,7 +19,6 @@ type LinkPreviewProps = DetailedHTMLProps<
 export const LinkPreview: FC<LinkPreviewProps> = ({
   href,
   children,
-  className = '',
   previewSrc,
   ...rest
 }) => {
@@ -42,7 +41,7 @@ export const LinkPreview: FC<LinkPreviewProps> = ({
     <Tooltip.Provider delayDuration={75} skipDelayDuration={0}>
       <Tooltip.Root>
         <Tooltip.Trigger asChild>
-          <a href={href} className={className} {...rest}>
+          <a href={href} {...rest}>
             {children}
           </a>
         </Tooltip.Trigger>

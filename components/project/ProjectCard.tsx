@@ -1,8 +1,8 @@
-import s from './Project.module.css'
 import { ArrowUpRight } from '@components/icons/ArrowUpRight'
 import { ButtonList } from '@components/ui/button/ButtonList'
 import { ButtonTrigger } from '@components/ui/button/ButtonTrigger'
 import { LinkPreview } from '@components/ui/link'
+import s from './Project.module.css'
 
 const Project = ({
   title,
