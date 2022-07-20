@@ -12,7 +12,9 @@ const BottomNav = ({ prev, next }: Props) => {
   return (
     <div className={s.navContainer}>
       {prev ? (
-        <Link href={`/articles/${prev.slug}`}>
+        <Link
+          href={{ pathname: '/articles/[slug]', query: { slug: prev.slug } }}
+        >
           <div className={`${s.navButton} no-user-select`}>
             <div className={s.navHeader}>
               <ArrowLeft className={s.leftArrow} />
@@ -25,7 +27,9 @@ const BottomNav = ({ prev, next }: Props) => {
         <div />
       )}
       {next && (
-        <Link href={`/articles/${next.slug}`}>
+        <Link
+          href={{ pathname: '/articles/[slug]', query: { slug: next.slug } }}
+        >
           <div
             className={`${s.navButton} no-user-select`}
             style={{ textAlign: 'right' }}
