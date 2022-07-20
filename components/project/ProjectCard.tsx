@@ -4,7 +4,7 @@ import { ButtonTrigger } from '@components/ui/button/ButtonTrigger'
 import { LinkPreview } from '@components/ui/link'
 import s from './Project.module.css'
 
-const Project = ({
+const ProjectCard = ({
   title,
   projectUrl,
   description,
@@ -51,4 +51,4 @@ const Project = ({
   </div>
 )
 
-export default Project
+export default ProjectCard
