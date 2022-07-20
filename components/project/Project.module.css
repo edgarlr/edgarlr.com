@@ -1,10 +1,6 @@
-.root {
-  padding: 2rem 0;
+.card {
   display: grid;
-}
-
-.root:last-of-type {
-  border: none;
+  padding: 2rem 0;
 }
 
 .icon {
@@ -13,7 +9,7 @@
   vertical-align: middle;
 }
 
-.info,
+.tech,
 .icon {
   color: var(--fg-light);
   font-size: var(--font-size-xs);
@@ -32,19 +28,19 @@
   margin: 0;
 }
 
-.root a:hover .icon {
+.card a:hover .icon {
   color: var(--fg);
   display: inline-block;
 }
 
-.root a .icon svg {
+.card a .icon svg {
   margin-left: 0.15rem;
   vertical-align: middle;
   transform: translate(0);
   transition: transform 0.1s;
 }
 
-.root a:hover .icon svg {
+.card a:hover .icon svg {
   transform: translate(3px, -3px);
 }
 
@@ -84,7 +80,7 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .root {
+  .card {
     grid-template-columns: 1fr 3fr;
     align-items: center;
     gap: 1rem;

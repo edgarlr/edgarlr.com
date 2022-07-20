@@ -6,6 +6,7 @@ type TProject = {
   description: string
   tech: string
   projectUrl: string
+  previewUrl: string
   links: TProjectLink[]
 }
 

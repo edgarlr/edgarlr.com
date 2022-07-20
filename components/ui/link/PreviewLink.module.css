@@ -1,0 +1,48 @@
+.content {
+  border-radius: 8px;
+  padding: 6px 0;
+  line-height: 1;
+  background-color: white;
+  box-shadow: hsl(206 22% 7% / 25%) 0px 10px 38px -10px,
+    hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+}
+
+.arrow {
+  fill: white;
+}
+
+.image {
+  border-radius: 4px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.fallback {
+  min-width: 200px;
+  min-height: 125px;
+  background: white;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .content {
+    animation-duration: 200ms;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    animation-fill-mode: forwards;
+    will-change: transform, opacity;
+    transform-origin: var(--radix-tooltip-content-transform-origin);
+  }
+  .content[data-state='delayed-open'] {
+    animation-name: slideAndFade;
+  }
+}
+
+@keyframes slideAndFade {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.25);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+} ;

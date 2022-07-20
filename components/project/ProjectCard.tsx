@@ -1,31 +1,37 @@
-import s from './Project.module.css'
 import { ArrowUpRight } from '@components/icons/ArrowUpRight'
 import { ButtonList } from '@components/ui/button/ButtonList'
 import { ButtonTrigger } from '@components/ui/button/ButtonTrigger'
+import { LinkPreview } from '@components/ui/link'
+import s from './Project.module.css'
 
-type Props = {
-  title: string
-  href: string
-  description: string
-  info: string
-  links: TProjectLink[]
-}
-
-const Project = ({ title, href, description, info, links }: Props) => (
-  <div className={s.root}>
+const ProjectCard = ({
+  title,
+  projectUrl,
+  description,
+  tech,
+  links,
+  previewUrl,
+}: TProject) => (
+  <div className={s.card} style={{ display: 'grid', padding: '2rem 0' }}>
     <div className={s.projectTitle}>
-      <a href={href} target="_blank" className={s.projectLink} rel="noreferrer">
+      <LinkPreview
+        className={s.projectLink}
+        previewSrc={previewUrl}
+        href={projectUrl}
+        target="_blank"
+        rel="noreferrer noopener"
+      >
         <h2>
           {title}
           <span className={s.icon}>
             <ArrowUpRight width={18} height={18} />
           </span>
         </h2>
-      </a>
+      </LinkPreview>
     </div>
     <div className={s.projectBody}>
       <p className={s.description}>{description}</p>
-      <span className={s.info}>{info}</span>
+      <span className={s.tech}>{tech}</span>
       <ButtonList className={s.links}>
         {links.map(({ url, title }: TProjectLink) => (
           <ButtonTrigger
@@ -45,4 +51,4 @@ const Project = ({ title, href, description, info, links }: Props) => (
   </div>
 )
 
-export default Project
+export default ProjectCard

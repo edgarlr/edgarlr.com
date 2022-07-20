@@ -36,7 +36,10 @@ const ArticlesList = ({ posts, paginate }: Props) => {
         }
       >
         {posts.map(({ slug, date, title }, i) => (
-          <Link href={`/articles/${slug}`} key={slug}>
+          <Link
+            href={{ pathname: '/articles/[slug]', query: { slug } }}
+            key={slug}
+          >
             <a
               className={`${s.entry} no-user-select`}
               ref={(el) => {
