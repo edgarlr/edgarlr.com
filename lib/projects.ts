@@ -6,6 +6,7 @@ const projects: TProject[] = [
     tech:
       'React, Next.js, Typescript, Node.js, Prisma, Zod, CSS Modules, Tailwind, ProseMirror, Jest, Cypress, CI/CD, Github Actions.',
     projectUrl: 'https://www.metria.so',
+    previewUrl: '/images/metria-preview.png',
     links: [],
   },
   {
@@ -15,6 +16,7 @@ const projects: TProject[] = [
     tech:
       'React, Next.js, Typescript, StrapiCMS, PWA, CSS Modules, Tailwind, Workbox, IndexedDB, Google Analytics',
     projectUrl: 'https://magazine-starter.vercel.app',
+    previewUrl: '/images/magazine-preview.png',
     links: [
       {
         url: 'https://github.com/edgarlr/magazine',
@@ -33,7 +35,8 @@ const projects: TProject[] = [
     title: 'Podcasts',
     description: 'No auth needed podcasts web app',
     tech: 'React, Typescript, Next.js, SWR, Styled Jsx, Sentry',
-    projectUrl: 'https://podcast-app.now.sh',
+    projectUrl: 'https://podcast-app.vercel.app',
+    previewUrl: '/images/podcasts-preview.png',
     links: [
       {
         url: 'https://github.com/edgarlr/podcasts',
