@@ -12,7 +12,7 @@ const ProjectCard = ({
   links,
   previewUrl,
 }: TProject) => (
-  <div className={s.root}>
+  <div className={s.card}>
     <div className={s.projectTitle}>
       <LinkPreview
         className={s.projectLink}
