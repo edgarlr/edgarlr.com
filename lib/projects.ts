@@ -1,12 +1,12 @@
 const projects: TProject[] = [
   {
-    slug: 'metria',
-    title: 'Metria',
-    description: 'Documentation tools for modern workflows',
+    slug: 'lapsso',
+    title: 'Lapsso',
+    description: 'The place to store it all.',
     tech:
-      'React, Next.js, Typescript, Node.js, Prisma, Zod, CSS Modules, Tailwind, ProseMirror, Jest, Cypress, CI/CD, Github Actions.',
+      'React, Next.js, Typescript, Node.js, Prisma, tRPC, Zustand, Tailwind, ProseMirror, Websockets, ReactQuery Cypress, CI/CD, Github Actions.',
     projectUrl: 'https://www.metria.so',
-    previewUrl: '/images/metria-preview.png',
+    previewUrl: '/images/lapsso-preview.png',
     links: [],
   },
   {
