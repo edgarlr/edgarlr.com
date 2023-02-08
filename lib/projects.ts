@@ -5,7 +5,7 @@ const projects: TProject[] = [
     description: 'The place to store it all.',
     tech:
       'React, Next.js, Typescript, Node.js, Prisma, tRPC, Zustand, Tailwind, ProseMirror, Websockets, ReactQuery Cypress, CI/CD, Github Actions.',
-    projectUrl: 'https://www.metria.so',
+    projectUrl: 'https://www.laps.so',
     previewUrl: '/images/lapsso-preview.png',
     links: [],
   },
