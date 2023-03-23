@@ -58,7 +58,7 @@
   --overlay: #fafafa;
   --borders-color: #e3e5ea;
   --header-bg: rgba(255, 255, 255, 0.45);
-  --highlight: #00ffe0;
+  --highlight: #98d7c0;
 }
 
 /* Dark Theme Colors */
@@ -71,7 +71,7 @@
   --overlay: #242526;
   --borders-color: #2d3033;
   --header-bg: rgba(24, 26, 27, 0.45);
-  --highlight: #6100ff;
+  --highlight: #d3b8ff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -82,6 +82,6 @@
     --overlay: #1f2021;
     --borders-color: #313335;
     --header-bg: rgba(24, 26, 27, 0.45);
-    --highlight: #6100ff;
+    --highlight: #d3b8ff;
   }
 }
