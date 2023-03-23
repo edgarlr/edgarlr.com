@@ -15,10 +15,9 @@ const Home = ({ posts }: Props) => {
   return (
     <Layout showBackButton={false}>
       <section className="hero">
-        <h1>Edgar López</h1>
         <p>
-          Developer, sometimes designer. I&apos;m passionate about user
-          interfaces, interactions, design systems, and web experiences. I{' '}
+          Hey, I&apos;m Edgar. Developer and designer. Passionate about user
+          interfaces, interactions, and web experiences. I{' '}
           <a href="#posts" className="inlineLink">
             write about it
           </a>{' '}
