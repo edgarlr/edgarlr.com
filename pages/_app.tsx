@@ -7,6 +7,7 @@ import { useIsomorphicLayoutEffect } from '@lib/hooks/use-isomorphic-layout-effe
 import '@styles/global.css'
 import '@styles/chrome-bug.css'
 import { getSelectColor } from '@lib/select-colors'
+import { Analytics } from '@vercel/analytics/react'
 
 function MyApp({ Component, pageProps }: AppProps) {
   useIsomorphicLayoutEffect(() => {
@@ -23,6 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider>
       <Component {...pageProps} />
+      <Analytics />
     </ThemeProvider>
   )
 }
