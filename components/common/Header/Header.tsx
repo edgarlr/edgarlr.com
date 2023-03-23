@@ -11,14 +11,14 @@ type Props = {
 }
 
 const Header: React.FC<Props> = ({ title, isArticle, showBackButton }) => {
-  const [isShowed, setIsShowed] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    const offset = isArticle ? 180 : 320
+    const offset = isArticle ? 180 : 300
 
     const showText = () => {
-      if (window.scrollY > offset) return setIsShowed(true)
-      return setIsShowed(false)
+      if (window.scrollY > offset) return setIsVisible(true)
+      return setIsVisible(false)
     }
 
     window.addEventListener('scroll', showText, { passive: true })
@@ -32,11 +32,11 @@ const Header: React.FC<Props> = ({ title, isArticle, showBackButton }) => {
   })
 
   const titleClasses = cn(s.title, {
-    [s.show]: isShowed,
+    [s.show]: isVisible,
   })
 
   return (
-    <header className={headerClasses}>
+    <header data-visible={isVisible} className={headerClasses}>
       <div className={s.headerContent}>
         {showBackButton ? (
           <Link href="/">
@@ -50,6 +50,8 @@ const Header: React.FC<Props> = ({ title, isArticle, showBackButton }) => {
       </div>
 
       {/* backdrop support for other browsers */}
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* @ts-ignore */}
       <style jsx>{`
         header {
           -webkit-backdrop-filter: saturate(180%) blur(10px);
