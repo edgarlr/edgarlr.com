@@ -10,7 +10,7 @@
 ::selection {
   text-shadow: none;
   background: var(--highlight);
-  color: var(--fg);
+  color: var(--bg);
 }
 
 html {
@@ -41,7 +41,7 @@ h5,
 h6 {
   margin: 0.25rem 0;
   font-family: var(--font-sans);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-medium);
   line-height: var(--font-line-height-s);
 }
 

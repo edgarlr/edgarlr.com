@@ -68,27 +68,49 @@
   font-weight: var(--font-weight-bold);
   gap: var(--gap-half);
   opacity: 0.8;
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem 1rem;
   border: none;
   background-color: transparent;
   max-width: max-content;
   align-self: center;
   margin: 3rem auto 0;
   color: var(--fg);
+  position: relative;
+}
+
+.button::before {
+  position: absolute;
+  inset: 0;
+  content: ' ';
+  transition: var(--transition-short);
+  transform: scale(0.9);
+  border-radius: var(--border-radius);
+}
+
+.button:hover::before {
+  position: absolute;
+  inset: 0;
+  content: ' ';
+  transition: var(--transition-short);
+  transform: scale(0.95);
+  background-color: var(--fg-100);
+  transform: scale(1);
+}
+
+.button:active::before {
+  transform: scale(0.95);
 }
 
 .button:hover {
   text-decoration: none;
   opacity: 1;
-  border-radius: var(--border-radius);
-  background-color: var(--fg-100);
 }
 
 .title {
   margin: 0.25rem 0;
   font-size: var(--font-size-m);
   font-family: var(--font-sans);
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   line-height: var(--font-line-height-s);
   display: flex;
   justify-content: space-between;

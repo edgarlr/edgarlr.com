@@ -1,15 +1,39 @@
 .root {
-  background: var(--header-bg);
   font-weight: var(--font-weight-bold);
   padding: var(--gap-75) var(--gap-15) var(--gap-half);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  backdrop-filter: saturate(180%) blur(10px);
   display: flex;
   align-items: center;
   z-index: 1;
+}
+
+.root::before {
+  background: var(--header-bg);
+  position: absolute;
+  content: '';
+  inset: 0 0 -12px 0;
+  pointer-events: none;
+  user-select: none;
+  backdrop-filter: saturate(180%) blur(10px);
+  mask-image: linear-gradient(to bottom, black calc(100% - 15px), transparent);
+}
+
+.root::after {
+  border-bottom: 1px solid transparent;
+  transition: border-color 200ms ease;
+  background: transparent;
+  position: absolute;
+  content: '';
+  inset: auto 0 0 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.root[data-visible='true']::after {
+  border-color: var(--borders-color);
 }
 
 .title {
