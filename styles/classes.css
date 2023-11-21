@@ -50,37 +50,15 @@
 
 .inlineLink {
   position: relative;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 100ms;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--fg-200);
 }
 
 .inlineLink:hover {
-  text-decoration: none;
-}
-
-.inlineLink::after {
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  bottom: -2px;
-  left: 0;
-  transition: all 0.15s;
-  content: ' ';
-  background-color: var(--fg);
-  opacity: 0.35;
-}
-
-.inlineLink::before {
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -2px;
-  transition: all 0.15s;
-  content: ' ';
-  background-color: var(--fg);
-}
-
-.inlineLink:hover::before {
-  width: 100%;
+  text-decoration-color: var(--fg-light);
 }
 
 /* .projects-section {
