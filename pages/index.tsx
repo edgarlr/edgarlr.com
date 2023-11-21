@@ -17,7 +17,7 @@ const Home = ({ posts }: Props) => {
       <section className="hero">
         <p>
           Hey, I&apos;m Edgar. I build user interfaces, interactions,
-          animations, and other web related stuff. Sometimes I{' '}
+          animations, and other web-related stuff. Sometimes I{' '}
           <a href="#posts" className="inlineLink">
             write about it
           </a>
