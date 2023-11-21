@@ -1,5 +1,5 @@
 ---
-title: 'Carousel using React Hooks and CSS Scroll Snap'
+title: 'Carousel using React Hooks and CSS scroll snap'
 description: 'Carousel Component with scroll indicator and next and prev buttons'
 date: January 19, 2021
 ---
