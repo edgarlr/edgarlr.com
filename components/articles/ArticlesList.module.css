@@ -7,6 +7,7 @@
   height: var(--rootHeight);
   overflow: hidden;
   max-height: max-content;
+  padding-left: 0px;
 }
 
 .root::before {
@@ -15,7 +16,7 @@
   top: 2rem;
   bottom: 0.75rem;
   left: 2.5px;
-  width: 1px;
+  width: 0.5px;
   background-color: var(--fg-light);
 }
 
@@ -51,7 +52,7 @@
   border-radius: 9999999px;
   border: 1px solid var(--fg-light);
   background-color: var(--bg);
-  transition: background-color 0.15s;
+  transition: background-color 150ms, transform 150ms;
 }
 
 .entry:hover::before,
@@ -112,30 +113,22 @@
   font-family: var(--font-sans);
   line-height: var(--font-line-height-s);
   display: flex;
-  gap: 1rem;
-}
-
-.icon {
-  transition: all 0.15s;
-  padding-right: 0.25rem;
-  opacity: 0;
-  transform: translateX(-50%) scale(0.6);
-}
-
-.entry:hover .icon {
-  opacity: 1;
-  transform: translateX(0) scale(1);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 100ms;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--fg-200);
 }
 
 .entry:hover .title {
-  text-decoration: underline;
+  text-decoration-color: var(--fg-light);
 }
 
 .buttonWrapper {
   width: 100%;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   .entry {
     grid-template-columns: 3fr 9fr;
     gap: 1rem;
@@ -146,5 +139,10 @@
   }
   .entry::before {
     left: calc(9rem - 3px);
+  }
+
+  .entry:hover::before,
+  .entry:focus::before {
+    transform: translateY(-50%) scale(1.25);
   }
 }
