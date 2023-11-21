@@ -12,7 +12,7 @@ const projects: TProject[] = [
   {
     slug: 'magazine',
     title: 'Magazine',
-    description: 'Online Magazine Starter Kit',
+    description: 'Online magazine starter kit',
     tech:
       'React, Next.js, Typescript, StrapiCMS, PWA, CSS Modules, Tailwind, Workbox, IndexedDB, Google Analytics',
     projectUrl: 'https://magazine-starter.vercel.app',
