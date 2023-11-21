@@ -59,6 +59,8 @@
 
 .projectLink {
   position: relative;
+  width: fit-content;
+  margin-bottom: 0.5em;
 }
 
 .projectLink:hover {
@@ -68,15 +70,22 @@
 .projectLink::before {
   position: absolute;
   width: 0;
-  height: 2px;
-  bottom: -2px;
+  height: 1px;
+  bottom: -1px;
   transition: all 0.15s;
   content: ' ';
-  background-color: var(--fg);
+
+  background-color: var(--fg-light);
 }
 
 .projectLink:hover::before {
   width: 100%;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  margin: 0;
 }
 
 @media screen and (min-width: 1024px) {

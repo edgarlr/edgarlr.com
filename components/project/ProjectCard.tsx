@@ -13,22 +13,21 @@ const ProjectCard = ({
   previewUrl,
 }: TProject) => (
   <div className={s.card} style={{ display: 'grid', padding: '2rem 0' }}>
-    <div className={s.projectTitle}>
-      <LinkPreview
-        className={s.projectLink}
-        previewSrc={previewUrl}
-        href={projectUrl}
-        target="_blank"
-        rel="noreferrer noopener"
-      >
-        <h2>
-          {title}
-          <span className={s.icon}>
-            <ArrowUpRight width={18} height={18} />
-          </span>
-        </h2>
-      </LinkPreview>
-    </div>
+    <LinkPreview
+      className={s.projectLink}
+      previewSrc={previewUrl}
+      href={projectUrl}
+      target="_blank"
+      rel="noreferrer noopener"
+    >
+      <h2 className={s.title}>
+        {title}
+        <span className={s.icon}>
+          <ArrowUpRight width={16} height={16} />
+        </span>
+      </h2>
+    </LinkPreview>
+
     <div className={s.projectBody}>
       <p className={s.description}>{description}</p>
       <span className={s.tech}>{tech}</span>

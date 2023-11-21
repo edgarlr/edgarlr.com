@@ -1,5 +1,5 @@
 ---
-title: 'Tips at Getting Started with Strapi'
+title: 'Tips for getting started with Strapi'
 description: 'A few tips that will help you with Strapi'
 date: 12/13/2020
 ---

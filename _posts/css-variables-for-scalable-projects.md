@@ -1,6 +1,6 @@
 ---
-title: 'CSS Variables for Scalable Projects'
-description: 'An deep-dive on CSS Variables and how to use them for scalable workflows'
+title: 'CSS variables for scalable projects'
+description: 'An deep-dive on CSS variables and how to use them for scalable workflows'
 date: 11/09/2020
 ---
 

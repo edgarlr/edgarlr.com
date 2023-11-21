@@ -16,12 +16,16 @@ const Home = ({ posts }: Props) => {
     <Layout showBackButton={false}>
       <section className="hero">
         <p>
-          Hey, I&apos;m Edgar. Developer and designer. Passionate about user
-          interfaces, interactions, and web experiences. I{' '}
+          Hey, I&apos;m Edgar. I build user interfaces, interactions,
+          animations, and other web related stuff. Sometimes I{' '}
           <a href="#posts" className="inlineLink">
             write about it
-          </a>{' '}
-          once in a while.
+          </a>
+          . Design engineer at{' '}
+          <a href="https://planetscale.com" className="inlineLink">
+            PlanetScale
+          </a>
+          .
         </p>
         <div className="flex vertical-margin-half">
           <SocialLinks />

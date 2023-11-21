@@ -1,5 +1,5 @@
 ---
-title: 'Setting up Strapi with Cloudinary and to Heroku'
+title: 'Setting up Strapi with Cloudinary and Heroku'
 description: 'Setting up a production-ready workflow for Strapi CMS'
 date: 12/18/2020
 ---

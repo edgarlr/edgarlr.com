@@ -2,7 +2,7 @@ const projects: TProject[] = [
   {
     slug: 'lapsso',
     title: 'Lapsso',
-    description: 'The place to store it all.',
+    description: 'The place to store it all',
     tech:
       'React, Next.js, Typescript, Node.js, Prisma, tRPC, Zustand, Tailwind, ProseMirror, Websockets, ReactQuery Cypress, CI/CD, Github Actions.',
     projectUrl: 'https://www.laps.so',
@@ -12,7 +12,7 @@ const projects: TProject[] = [
   {
     slug: 'magazine',
     title: 'Magazine',
-    description: 'Online Magazine Starter Kit',
+    description: 'Online magazine starter kit',
     tech:
       'React, Next.js, Typescript, StrapiCMS, PWA, CSS Modules, Tailwind, Workbox, IndexedDB, Google Analytics',
     projectUrl: 'https://magazine-starter.vercel.app',

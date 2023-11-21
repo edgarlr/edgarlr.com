@@ -1,5 +1,5 @@
 ---
-title: 'Quick Fix to CSS Animation performance'
+title: 'Quick fix to CSS animations performance'
 description: 'Testing and improving CSS animation performance'
 date: '11/28/2020'
 ---

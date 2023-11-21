@@ -1,4 +1,3 @@
-import ArrowRight from '@components/icons/ArrowRight'
 import dateFormatter from '@lib/dateFormatter'
 import Link from 'next/link'
 import { useRef, useState } from 'react'
@@ -47,12 +46,7 @@ const ArticlesList = ({ posts, paginate }: Props) => {
               }}
             >
               <p className={` ${s.date}`}>{dateFormatter(date)}</p>
-              <p className={s.title}>
-                {title}{' '}
-                <span className={s.icon}>
-                  <ArrowRight width={18} height={18} />
-                </span>
-              </p>
+              <p className={s.title}>{title} </p>
             </a>
           </Link>
         ))}

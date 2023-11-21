@@ -50,7 +50,7 @@ export const ButtonList: FC<ButtonListProps> = ({
       width: `${buttonBoundingBox.width}px`,
       transform: `translate(${
         buttonBoundingBox.left - wrapperBoundingBox.left
-      }px)`,
+      }px) scale(${hoveredButton ? '1' : '0.95'})`,
     }
   }
   return (

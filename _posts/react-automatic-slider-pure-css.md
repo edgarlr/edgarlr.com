@@ -1,6 +1,6 @@
 ---
-title: 'Infinite automatic slider with React and Pure CSS'
-description: 'Infinite automatic slider with React and Pure CSS'
+title: 'Infinite automatic slider with React and pure CSS'
+description: 'Infinite automatic slider with React and pure CSS'
 date: January 07, 2021
 ---
 

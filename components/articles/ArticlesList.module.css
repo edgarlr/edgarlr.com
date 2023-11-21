@@ -7,6 +7,7 @@
   height: var(--rootHeight);
   overflow: hidden;
   max-height: max-content;
+  padding-left: 0px;
 }
 
 .root::before {
@@ -15,7 +16,7 @@
   top: 2rem;
   bottom: 0.75rem;
   left: 2.5px;
-  width: 1px;
+  width: 0.5px;
   background-color: var(--fg-light);
 }
 
@@ -51,7 +52,7 @@
   border-radius: 9999999px;
   border: 1px solid var(--fg-light);
   background-color: var(--bg);
-  transition: background-color 0.15s;
+  transition: background-color 150ms, transform 150ms;
 }
 
 .entry:hover::before,
@@ -65,7 +66,6 @@
   align-items: center;
   transition: var(--transition-short);
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-bold);
   gap: var(--gap-half);
   opacity: 0.8;
   padding: 0.5rem 1rem;
@@ -99,6 +99,7 @@
 
 .button:active::before {
   transform: scale(0.95);
+  border-radius: var(--border-radius-xs);
 }
 
 .button:hover {
@@ -110,31 +111,24 @@
   margin: 0.25rem 0;
   font-size: var(--font-size-m);
   font-family: var(--font-sans);
-  font-weight: var(--font-weight-medium);
   line-height: var(--font-line-height-s);
   display: flex;
-  justify-content: space-between;
-}
-
-.icon {
-  transform: translateX(0);
-  transition: all 0.15s;
-  padding-right: 0.25rem;
-}
-
-.entry:hover .icon {
-  transform: translateX(5px);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 100ms;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--fg-200);
 }
 
 .entry:hover .title {
-  text-decoration: underline;
+  text-decoration-color: var(--fg-light);
 }
 
 .buttonWrapper {
   width: 100%;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   .entry {
     grid-template-columns: 3fr 9fr;
     gap: 1rem;
@@ -145,5 +139,10 @@
   }
   .entry::before {
     left: calc(9rem - 3px);
+  }
+
+  .entry:hover::before,
+  .entry:focus::before {
+    transform: translateY(-50%) scale(1.25);
   }
 }
