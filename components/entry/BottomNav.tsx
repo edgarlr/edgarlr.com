@@ -17,7 +17,7 @@ const BottomNav = ({ prev, next }: Props) => {
         >
           <div className={`${s.navButton} no-user-select`}>
             <div className={s.navHeader}>
-              <ArrowLeft className={s.leftArrow} />
+              <ArrowLeft width={18} height={18} className={s.leftArrow} />
               <h4>Older</h4>
             </div>
             {prev.title}
@@ -36,7 +36,7 @@ const BottomNav = ({ prev, next }: Props) => {
           >
             <div className={s.navHeader} style={{ justifyContent: 'flex-end' }}>
               <h4>Newer</h4>
-              <ArrowRight className={s.rightArrow} />
+              <ArrowRight width={18} height={18} className={s.rightArrow} />
             </div>
             {next.title}
           </div>

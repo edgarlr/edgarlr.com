@@ -3,8 +3,7 @@ const projects: TProject[] = [
     slug: 'lapsso',
     title: 'Lapsso',
     description: 'The place to store it all',
-    tech:
-      'React, Next.js, Typescript, Node.js, Prisma, tRPC, Zustand, Tailwind, ProseMirror, Websockets, ReactQuery Cypress, CI/CD, Github Actions.',
+    tech: 'React, Next.js, Typescript, Node.js, Prisma, tRPC, Zustand, Tailwind, ProseMirror, Websockets, ReactQuery Cypress, CI/CD, Github Actions.',
     projectUrl: 'https://www.laps.so',
     previewUrl: '/images/lapsso-preview.png',
     links: [],
@@ -13,20 +12,19 @@ const projects: TProject[] = [
     slug: 'magazine',
     title: 'Magazine',
     description: 'Online magazine starter kit',
-    tech:
-      'React, Next.js, Typescript, StrapiCMS, PWA, CSS Modules, Tailwind, Workbox, IndexedDB, Google Analytics',
+    tech: 'React, Next.js, Typescript, StrapiCMS, PWA, CSS Modules, Tailwind, Workbox, IndexedDB, Google Analytics',
     projectUrl: 'https://magazine-starter.vercel.app',
     previewUrl: '/images/magazine-preview.png',
     links: [
       {
         url: 'https://github.com/edgarlr/magazine',
         icon: 'Github',
-        title: 'Github (Frontend)',
+        title: 'GitHub (Frontend)',
       },
       {
         url: 'https://github.com/edgarlr/magazine-api',
         icon: 'Github',
-        title: 'Github (CMS)',
+        title: 'GitHub (CMS)',
       },
     ],
   },
@@ -41,13 +39,12 @@ const projects: TProject[] = [
       {
         url: 'https://github.com/edgarlr/podcasts',
         icon: 'Github',
-        title: 'Github (Webapp)',
+        title: 'GitHub',
       },
       {
-        url:
-          'https://www.figma.com/community/file/945882274406205263/Podcasts---UI-Kit',
+        url: 'https://www.figma.com/community/file/945882274406205263/Podcasts---UI-Kit',
         icon: 'Figma',
-        title: 'Figma File',
+        title: 'Figma file',
       },
     ],
   },

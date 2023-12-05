@@ -1,4 +1,6 @@
-const ArrowRight = ({ ...props }) => {
+import { type ComponentProps } from 'react'
+
+const ArrowRight = ({ ...props }: ComponentProps<'svg'>) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
