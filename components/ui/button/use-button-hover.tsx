@@ -4,9 +4,8 @@ type ButtonListHoverContextProps = {
   repositionHover: MouseEventHandler<HTMLButtonElement>
 }
 
-export const ButtonListHoverContext = createContext<ButtonListHoverContextProps | null>(
-  null
-)
+export const ButtonListHoverContext =
+  createContext<ButtonListHoverContextProps | null>(null)
 
 export const useButtonListHover = () => {
   const context = useContext(ButtonListHoverContext)
