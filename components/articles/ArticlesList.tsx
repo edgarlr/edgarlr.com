@@ -45,7 +45,9 @@ const ArticlesList = ({ posts, paginate }: Props) => {
                 entryRefs.current[i] = el
               }}
             >
-              <p className={` ${s.date}`}>{dateFormatter(date)}</p>
+              <time dateTime={new Date(date).toJSON()} className={s.date}>
+                {dateFormatter(date)}
+              </time>
               <p className={s.title}>{title} </p>
             </a>
           </Link>

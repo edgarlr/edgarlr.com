@@ -12,7 +12,9 @@ const EntryHeader = ({ title, date }: Props) => {
     <div className={s.header}>
       <h2>{title}</h2>
       <div className={s.info}>
-        <div className={s.date}>{dateFormatter(date)}</div>
+        <time dateTime={new Date(date).toJSON()} className={s.date}>
+          {dateFormatter(date)}
+        </time>
       </div>
     </div>
   )
