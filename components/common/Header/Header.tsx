@@ -50,8 +50,6 @@ const Header: React.FC<Props> = ({ title, isArticle, showBackButton }) => {
       </div>
 
       {/* backdrop support for other browsers */}
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-      {/* @ts-ignore */}
       <style jsx>{`
         header {
           -webkit-backdrop-filter: saturate(180%) blur(10px);
