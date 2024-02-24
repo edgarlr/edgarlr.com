@@ -1,5 +1,3 @@
-declare module 'classnames'
-
 type TProject = {
   slug: string
   title: string
