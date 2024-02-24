@@ -39,10 +39,8 @@ const Header: React.FC<Props> = ({ title, isArticle, showBackButton }) => {
     <header data-visible={isVisible} className={headerClasses}>
       <div className={s.headerContent}>
         {showBackButton ? (
-          <Link href="/">
-            <a className={s.backButton}>
-              <ArrowLeft width={20} height={20} />
-            </a>
+          <Link href="/" className={s.backButton} aria-label="Go to home">
+            <ArrowLeft width={20} height={20} />
           </Link>
         ) : null}
 

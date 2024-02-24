@@ -20,7 +20,7 @@ const ArticlesList = ({ posts, paginate }: Props) => {
       return DEFAULT_ENTRY_HEIGHT * 3
 
     const heights = entryRefs.current.map(
-      (entry) => entry?.getBoundingClientRect().height ?? DEFAULT_ENTRY_HEIGHT
+      (entry) => entry?.getBoundingClientRect().height ?? DEFAULT_ENTRY_HEIGHT,
     )
 
     return heights.slice(0, loadedArticles).reduce((acc, curr) => acc + curr, 0)
@@ -38,18 +38,15 @@ const ArticlesList = ({ posts, paginate }: Props) => {
           <Link
             href={{ pathname: '/articles/[slug]', query: { slug } }}
             key={slug}
+            className={`${s.entry} no-user-select`}
+            ref={(el) => {
+              entryRefs.current[i] = el
+            }}
           >
-            <a
-              className={`${s.entry} no-user-select`}
-              ref={(el) => {
-                entryRefs.current[i] = el
-              }}
-            >
-              <time dateTime={new Date(date).toJSON()} className={s.date}>
-                {dateFormatter(date)}
-              </time>
-              <p className={s.title}>{title} </p>
-            </a>
+            <time dateTime={new Date(date).toJSON()} className={s.date}>
+              {dateFormatter(date)}
+            </time>
+            <p className={s.title}>{title} </p>
           </Link>
         ))}
       </div>

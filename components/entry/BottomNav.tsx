@@ -14,14 +14,13 @@ const BottomNav = ({ prev, next }: Props) => {
       {prev ? (
         <Link
           href={{ pathname: '/articles/[slug]', query: { slug: prev.slug } }}
+          className={`${s.navButton} no-user-select`}
         >
-          <div className={`${s.navButton} no-user-select`}>
-            <div className={s.navHeader}>
-              <ArrowLeft width={18} height={18} className={s.leftArrow} />
-              <h4>Older</h4>
-            </div>
-            {prev.title}
+          <div className={s.navHeader}>
+            <ArrowLeft width={18} height={18} className={s.leftArrow} />
+            <span>Older</span>
           </div>
+          {prev.title}
         </Link>
       ) : (
         <div />
@@ -29,17 +28,14 @@ const BottomNav = ({ prev, next }: Props) => {
       {next && (
         <Link
           href={{ pathname: '/articles/[slug]', query: { slug: next.slug } }}
+          className={`${s.navButton} no-user-select`}
+          style={{ textAlign: 'right' }}
         >
-          <div
-            className={`${s.navButton} no-user-select`}
-            style={{ textAlign: 'right' }}
-          >
-            <div className={s.navHeader} style={{ justifyContent: 'flex-end' }}>
-              <h4>Newer</h4>
-              <ArrowRight width={18} height={18} className={s.rightArrow} />
-            </div>
-            {next.title}
+          <div className={s.navHeader} style={{ justifyContent: 'flex-end' }}>
+            <span>Newer</span>
+            <ArrowRight width={18} height={18} className={s.rightArrow} />
           </div>
+          {next.title}
         </Link>
       )}
     </div>
