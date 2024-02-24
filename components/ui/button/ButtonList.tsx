@@ -8,7 +8,7 @@ import {
 } from 'react'
 import { ButtonListHoverContext } from './use-button-hover'
 import s from './Button.module.css'
-import cn from 'classnames'
+import cn from 'clsx'
 
 type ButtonListProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,

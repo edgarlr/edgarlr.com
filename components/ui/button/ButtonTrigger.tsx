@@ -1,5 +1,5 @@
 import { useButtonListHover } from './use-button-hover'
-import cn from 'classnames'
+import cn from 'clsx'
 import s from './Button.module.css'
 import { ArrowUpRight } from '@components/icons/ArrowUpRight'
 

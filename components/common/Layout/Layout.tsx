@@ -3,7 +3,7 @@ import { DefaultImg } from '@lib/constants'
 import { Footer } from '../Footer'
 import { Header } from '../Header'
 import s from './Layout.module.css'
-import cn from 'classnames'
+import cn from 'clsx'
 
 type Props = {
   children: React.ReactNode

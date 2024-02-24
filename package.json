@@ -37,7 +37,7 @@
   "dependencies": {
     "@radix-ui/react-tooltip": "^0.1.7",
     "@vercel/analytics": "^0.1.11",
-    "classnames": "^2.2.6",
+    "clsx": "^2.1.0",
     "gray-matter": "^4.0.2",
     "next": "12",
     "next-themes": "^0.2.0",
@@ -48,7 +48,6 @@
     "remark-html": "^13.0.1"
   },
   "devDependencies": {
-    "@types/classnames": "^2.3.1",
     "@types/node": "^14.14.3",
     "@types/react": "17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.6.0",

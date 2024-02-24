@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import s from './Header.module.css'
 import ArrowLeft from '@components/icons/ArrowLeft'
 import Link from 'next/link'
-import cn from 'classnames'
+import cn from 'clsx'
 
 type Props = {
   title: string
