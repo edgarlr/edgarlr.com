@@ -30,7 +30,8 @@
 @supports (font-variation-settings: normal) {
   @font-face {
     font-family: 'Inter';
-    src: url('/fonts/Inter.var.woff2') format('woff2 supports variations'),
+    src:
+      url('/fonts/Inter.var.woff2') format('woff2 supports variations'),
       url('/fonts/Inter.var.woff2') format('woff2-variations');
     font-weight: 100 1000;
     font-stretch: 25% 151%;
@@ -38,7 +39,8 @@
 
   @font-face {
     font-family: 'Newsreader';
-    src: url('/fonts/Newsreader-Italic.var.woff2')
+    src:
+      url('/fonts/Newsreader-Italic.var.woff2')
         format('woff2 supports variations'),
       url('/fonts/Newsreader-Italic.var.woff2') format('woff2-variations');
     font-weight: 100 1000;

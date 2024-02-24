@@ -24,10 +24,10 @@ export const ButtonList: FC<ButtonListProps> = ({
 }) => {
   const [hoveredButton, setHoveredButton] = useState<string | null>(null)
   const [buttonBoundingBox, setButtonBoundingBox] = useState<DOMRect | null>(
-    null
+    null,
   )
   const [wrapperBoundingBox, setWrapperBoundingBox] = useState<DOMRect | null>(
-    null
+    null,
   )
   const [isHoveredFromNull, setIsHoveredFromNull] = useState<boolean>(true)
 

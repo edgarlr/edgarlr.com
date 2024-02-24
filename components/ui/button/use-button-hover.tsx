@@ -12,7 +12,7 @@ export const useButtonListHover = () => {
 
   if (!context) {
     throw new Error(
-      `ButtonListHightlight compound components cannot be rendered outside the ButtonList component`
+      `ButtonListHightlight compound components cannot be rendered outside the ButtonList component`,
     )
   }
 

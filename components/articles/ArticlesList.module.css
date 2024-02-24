@@ -52,7 +52,9 @@
   border-radius: 9999999px;
   border: 1px solid var(--fg-light);
   background-color: var(--bg);
-  transition: background-color 150ms, transform 150ms;
+  transition:
+    background-color 150ms,
+    transform 150ms;
 }
 
 .entry:hover::before,

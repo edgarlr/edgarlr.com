@@ -10,17 +10,10 @@
     "dev:inspect": "NODE_OPTIONS='--inspect' next",
     "build": "next build",
     "start": "next start",
+    "lint": "next lint",
     "type-check": "tsc --pretty --noEmit",
-    "lint": "eslint . --ext .ts --ext .tsx --ext .js",
-    "lint:fix": "eslint . --ext .ts --ext .tsx --ext .js --fix",
     "format": "prettier . --write",
     "prepare": "husky"
-  },
-  "lint-staged": {
-    "*.@(ts|tsx)": [
-      "yarn lint",
-      "yarn format"
-    ]
   },
   "repository": {
     "type": "git",
@@ -50,15 +43,9 @@
   "devDependencies": {
     "@types/node": "^20.11.20",
     "@types/react": "^18.2.58",
-    "@typescript-eslint/eslint-plugin": "^7.0.2",
-    "@typescript-eslint/parser": "^7.0.2",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.1.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.0",
     "prettier": "^3.2.5",
