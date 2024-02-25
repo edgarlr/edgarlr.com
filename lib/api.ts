@@ -14,6 +14,7 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   const fileContent = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContent)
 
+
   type Items = {
     [key: string]: string
   }
@@ -37,16 +38,7 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
 
 export function getAllPosts(fields: string[] = []) {
   const slugs = getPostsSlugs()
-  const posts = slugs
+  return slugs
     .map((slug) => getPostBySlug(slug, fields))
     .sort((post1, post2) => (post1.date < post2.date ? 1 : -1))
-  return posts
-}
-
-export function getProjects() {
-  const fileDir = join(process.cwd(), 'lib/projects.json')
-  const content = fs.readFileSync(fileDir, 'utf-8')
-  const response = JSON.parse(content)
-
-  return response
 }

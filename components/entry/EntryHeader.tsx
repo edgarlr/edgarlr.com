@@ -4,7 +4,6 @@ import s from './EntryHeader.module.css'
 type Props = {
   title: string
   date: string
-  author: string
 }
 
 const EntryHeader = ({ title, date }: Props) => {

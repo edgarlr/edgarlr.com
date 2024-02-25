@@ -1,3 +1,4 @@
+"use client"
 import { useButtonListHover } from './use-button-hover'
 import cn from 'clsx'
 import s from './Button.module.css'

@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState } from 'react'
 import s from './Header.module.css'
 import ArrowLeft from '@components/icons/ArrowLeft'
@@ -6,11 +7,11 @@ import cn from 'clsx'
 
 type Props = {
   title: string
-  isArticle: boolean
-  showBackButton: boolean
+  isArticle?: boolean
+  showBackButton?: boolean
 }
 
-const Header: React.FC<Props> = ({ title, isArticle, showBackButton }) => {
+const Header: React.FC<Props> = ({ title, isArticle = false, showBackButton = false }) => {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {

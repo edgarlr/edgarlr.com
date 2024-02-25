@@ -1,3 +1,4 @@
+"use client"
 import {
   DetailedHTMLProps,
   FC,
@@ -48,9 +49,8 @@ export const ButtonList: FC<ButtonListProps> = ({
       transitionDuration: isHoveredFromNull ? '0ms' : '150ms',
       opacity: hoveredButton ? 1 : 0,
       width: `${buttonBoundingBox.width}px`,
-      transform: `translate(${
-        buttonBoundingBox.left - wrapperBoundingBox.left
-      }px) scale(${hoveredButton ? '1' : '0.95'})`,
+      transform: `translate(${buttonBoundingBox.left - wrapperBoundingBox.left
+        }px) scale(${hoveredButton ? '1' : '0.95'})`,
     }
   }
   return (

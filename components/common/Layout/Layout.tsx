@@ -1,5 +1,5 @@
 import Head from '@components/common/Head'
-import { DefaultImg } from '@lib/constants'
+import { SocialCard } from '@lib/constants'
 import { Footer } from '../Footer'
 import { Header } from '../Header'
 import s from './Layout.module.css'
@@ -21,7 +21,7 @@ const Layout = ({
   children,
   title,
   description = "Hey, I'm Edgar! Frontend developer, sometimes designer. I just started writting.",
-  image = DefaultImg,
+  image = SocialCard,
   type = 'website',
   date,
   showBackButton = true,

@@ -1,3 +1,4 @@
+"use client"
 import s from './ThemeSelect.module.css'
 import { useTheme } from 'next-themes'
 import ChevronDown from '@components/icons/ChevronDown'

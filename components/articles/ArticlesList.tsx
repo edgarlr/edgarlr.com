@@ -1,3 +1,4 @@
+"use client"
 import dateFormatter from '@lib/dateFormatter'
 import Link from 'next/link'
 import { useRef, useState } from 'react'
@@ -36,7 +37,7 @@ const ArticlesList = ({ posts, paginate }: Props) => {
       >
         {posts.map(({ slug, date, title }, i) => (
           <Link
-            href={{ pathname: '/articles/[slug]', query: { slug } }}
+            href={`/articles/${slug}`}
             key={slug}
             className={`${s.entry} no-user-select`}
             ref={(el) => {
