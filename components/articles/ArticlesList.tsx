@@ -39,7 +39,7 @@ const ArticlesList = ({ posts, paginate }: Props) => {
           <Link
             href={`/articles/${slug}`}
             key={slug}
-            className={`${s.entry} no-user-select`}
+            className={`${s.entry} select-none`}
             ref={(el) => {
               entryRefs.current[i] = el
             }}

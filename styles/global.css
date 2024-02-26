@@ -1,5 +1,4 @@
 @import './variables.css';
-@import './classes.css';
 @import './markdown.css';
 
 * {
@@ -10,6 +9,10 @@
   text-shadow: none;
   background: var(--highlight);
   color: var(--bg);
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {

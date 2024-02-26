@@ -20,7 +20,7 @@ export default async function Page() {
             animations, and other web-related stuff.
             <br />
             Design engineer at{' '}
-            <a href="https://planetscale.com" className="inlineLink">
+            <a href="https://planetscale.com" className="relative underline transition-colors decoration-1 underline-offset-2 decoration-black/20 hover:decoration-black/60">
               PlanetScale
             </a>
             .
