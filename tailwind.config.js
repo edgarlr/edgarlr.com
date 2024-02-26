@@ -7,13 +7,17 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
+      textColor: {
         primary: '#131414',
-        secondary: '#717272'
+        secondary: '#717272',
       },
       fontFamily: {
         sans: ['var(--font-inter)'],
         serif: ['var(--font-serif)'],
+      },
+      textDecorationColor: {
+        primary: '#717272',
+        secondary: '#D0D0D0',
       }
     },
   },

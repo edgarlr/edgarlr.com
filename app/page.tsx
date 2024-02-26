@@ -1,5 +1,5 @@
 
-import ArticlesList from "@components/articles/ArticlesList";
+import { PostsList } from "@components/posts-list";
 import { Header } from "@components/common/Header";
 import { ProjectCard } from "@components/project";
 import { SocialLinks } from "@components/social-links";
@@ -8,7 +8,7 @@ import { getAllPosts } from "@lib/api";
 import projects from "@lib/projects";
 
 export default async function Page() {
-  const posts = getAllPosts(['slug', 'title', 'date'])
+
 
   return (
     <>
@@ -37,7 +37,7 @@ export default async function Page() {
         </section>
 
         <SectionContainer id="posts" title="Posts">
-          <ArticlesList posts={posts as TPost[]} paginate />
+          <PostsList />
         </SectionContainer>
       </main>
     </>

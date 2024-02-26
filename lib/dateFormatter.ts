@@ -1,4 +1,4 @@
-export default function dateFormatter(dateToformat: string) {
+export default function dateFormatter(dateToformat: string, { month }: { month: 'short' | 'long' }) {
   const date = new Date(dateToformat)
   const year = date.getFullYear()
 
@@ -6,13 +6,13 @@ export default function dateFormatter(dateToformat: string) {
 
   if (year < actualYear)
     return date.toLocaleDateString('default', {
-      month: 'short',
+      month,
       day: 'numeric',
       year: 'numeric',
     })
 
   return date.toLocaleDateString('default', {
-    month: 'short',
+    month,
     day: 'numeric',
   })
 }
