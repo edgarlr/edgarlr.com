@@ -1,6 +1,6 @@
 import { ArrowUpRight } from '@components/icons/ArrowUpRight'
-import { ButtonList } from '@components/ui/button/ButtonList'
-import { ButtonTrigger } from '@components/ui/button/ButtonTrigger'
+// import { ButtonList } from '@components/ui/button/ButtonList'
+// import { ButtonTrigger } from '@components/ui/button/ButtonTrigger'
 import { LinkPreview } from '@components/ui/link'
 import s from './Project.module.css'
 
@@ -31,7 +31,7 @@ const ProjectCard = ({
     <div className={s.projectBody}>
       <p className={s.description}>{description}</p>
       <span className={s.tech}>{tech}</span>
-      <ButtonList className={s.links}>
+      {/* <ButtonList className={s.links}>
         {links.map(({ url, title }: TProjectLink) => (
           <ButtonTrigger
             key={url}
@@ -45,7 +45,7 @@ const ProjectCard = ({
             {title}
           </ButtonTrigger>
         ))}
-      </ButtonList>
+      </ButtonList> */}
     </div>
   </div>
 )

@@ -6,7 +6,7 @@ import { Footer } from '@components/footer'
 import { TwitterUsername } from '@lib/constants'
 import { Analytics } from '@vercel/analytics/react'
 import { Metadata } from 'next'
-import { RandomSelectColor } from '@components/common/random-select-color'
+import { RandomSelectColor } from '@components/random-select-color'
 import { Inter, Newsreader } from 'next/font/google';
 
 const title = "Edgar López"
