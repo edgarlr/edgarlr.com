@@ -3,13 +3,9 @@ import { PostsList } from "@components/posts-list";
 import { Header } from "@components/common/Header";
 import { ProjectCard } from "@components/project";
 import { SocialLinks } from "@components/social-links";
-import { SectionContainer } from "@components/ui/SectionContainer";
-import { getAllPosts } from "@lib/api";
 import projects from "@lib/projects";
 
 export default async function Page() {
-
-
   return (
     <>
       <Header title="Edgar López" />
@@ -30,15 +26,16 @@ export default async function Page() {
           </div>
         </section>
 
-        <section>
+        <section id="projects">
           {projects.map((project: TProject) => (
             <ProjectCard key={project.slug} {...project} />
           ))}
         </section>
 
-        <SectionContainer id="posts" title="Posts">
+        <section className="w-full mx-auto mt-24 mb-28" id="posts" >
+          <h2>Posts</h2>
           <PostsList />
-        </SectionContainer>
+        </section>
       </main>
     </>
   )

@@ -1,5 +1,5 @@
 
-import dateFormatter from '@lib/dateFormatter'
+import dateFormatter from '@lib/date'
 import Link from 'next/link'
 import { getAllPosts } from '@lib/api'
 
