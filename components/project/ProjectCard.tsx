@@ -7,7 +7,6 @@ const ProjectCard = ({
   projectUrl,
   description,
   tech,
-  links,
   previewUrl,
 }: TProject) => (
   <div className={s.card} style={{ display: 'grid', padding: '2rem 0' }}>

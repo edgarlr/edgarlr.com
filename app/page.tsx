@@ -33,7 +33,7 @@ export default async function Page() {
         </section>
 
         <section className="w-full mx-auto mt-24 mb-28" id="posts" >
-          <h2>Posts</h2>
+          <h2 className="text-sm font-medium mb-6">Posts</h2>
           <PostsList />
         </section>
       </main>
