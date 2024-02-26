@@ -5,4 +5,3 @@
 a, button, button[role='tab'], div[role='tabpanel'], div[role='button'], select {
   @apply rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-300 focus-visible:ring-offset-1 focus-visible:ring-offset-purple-400 focus-visible:dark:ring-purple-800 focus-visible:dark:ring-offset-purple-700;
 }
-          

@@ -1,4 +1,5 @@
-import { Header } from "@components/common/Header"
+import { Header } from "@components/header"
+import { HeaderScrollSpy } from "@components/header-scroll-spy"
 import ArrowLeft from "@components/icons/ArrowLeft"
 import ArrowRight from "@components/icons/ArrowRight"
 import { getAllPosts, getPostBySlug } from "@lib/api"
@@ -83,11 +84,12 @@ export default async function BlogPost({ params }: { params: { slug: string } })
 
   return (
     <>
-      <Header title={post.title} showBackButton isArticle />
+      <Header title={post.title} showBackButton />
 
-      <main className="w-full mx-auto min-h-screen max-md:px-6 pb-12 max-w-screen-md ">
+      <main className="w-full mx-auto min-h-screen max-lg:px-4 pb-12 max-w-screen-md ">
         <article>
-          <header className=" mt-24 mb-8 md:mt-32">
+          <header className="mt-24 mb-8 md:mt-32">
+            <HeaderScrollSpy />
             <h1 className='text-lg'>{post.title}</h1>
             <time dateTime={new Date(post.date).toISOString()} className="text-secondary text-sm">
               {dateFormatter(post.date, {

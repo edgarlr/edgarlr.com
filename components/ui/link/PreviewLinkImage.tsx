@@ -25,6 +25,7 @@ export const PreviewLinkImage = ({
       />
     )
   }
+
   if (previewData) {
     return (
       <img
