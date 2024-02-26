@@ -1,5 +1,5 @@
 // Meta Links
-export const SiteURL = 'https://edgarlr.com'
+export const SiteURL = 'https://www.edgarlr.com'
 export const SocialCard =
   'https://res.cloudinary.com/dliiwavlg/image/upload/v1656947753/edgarlr_og_i0mzqy.jpg'
 

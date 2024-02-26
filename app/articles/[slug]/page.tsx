@@ -2,6 +2,7 @@ import { Header } from "@components/common/Header"
 import ArrowLeft from "@components/icons/ArrowLeft"
 import ArrowRight from "@components/icons/ArrowRight"
 import { getAllPosts, getPostBySlug } from "@lib/api"
+import { SiteURL } from "@lib/constants"
 import dateFormatter from "@lib/date"
 import markdownToHtml from "@lib/markdown"
 import { Metadata } from "next"
@@ -14,7 +15,6 @@ export const generateStaticParams = () => {
     params: { slug: post.slug }
   }))
 }
-
 
 export const generateMetadata = ({ params }: { params: { slug: string } }): Metadata => {
   const post = getPostBySlug(params.slug, [
@@ -42,7 +42,7 @@ export const generateMetadata = ({ params }: { params: { slug: string } }): Meta
       title: `${post.title} — Edgar López`,
       description: post.description,
       // images: generateOgImage({ title })
-      // url: `${env.NEXT_PUBLIC_MARKETING_APP_URL}/blog/${params.slug}`,
+      url: `${SiteURL}/articles/${params.slug}`,
       type: 'article'
     },
     authors: [{
@@ -51,7 +51,7 @@ export const generateMetadata = ({ params }: { params: { slug: string } }): Meta
     }
     ],
     alternates: {
-      // canonical: `${env.NEXT_PUBLIC_MARKETING_APP_URL}/blog/${params.slug}`
+      canonical: `${SiteURL}/articles/${params.slug}`
     }
   }
 }
