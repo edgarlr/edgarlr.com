@@ -45,7 +45,7 @@ const Header: React.FC<Props> = ({ title, isArticle = false, showBackButton = fa
           </Link>
         ) : null}
 
-        <div className={titleClasses}>{title}</div>
+        <div className={cn(titleClasses, "font-serif")}>{title}</div>
       </div>
 
       {/* backdrop support for other browsers */}
