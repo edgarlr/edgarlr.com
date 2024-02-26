@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       colors: {
         primary: '#131414',
+        secondary: '#717272'
       },
       fontFamily: {
         sans: ['var(--font-inter)'],

@@ -2,21 +2,19 @@
 import { ButtonList, ButtonTrigger } from '@components/ui/button'
 import { FigmaURL, GithubURL, TwitterURL, LinkedinURL } from '@lib/constants'
 import { ElementType } from 'react'
-import s from './SocialLinks.module.css'
 
-const SocialLinks = () => {
+export const SocialLinks = () => {
   const getButtonTriggerProps = (href: string) => ({
     as: 'a' as ElementType<any>,
     target: '_blank',
     rel: 'noreferrer noopener',
     id: href,
     href,
-    className: s.button,
     withIcon: true,
   })
 
   return (
-    <div className={s.root}>
+    <div className="flex -mx-2 gap-4">
       <ButtonList>
         <ButtonTrigger {...getButtonTriggerProps(TwitterURL)}>
           Twitter
@@ -35,4 +33,3 @@ const SocialLinks = () => {
   )
 }
 
-export default SocialLinks

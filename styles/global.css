@@ -11,9 +11,6 @@
   color: var(--bg);
 }
 
-button, a {
-  -webkit-tap-highlight-color: transparent;
-}
 
 html {
   line-height: var(--font-line-height-m);
@@ -84,16 +81,7 @@ select {
   -webkit-tap-highlight-color: transparent;
 }
 
-select {
-  outline: none;
-  background: transparent;
-  border: none;
-  display: block;
-  font-size: var(--font-size-xs);
-  border: var(--border);
-  border-radius: var(--border-radius);
-  transition: var(--transition-short);
-}
+
 
 img {
   max-width: 100%;

@@ -1,8 +1,8 @@
-import SocialLinks from "@components/SocialLinks/SocialLinks";
+
 import ArticlesList from "@components/articles/ArticlesList";
-import { Footer } from "@components/common/Footer";
 import { Header } from "@components/common/Header";
 import { ProjectCard } from "@components/project";
+import { SocialLinks } from "@components/social-links";
 import { SectionContainer } from "@components/ui/SectionContainer";
 import { getAllPosts } from "@lib/api";
 import projects from "@lib/projects";

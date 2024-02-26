@@ -2,7 +2,7 @@ import { Providers } from '@components/providers'
 import './globals.css'
 import '@styles/global.css'
 
-import { Footer } from '@components/common/Footer'
+import { Footer } from '@components/footer'
 import { TwitterUsername } from '@lib/constants'
 import { Analytics } from '@vercel/analytics/react'
 import { Metadata } from 'next'

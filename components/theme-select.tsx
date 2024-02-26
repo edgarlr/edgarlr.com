@@ -1,14 +1,15 @@
 "use client"
-import s from './ThemeSelect.module.css'
+
 import { useTheme } from 'next-themes'
 import ChevronDown from '@components/icons/ChevronDown'
 
-const ThemeSelect = () => {
+
+export const ThemeSelect = () => {
   const { theme, setTheme } = useTheme()
   return (
-    <label className={s.root}>
+    <label className="relative rounded-md text-secondary border transition-colors hover:text-primary hover:bg-gray-50 ">
       <select
-        className={s.select}
+        className='bg-transparent border-none w-24 appearance-none relative py-1 px-2 text-sm cursor-default'
         value={theme}
         onChange={(e) => setTheme(e.target.value)}
         id="themeSelect"
@@ -18,11 +19,9 @@ const ThemeSelect = () => {
         <option value="dark">Dark</option>
         <option value="light">Light</option>
       </select>
-      <span className={s.icon}>
+      <span className='absolute flex justify-center items-center pointer-events-none right-2 top-0 bottom-0'>
         <ChevronDown width="14" height="14" />
       </span>
     </label>
   )
 }
-
-export default ThemeSelect
