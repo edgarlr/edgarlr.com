@@ -8,11 +8,6 @@
   --font-size-xll: 2rem;
 
   /* Font Weight */
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-bold: 700;
-
-  /* Font Weight */
   --font-line-height-s: 1.25;
   --font-line-height-m: 1.5;
   --font-line-height-l: 1.75;
@@ -28,19 +23,12 @@
   --gap-triple: 3rem;
   --section-space: 6rem 0 7.5rem;
 
-  /* transitions */
-  --transition-short: 0.15s;
-  --transition-long: 0.3s;
-
   /* Borders */
   --border-radius: 5px;
   --border-radius-xs: 3px;
   --border: 1px solid var(--borders-color);
   --border-hover: 1px solid var(--fg);
   --border-hover-light: 1px solid var(--fg-light);
-
-  /* Effects */
-  --hover-opacity: 0.3;
 
   /* Light Theme Colors */
   --bg: #ffffff;

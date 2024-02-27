@@ -1,9 +1,7 @@
 
 import { PostsList } from "@components/posts-list";
 import { Header } from "@components/header";
-import { ProjectCard } from "@components/project";
 import { SocialLinks } from "@components/social-links";
-import projects from "@lib/projects";
 import { HeaderScrollSpy } from "@components/header-scroll-spy";
 import { ProjectsList } from "@components/projects-list";
 import { PreviewLink } from "@components/preview-link";
