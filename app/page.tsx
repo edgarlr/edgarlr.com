@@ -6,6 +6,7 @@ import { SocialLinks } from "@components/social-links";
 import projects from "@lib/projects";
 import { HeaderScrollSpy } from "@components/header-scroll-spy";
 import { ProjectsList } from "@components/projects-list";
+import { PreviewLink } from "@components/preview-link";
 
 export default async function Page() {
   return (
@@ -20,9 +21,11 @@ export default async function Page() {
             animations, and other <span className="whitespace-nowrap">web-related</span> stuff.{' '}
             <br className="hidden md:block" />
             Design engineer at{' '}
-            <a href="https://planetscale.com" className="relative underline transition-colors decoration-1 underline-offset-2 decoration-black/20 hover:decoration-black/60">
-              PlanetScale
-            </a>
+            <PreviewLink
+              title="PlanetScale"
+              href="https://planetscale.com"
+              src="/assets/projects/planetscale-homepage.png"
+            />
             .
           </p>
           <div className="flex mt-2">

@@ -1,18 +1,13 @@
-export default function dateFormatter(dateToformat: string, { month }: { month: 'short' | 'long' }) {
+export default function dateFormatter(dateToformat: string, options?: Intl.DateTimeFormatOptions) {
   const date = new Date(dateToformat)
   const year = date.getFullYear()
 
   const actualYear = new Date().getFullYear()
 
-  if (year < actualYear)
-    return date.toLocaleDateString('default', {
-      month,
-      day: 'numeric',
-      year: 'numeric',
-    })
+
 
   return date.toLocaleDateString('default', {
-    month,
-    day: 'numeric',
+    ...options,
+    year: year < actualYear ? 'numeric' : undefined
   })
 }

@@ -93,7 +93,9 @@ export default async function BlogPost({ params }: { params: { slug: string } })
             <h1 className='text-lg font-medium'>{post.title}</h1>
             <time dateTime={new Date(post.date).toISOString()} className="text-secondary text-sm">
               {dateFormatter(post.date, {
-                month: 'long'
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric'
               })}
             </time>
           </header>

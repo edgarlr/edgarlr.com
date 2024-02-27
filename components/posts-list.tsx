@@ -11,7 +11,8 @@ export const PostsList = () => {
         <li key={slug} className="flex flex-col md:grid md:grid-cols-[3fr_9fr] my-0 items-baseline">
           <time dateTime={new Date(date).toISOString()} className="text-xs text-secondary">
             {dateFormatter(date, {
-              month: 'short'
+              month: 'short',
+              day: 'numeric',
             })}
           </time>
           <Link

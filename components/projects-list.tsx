@@ -16,7 +16,14 @@ export const ProjectsList = () => {
         title="Landing page"
         company="Lapsso"
         href="https://www.laps.so"
-        src="/assets/projects/planetscale-homepage.png"
+        src="/assets/projects/lapsso-landing.png"
+      />
+      <ProjectLink
+        date="10/10/2023"
+        title="Remote pay strategy guide"
+        company="Plane"
+        href="https://plane.com/compensation-guide"
+        src="/assets/projects/plane-compensation-guide.png"
       />
     </ul>
   )
@@ -34,7 +41,7 @@ const ProjectLink = ({ date, href, title, company, src }: ProjectLink) => {
   return (
     <li className="flex flex-col md:grid md:grid-cols-[3fr_9fr] my-0 items-end">
       <time dateTime={new Date(date).toISOString()} className="text-xs text-secondary">
-        {dateFormatter(date, { month: 'long' })}
+        {dateFormatter(date, { month: 'long', year: 'numeric' })}
       </time>
       <div className="flex flex-col">
         <span className="text-xs text-secondary">{company}</span>
