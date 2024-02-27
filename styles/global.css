@@ -1,33 +1,13 @@
 @import './variables.css';
 @import './markdown.css';
 
-* {
-  box-sizing: border-box;
-}
-
 ::selection {
   text-shadow: none;
   background: var(--highlight);
   color: var(--bg);
 }
 
-html {
-  line-height: var(--font-line-height-m);
-}
-
-html,
 body {
-  padding: 0;
-  margin: 0;
-  background: var(--bg);
-  color: var(--fg);
-  font-size: var(--font-size-s);
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-}
-
-body {
-  min-height: 100vh;
   font-family: var(--font-sans);
 }
 

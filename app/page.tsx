@@ -5,6 +5,7 @@ import { ProjectCard } from "@components/project";
 import { SocialLinks } from "@components/social-links";
 import projects from "@lib/projects";
 import { HeaderScrollSpy } from "@components/header-scroll-spy";
+import { ProjectsList } from "@components/projects-list";
 
 export default async function Page() {
   return (
@@ -30,9 +31,7 @@ export default async function Page() {
         </section>
 
         <section id="projects">
-          {projects.map((project: TProject) => (
-            <ProjectCard key={project.slug} {...project} />
-          ))}
+          <ProjectsList />
         </section>
 
         <section className="w-full mx-auto mt-24 mb-28" id="posts" >
