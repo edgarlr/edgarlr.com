@@ -90,7 +90,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         <article>
           <header className="mt-24 mb-8 md:mt-32">
             <HeaderScrollSpy />
-            <h1 className='text-lg'>{post.title}</h1>
+            <h1 className='text-lg font-medium'>{post.title}</h1>
             <time dateTime={new Date(post.date).toISOString()} className="text-secondary text-sm">
               {dateFormatter(post.date, {
                 month: 'long'

@@ -16,7 +16,7 @@ export const Header = ({ title, showBackButton = false }: Props) => (
       className='w-full max-lg:px-4 flex flex-nowrap items-center max-w-screen-md mx-auto'
     >
       {showBackButton && (
-        <div className='pr-4 h-5 border-r mr-4 lg:-ml-[34.5px]'>
+        <div className='pr-4 h-5 border-r mr-4 lg:-ml-[34px]'>
           <Link href="/" className="group/back inline-block  text-secondary transition-colors hover:text-primary focus-visible:text-primary" aria-label="Go to home">
             <ArrowLeft width={18} height={18} className='transition-transform group-hover/back:-translate-x-1.5' />
           </Link>
