@@ -3,7 +3,7 @@ import { PreviewLink } from "./preview-link"
 
 export const ProjectsList = () => {
   return (
-    <ul className='flex flex-col gap-8'>
+    <ul className='flex flex-col gap-12'>
       <ProjectLink
         date="02/02/2024"
         title="PlanetScale Homepage"

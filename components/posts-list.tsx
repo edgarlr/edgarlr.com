@@ -6,7 +6,7 @@ import { getAllPosts } from '@lib/api'
 export const PostsList = () => {
   const posts = getAllPosts(['slug', 'title', 'date'])
   return (
-    <ul className='flex flex-col gap-8'>
+    <ul className='flex flex-col gap-12'>
       {posts.map(({ slug, date, title }) => (
         <li key={slug} className="flex flex-col md:grid md:grid-cols-[3fr_9fr] my-0 items-baseline">
           <time dateTime={new Date(date).toISOString()} className="text-xs text-secondary">
