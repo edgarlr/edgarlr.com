@@ -55,7 +55,7 @@ const serif = Newsreader({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${serif.variable}`}>
-      <body>
+      <body className='antialiased'>
         <Providers>
           {children}
           <Footer />
