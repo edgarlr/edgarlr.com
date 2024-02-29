@@ -1,4 +1,3 @@
-import dateFormatter from "@lib/date"
 import { PreviewLink } from "./preview-link"
 import cn from 'clsx'
 
@@ -81,7 +80,8 @@ type ProjectLink = {
   className?: string
 }
 
-const ProjectLink = ({ date, href, title, company, src, className }: ProjectLink) => {
+const ProjectLink = ({ date: dateProp, href, title, company, src, className }: ProjectLink) => {
+  const date = new Date(dateProp)
   return (
     <li className="flex flex-col sm:grid sm:grid-cols-[3fr_9fr] my-0 items-baseline">
       <span className={cn("text-sm text-secondary", className)}>{company}</span>
@@ -89,8 +89,8 @@ const ProjectLink = ({ date, href, title, company, src, className }: ProjectLink
       <div className="flex flex-col gap-0.5">
         <PreviewLink title={title} src={src} href={href} />
 
-        <time dateTime={new Date(date).toISOString()} className="text-xs text-secondary">
-          {dateFormatter(date, { month: 'long', year: 'numeric' })}
+        <time dateTime={date.toISOString()} className="text-xs text-secondary">
+          {date.toLocaleDateString('default', { month: 'long', year: 'numeric' })}
         </time>
       </div>
     </li>

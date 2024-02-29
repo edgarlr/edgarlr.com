@@ -4,7 +4,6 @@ import ArrowLeft from "@components/icons/ArrowLeft"
 import ArrowRight from "@components/icons/ArrowRight"
 import { getAllPosts, getPostBySlug } from "@lib/api"
 import { SiteURL } from "@lib/constants"
-import dateFormatter from "@lib/date"
 import markdownToHtml from "@lib/markdown"
 import { Metadata } from "next"
 import Link from "next/link"
@@ -82,6 +81,8 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     notFound()
   }
 
+  const date = new Date(post.date)
+
   return (
     <>
       <Header title={post.title} showBackButton />
@@ -91,8 +92,8 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           <header className="mt-24 mb-10 md:mt-28">
             <HeaderScrollSpy />
             <h1 className='text-lg font-semibold'>{post.title}</h1>
-            <time dateTime={new Date(post.date).toISOString()} className="text-secondary text-sm">
-              {dateFormatter(post.date, {
+            <time dateTime={date.toISOString()} className="text-secondary text-sm">
+              {date.toLocaleDateString('default', {
                 month: 'long',
                 day: 'numeric',
                 year: 'numeric'
