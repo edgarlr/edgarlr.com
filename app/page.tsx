@@ -17,7 +17,7 @@ export default async function Page() {
           <p>
             Hey, I&apos;m Edgar. I build user interfaces, interactions,
             animations, and other <span className="whitespace-nowrap">web-related</span> stuff.{' '}
-            <br className="hidden md:block" />
+            <br className="hidden 2lg:block" />
             Design engineer at{' '}
             <PreviewLink
               title="PlanetScale"
@@ -31,11 +31,11 @@ export default async function Page() {
           </div>
         </section>
 
-        <section id="projects">
+        <section id="projects" className="mb-28">
           <ProjectsList />
         </section>
 
-        <section className="w-full mx-auto mt-24 mb-28" id="posts" >
+        <section className="w-full mx-auto mb-28" id="posts" >
           <h2 className="text-sm font-medium mb-6">Posts</h2>
           <PostsList />
         </section>

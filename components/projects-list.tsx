@@ -1,5 +1,6 @@
 import dateFormatter from "@lib/date"
 import { PreviewLink } from "./preview-link"
+import cn from 'clsx'
 
 export const ProjectsList = () => {
   return (
@@ -46,6 +47,7 @@ export const ProjectsList = () => {
         date="09/1/2021" // Septermber 2021
         title="Conversational support page"
         company="Intercom"
+        className="sm:invisible"
         href="https://intercom.com/customer-support-software"
         src="/assets/projects/intercom-conversational-support.png"
       />
@@ -54,8 +56,17 @@ export const ProjectsList = () => {
         date="08/01/2021" // August 2021
         title="Pricing page"
         company="Intercom"
+        className="sm:invisible"
         href="https://intercom.com/pricing"
         src="/assets/projects/intercom-pricing.jpg"
+      />
+
+      <ProjectLink
+        date="04/01/2021" // April 2021
+        title="Magazine starter"
+        company="Open source"
+        href="https://magazine-starter.vercel.app/"
+        src="/assets/projects/magazine-starter.png"
       />
     </ul>
   )
@@ -67,17 +78,20 @@ type ProjectLink = {
   title: string,
   company: string,
   src: string,
+  className?: string
 }
 
-const ProjectLink = ({ date, href, title, company, src }: ProjectLink) => {
+const ProjectLink = ({ date, href, title, company, src, className }: ProjectLink) => {
   return (
-    <li className="flex flex-col md:grid md:grid-cols-[3fr_9fr] my-0 items-end">
-      <time dateTime={new Date(date).toISOString()} className="text-xs text-secondary">
-        {dateFormatter(date, { month: 'long', year: 'numeric' })}
-      </time>
-      <div className="flex flex-col">
-        <span className="text-xs text-secondary">{company}</span>
+    <li className="flex flex-col sm:grid sm:grid-cols-[3fr_9fr] my-0 items-baseline">
+      <span className={cn("text-sm text-secondary", className)}>{company}</span>
+
+      <div className="flex flex-col gap-0.5">
         <PreviewLink title={title} src={src} href={href} />
+
+        <time dateTime={new Date(date).toISOString()} className="text-xs text-secondary">
+          {dateFormatter(date, { month: 'long', year: 'numeric' })}
+        </time>
       </div>
     </li>
   )
