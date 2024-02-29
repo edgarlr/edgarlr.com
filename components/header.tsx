@@ -10,7 +10,7 @@ export const Header = ({ title, showBackButton = false }: Props) => (
   <header
     data-visible={false}
     data-header
-    className="group z-50 pt-2.5 pb-2 [--progressive-blur-height:16px] fixed inset-x-0 top-0 flex items-center after:absolute after:bg-[--border-primary] after:opacity-0 after:duration-300 data-[visible=true]:after:opacity-100 after:inset-x-0 after:bottom-0 after:h-[0.5px] before:z-[-1] before:absolute before:inset-x-0 before:top-0 before:-bottom-[--progressive-blur-height] before:pointer-events-none before:saturate-150 before:backdrop-blur before:bg-[linear-gradient(to_bottom,var(--background-header)_calc(100%-var(--progressive-blur-height)),transparent_calc(100%-var(--progressive-blur-height)))] before:[mask-image:linear-gradient(to_bottom,black_calc(100%-var(--progressive-blur-height)),transparent)]"
+    className="group z-50 pt-3.5 pb-3 [--progressive-blur-height:16px] fixed inset-x-0 top-0 flex items-center after:absolute after:bg-[--border-primary] after:opacity-0 after:duration-300 data-[visible=true]:after:opacity-100 after:inset-x-0 after:bottom-0 after:h-[0.5px] before:z-[-1] before:absolute before:inset-x-0 before:top-0 before:-bottom-[--progressive-blur-height] before:pointer-events-none before:backdrop-blur-[10px] before:bg-[linear-gradient(to_bottom,var(--background-header)_calc(100%-var(--progressive-blur-height)),transparent_calc(100%-var(--progressive-blur-height)))] before:[mask-image:linear-gradient(to_bottom,black_calc(100%-var(--progressive-blur-height)),transparent)]"
   >
     <div
       className='w-full max-lg:px-4 flex flex-nowrap items-center max-w-[70ch] mx-auto'
