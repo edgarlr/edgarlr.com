@@ -44,7 +44,7 @@ export const SocialLinks = () => {
         onMouseLeave={() => setHoveredButton(null)}
         className="relative -mx-2 flex items-center gap-2"
       >
-        <div className="bg-gray-100 absolute inset-y-0 left-0 rounded h-full scale-95" style={{ ...getButtonStyles() }} />
+        <div className="bg-secondary absolute inset-y-0 left-0 rounded h-full scale-95" style={{ ...getButtonStyles() }} />
 
         <LinkTrigger id={TwitterURL} href={TwitterURL}>
           Twitter
@@ -73,7 +73,7 @@ export const LinkTrigger = ({ id, href, children }: { id: string, href: string, 
       onMouseEnter={repositionHover}
       rel='noopener'
       id={id}
-      className="group text-sm inline-flex items-center py-1 px-2 gap-1 relative cursor-pointer bg-transparent border-none  text-secondary hover:text-primary focus-visible:text-primary focus-visible:bg-gray-50"
+      className="group text-sm inline-flex items-center py-1 px-2 gap-1 relative cursor-pointer bg-transparent border-none  text-secondary hover:text-primary focus-visible:text-primary focus-visible:bg-secondary"
     >
       {children}
       <span className="grid place-items-center transition-transform pointer-events-none group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-focus-visible:translate-x-0.5 group-focus-visible:-translate-y-0.5">

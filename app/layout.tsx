@@ -1,6 +1,5 @@
 import { Providers } from '@components/providers'
 import './globals.css'
-import '@styles/global.css'
 
 import { Footer } from '@components/footer'
 import { TwitterUsername } from '@lib/constants'
@@ -55,7 +54,7 @@ const serif = Newsreader({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${serif.variable}`}>
-      <body className='antialiased'>
+      <body className='antialiased bg-primary font-sans text-primary selection:[text-shadow:none] selection:bg-[--highlight] selection:text-[--background-primary]'>
         <Providers>
           {children}
           <Footer />

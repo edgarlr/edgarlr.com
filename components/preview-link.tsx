@@ -13,7 +13,7 @@ export const PreviewLink = ({ href, src, title }: { title: string, href: string,
         <Link
           href={href}
           rel="noopener"
-          className="max-md:mt-1 w-fit underline decoration-1 underline-offset-2 transition-colors decoration-secondary hover:decoration-primary"
+          className="max-md:mt-1 w-fit underline decoration-1 underline-offset-2 transition-colors decoration-primary hover:decoration-secondary"
         >
           {title}
         </Link>

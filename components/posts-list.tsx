@@ -8,7 +8,7 @@ export const PostsList = () => {
   return (
     <ul className='flex flex-col gap-12'>
       {posts.map(({ slug, date, title }) => (
-        <li key={slug} className="flex flex-col md:grid md:grid-cols-[3fr_9fr] my-0 items-baseline">
+        <li key={slug} className="flex flex-col  md:grid md:grid-cols-[3fr_9fr] my-0 items-baseline">
           <time dateTime={new Date(date).toISOString()} className="text-xs text-secondary">
             {dateFormatter(date, {
               month: 'short',
@@ -17,7 +17,7 @@ export const PostsList = () => {
           </time>
           <Link
             href={`/articles/${slug}`}
-            className="max-md:mt-1 w-fit underline decoration-1 underline-offset-2 transition-colors decoration-secondary hover:decoration-primary"
+            className="max-md:mt-1 w-fit underline decoration-1 transition-colors underline-offset-2 decoration-primary hover:decoration-secondary"
           >
             {title}
           </Link>

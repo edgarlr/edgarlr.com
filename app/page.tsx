@@ -11,8 +11,8 @@ export default async function Page() {
     <>
       <Header title="Edgar López" />
 
-      <main className="w-full mx-auto min-h-screen max-lg:px-4 pb-12 max-w-screen-md ">
-        <section className="flex flex-col justify-center h-[85vh] md:h-[98vh]">
+      <main className="w-full mx-auto min-h-screen max-lg:px-4 pb-12 max-w-[70ch]">
+        <section className="flex flex-col justify-center h-screen">
           <HeaderScrollSpy className="w-px h-px" />
           <p>
             Hey, I&apos;m Edgar. I build user interfaces, interactions,
