@@ -7,7 +7,7 @@ import ChevronDown from '@components/icons/ChevronDown'
 export const ThemeSelect = () => {
   const { theme, setTheme } = useTheme()
   return (
-    <label className="relative rounded-md text-secondary border transition-colors hover:text-primary hover:bg-gray-50 ">
+    <label className="relative rounded-md text-secondary border-[0.5px] border-tertiary transition-colors hover:text-primary hover:bg-secondary">
       <select
         className='bg-transparent border-none w-24 appearance-none relative py-1 px-2 text-sm cursor-default'
         value={theme}
