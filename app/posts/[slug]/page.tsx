@@ -40,14 +40,18 @@ export const generateMetadata = ({
       title: `${post.title} — Edgar López`,
       description: post.description,
       card: 'summary_large_image',
-      // images: generateOgImage({ title })
     },
     openGraph: {
       title: `${post.title} — Edgar López`,
+      publishedTime: new Date(post.date).toISOString(),
       description: post.description,
-      // images: generateOgImage({ title })
       url: `${SiteURL}/posts/${params.slug}`,
       type: 'article',
+      images: [
+        {
+          url: '/assets/social-card.jpg',
+        },
+      ],
     },
     authors: [
       {
