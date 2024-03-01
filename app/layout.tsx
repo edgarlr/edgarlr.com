@@ -2,7 +2,7 @@ import { Providers } from '@components/providers'
 import './globals.css'
 
 import { Footer } from '@components/footer'
-import { TwitterUsername } from '@lib/constants'
+import { SiteURL, TwitterUsername } from '@lib/constants'
 import { Analytics } from '@vercel/analytics/react'
 import { Metadata } from 'next'
 import { RandomSelectColor } from '@components/random-select-color'
@@ -12,6 +12,7 @@ const title = "Edgar López"
 const description = 'I build user interfaces, interactions, animations, and other web-related stuff.'
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SiteURL),
   title: {
     default: title,
     template: '%s — Edgar López'
