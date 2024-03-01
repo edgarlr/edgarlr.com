@@ -29,7 +29,7 @@ export const Header = ({ title, showBackButton = false }: Props) => (
         </div>
       )}
 
-      <span className=" leading-none transition-[opacity,transform] ease-out duration-300 font-serif opacity-0 text-ellipsis whitespace-nowrap overflow-clip translate-y-2 group-data-[visible=true]:opacity-100 group-data-[visible=true]:translate-y-0">
+      <span className=" leading-none transition-[opacity,transform] ease-out duration-300 font-serif italic opacity-0 text-ellipsis whitespace-nowrap overflow-clip translate-y-2 group-data-[visible=true]:opacity-100 group-data-[visible=true]:translate-y-0">
         {title}
       </span>
     </div>
