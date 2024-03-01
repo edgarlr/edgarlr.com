@@ -67,14 +67,14 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     'content',
   ])
 
-
   const content = await markdownToHtml(post.content || '')
 
-  const posts = getAllPosts(['slug', 'title'])
+  const posts = getAllPosts(['slug', 'title', 'date'])
+
   const postIndex = posts.findIndex((p) => p.slug === post.slug)
 
-  const prev = posts.at(postIndex - 1) ?? null
-  const next = posts.at(postIndex + 1) ?? null
+  const newer = postIndex > 0 ? posts.at(postIndex - 1) : null
+  const older = posts.at(postIndex + 1) ?? null
 
 
   if (!content) {
@@ -105,25 +105,25 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         </article>
 
         <div className="flex justify-between my-20">
-          {prev ? (
-            <Link href={`/posts/${prev.slug}`} className="group max-w-32 md:max-w-60 text-sm transition-opacity opacity-60 hover:opacity-100">
+          {older ? (
+            <Link href={`/posts/${older.slug}`} className="group max-w-32 md:max-w-60 text-sm transition-opacity opacity-60 hover:opacity-100">
               <span className="flex items-center gap-1.5 mb-1 font-medium">
                 <ArrowLeft width={16} height={16} className="transition-transform group-hover:-translate-x-1.5" />
                 Older
               </span>
-              <span className="text-secondary">{prev.title}</span>
+              <span className="text-secondary">{older.title}</span>
             </Link>
           ) : (
             <div />
           )}
 
-          {next && (
-            <Link href={`/posts/${next.slug}`} className="group max-w-32 md:max-w-60 text-right text-sm transition-opacity opacity-60 hover:opacity-100">
+          {newer && (
+            <Link href={`/posts/${newer.slug}`} className="group max-w-32 md:max-w-60 text-right text-sm transition-opacity opacity-60 hover:opacity-100">
               <span className="flex items-center justify-end gap-1.5 mb-1 font-medium">
                 Newer
                 <ArrowRight width={16} height={16} className="transition-transform group-hover:translate-x-1.5" />
               </span>
-              <span className="text-secondary">{next.title}</span>
+              <span className="text-secondary">{newer.title}</span>
             </Link>
           )}
         </div>
