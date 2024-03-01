@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Light Theme Colors */
+  --text-primary: hsl(180, 3%, 8%);
+  --text-secondary: hsla(180, 2%, 8%, 0.6);
+
+  --border-primary: hsla(180, 2%, 8%, 0.2);
+  --border-secondary: hsla(180, 2%, 8%, 0.6);
+  --border-tertiary: hsla(180, 2%, 8%, 0.1);
+
+  --background-primary: hsl(0, 0%, 98%);
+  --background-secondary: hsl(0, 0%, 95%);
+  --background-tertiary: hsl(0, 0%, 97%);
+
+  --background-header: hsla(0, 0%, 98%, 0.6);
+
+  --highlight-color-1: #ffb1bc;
+  --highlight-color-2: #c6b1ff;
+  --highlight-color-3: #f2b5ef;
+  --highlight-color-4: #b1c4ff;
+  --highlight-color-5: #98d7c0;
+  --highlight-color-6: #ffc432;
+  --highlight-color-7: #000000;
+
+  --highlight: var(--highlight-color-1);
+}
+
+[data-theme='dark'] {
+  --text-primary: hsl(0, 0%, 95%);
+  --text-secondary: hsla(0, 0%, 95%, 0.6);
+
+  --border-primary: hsla(0, 0%, 95%, 0.2);
+  --border-secondary: hsla(0, 0%, 95%, 0.6);
+  --border-tertiary: hsla(0, 0%, 95%, 0.1);
+
+  --background-primary: hsl(200, 6%, 10%);
+  --background-secondary: hsl(200, 6%, 12%);
+  --background-tertiary: hsl(200, 7%, 11%);
+
+  --background-header: hsla(200, 6%, 10%, 0.6);
+
+  --highlight-color-1: #ff9696;
+  --highlight-color-2: #afbaef;
+  --highlight-color-3: #e9afef;
+  --highlight-color-4: #d3b8ff;
+  --highlight-color-5: #afefcb;
+  --highlight-color-6: #fff3b8;
+  --highlight-color-7: #ffffff;
+}
+
+a,
+button,
+button[role='tab'],
+div[role='tabpanel'],
+div[role='button'],
+select {
+  @apply rounded-sm focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-300 focus-visible:ring-offset-1 focus-visible:ring-offset-purple-400 focus-visible:dark:ring-purple-800 focus-visible:dark:ring-offset-purple-700;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}

@@ -12,8 +12,8 @@ When you're working with a CMS, the CMS platform turns into a product on its own
 
 Strapi has a really easy way to solve this. Once on the Content-Type Builder, on each field you need, you go to advanced settings and check the "Required field" field.
 
-![Strapi required Field](https://res.cloudinary.com/dliiwavlg/image/upload/v1614123922/Screen_Shot_2021-02-15_at_12.25.09.png_xejin0.png)
-_Strapi required Field option_
+![Strapi required Field](/assets/posts/tips-at-getting-started-with-strapi/required-field.png)
+_Strapi required field_
 
 Now, Strapi is not gonna allow them to publish the content without filling up all the required fields.
 
@@ -57,18 +57,18 @@ This will improve your app or website SEO and user experience by having "pretty 
 
 We can do this by simply adding a new `UID` field
 
-![Content type builder](https://res.cloudinary.com/dliiwavlg/image/upload/v1614123933/Screen_Shot_2021-02-15_at_13.31.19.png_qlpiu6.png)
+![Content type builder](/assets/posts/tips-at-getting-started-with-strapi/content-type-builder.png)
 _Content type builder_
 
 Now, we can add it a name and attach it to the title.
 
-![New UID field](https://res.cloudinary.com/dliiwavlg/image/upload/v1614123945/Screen_Shot_2021-02-15_at_13.32.57.png_haycm9.png)
+![New UID field](/assets/posts/tips-at-getting-started-with-strapi/uid-field.png)
 _New UID field_
 
 Don't forget of set it as a required field.
 
-![Advanced Settings](https://res.cloudinary.com/dliiwavlg/image/upload/v1614123972/Screen_Shot_2021-02-15_at_13.33.41.png_nhum4x.png)
-_UID Field Advanced Settings_
+![Advanced settings](/assets/posts/tips-at-getting-started-with-strapi/uid-advance-settings.png)
+_UID field advanced settings_
 
 Now, each time we create a new entry the slug is gonna be auto-generated for us based on our title.
 
@@ -78,8 +78,8 @@ If your are using media types for photos, videos or files, Strapi have a dedicat
 
 On "Advanced settings" we can specify which types are allowed for each field and prevent having unexpected file types in our app.
 
-![Media Types Allowed](https://res.cloudinary.com/dliiwavlg/image/upload/v1614123993/Screen_Shot_2021-02-15_at_13.20.11.png_gjgeol.png)
-_Allowed Media Types_
+![Media types allowed](/assets/posts/tips-at-getting-started-with-strapi/allowed-media-types.png)
+_Allowed media yypes_
 
 ## GraphQL
 

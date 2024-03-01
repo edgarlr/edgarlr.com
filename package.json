@@ -1,5 +1,5 @@
 {
-  "name": "portfolio",
+  "name": "edgarlr.com",
   "description": "",
   "version": "0.1.0",
   "main": "index.js",
@@ -10,58 +10,49 @@
     "dev:inspect": "NODE_OPTIONS='--inspect' next",
     "build": "next build",
     "start": "next start",
+    "lint": "next lint",
     "type-check": "tsc --pretty --noEmit",
-    "lint": "eslint . --ext .ts --ext .tsx --ext .js",
-    "lint:fix": "eslint . --ext .ts --ext .tsx --ext .js --fix",
     "format": "prettier . --write",
-    "prepare": "husky install"
-  },
-  "lint-staged": {
-    "*.@(ts|tsx)": [
-      "yarn lint",
-      "yarn format"
-    ]
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/edgarlr/portfolio.git"
+    "url": "git+https://github.com/edgarlr/edgarlr.com.git"
   },
   "bugs": {
-    "url": "https://github.com/edgarlr/portfolio/issues"
+    "url": "https://github.com/edgarlr/edgarlr.com/issues"
   },
-  "homepage": "https://github.com/edgarlr/portfolio#readme",
+  "homepage": "https://github.com/edgarlr/edgarlr.com#readme",
   "prettier": {
     "semi": false,
     "singleQuote": true
   },
   "dependencies": {
-    "@radix-ui/react-tooltip": "^0.1.7",
-    "@vercel/analytics": "^0.1.11",
-    "classnames": "^2.2.6",
+    "@radix-ui/react-hover-card": "^1.0.7",
+    "@vercel/analytics": "^1.2.2",
+    "clsx": "^2.1.0",
     "gray-matter": "^4.0.2",
-    "next": "12",
+    "next": "^14.1.0",
     "next-themes": "^0.2.0",
-    "puppeteer": "^15.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "remark": "^13.0.0",
-    "remark-html": "^13.0.1"
+    "remark-html": "^13.0.1",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@types/classnames": "^2.3.1",
-    "@types/node": "^14.14.3",
-    "@types/react": "17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.6.0",
-    "@typescript-eslint/parser": "^4.6.0",
-    "eslint": "^7.12.0",
-    "eslint-config-prettier": "7.1.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^8.0.0",
+    "@tailwindcss/typography": "^0.5.10",
+    "@types/node": "^20.11.20",
+    "@types/react": "^18.2.58",
+    "autoprefixer": "^10.4.17",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.1.0",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.0.11",
     "lint-staged": "^15.2.0",
-    "prettier": "^2.1.2",
-    "typescript": "^4.7.4"
+    "postcss": "^8.4.35",
+    "prettier": "^3.2.5",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3"
   }
 }

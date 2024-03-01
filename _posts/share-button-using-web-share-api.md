@@ -12,7 +12,7 @@ There're a few things we should know before start coding.
 
 First, browser support, and this is probably its main problem. Web Share API doesn't have the greatest support yet.
 
-![Web share api on caniuse.com](https://res.cloudinary.com/dliiwavlg/image/upload/v1614125553/Screen_Shot_2021-02-15_at_15.34.15.png_xwbmed.png)
+![Web share API on caniuse.com](/assets/posts/share-button-using-web-share-api/caniuse-web-share-api.png)
 _Web Share API on [caniuse.com](https://caniuse.com/?search=share%20API)_
 
 However, it's supported on the main mobile browsers and we can add a fallback option to all the unsupported browsers.
@@ -176,7 +176,7 @@ const ShareButton = ({title, text, url }) => {
 
 And finally, we are gonna use the `navigator.clipboard` which is supported by most of the modern browsers.
 
-![navigator clipboard support on mozilla.com](https://res.cloudinary.com/dliiwavlg/image/upload/v1614125566/Screen_Shot_2021-02-15_at_17.27.48.png_bpzpz0.png)
+![navigator clipboard support on mozilla.com](/assets/posts/share-button-using-web-share-api/navigator-clipboard-mozilla.png)
 _`Navigator.Clipboard` support on [developr.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API)_
 
 If you need support on internet explore you might want to explore other alternatives. For now, let's work with `navigator.clipboard` and add some type of feedback for the users to know when it's been copied.

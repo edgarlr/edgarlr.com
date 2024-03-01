@@ -50,13 +50,13 @@ This will work, but there're a couple of problems with it.
 
 If we run a performance test we'll notice that this animation is taking a lot of time on rendering and painting.
 
-![Devtools Performace results](https://res.cloudinary.com/dliiwavlg/image/upload/v1614123855/Screen_Shot_2021-02-14_at_16.41.30.png_t2cvwn.png)
-_Devtools Performance results_
+![Devtools initial performace results](/assets/posts/quick-fix-to-css-animation-performance/devtools-initial-performance-results.png)
+_Devtools initial performance results_
 
 Actually, if we go to the "Experience section" there's a warning about [Cumulative Layout Shift](https://web.dev/cls/) too
 
-![Cumulative Layout Shift warning](https://res.cloudinary.com/dliiwavlg/image/upload/v1614123866/Screen_Shot_2021-02-14_at_15.42.39.png_ln1m8n.png)
-_Cumulative Layout Shift warning_
+![Cumulative layout shift warning](/assets/posts/quick-fix-to-css-animation-performance/cumulative-layout-shift-warning.png)
+_Cumulative layout shift warning_
 
 You can try it yourself. On chrome, you only need to:
 
@@ -65,7 +65,7 @@ You can try it yourself. On chrome, you only need to:
 - Go to the Performance tab, and start recording.
 - I'd recommend you changing the CPU configuration to "6x slowdown". This will allow you simulate how is gonna perform on slower devices.
 
-![Devtools performace tab](https://res.cloudinary.com/dliiwavlg/image/upload/v1614123876/Screen_Shot_2021-02-14_at_15.51.46.png_kvmkqn.png)
+![Devtools performace tab](/assets/posts/quick-fix-to-css-animation-performance/devtools-performance-tab.png)
 _Devtools performance tab_
 
 This is happening because the browser is recalculating the layout position of the element on each frame and then is repainting it.
@@ -98,10 +98,10 @@ Now we can update or code using `transform` and run a performance test again.
 }
 ```
 
-![Devtools performance results](https://res.cloudinary.com/dliiwavlg/image/upload/v1614123886/Screen_Shot_2021-02-14_at_16.42.39.png_hfbupd.png)
+![Devtools final performance results](/assets/posts/quick-fix-to-css-animation-performance/devtools-final-performance-results.png)
 _Devtools performance results_
 
-![Rendering waterfall](https://res.cloudinary.com/dliiwavlg/image/upload/v1614123903/Screen_Shot_2021-02-14_at_16.43.03.png_m3gmpv.png)
+![Rendering waterfall](/assets/posts/quick-fix-to-css-animation-performance/rendering-waterfall.png)
 _Rendering Waterfall_
 
 After that minor change, we can see the difference, the waterfall rendering is less expensive, the rendering and the painting now are close to 0ms and the Cumulative Layout Shift warning is also gone.
