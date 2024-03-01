@@ -5,16 +5,22 @@ export const PostsList = () => {
   const posts = getAllPosts(['slug', 'title', 'date'])
 
   return (
-    <ul className='flex flex-col gap-12'>
+    <ul className="flex flex-col gap-12">
       {posts.map((post) => {
         const date = new Date(post.date)
         return (
-          <li key={post.slug} className="flex flex-col  sm:grid sm:grid-cols-[3fr_9fr] my-0 items-baseline">
-            <time dateTime={new Date(date).toISOString()} className="text-xs text-secondary">
+          <li
+            key={post.slug}
+            className="flex flex-col  sm:grid sm:grid-cols-[3fr_9fr] my-0 items-baseline"
+          >
+            <time
+              dateTime={new Date(date).toISOString()}
+              className="text-xs text-secondary"
+            >
               {new Date(date).toLocaleDateString('default', {
                 month: 'short',
                 day: 'numeric',
-                year: 'numeric'
+                year: 'numeric',
               })}
             </time>
             <Link
@@ -29,5 +35,3 @@ export const PostsList = () => {
     </ul>
   )
 }
-
-

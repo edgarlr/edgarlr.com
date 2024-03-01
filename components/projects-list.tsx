@@ -1,9 +1,9 @@
-import { PreviewLink } from "./preview-link"
+import { PreviewLink } from './preview-link'
 import cn from 'clsx'
 
 export const ProjectsList = () => {
   return (
-    <ul className='flex flex-col gap-12'>
+    <ul className="flex flex-col gap-12">
       <ProjectLink
         date="02/02/2024"
         title="PlanetScale Homepage"
@@ -72,28 +72,37 @@ export const ProjectsList = () => {
 }
 
 type ProjectLink = {
-  date: string,
-  href: string,
-  title: string,
-  company: string,
-  src: string,
+  date: string
+  href: string
+  title: string
+  company: string
+  src: string
   className?: string
 }
 
-const ProjectLink = ({ date: dateProp, href, title, company, src, className }: ProjectLink) => {
+const ProjectLink = ({
+  date: dateProp,
+  href,
+  title,
+  company,
+  src,
+  className,
+}: ProjectLink) => {
   const date = new Date(dateProp)
   return (
     <li className="flex flex-col sm:grid sm:grid-cols-[3fr_9fr] my-0 items-baseline">
-      <span className={cn("text-sm text-secondary", className)}>{company}</span>
+      <span className={cn('text-sm text-secondary', className)}>{company}</span>
 
       <div className="flex flex-col gap-0.5">
         <PreviewLink title={title} src={src} href={href} />
 
         <time dateTime={date.toISOString()} className="text-xs text-secondary">
-          {date.toLocaleDateString('default', { month: 'long', year: 'numeric' })}
+          {date.toLocaleDateString('default', {
+            month: 'long',
+            year: 'numeric',
+          })}
         </time>
       </div>
     </li>
   )
 }
-

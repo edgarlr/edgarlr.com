@@ -7,5 +7,3 @@ export const Footer = () => (
     <ThemeSelect />
   </footer>
 )
-
-

@@ -14,7 +14,6 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   const fileContent = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContent)
 
-
   type Items = {
     [key: string]: string
   }

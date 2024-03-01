@@ -1,10 +1,9 @@
-
-import { PostsList } from "@components/posts-list";
-import { Header } from "@components/header";
-import { SocialLinks } from "@components/social-links";
-import { HeaderScrollSpy } from "@components/header-scroll-spy";
-import { ProjectsList } from "@components/projects-list";
-import { PreviewLink } from "@components/preview-link";
+import { PostsList } from '@components/posts-list'
+import { Header } from '@components/header'
+import { SocialLinks } from '@components/social-links'
+import { HeaderScrollSpy } from '@components/header-scroll-spy'
+import { ProjectsList } from '@components/projects-list'
+import { PreviewLink } from '@components/preview-link'
 
 export default async function Page() {
   return (
@@ -16,7 +15,8 @@ export default async function Page() {
           <HeaderScrollSpy className="w-px h-px" />
           <p>
             Hey, I&apos;m Edgar. I build user interfaces, interactions,
-            animations, and other <span className="whitespace-nowrap">web-related</span> stuff.{' '}
+            animations, and other{' '}
+            <span className="whitespace-nowrap">web-related</span> stuff.{' '}
             <br className="hidden 2lg:block" />
             Design engineer at{' '}
             <PreviewLink
@@ -35,7 +35,7 @@ export default async function Page() {
           <ProjectsList />
         </section>
 
-        <section className="w-full mx-auto mb-28" id="posts" >
+        <section className="w-full mx-auto mb-28" id="posts">
           <h2 className="text-sm font-medium mb-6">Posts</h2>
           <PostsList />
         </section>
@@ -43,4 +43,3 @@ export default async function Page() {
     </>
   )
 }
-

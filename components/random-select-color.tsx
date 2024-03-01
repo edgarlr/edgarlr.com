@@ -1,7 +1,6 @@
-"use client"
+'use client'
 
 import { useLayoutEffect } from 'react'
-
 
 export const RandomSelectColor = () => {
   useLayoutEffect(() => {
@@ -11,7 +10,10 @@ export const RandomSelectColor = () => {
 
     const randomIndex = Math.floor(Math.random() * 7) + 1
 
-    document.documentElement.style.setProperty('--highlight', `var(--highlight-color-${randomIndex})`)
+    document.documentElement.style.setProperty(
+      '--highlight',
+      `var(--highlight-color-${randomIndex})`,
+    )
   }, [])
   return null
 }

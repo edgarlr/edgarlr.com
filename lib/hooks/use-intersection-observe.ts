@@ -4,7 +4,7 @@ export function useIntersectionObserver<T>({
   threshold = 0,
   root = null,
   rootMargin = '0px',
-  initialValue = false
+  initialValue = false,
 } = {}) {
   const [inView, setInView] = useState<boolean>(initialValue)
 
@@ -22,14 +22,14 @@ export function useIntersectionObserver<T>({
           ([entry]) => {
             setInView(entry?.isIntersecting ?? false)
           },
-          { threshold, root, rootMargin }
+          { threshold, root, rootMargin },
         )
 
         observer.observe(node as HTMLElement)
         previousObserver.current = observer
       }
     },
-    [threshold, root, rootMargin]
+    [threshold, root, rootMargin],
   )
 
   return { ref: customRef, inView }
