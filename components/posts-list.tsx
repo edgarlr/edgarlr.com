@@ -18,7 +18,7 @@ export const PostsList = () => {
               })}
             </time>
             <Link
-              href={`/articles/${post.slug}`}
+              href={`/posts/${post.slug}`}
               className="max-md:mt-1 w-fit underline decoration-1 transition-colors underline-offset-2 decoration-primary hover:decoration-secondary"
             >
               {post.title}
