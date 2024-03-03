@@ -5,11 +5,19 @@ export const ProjectsList = () => {
   return (
     <ul className="flex flex-col gap-12">
       <ProjectLink
-        date="02/02/2024"
-        title="PlanetScale Homepage"
+        date="02/01/2024" // Feb 2024
+        title="PlanetScale homepage"
         company="PlanetScale"
         href="https://www.planetscale.com"
         src="/assets/projects/planetscale-homepage.png"
+      />
+      <ProjectLink
+        date="11/01/2024" // Nov 2023
+        title="Branching page"
+        className="sm:invisible"
+        company="PlanetScale"
+        href="https://www.planetscale.com/features/branching"
+        src="/assets/projects/planetscale-branching.png"
       />
       <ProjectLink
         date="03/01/2023" // March 2023

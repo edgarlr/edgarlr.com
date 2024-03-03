@@ -98,7 +98,7 @@ export default async function BlogPost({
     <>
       <Header title={post.title} showBackButton />
 
-      <main className="w-full mx-auto min-h-screen max-lg:px-4 pb-10 max-w-[70ch] ">
+      <main className="w-full mx-auto min-h-screen max-lg:px-6 pb-10 max-w-[70ch] ">
         <article>
           <header className="mt-24 mb-10 md:mt-28">
             <HeaderScrollSpy />
