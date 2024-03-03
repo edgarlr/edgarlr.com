@@ -49,7 +49,7 @@ export const SocialLinks = () => {
       <div
         ref={buttonListRef}
         onMouseLeave={() => setHoveredButton(null)}
-        className="relative -mx-2 flex items-center gap-2"
+        className="relative -mx-2 flex items-center gap-1 md:gap-2"
       >
         <div
           className="bg-secondary absolute inset-y-0 left-0 rounded h-full scale-95"
