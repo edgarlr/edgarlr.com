@@ -7,6 +7,7 @@ import { useIntersectionObserver } from '@lib/hooks/use-intersection-observe'
 export const HeaderScrollSpy = ({ className }: { className?: string }) => {
   const { ref, inView } = useIntersectionObserver({
     rootMargin: '-16px 0px 0px 0px',
+    initialValue: true
   })
 
   useEffect(() => {
