@@ -12,7 +12,7 @@ export const ProjectsList = () => {
         src="/assets/projects/planetscale-homepage.png"
       />
       <ProjectLink
-        date="11/01/2024" // Nov 2023
+        date="11/01/2023" // Nov 2023
         title="Branching page"
         className="sm:invisible"
         company="PlanetScale"
