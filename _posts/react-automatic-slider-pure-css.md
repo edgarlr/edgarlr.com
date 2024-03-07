@@ -1,7 +1,7 @@
 ---
 title: 'Infinite automatic slider with React and pure CSS'
 description: 'Infinite automatic slider with React and pure CSS'
-date: January 07, 2021
+date: "01/07/2021"
 ---
 
 I saw this effect on the [Next.js](https://nextjs.org/) website and in a few others now and to be honest, I think it looks pretty cool, so in this post we are gonna try to replicate the effect using React and pure CSS.

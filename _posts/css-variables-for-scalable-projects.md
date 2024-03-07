@@ -1,7 +1,7 @@
 ---
 title: 'CSS variables for scalable projects'
-description: 'An deep-dive on CSS variables and how to use them for scalable workflows'
-date: 11/09/2020
+description: 'A deep-dive on CSS variables and how to use them for scalable workflows'
+date: "11/09/2020"
 ---
 
 When your start working on a bit more complex projects and specially if you're working with a designer, you will realize that is indispensable to standardize the way you work with your styles. This will help you having a more consistent website and each time you need to add or change some value, you're gonna have a more simple way to do it by only changing one value instead of searching and replacing all places where you're using it.

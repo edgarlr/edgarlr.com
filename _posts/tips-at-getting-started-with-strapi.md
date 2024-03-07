@@ -1,7 +1,7 @@
 ---
 title: 'Tips for getting started with Strapi'
 description: 'A few tips that will help you with Strapi'
-date: 12/13/2020
+date: "12/13/2020"
 ---
 
 I've been using Strapi CMS on several projects now and there's a few things I've been learning that have helped me get the best out of it while also reducing dramatically the number of errors and unexpected behaviors.
