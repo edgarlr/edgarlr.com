@@ -2,34 +2,27 @@ import { Header } from '@components/header'
 import { HeaderScrollSpy } from '@components/header-scroll-spy'
 import ArrowLeft from '@components/icons/ArrowLeft'
 import ArrowRight from '@components/icons/ArrowRight'
-import { getAllPosts, getPostBySlug } from '@lib/api'
+import { getAllPostsMetadata, getPostBySlug } from '@lib/posts'
 import { SiteURL } from '@lib/constants'
-import markdownToHtml from '@lib/markdown'
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-export const generateStaticParams = () => {
-  const posts = getAllPosts(['slug'])
+export const generateStaticParams = async () => {
+  const posts = await getAllPostsMetadata()
   return posts.map((post) => ({
     params: { slug: post.slug },
   }))
 }
 
-export const generateMetadata = ({
+export const generateMetadata = async ({
   params,
 }: {
   params: { slug: string }
-}): Metadata => {
-  const post = getPostBySlug(params.slug, [
-    'slug',
-    'title',
-    'description',
-    'image',
-    'date',
-  ])
+}): Promise<Metadata> => {
+  const post = await getPostBySlug(params.slug)
 
-  if (!post.title) {
+  if (!post) {
     notFound()
   }
 
@@ -70,27 +63,18 @@ export default async function BlogPost({
 }: {
   params: { slug: string }
 }) {
-  const post = getPostBySlug(params.slug, [
-    'slug',
-    'title',
-    'description',
-    'image',
-    'date',
-    'content',
-  ])
+  const post = await getPostBySlug(params.slug)
 
-  const content = await markdownToHtml(post.content || '')
+  const posts = await getAllPostsMetadata()
 
-  const posts = getAllPosts(['slug', 'title', 'date'])
+  if (!post) {
+    notFound()
+  }
 
   const postIndex = posts.findIndex((p) => p.slug === post.slug)
 
   const newer = postIndex > 0 ? posts.at(postIndex - 1) : null
   const older = posts.at(postIndex + 1) ?? null
-
-  if (!content) {
-    notFound()
-  }
 
   const date = new Date(post.date)
 
@@ -117,8 +101,9 @@ export default async function BlogPost({
 
           <section
             className="prose"
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
+          >
+            {post.content}
+          </section>
         </article>
 
         <div className="flex justify-between my-20">

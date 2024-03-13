@@ -1,8 +1,8 @@
+import { getAllPostsMetadata } from '@lib/posts'
 import Link from 'next/link'
-import { getAllPosts } from '@lib/api'
 
-export const PostsList = () => {
-  const posts = getAllPosts(['slug', 'title', 'date'])
+export const PostsList = async () => {
+  const posts = await getAllPostsMetadata()
 
   return (
     <ul className="flex flex-col gap-12">
@@ -14,10 +14,10 @@ export const PostsList = () => {
             className="flex flex-col  sm:grid sm:grid-cols-[3fr_9fr] my-0 items-baseline"
           >
             <time
-              dateTime={new Date(date).toISOString()}
+              dateTime={date.toISOString()}
               className="text-xs text-secondary"
             >
-              {new Date(date).toLocaleDateString('default', {
+              {date.toLocaleDateString('default', {
                 month: 'short',
                 day: 'numeric',
                 year: 'numeric',
