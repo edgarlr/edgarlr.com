@@ -23,10 +23,8 @@
   --background-selection-4: #ffe1b6;
   --background-selection-5: #7ce9e8;
   --background-selection-6: #d5ee93;
-
+  --background-selection: var(--background-selection-1);
   --text-selection: var(--text-primary);
-
-  --highlight: var(--highlight-color-1);
 }
 
 [data-theme='dark'] {
