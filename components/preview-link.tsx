@@ -31,7 +31,7 @@ export const PreviewLink = ({
           align="center"
           side="right"
           sideOffset={12}
-          className="z-50 group w-[200px] origin-[--radix-hover-card-content-transform-origin]  h-[120px] rounded bg-primary  outline-none data-[side=bottom]:animate-slideUpAndFade data-[side=right]:animate-slideLeftAndFade data-[side=left]:animate-slideRightAndFade data-[side=top]:animate-slideDownAndFade after:absolute after:inset-0 after:rounded after:shadow-[inset_0px_0px_0px_0.5px_rgba(19,20,20,0.1)]"
+          className="z-50 group w-[225px] origin-[--radix-hover-card-content-transform-origin]  h-[135px] rounded bg-primary  outline-none data-[side=bottom]:animate-slideUpAndFade data-[side=right]:animate-slideLeftAndFade data-[side=left]:animate-slideRightAndFade data-[side=top]:animate-slideDownAndFade after:absolute after:inset-0 after:rounded after:shadow-[inset_0px_0px_0px_0.5px_var(--border-tertiary)]"
           style={{
             boxShadow:
               '0px 2px 3px -1.5px rgba(0, 0, 0, 0.03), 0px 4px 6px 0px rgba(0, 0, 0, 0.03), 0px 8px 12px 0px rgba(0, 0, 0, 0.03), 0px 8px 24px 0px rgba(0, 0, 0, 0.03), 0px 32px 48px 0px rgba(0, 0, 0, 0.03)',
@@ -44,10 +44,11 @@ export const PreviewLink = ({
           />
           <Image
             quality={100}
+            priority
             src={src}
             alt=""
-            width={200}
-            height={120}
+            width={225}
+            height={135}
             className="rounded max-w-full max-h-full object-cover"
           />
         </HoverCardPrimitive.Content>

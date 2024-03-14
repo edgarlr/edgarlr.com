@@ -98,10 +98,10 @@ const ProjectLink = ({
 }: ProjectLink) => {
   const date = new Date(dateProp)
   return (
-    <li className="flex flex-col sm:grid sm:grid-cols-[3fr_9fr] my-0 items-baseline">
+    <li className="flex flex-col  sm:grid sm:grid-cols-[3fr_9fr] my-0 items-baseline">
       <span className={cn('text-sm text-secondary', className)}>{company}</span>
 
-      <div className="flex flex-col gap-0.5">
+      <div className="flex flex-col gap-1 sm:gap-0.5">
         <PreviewLink title={title} src={src} href={href} />
 
         <time dateTime={date.toISOString()} className="text-xs text-secondary">

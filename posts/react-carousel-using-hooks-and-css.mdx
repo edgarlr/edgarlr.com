@@ -1,7 +1,7 @@
 ---
 title: 'Carousel using React Hooks and CSS scroll snap'
 description: 'Carousel Component with scroll indicator and next and prev buttons'
-date: January 19, 2021
+date: "01/19/2021"
 ---
 
 We all know how difficult it is to build an accessible, user friendly and mantainable carousel, specially from scratch. Well, for a project I was working on, I needed to build one. The carousel specs also included a scroll indicator, arrow buttons to go back and forward trought for desktop devices, but support touch scroll support in mobile, and finally, it needed to be performant and accessible.
