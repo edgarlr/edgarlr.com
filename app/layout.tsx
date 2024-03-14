@@ -59,7 +59,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${serif.variable}`}>
-      <body className="antialiased bg-primary font-sans text-primary selection:[text-shadow:none] selection:bg-[--highlight] selection:text-[--background-primary]">
+      <body className="antialiased bg-primary font-sans text-primary selection:[text-shadow:none] selection:bg-[--background-selection] selection:text-[--text-selection]">
         <Providers>
           {children}
           <Analytics />

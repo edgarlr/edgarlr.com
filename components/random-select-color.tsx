@@ -8,11 +8,11 @@ export const RandomSelectColor = () => {
 
     if (!theme) return
 
-    const randomIndex = Math.floor(Math.random() * 7) + 1
+    const randomIndex = Math.floor(Math.random() * 6) + 1
 
     document.documentElement.style.setProperty(
-      '--highlight',
-      `var(--highlight-color-${randomIndex})`,
+      '--background-selection',
+      `var(--background-selection-${randomIndex})`,
     )
   }, [])
   return null
