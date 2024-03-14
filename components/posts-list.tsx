@@ -25,7 +25,7 @@ export const PostsList = async () => {
             </time>
             <Link
               href={`/posts/${post.slug}`}
-              className="max-md:mt-1 w-fit underline decoration-1 transition-colors underline-offset-2 decoration-primary hover:decoration-secondary"
+              className="max-md:mt-1 text-pretty w-fit underline decoration-1 transition-colors underline-offset-2 decoration-primary hover:decoration-secondary"
             >
               {post.title}
             </Link>

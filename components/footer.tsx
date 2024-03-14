@@ -17,14 +17,14 @@ export const PostsFooter = () => {
         className='absolute top-1/2 delay-1000 pointer-events-none  -translate-y-1/2  group-data-[animate=true]:opacity-0  group-data-[animate=true]:scale-95 group-data-[animate=true]:blur-sm transition-all'
       >
         {inView && (
-          <span className='animate-in fade-in duration-700 text-center font-serif text-secondary'>
+          <span className='animate-in fade-in duration-700 text-center italic font-serif text-secondary'>
             The End.
           </span>
         )}
       </div>
 
       <div
-        style={{ transitionDuration: '2.5s', transitionDelay: '1200ms' }}
+        style={{ transitionDuration: '2.25s', transitionDelay: '1200ms' }}
         className='opacity-0  blur-sm scale-[0.98] group-data-[animate=true]:opacity-100 group-data-[animate=true]:scale-100 group-data-[animate=true]:blur-0 transition-all'
       >
         <SocialLinks />
