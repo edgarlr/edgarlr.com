@@ -7,6 +7,7 @@ import { SiteURL } from '@lib/constants'
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { PostsFooter } from '@components/footer'
 
 export const generateStaticParams = async () => {
   const posts = await getAllPostsMetadata()
@@ -116,7 +117,7 @@ export default async function BlogPost({
                 <ArrowLeft
                   width={16}
                   height={16}
-                  className="transition-transform group-hover:-translate-x-1.5"
+                  className="transition-transform group-hover:-translate-x-1.5 group-focus-visible:-translate-x-1.5"
                 />
                 Older
               </span>
@@ -136,7 +137,7 @@ export default async function BlogPost({
                 <ArrowRight
                   width={16}
                   height={16}
-                  className="transition-transform group-hover:translate-x-1.5"
+                  className="transition-transform group-hover:translate-x-1.5 group-focus-visible:translate-x-1.5"
                 />
               </span>
               <span className="text-secondary">{newer.title}</span>
@@ -144,6 +145,8 @@ export default async function BlogPost({
           )}
         </div>
       </main>
+
+      <PostsFooter />
     </>
   )
 }

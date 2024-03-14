@@ -1,7 +1,6 @@
 import { Providers } from '@components/providers'
 import './globals.css'
 
-import { Footer } from '@components/footer'
 import { SiteURL, TwitterUsername } from '@lib/constants'
 import { Analytics } from '@vercel/analytics/react'
 import { Metadata } from 'next'
@@ -63,7 +62,6 @@ export default function RootLayout({
       <body className="antialiased bg-primary font-sans text-primary selection:[text-shadow:none] selection:bg-[--highlight] selection:text-[--background-primary]">
         <Providers>
           {children}
-          <Footer />
           <Analytics />
           <RandomSelectColor />
         </Providers>

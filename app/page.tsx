@@ -40,6 +40,10 @@ export default async function Page() {
           <PostsList />
         </section>
       </main>
+
+      <footer className="group flex justify-center relative py-10">
+        <SocialLinks />
+      </footer>
     </>
   )
 }
