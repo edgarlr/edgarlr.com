@@ -86,7 +86,7 @@ export default async function BlogPost({
       <main className="w-full mx-auto min-h-screen max-lg:px-6 pb-10 max-w-[70ch] ">
         <article>
           <header className="mt-24 mb-10 md:mt-28">
-            <HeaderScrollSpy />
+            <HeaderScrollSpy className='max-sm:translate-y-2' />
             <h1 className="text-lg font-semibold">{post.title}</h1>
             <time
               dateTime={date.toISOString()}
@@ -111,7 +111,7 @@ export default async function BlogPost({
           {older ? (
             <Link
               href={`/posts/${older.slug}`}
-              className="group max-w-32 md:max-w-60 text-sm transition-opacity opacity-60 hover:opacity-100"
+              className="group max-w-40 md:max-w-60 text-sm transition-opacity opacity-60 hover:opacity-100"
             >
               <span className="flex items-center gap-1.5 mb-1 font-medium">
                 <ArrowLeft
@@ -121,7 +121,7 @@ export default async function BlogPost({
                 />
                 Older
               </span>
-              <span className="text-secondary">{older.title}</span>
+              <span className="text-secondary text-pretty">{older.title}</span>
             </Link>
           ) : (
             <div />
@@ -130,7 +130,7 @@ export default async function BlogPost({
           {newer && (
             <Link
               href={`/posts/${newer.slug}`}
-              className="group max-w-32 md:max-w-60 text-right text-sm transition-opacity opacity-60 hover:opacity-100"
+              className="group max-w-40 md:max-w-60 text-right text-sm transition-opacity opacity-60 hover:opacity-100"
             >
               <span className="flex items-center justify-end gap-1.5 mb-1 font-medium">
                 Newer
@@ -140,7 +140,7 @@ export default async function BlogPost({
                   className="transition-transform group-hover:translate-x-1.5 group-focus-visible:translate-x-1.5"
                 />
               </span>
-              <span className="text-secondary">{newer.title}</span>
+              <span className="text-secondary text-pretty">{newer.title}</span>
             </Link>
           )}
         </div>
