@@ -118,12 +118,11 @@ module.exports = {
               lineHeight: '1.25rem',
             },
             video: {
-              border: '1px solid var(--border-tertiary) ',
+              border: '1px solid var(--border-tertiary)',
               borderRadius: '6px',
               position: 'relative',
               margin: '0 auto',
               objectFit: 'cover',
-              marginBottom: '.25rem',
               position: 'relative',
             },
             h2: {
