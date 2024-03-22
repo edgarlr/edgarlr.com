@@ -3,6 +3,7 @@ import { Header } from '@components/header'
 import { SocialLinks } from '@components/social-links'
 import { HeaderScrollSpy } from '@components/header-scroll-spy'
 import { ProjectsList } from '@components/projects-list'
+import ChevronDown from '@components/icons/ChevronDown'
 
 export default async function Page() {
   return (
@@ -10,7 +11,7 @@ export default async function Page() {
       <Header title="Edgar López" />
 
       <main className="w-full mx-auto min-h-screen max-lg:px-6 pb-12 max-w-[70ch]">
-        <section className="flex flex-col justify-center h-svh">
+        <section className="flex flex-col relative justify-center h-svh">
           <HeaderScrollSpy className="w-px h-px" />
           <p>
             Hey, I&apos;m Edgar. I build user interfaces, interactions,
@@ -28,6 +29,8 @@ export default async function Page() {
           <div className="flex mt-2">
             <SocialLinks />
           </div>
+          <ChevronDown width={14} height={14} className='text-secondary absolute left-1/2 translate-x-1/2 bottom-10' />
+
         </section>
 
         <section id="projects" className="mb-28">

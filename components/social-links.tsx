@@ -60,7 +60,7 @@ export const SocialLinks = () => {
           Twitter
         </LinkTrigger>
         <LinkTrigger id={GithubURL} href={GithubURL}>
-          Github
+          GitHub
         </LinkTrigger>
         <LinkTrigger id={FigmaURL} href={FigmaURL}>
           Figma
