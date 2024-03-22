@@ -1,0 +1,27 @@
+import React from 'react'
+
+export type MediaComparisonProps = {
+  mediaA: React.ReactNode
+  mediaB: React.ReactNode
+  labelA: string
+  labelB: string
+}
+
+export const MediaComparison = ({ mediaA, mediaB, labelA, labelB }: MediaComparisonProps) => {
+  return (
+    <div className='text-center text-xs italic font-serif text-secondary rounded-md pt-4 px-4 pb-2 flex gap-4 bg-[#F7F7F7] border-[0.5px] border-black/10'>
+      <div className='flex flex-col gap-3'>
+        {mediaA}
+        <span>{labelA}</span>
+      </div>
+
+      <div className='flex flex-col gap-3'>
+        {mediaB}
+        <span>{labelB}</span>
+      </div>
+    </div>
+  )
+}
+
+
+
