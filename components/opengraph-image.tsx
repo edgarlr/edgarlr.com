@@ -1,3 +1,4 @@
+import 'server-only'
 import { ImageResponse } from 'next/og';
 import React from 'react'
 
@@ -21,7 +22,7 @@ export const OpengraphImage = async ({ date: dateProp, title }: { title?: string
   return new ImageResponse(
     (
       <div style={{ background: 'radial-gradient(100% 100% at 50% 0%,#FFF,#FAFAFA)' }} tw="flex h-full w-full text-[#131414] flex-col px-48 justify-center">
-        {<div style={{ fontFamily: 'Newsreader' }} tw="mb-4 italic text-5xl">{title}</div>}
+        {<p className=' ' style={{ fontFamily: 'Newsreader' }} tw="mb-5 italic leading-tight text-5xl">{title}</p>}
         {date && <div tw="opacity-60 text-2xl">{date}</div>}
       </div>
     ),
