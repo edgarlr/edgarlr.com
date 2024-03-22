@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 import React from 'react'
 
-const baseUrl = process.env.VERCEL_BRANCH_URL ? `https://${process.env.VERCEL_BRANCH_URL}` : 'http://localhost:3000'
+const baseUrl = process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL}` : 'http://localhost:3000'
 
 export const OpengraphImage = async ({ date: dateProp, title }: { title?: string, date?: string }) => {
   const date = new Date(dateProp ?? '').toLocaleDateString('default', {
@@ -13,7 +13,6 @@ export const OpengraphImage = async ({ date: dateProp, title }: { title?: string
   const interRegular = fetch(new URL('/fonts/Inter-Regular.ttf', baseUrl)).then((res) =>
     res.arrayBuffer()
   )
-
 
   const newsreaderItalic = fetch(new URL('/fonts/Newsreader-Italic.ttf', baseUrl)).then((res) =>
     res.arrayBuffer()
