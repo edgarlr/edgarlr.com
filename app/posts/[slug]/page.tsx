@@ -41,11 +41,6 @@ export const generateMetadata = async ({
       description: post.description,
       url: `${SiteURL}/posts/${params.slug}`,
       type: 'article',
-      images: [
-        {
-          url: '/assets/social-card.jpg',
-        },
-      ],
     },
     authors: [
       {
