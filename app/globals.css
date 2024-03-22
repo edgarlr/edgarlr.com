@@ -25,6 +25,21 @@
   --background-selection-6: #d5ee93;
   --background-selection: var(--background-selection-1);
   --text-selection: var(--text-primary);
+
+  --shiki-foreground: hsl(0, 0%, 25%);
+
+  --shiki-token-constant: var(--text-primary);
+  --shiki-token-string: var(--text-primary);
+  --shiki-token-link: var(--text-primary);
+
+  --shiki-foreground: hsl(180, 3%, 20%);
+  --shiki-token-punctuation: hsl(180, 3%, 20%);
+  --shiki-token-string-expression: hsl(180, 3%, 35%);
+  --shiki-token-keyword: hsl(180, 3%, 40%);
+  --shiki-token-comment: hsl(180, 3%, 50%);
+
+  --shiki-token-function: hsl(270, 79%, 58%);
+  --shiki-token-highlight: hsla(270, 79%, 58%, 8%);
 }
 
 [data-theme='dark'] {
@@ -42,6 +57,15 @@
   --background-header: hsla(200, 6%, 10%, 0.6);
 
   --text-selection: var(--background-primary);
+
+  --shiki-foreground: hsl(220, 9%, 87%);
+  --shiki-token-punctuation: hsl(220, 7%, 90%);
+  --shiki-token-string-expression: hsl(220, 7%, 80%);
+  --shiki-token-keyword: hsl(220, 7%, 65%);
+  --shiki-token-comment: hsl(220, 7%, 55%);
+
+  --shiki-token-function: hsl(155, 100%, 80%);
+  --shiki-token-highlight: hsla(155, 100%, 90%, 8%);
 }
 
 a,
@@ -50,8 +74,13 @@ button[role='tab'],
 div[role='tabpanel'],
 div[role='button'],
 select {
-  @apply rounded-sm focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-300 focus-visible:ring-offset-1 focus-visible:ring-offset-purple-400 focus-visible:dark:ring-purple-800 focus-visible:dark:ring-offset-purple-700;
+  @apply rounded-sm focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-300 focus-visible:ring-offset-1 focus-visible:ring-offset-purple-400 focus-visible:dark:ring-teal-800 focus-visible:dark:ring-offset-teal-700;
+  -webkit-tap-highlight-color: transparent;
   user-select: none;
+}
+
+pre[tabindex='0'] {
+  @apply rounded-sm focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-300 focus-visible:ring-offset-1 focus-visible:ring-offset-purple-400 focus-visible:dark:ring-teal-800 focus-visible:dark:ring-offset-teal-700;
   -webkit-tap-highlight-color: transparent;
 }
 
