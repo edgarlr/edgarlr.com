@@ -2,7 +2,7 @@ import 'server-only'
 import { ImageResponse } from 'next/og';
 import React from 'react'
 
-const baseUrl = process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL}` : 'http://localhost:3000'
+const baseUrl = process.env.VERCEL_BRANCH_URL ? `https://${process.env.VERCEL_BRANCH_URL}` : 'http://localhost:3000'
 
 export const OpengraphImage = async ({ date: dateProp, title }: { title?: string, date?: string }) => {
   const date = new Date(dateProp ?? '').toLocaleDateString('default', {
