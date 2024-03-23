@@ -15,8 +15,6 @@ export const OpengraphImage = async ({ date: dateProp, title }: { title?: string
     year: 'numeric',
   })
 
-  console.log(new URL('/fonts/Inter-Regular.ttf', getBaseUrl()).href)
-
   const interRegular = fetch(new URL('/fonts/Inter-Regular.ttf', getBaseUrl())).then((res) =>
     res.arrayBuffer()
   )
