@@ -29,7 +29,7 @@ export default async function Page() {
           <div className="flex mt-2">
             <SocialLinks />
           </div>
-          <ChevronDown width={14} height={14} className='text-secondary absolute left-1/2 translate-x-1/2 bottom-10' />
+          <ChevronDown width={14} height={14} className='text-secondary absolute left-1/2 -translate-x-1/2 bottom-10' />
 
         </section>
 
