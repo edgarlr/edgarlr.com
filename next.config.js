@@ -19,7 +19,7 @@ module.exports = {
   },
   experimental: {
     outputFileTracingIncludes: {
-      '/post/[slug]/opengraph-image': ['./posts/**/*'],
+      '/posts/*': ['./posts/**/*'],
     },
   },
 }
