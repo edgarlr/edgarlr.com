@@ -38,7 +38,11 @@
     "next-themes": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rehype-pretty-code": "^0.13.0",
     "rehype-slug": "^6.0.0",
+    "server-only": "^0.0.1",
+    "sharp": "^0.33.2",
+    "shiki": "^1.2.0",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {

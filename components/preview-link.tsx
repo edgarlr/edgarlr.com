@@ -5,15 +5,17 @@ import * as HoverCardPrimitive from '@radix-ui/react-hover-card'
 import Link from 'next/link'
 import Image from 'next/image'
 
+export type PreviewLinkProps = {
+  title: string
+  href: string
+  src: string
+}
+
 export const PreviewLink = ({
   href,
   src,
   title,
-}: {
-  title: string
-  href: string
-  src: string
-}) => {
+}: PreviewLinkProps) => {
   return (
     <HoverCardPrimitive.Root openDelay={100} closeDelay={50}>
       <HoverCardPrimitive.Trigger asChild>

@@ -3,6 +3,8 @@ import { join } from 'path'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import { components } from '@components/mdx-components'
 import rehypeSlug from 'rehype-slug'
+import rehypePrettyCode, { type Options as PrettyCodeOptions } from 'rehype-pretty-code'
+import { createCssVariablesTheme } from 'shiki'
 
 const postsDirectory = join(process.cwd(), 'posts')
 
@@ -17,27 +19,52 @@ type PostMetadata = {
   date: string
 }
 
-export async function getAllPostsMetadata() {
-  const slugs = fs.readdirSync(postsDirectory).map(post => {
-    return post.replace(/\.mdx$/, '')
+export const getPostMetadataBySlug = async (slug: string) => {
+  const source = getPostSource(slug)
+
+  const { frontmatter } = await compileMDX<PostMetadata>({
+    options: { parseFrontmatter: true },
+    source,
   })
 
-  const posts = await Promise.all(slugs.map(async (slug) => {
-    const source = getPostSource(slug)
+  return { ...frontmatter, slug }
+}
 
-    const { frontmatter } = await compileMDX<PostMetadata>({
-      options: { parseFrontmatter: true },
-      source,
-    })
-
-    return { ...frontmatter, slug }
-  }))
-
+export async function getAllPostsMetadata() {
+  const slugs = fs.readdirSync(postsDirectory).map(post => post.replace(/\.mdx$/, ''))
+  const posts = await Promise.all(slugs.map((slug) => getPostMetadataBySlug(slug)))
   return posts.sort((post1, post2) => {
     const date1 = new Date(post1.date).getTime()
     const date2 = new Date(post2.date).getTime()
     return date1 < date2 ? 1 : -1
   })
+}
+
+export const CODE_BLOCK_FILENAME_REGEX = /filename="([^"]+)"/
+
+const theme = createCssVariablesTheme({
+  name: 'css-variables',
+  variablePrefix: '--shiki-',
+  variableDefaults: {},
+  fontStyle: true
+})
+
+const prettyCodeOpts: PrettyCodeOptions = {
+  theme: theme as PrettyCodeOptions["theme"],
+  keepBackground: false,
+  onVisitLine(node: any) {
+    if (node.children.length === 0) {
+      node.children = [{ type: 'text', value: ' ' }]
+    }
+  },
+  onVisitHighlightedLine(node: any) {
+    node.properties.className.push('highlighted')
+  },
+  onVisitHighlightedChars(node: any) {
+    node.properties.className = ['highlighted']
+  },
+  filterMetaString: (meta: string) =>
+    meta.replace(CODE_BLOCK_FILENAME_REGEX, '')
 }
 
 
@@ -49,7 +76,8 @@ export async function getPostBySlug(slug: string) {
       options: {
         parseFrontmatter: true,
         mdxOptions: {
-          rehypePlugins: [rehypeSlug],
+          // @ts-ignore
+          rehypePlugins: [rehypeSlug, [rehypePrettyCode, prettyCodeOpts]],
         }
       },
       source,

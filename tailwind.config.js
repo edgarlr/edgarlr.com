@@ -70,7 +70,16 @@ module.exports = {
               boxShadow: 'inset 0px 0px 0px 0.5px var(--border-tertiary)',
               fontSize: '0.875rem !important',
               lineHeight: '1.25rem',
+              padding: '1rem 0',
             },
+            'pre [data-line]': {
+              padding: '0 1rem',
+            },
+            'code [data-line] .highlighted,code [data-line].highlighted': {
+              borderRadius: '0.125rem',
+              background: 'var(--shiki-token-highlight)',
+            },
+
             blockquote: {
               backgroundColor: 'var(--background-tertiary)',
               boxShadow: 'inset 0px 0px 0px 0.5px var(--border-tertiary)',
@@ -107,6 +116,14 @@ module.exports = {
             'p:has(img) em': {
               fontSize: '0.75rem',
               lineHeight: '1.25rem',
+            },
+            video: {
+              border: '1px solid var(--border-tertiary)',
+              borderRadius: '6px',
+              position: 'relative',
+              margin: '0 auto',
+              objectFit: 'cover',
+              position: 'relative',
             },
             h2: {
               fontSize: '1rem',
