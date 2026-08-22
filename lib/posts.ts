@@ -75,6 +75,10 @@ export async function getPostBySlug(slug: string) {
     const { frontmatter, content } = await compileMDX<PostMetadata>({
       options: {
         parseFrontmatter: true,
+        // next-mdx-remote 6 strips every JSX attribute expression by default
+        // (blockJS), which drops width/height from <Image width={602} .../>.
+        // Our MDX is authored in this repo, so fall back to blockDangerousJS.
+        blockJS: false,
         mdxOptions: {
           // @ts-ignore
           rehypePlugins: [rehypeSlug, [rehypePrettyCode, prettyCodeOpts]],
