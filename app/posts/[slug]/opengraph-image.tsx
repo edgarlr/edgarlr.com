@@ -1,8 +1,13 @@
 import { OpengraphImage } from '@components/opengraph-image';
-import { getPostMetadataBySlug } from '@lib/posts';
+import { getAllPostsMetadata, getPostMetadataBySlug } from '@lib/posts';
 import { notFound } from 'next/navigation';
 
 export const runtime = 'nodejs';
+
+export const generateStaticParams = async () => {
+  const posts = await getAllPostsMetadata()
+  return posts.map((post) => ({ slug: post.slug }))
+}
 
 export default async function Image({
   params,

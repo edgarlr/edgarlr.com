@@ -1,12 +1,11 @@
 import 'server-only'
 import { ImageResponse } from 'next/og';
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
 import React from 'react'
 
-
-const getBaseUrl = () => {
-  if (process.env.VERCEL_BRANCH_URL) return `https://${process.env.VERCEL_BRANCH_URL}`
-  return 'http://localhost:3000'
-}
+const interRegular = readFile(join(process.cwd(), 'public/fonts/Inter-Regular.ttf'))
+const newsreaderItalic = readFile(join(process.cwd(), 'public/fonts/Newsreader-Italic.ttf'))
 
 export const OpengraphImage = async ({ date: dateProp, title }: { title?: string, date?: string }) => {
   const date = new Date(dateProp ?? '').toLocaleDateString('default', {
@@ -14,14 +13,6 @@ export const OpengraphImage = async ({ date: dateProp, title }: { title?: string
     day: 'numeric',
     year: 'numeric',
   })
-
-  const interRegular = fetch(new URL('/fonts/Inter-Regular.ttf', getBaseUrl())).then((res) =>
-    res.arrayBuffer()
-  )
-
-  const newsreaderItalic = fetch(new URL('/fonts/Newsreader-Italic.ttf', getBaseUrl())).then((res) =>
-    res.arrayBuffer()
-  )
 
   return new ImageResponse(
     (
