@@ -20,19 +20,24 @@ type PostMetadata = {
 }
 
 export const getPostMetadataBySlug = async (slug: string) => {
-  const source = getPostSource(slug)
+  try {
+    const source = getPostSource(slug)
 
-  const { frontmatter } = await compileMDX<PostMetadata>({
-    options: { parseFrontmatter: true },
-    source,
-  })
+    const { frontmatter } = await compileMDX<PostMetadata>({
+      options: { parseFrontmatter: true },
+      source,
+    })
 
-  return { ...frontmatter, slug }
+    return { ...frontmatter, slug }
+  } catch (error) {
+    return undefined
+  }
 }
 
 export async function getAllPostsMetadata() {
   const slugs = fs.readdirSync(postsDirectory).map(post => post.replace(/\.mdx$/, ''))
-  const posts = await Promise.all(slugs.map((slug) => getPostMetadataBySlug(slug)))
+  const posts = (await Promise.all(slugs.map((slug) => getPostMetadataBySlug(slug))))
+    .filter((post): post is PostMetadata & { slug: string } => post !== undefined)
   return posts.sort((post1, post2) => {
     const date1 = new Date(post1.date).getTime()
     const date2 = new Date(post2.date).getTime()
