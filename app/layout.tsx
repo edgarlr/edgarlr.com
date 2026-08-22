@@ -2,7 +2,7 @@ import { Providers } from '@components/providers'
 import './globals.css'
 
 import { SiteURL, TwitterUsername } from '@lib/constants'
-import { Analytics } from '@vercel/analytics/react'
+import { Analytics } from '@vercel/analytics/next'
 import { Metadata } from 'next'
 import { RandomSelectColor } from '@components/random-select-color'
 import { Inter, Newsreader } from 'next/font/google'
@@ -58,7 +58,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${serif.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${serif.variable}`}
+      suppressHydrationWarning
+    >
       <body className="antialiased bg-primary font-sans text-primary selection:[text-shadow:none] selection:bg-[--background-selection] selection:text-[--text-selection]">
         <Providers>
           {children}
