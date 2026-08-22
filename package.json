@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "@edgarlr",
   "license": "MIT",
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
     "dev": "next dev",
     "dev:inspect": "NODE_OPTIONS='--inspect' next",
@@ -31,33 +34,33 @@
   "dependencies": {
     "@radix-ui/react-hover-card": "^1.0.7",
     "@vercel/analytics": "^1.2.2",
-    "clsx": "^2.1.0",
-    "gray-matter": "^4.0.2",
+    "clsx": "^2.1.1",
+    "gray-matter": "^4.0.3",
     "next": "^14.1.4",
-    "next-mdx-remote": "^4.4.1",
+    "next-mdx-remote": "^6.0.0",
     "next-themes": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rehype-pretty-code": "^0.13.0",
     "rehype-slug": "^6.0.0",
     "server-only": "^0.0.1",
-    "sharp": "^0.33.2",
+    "sharp": "^0.35.3",
     "shiki": "^1.2.0",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.10",
-    "@types/node": "^20.11.20",
+    "@tailwindcss/typography": "^0.5.20",
+    "@types/node": "^24.13.3",
     "@types/react": "^18.2.58",
-    "autoprefixer": "^10.4.17",
+    "autoprefixer": "^10.5.4",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.1.4",
-    "eslint-config-prettier": "^9.1.0",
-    "husky": "^9.0.11",
-    "lint-staged": "^15.2.0",
-    "postcss": "^8.4.35",
-    "prettier": "^3.2.5",
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.3.0",
+    "postcss": "^8.5.26",
+    "prettier": "^3.9.6",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5.3.3"
+    "typescript": "~5.9"
   }
 }
