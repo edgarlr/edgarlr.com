@@ -12,7 +12,7 @@ import { PostsFooter } from '@components/footer'
 export const generateStaticParams = async () => {
   const posts = await getAllPostsMetadata()
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    slug: post.slug,
   }))
 }
 
