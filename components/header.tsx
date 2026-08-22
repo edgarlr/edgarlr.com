@@ -30,7 +30,7 @@ export const Header = ({ title, showBackButton = false }: Props) => (
         </Link>
       )}
 
-      <span className=" leading-none pt-1 md:pt-0.5 transition-[opacity,transform] ease-out duration-300 font-serif italic opacity-0 text-ellipsis whitespace-nowrap overflow-clip translate-y-2 group-data-[visible=true]:opacity-100 group-data-[visible=true]:translate-y-0">
+      <span className=" leading-none pt-1 md:pt-0.5 transition-[opacity,transform,translate] ease-out duration-300 font-serif italic opacity-0 text-ellipsis whitespace-nowrap overflow-clip translate-y-2 group-data-[visible=true]:opacity-100 group-data-[visible=true]:translate-y-0">
         {title}
       </span>
     </div>
