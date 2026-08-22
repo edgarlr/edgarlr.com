@@ -1,7 +1,15 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   images: {
-    domains: ['res.cloudinary.com'],
+    // Next 16 defaults images.qualities to [75]; the preview cards use quality={100}
+    qualities: [75, 100],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/**',
+      },
+    ],
   },
   async redirects() {
     return [
@@ -17,9 +25,7 @@ module.exports = {
       },
     ]
   },
-  experimental: {
-    outputFileTracingIncludes: {
-      '/posts/*': ['./posts/**/*'],
-    },
+  outputFileTracingIncludes: {
+    '/posts/*': ['./posts/**/*'],
   },
 }

@@ -19,9 +19,10 @@ export const generateStaticParams = async () => {
 export const generateMetadata = async ({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }): Promise<Metadata> => {
-  const post = await getPostBySlug(params.slug)
+  const { slug } = await params
+  const post = await getPostBySlug(slug)
 
   if (!post) {
     notFound()
@@ -39,7 +40,7 @@ export const generateMetadata = async ({
       title: `${post.title} — Edgar López`,
       publishedTime: new Date(post.date).toISOString(),
       description: post.description,
-      url: `${SiteURL}/posts/${params.slug}`,
+      url: `${SiteURL}/posts/${slug}`,
       type: 'article',
     },
     authors: [
@@ -49,7 +50,7 @@ export const generateMetadata = async ({
       },
     ],
     alternates: {
-      canonical: `${SiteURL}/posts/${params.slug}`,
+      canonical: `${SiteURL}/posts/${slug}`,
     },
   }
 }
@@ -57,9 +58,10 @@ export const generateMetadata = async ({
 export default async function BlogPost({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
-  const post = await getPostBySlug(params.slug)
+  const { slug } = await params
+  const post = await getPostBySlug(slug)
 
   const posts = await getAllPostsMetadata()
 
