@@ -14,7 +14,7 @@ export const PostsFooter = () => {
     <footer data-animate={`${inView}`} className="group flex justify-center relative py-10">
       <div
         style={{ transitionDuration: '2.5s' }}
-        className='absolute top-1/2 delay-1000 pointer-events-none  -translate-y-1/2  group-data-[animate=true]:opacity-0  group-data-[animate=true]:scale-95 group-data-[animate=true]:blur-sm transition-all'
+        className='absolute top-1/2 delay-1000 pointer-events-none  -translate-y-1/2  group-data-[animate=true]:opacity-0  group-data-[animate=true]:scale-95 group-data-[animate=true]:blur-xs transition-all'
       >
         {inView && (
           <span className='animate-in fade-in duration-700 text-center italic font-serif text-secondary'>
@@ -25,7 +25,7 @@ export const PostsFooter = () => {
 
       <div
         style={{ transitionDuration: '2.25s', transitionDelay: '1200ms' }}
-        className='opacity-0  blur-sm scale-[0.98] group-data-[animate=true]:opacity-100 group-data-[animate=true]:scale-100 group-data-[animate=true]:blur-0 transition-all'
+        className='opacity-0  blur-xs scale-[0.98] group-data-[animate=true]:opacity-100 group-data-[animate=true]:scale-100 group-data-[animate=true]:blur-[0px] transition-all'
       >
         <SocialLinks />
       </div>
