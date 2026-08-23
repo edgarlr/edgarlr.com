@@ -1,7 +1,10 @@
 "use client"
 
+import { useState } from 'react'
 import { useIntersectionObserver } from '@lib/hooks/use-intersection-observe'
-import { SocialLinks } from './social-links'
+
+
+const ENDINGS = ['Fin.', 'The End.', 'Fine.', 'Ende.', 'Fim.', '終わり', '剧终']
 
 export const PostsFooter = () => {
   const { ref, inView } = useIntersectionObserver({
@@ -10,24 +13,22 @@ export const PostsFooter = () => {
     once: true
   })
 
+  // Pick a random ending once, lazily (runs during the first render only).
+  // Hydration-safe because the text is gated behind `inView`, which is false
+  // during hydration — so the server/client value difference is never in the DOM.
+  const [ending] = useState(() => ENDINGS[Math.floor(Math.random() * ENDINGS.length)])
+
   return (
-    <footer data-animate={`${inView}`} className="group flex justify-center relative py-10">
+    <footer data-animate={`${inView}`} className="group flex justify-center relative py-8">
       <div
-        style={{ transitionDuration: '2.5s' }}
-        className='absolute top-1/2 delay-1000 pointer-events-none  -translate-y-1/2  group-data-[animate=true]:opacity-0  group-data-[animate=true]:scale-95 group-data-[animate=true]:blur-xs transition-all'
+        style={{ transitionDuration: '1s' }}
+        className='absolute top-1/2 delay-[2000ms] ease-out pointer-events-none  -translate-y-1/2  group-data-[animate=true]:opacity-0  group-data-[animate=true]:scale-95 group-data-[animate=true]:blur-xs transition-all'
       >
         {inView && (
           <span className='animate-in fade-in duration-700 text-center italic font-serif text-secondary'>
-            The End.
+            {ending}
           </span>
         )}
-      </div>
-
-      <div
-        style={{ transitionDuration: '2.25s', transitionDelay: '1200ms' }}
-        className='opacity-0  blur-xs scale-[0.98] group-data-[animate=true]:opacity-100 group-data-[animate=true]:scale-100 group-data-[animate=true]:blur-[0px] transition-all'
-      >
-        <SocialLinks />
       </div>
 
       <div ref={ref} className='absolute bottom-0 w-full h-px bg-transparent' />
