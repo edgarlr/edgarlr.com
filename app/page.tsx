@@ -44,7 +44,7 @@ export default async function Page() {
               >
                 X
               </a>
-              , and{' '}
+              ,{' '}
               <a
                 href={LinkedinURL}
                 target="_blank"
@@ -53,7 +53,7 @@ export default async function Page() {
               >
                 LinkedIn
               </a>
-              , or explore some of my work on{' '}
+              , and{' '}
               <a
                 href={GithubURL}
                 target="_blank"
