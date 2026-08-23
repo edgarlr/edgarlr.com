@@ -67,12 +67,15 @@ export type MdxDocument<Meta> = MdxEntry<Meta> & { content: ReactElement }
  * same frontmatter parsing, same compile options, same component map, same
  * newest-first ordering. Anything that should differ between the two belongs
  * in the MDX itself, not here.
+ *
+ * Takes an already-resolved absolute path rather than a folder name: Turbopack
+ * has to see the root of every filesystem access statically, and a name joined
+ * to `process.cwd()` in here reads as dynamic and traces the whole project —
+ * source and `public/` included — into the server output.
  */
 export const createMdxCollection = <Meta extends { date: string }>(
-  directoryName: string,
+  directory: string,
 ) => {
-  const directory = join(process.cwd(), directoryName)
-
   const getSource = (slug: string) =>
     fs.readFileSync(join(directory, `${slug}.mdx`), 'utf8')
 

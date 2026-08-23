@@ -1,3 +1,4 @@
+import { join } from 'path'
 import { createMdxCollection, type MdxEntry } from '@lib/mdx'
 
 export type ProjectMetadata = {
@@ -18,7 +19,7 @@ export type ProjectMetadata = {
 
 export type Project = MdxEntry<ProjectMetadata>
 
-const work = createMdxCollection<ProjectMetadata>('work')
+const work = createMdxCollection<ProjectMetadata>(join(process.cwd(), 'work'))
 
 /**
  * A project only gets a /work/[slug] page once its file has a body. Until then

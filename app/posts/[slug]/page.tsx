@@ -104,7 +104,10 @@ export default async function BlogPost({
           {post.content}
         </article>
 
-        <div className="flex justify-between my-20 mx-auto max-w-[70ch] max-lg:px-6">
+        {/* Sized the way `.bands > *` sizes the reading column, rather than a
+            padded 70ch box — padding inside the cap would inset these links
+            from the text above them between ~70ch and the lg breakpoint. */}
+        <div className="flex justify-between my-20 mx-auto w-[70ch] max-w-[calc(100%-3rem)]">
           {older ? (
             <Link
               href={`/posts/${older.slug}`}

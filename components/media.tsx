@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import cn from 'clsx'
+import { AutoplayVideo } from './autoplay-video'
 
 /**
  * Media blocks for case studies and posts.
@@ -38,10 +39,35 @@ const bandClass: Record<Band, string> = {
   wide: 'band-wide',
 }
 
+/**
+ * Keep in sync with `--band-wide` / `--band-gutter` in app/globals.css. A band
+ * is gutter-bound until the viewport can hold its full width, which is the
+ * breakpoint every `sizes` below switches on.
+ */
+const BAND_WIDE_REM = 56
+const BAND_GUTTER_REM = 1.5
+const BAND_WIDE_MIN_REM = BAND_WIDE_REM + BAND_GUTTER_REM * 2
+
+/** Tailwind's `sm`, where the multi-column blocks stop collapsing. */
+const SM_REM = 40
+
 const bandSizes: Record<Band, string> = {
   prose: '(min-width: 44rem) 40rem, 100vw',
-  wide: '(min-width: 64rem) 64rem, 100vw',
+  wide: `(min-width: ${BAND_WIDE_MIN_REM}rem) ${BAND_WIDE_REM}rem, 100vw`,
 }
+
+/**
+ * `sizes` for one tile of a grid that runs `columns` across down to `sm` and
+ * `mobileColumns` across below it. The last step is the one worth spelling out:
+ * without it a tile that goes full width on a phone still asks for a fraction
+ * of the viewport, and the browser hands back an image half the size it needs.
+ */
+const tileSizes = (columns: number, mobileColumns: number) =>
+  [
+    `(min-width: ${BAND_WIDE_MIN_REM}rem) ${Math.round(BAND_WIDE_REM / columns)}rem`,
+    `(min-width: ${SM_REM}rem) ${Math.round(100 / columns)}vw`,
+    `${Math.round(100 / mobileColumns)}vw`,
+  ].join(', ')
 
 /**
  * Portrait media — a poster, packaging, a phone screen — would tower over the
@@ -74,19 +100,26 @@ const Media = ({
   const className = frameClass(source, isTall(source))
 
   if (source.video) {
-    return (
+    // Pass `controls` for anything long enough to need scrubbing. Everything
+    // else is a short UI clip that reads as an animated still — AutoplayVideo
+    // starts those itself so `prefers-reduced-motion` can veto the motion.
+    return controls ? (
       <video
         src={source.src}
         poster={source.poster}
         width={source.width}
         height={source.height}
         className={className}
-        // Short UI clips read as animated stills, so they behave like the ones
-        // already in posts/. Pass `controls` for anything long enough to need
-        // scrubbing, which also stops it autoplaying.
-        {...(controls
-          ? { controls: true, preload: 'metadata' as const }
-          : { autoPlay: true, loop: true, muted: true, playsInline: true })}
+        controls
+        preload="metadata"
+      />
+    ) : (
+      <AutoplayVideo
+        src={source.src}
+        poster={source.poster}
+        width={source.width}
+        height={source.height}
+        className={className}
       />
     )
   }
@@ -163,11 +196,7 @@ export const Pair = ({ a, b, caption, band = 'wide' }: PairProps) => (
     <div className="grid grid-cols-1 items-center gap-4 sm:grid-cols-2 md:gap-6">
       {[a, b].map((source, index) => (
         <div key={index} className="flex flex-col gap-2">
-          <Media
-            source={source}
-            band={band}
-            sizes="(min-width: 64rem) 32rem, (min-width: 40rem) 50vw, 100vw"
-          />
+          <Media source={source} band={band} sizes={tileSizes(2, 1)} />
           {source.label && (
             <span className="text-center font-serif text-xs italic text-secondary">
               {source.label}
@@ -194,52 +223,66 @@ export const Gallery = ({
   aspect,
   caption,
   band = 'wide',
-}: GalleryProps) => (
-  <Figure band={band} caption={caption}>
-    <div
-      className={cn(
-        'grid gap-4 md:gap-6',
-        columns === 3
-          ? 'grid-cols-2 sm:grid-cols-3'
-          : 'grid-cols-1 sm:grid-cols-2',
-      )}
-    >
-      {items.map((source) => (
-        <div key={source.src} className="flex flex-col gap-2">
-          {aspect ? (
-            <div
-              className={cn(
-                'relative w-full overflow-hidden',
-                !source.bare && 'rounded-md border-[0.5px] border-tertiary',
-              )}
-              style={{ aspectRatio: aspect }}
-            >
-              <Image
-                src={source.src}
-                alt={source.alt ?? ''}
-                fill
-                quality={100}
-                sizes={`(min-width: 64rem) ${Math.round(64 / columns)}rem, ${Math.round(100 / columns)}vw`}
-                className="object-cover"
-              />
-            </div>
-          ) : (
-            <Media
-              source={source}
-              band={band}
-              sizes={`(min-width: 64rem) ${Math.round(64 / columns)}rem, ${Math.round(100 / columns)}vw`}
-            />
-          )}
-          {source.label && (
-            <span className="text-center font-serif text-xs italic text-secondary">
-              {source.label}
-            </span>
-          )}
-        </div>
-      ))}
-    </div>
-  </Figure>
-)
+}: GalleryProps) => {
+  // The grid drops a column below `sm` rather than shrinking tiles past
+  // reading size, so `sizes` has to account for the wider tile down there.
+  const mobileColumns = columns === 3 ? 2 : 1
+  const sizes = tileSizes(columns, mobileColumns)
+
+  return (
+    <Figure band={band} caption={caption}>
+      <div
+        className={cn(
+          'grid gap-4 md:gap-6',
+          columns === 3
+            ? 'grid-cols-2 sm:grid-cols-3'
+            : 'grid-cols-1 sm:grid-cols-2',
+        )}
+      >
+        {items.map((source) => (
+          <div key={source.src} className="flex flex-col gap-2">
+            {aspect ? (
+              <div
+                className={cn(
+                  'relative w-full overflow-hidden',
+                  !source.bare && 'rounded-md border-[0.5px] border-tertiary',
+                )}
+                style={{ aspectRatio: aspect }}
+              >
+                {/* Cropping is the only thing this branch does differently, so
+                    a clip still has to render as a clip — handing an .mp4 to
+                    the image optimizer would just fail. */}
+                {source.video ? (
+                  <AutoplayVideo
+                    src={source.src}
+                    poster={source.poster}
+                    className="absolute inset-0 size-full object-cover"
+                  />
+                ) : (
+                  <Image
+                    src={source.src}
+                    alt={source.alt ?? ''}
+                    fill
+                    quality={100}
+                    sizes={sizes}
+                    className="object-cover"
+                  />
+                )}
+              </div>
+            ) : (
+              <Media source={source} band={band} sizes={sizes} />
+            )}
+            {source.label && (
+              <span className="text-center font-serif text-xs italic text-secondary">
+                {source.label}
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
+    </Figure>
+  )
+}
 
 /**
  * A crop pulled out of a larger piece — a single control, a lockup, a corner of

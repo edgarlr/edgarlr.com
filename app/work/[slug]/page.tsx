@@ -152,7 +152,10 @@ export default async function CaseStudy({
         </article>
 
         {(older || newer) && (
-          <div className="mx-auto my-20 flex max-w-[70ch] justify-between max-lg:px-6">
+          // Sized the way `.bands > *` sizes the reading column, rather than a
+          // padded 70ch box — padding inside the cap would inset these links
+          // from the text above them between ~70ch and the lg breakpoint.
+          <div className="mx-auto my-20 flex w-[70ch] max-w-[calc(100%-3rem)] justify-between">
             {older ? (
               <Link
                 href={`/work/${older.slug}`}
