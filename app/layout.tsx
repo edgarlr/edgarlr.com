@@ -9,7 +9,7 @@ import { Inter, Newsreader } from 'next/font/google'
 
 const title = 'Edgar López'
 const description =
-  'I build user interfaces, interactions, animations, and other web-related stuff.'
+  'A designer and engineer working across brand, product, and marketing.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SiteURL),

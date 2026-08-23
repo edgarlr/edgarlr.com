@@ -82,7 +82,7 @@ export default async function BlogPost({
 
       {/* No max-width here: `.bands` sizes the reading column itself, so a post
           that reaches for a wide block has room to. */}
-      <main className="w-full min-h-screen pb-10">
+      <main className="w-full min-h-screen">
         <article className="bands prose">
           {/* not-prose: the plugin's h1 sizing and margins fight the small type
               this header is built from. */}
@@ -113,15 +113,15 @@ export default async function BlogPost({
               href={`/posts/${older.slug}`}
               className="group max-w-40 md:max-w-60 text-sm transition-opacity opacity-60 hover:opacity-100"
             >
-              <span className="flex items-center gap-1.5 mb-1 font-medium">
+              <span className="flex text-secondary items-center gap-1 mb-1">
                 <ArrowLeft
-                  width={16}
-                  height={16}
-                  className="transition-transform group-hover:-translate-x-1.5 group-focus-visible:-translate-x-1.5"
+                  width={14}
+                  height={14}
+                  className="transition-transform group-hover:-translate-x-1 group-focus-visible:-translate-x-1"
                 />
-                Older
+                Previous
               </span>
-              <span className="text-secondary text-pretty">{older.title}</span>
+              <span className="text-pretty">{older.title}</span>
             </Link>
           ) : (
             <div />
@@ -132,15 +132,15 @@ export default async function BlogPost({
               href={`/posts/${newer.slug}`}
               className="group max-w-40 md:max-w-60 text-right text-sm transition-opacity opacity-60 hover:opacity-100"
             >
-              <span className="flex items-center justify-end gap-1.5 mb-1 font-medium">
-                Newer
+              <span className="flex text-secondary items-center justify-end gap-1 mb-1">
+                Next
                 <ArrowRight
-                  width={16}
-                  height={16}
-                  className="transition-transform group-hover:translate-x-1.5 group-focus-visible:translate-x-1.5"
+                  width={14}
+                  height={14}
+                  className="transition-transform group-hover:translate-x-1 group-focus-visible:translate-x-1"
                 />
               </span>
-              <span className="text-secondary text-pretty">{newer.title}</span>
+              <span className="text-pretty">{newer.title}</span>
             </Link>
           )}
         </div>
