@@ -1,10 +1,8 @@
 import { PostsList } from '@components/posts-list'
 import { Header } from '@components/header'
-import { SocialLinks } from '@components/social-links'
 import { HeaderScrollSpy } from '@components/header-scroll-spy'
 import { ProjectsList } from '@components/projects-list'
 import ChevronDown from '@components/icons/ChevronDown'
-import { ArrowUpRight } from '@components/icons/ArrowUpRight'
 import { GithubURL, LinkedinURL, TwitterURL } from '@lib/constants'
 
 export default async function Page() {
@@ -22,12 +20,12 @@ export default async function Page() {
             </p>
 
             <p className="text-pretty">
-              I&apos;m currently design engineer at{' '}
+              I&apos;m currently a design engineer at{' '}
               <a
                 href="https://sequencehq.com"
                 target="_blank"
                 rel="noopener"
-                className="group/link underline decoration-primary decoration-1 underline-offset-2 transition-colors hover:decoration-secondary"
+                className="underline decoration-primary decoration-1 underline-offset-2 transition-colors hover:decoration-secondary"
               >
                 Sequence
               </a>
@@ -36,34 +34,33 @@ export default async function Page() {
               physical.
             </p>
 
-
             <p className="text-pretty">
-              You can find me on{" "}
+              You can find me on{' '}
               <a
                 href={TwitterURL}
                 target="_blank"
                 rel="noopener"
-                className="group/link underline decoration-primary decoration-1 underline-offset-2 transition-colors hover:decoration-secondary"
+                className="underline decoration-primary decoration-1 underline-offset-2 transition-colors hover:decoration-secondary"
               >
                 X
               </a>
-              , and{" "}
+              , and{' '}
               <a
                 href={LinkedinURL}
                 target="_blank"
                 rel="noopener"
-                className="group/link underline decoration-primary decoration-1 underline-offset-2 transition-colors hover:decoration-secondary"
+                className="underline decoration-primary decoration-1 underline-offset-2 transition-colors hover:decoration-secondary"
               >
                 LinkedIn
               </a>
-              , or explore some of my work on{" "}
+              , or explore some of my work on{' '}
               <a
                 href={GithubURL}
                 target="_blank"
                 rel="noopener"
-                className="group/link underline decoration-primary decoration-1 underline-offset-2 transition-colors hover:decoration-secondary"
+                className="underline decoration-primary decoration-1 underline-offset-2 transition-colors hover:decoration-secondary"
               >
-                Github
+                GitHub
               </a>
               .
             </p>

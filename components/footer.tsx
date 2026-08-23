@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { useIntersectionObserver } from '@lib/hooks/use-intersection-observe'
 
-
 const ENDINGS = ['Fin.', 'The End.', 'Fine.', 'Ende.', 'Fim.', '終わり', '剧终']
 
 export const PostsFooter = () => {
