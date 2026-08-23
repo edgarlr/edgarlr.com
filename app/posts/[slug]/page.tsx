@@ -10,7 +10,7 @@ import { notFound } from 'next/navigation'
 import { PostsFooter } from '@components/footer'
 
 export const generateStaticParams = async () => {
-  const posts = await getAllPostsMetadata()
+  const posts = getAllPostsMetadata()
   return posts.map((post) => ({
     slug: post.slug,
   }))
@@ -63,7 +63,7 @@ export default async function BlogPost({
   const { slug } = await params
   const post = await getPostBySlug(slug)
 
-  const posts = await getAllPostsMetadata()
+  const posts = getAllPostsMetadata()
 
   if (!post) {
     notFound()

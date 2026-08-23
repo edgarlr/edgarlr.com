@@ -1,9 +1,15 @@
+import fs from 'fs'
+import { join } from 'path'
+import { type ReactElement } from 'react'
+import matter from 'gray-matter'
+import { compileMDX } from 'next-mdx-remote/rsc'
 import type { MDXRemoteProps } from 'next-mdx-remote/rsc'
 import rehypeSlug from 'rehype-slug'
 import rehypePrettyCode, {
   type Options as PrettyCodeOptions,
 } from 'rehype-pretty-code'
 import { createCssVariablesTheme } from 'shiki'
+import { components } from '@components/mdx-components'
 
 export const CODE_BLOCK_FILENAME_REGEX = /filename="([^"]+)"/
 
@@ -32,12 +38,7 @@ const prettyCodeOpts: PrettyCodeOptions = {
     meta.replace(CODE_BLOCK_FILENAME_REGEX, ''),
 }
 
-/**
- * Shared by posts and case studies, so the two bodies of MDX behave the same:
- * same component map (@components/mdx-components), same heading slugs, same
- * code highlighting.
- */
-export const compileOptions: MDXRemoteProps['options'] = {
+const compileOptions: MDXRemoteProps['options'] = {
   parseFrontmatter: true,
   // next-mdx-remote 6 strips every JSX attribute expression by default
   // (blockJS), which drops width/height from <Image width={602} .../>.
@@ -47,4 +48,78 @@ export const compileOptions: MDXRemoteProps['options'] = {
     // @ts-ignore
     rehypePlugins: [rehypeSlug, [rehypePrettyCode, prettyCodeOpts]],
   },
+}
+
+/** Everything a collection derives from the file itself rather than frontmatter. */
+export type MdxEntry<Meta> = Meta & {
+  slug: string
+  /**
+   * Whether the file has anything below its frontmatter. Case studies use this
+   * to decide whether a project has earned its own page yet; posts always do.
+   */
+  hasBody: boolean
+}
+
+export type MdxDocument<Meta> = MdxEntry<Meta> & { content: ReactElement }
+
+/**
+ * Posts and case studies are the same pipeline pointed at a different folder:
+ * same frontmatter parsing, same compile options, same component map, same
+ * newest-first ordering. Anything that should differ between the two belongs
+ * in the MDX itself, not here.
+ */
+export const createMdxCollection = <Meta extends { date: string }>(
+  directoryName: string,
+) => {
+  const directory = join(process.cwd(), directoryName)
+
+  const getSource = (slug: string) =>
+    fs.readFileSync(join(directory, `${slug}.mdx`), 'utf8')
+
+  /**
+   * Frontmatter only, so listings don't pay to compile every document. Reading
+   * it with gray-matter rather than `compileMDX` keeps this synchronous — MDX
+   * that fails to compile still shows up in a list with its title intact.
+   */
+  const getMetadataBySlug = (slug: string): MdxEntry<Meta> | undefined => {
+    try {
+      const { data, content } = matter(getSource(slug))
+
+      return {
+        ...(data as Meta),
+        slug,
+        hasBody: content.trim().length > 0,
+      }
+    } catch (error) {
+      return undefined
+    }
+  }
+
+  const getAllMetadata = () =>
+    fs
+      .readdirSync(directory)
+      .filter((file) => file.endsWith('.mdx'))
+      .map((file) => getMetadataBySlug(file.replace(/\.mdx$/, '')))
+      .filter((entry): entry is MdxEntry<Meta> => entry !== undefined)
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+
+  const getBySlug = async (
+    slug: string,
+  ): Promise<MdxDocument<Meta> | undefined> => {
+    try {
+      const source = getSource(slug)
+
+      const { frontmatter, content } = await compileMDX<Meta>({
+        options: compileOptions,
+        source,
+        components,
+      })
+
+      return { ...frontmatter, slug, hasBody: true, content }
+    } catch (error) {
+      return undefined
+    }
+  }
+
+  return { getMetadataBySlug, getAllMetadata, getBySlug }
 }

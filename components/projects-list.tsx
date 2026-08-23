@@ -1,4 +1,4 @@
-import { getAllProjectsMetadata } from '@lib/work'
+import { getAllProjectsMetadata, hasCaseStudy } from '@lib/work'
 import { PreviewLink } from './preview-link'
 import cn from 'clsx'
 
@@ -16,7 +16,7 @@ export const ProjectsList = () => {
         // A project with a case-study body links to its own page; everything
         // else keeps pointing at the live site, so case studies can land one
         // at a time without changing how the rest of the list behaves.
-        const href = project.hasCaseStudy
+        const href = hasCaseStudy(project)
           ? `/work/${project.slug}`
           : project.href
 
@@ -28,7 +28,7 @@ export const ProjectsList = () => {
             <span
               className={cn(
                 'text-sm text-secondary',
-                repeatsClient && 'sm:invisible'
+                repeatsClient && 'sm:invisible',
               )}
             >
               {project.client}

@@ -1,8 +1,8 @@
 import { getAllPostsMetadata } from '@lib/posts'
 import Link from 'next/link'
 
-export const PostsList = async () => {
-  const posts = await getAllPostsMetadata()
+export const PostsList = () => {
+  const posts = getAllPostsMetadata()
 
   return (
     <ul className="flex flex-col gap-12">

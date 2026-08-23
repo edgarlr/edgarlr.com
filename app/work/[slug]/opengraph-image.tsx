@@ -1,5 +1,9 @@
 import { OpengraphImage } from '@components/opengraph-image'
-import { getAllProjectsMetadata, getProjectMetadataBySlug } from '@lib/work'
+import {
+  getAllProjectsMetadata,
+  getProjectMetadataBySlug,
+  hasCaseStudy,
+} from '@lib/work'
 import { notFound } from 'next/navigation'
 
 export const runtime = 'nodejs'
@@ -10,7 +14,7 @@ export const dynamicParams = false
 
 export const generateStaticParams = async () =>
   getAllProjectsMetadata()
-    .filter((project) => project.hasCaseStudy)
+    .filter(hasCaseStudy)
     .map((project) => ({ slug: project.slug }))
 
 export default async function Image({

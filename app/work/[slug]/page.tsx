@@ -3,7 +3,11 @@ import { HeaderScrollSpy } from '@components/header-scroll-spy'
 import ArrowLeft from '@components/icons/ArrowLeft'
 import ArrowRight from '@components/icons/ArrowRight'
 import { PostsFooter } from '@components/footer'
-import { getAllProjectsMetadata, getProjectBySlug } from '@lib/work'
+import {
+  getAllProjectsMetadata,
+  getProjectBySlug,
+  hasCaseStudy,
+} from '@lib/work'
 import { SiteURL } from '@lib/constants'
 import { Metadata } from 'next'
 import Link from 'next/link'
@@ -14,8 +18,7 @@ import { notFound } from 'next/navigation'
 // empty case study.
 export const dynamicParams = false
 
-const getCaseStudies = () =>
-  getAllProjectsMetadata().filter((project) => project.hasCaseStudy)
+const getCaseStudies = () => getAllProjectsMetadata().filter(hasCaseStudy)
 
 export const generateStaticParams = async () =>
   getCaseStudies().map((project) => ({ slug: project.slug }))
