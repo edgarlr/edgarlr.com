@@ -22,7 +22,7 @@ export default async function Page() {
             <PreviewLink
               title="PlanetScale"
               href="https://planetscale.com"
-              src="/assets/projects/planetscale-homepage.png"
+              src="/assets/work/planetscale-homepage.png"
             />
             . */}
           </p>

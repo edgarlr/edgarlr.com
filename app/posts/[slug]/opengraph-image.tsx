@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 export const runtime = 'nodejs';
 
 export const generateStaticParams = async () => {
-  const posts = await getAllPostsMetadata()
+  const posts = getAllPostsMetadata()
   return posts.map((post) => ({ slug: post.slug }))
 }
 
@@ -15,7 +15,7 @@ export default async function Image({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const post = await getPostMetadataBySlug(slug)
+  const post = getPostMetadataBySlug(slug)
 
   if (!post) {
     notFound()

@@ -9,7 +9,7 @@ In February, we launched a new
 <PreviewLink
   title="PlanetScale homepage"
   href="https://planetscale.com"
-  src="/assets/projects/planetscale-homepage.png"
+  src="/assets/work/planetscale-homepage.png"
 />.
 This was such a fun project to work on and collaborate with the brand team before all the recent changes, that I wanted to dive into the process, design decisions, and all technical implementations involved in this project.
 
@@ -80,7 +80,11 @@ Since this component starts above the fold, I also wanted to make it as light an
 The hero is composed of multiple layers, each layer has different animation loops:
 
 
-<video autoPlay playsInline muted loop width="1230" height="2332" src="https://res.cloudinary.com/dhdttwvcp/video/upload/c_crop,g_south,h_1230,w_2332/v1711101215/hero-composition_amccvv.mp4" />
+<Video
+  src="https://res.cloudinary.com/dhdttwvcp/video/upload/c_crop,g_south,h_1230,w_2332/v1711101215/hero-composition_amccvv.mp4"
+  width={2332}
+  height={1230}
+/>
 
 The pixel grid animation is using `canvas`, lazy loaded, and fades into the page after the initial page load is completed. For low-powered devices or users with reduced motion preferences, this animation isn't downloaded and is replaced with a static grid.
 
@@ -93,7 +97,11 @@ Instead, the final implementation has an additional list of elements for the obs
 
 To vertically align all elements in the middle of the screen, from small devices to 4K monitors, while ensuring they scroll out of the viewport at the same time, each component consists of two parts: a full-height sticky container, all sharing the same `--top-position`, and a card with a position relative to the parent to place it in the respective part of the diagram.
 
-<video autoPlay playsInline muted loop width="2560" height="1622" src="https://res.cloudinary.com/dhdttwvcp/video/upload/v1711101757/diagram-explode_pbkjlb.mp4" />
+<Video
+  src="https://res.cloudinary.com/dhdttwvcp/video/upload/v1711101757/diagram-explode_pbkjlb.mp4"
+  width={2560}
+  height={1622}
+/>
 
 Every time the current active element changes, it updates two parts, the card styles, and the respective section in the diagram. Each part is placed in different nested components, and since only styles are changing, an alternative to a context or prop drilling was using data attributes at the closest shared parent and updating the rest with CSS selectors.
 
@@ -151,16 +159,20 @@ Semantically, this table has different levels of headings and groupings:
 
 The full table looked great on larger devices but was just too much data for mobile and tablet. We restructured the table to show the most important data in each device and reorganized the layouts based on the space available.
 
-<Image width={1400} height={522} quality={100} src="/assets/posts/building-planetscale-homepage/responsive-table.png" alt="Three tables side by side. The first table, for mobile, has two columns with headings on top of each row. The second table, for tablet, has three columns with row readings on the left. The third table, for desktop, has four columns with heading rows on the left." />
+<Wide
+  src="/assets/posts/building-planetscale-homepage/responsive-table.png"
+  width={1400}
+  height={522}
+  alt="Three tables side by side. The first table, for mobile, has two columns with headings on top of each row. The second table, for tablet, has three columns with row readings on the left. The third table, for desktop, has four columns with heading rows on the left."
+/>
 
 As expected, there's no easy way to build a comparison with the perfect length of copy in every cell. Different sizes of paragraphs everywhere were not the final look we were aiming for. Adding tooltips for all longer texts, was a simple but great way to balance having all needed texts but respecting the intended styling.
 
 
-<Image 
+<Wide
   src="/assets/posts/building-planetscale-homepage/table-tooltips.png"
   width={1400}
   height={816}
-  quality={100} 
   alt="A tooltip being used to show longer texts on hover within a table cell"
 />
 
@@ -171,7 +183,11 @@ To emulate the shine, the gradient needed a stronger cut in front, but a longer 
 Then, we only need to update the data attributes to move the `background-position` from left to right, and animate the rest with CSS transitions.
 
 
-<video autoPlay playsInline muted loop width="1400" height="436" src="https://res.cloudinary.com/dhdttwvcp/video/upload/v1711104208/table-headings_phxblj.mp4" />
+<Video
+  src="https://res.cloudinary.com/dhdttwvcp/video/upload/v1711104208/table-headings_phxblj.mp4"
+  width={1400}
+  height={436}
+/>
 
 ```tsx
 <th data-animate={`${inView}`} className='group'>
@@ -190,7 +206,11 @@ While looking for references for this component, I ended up heavily inspired by 
 
 Using native scroll and web APIs, made it easier to have performant scroll and swipe interactions without third-party libraries.
 
-<video autoPlay playsInline muted loop width="1772" height="1530" src="https://res.cloudinary.com/dhdttwvcp/video/upload/v1711102453/features-carousel_abu40v.mp4" />
+<Video
+  src="https://res.cloudinary.com/dhdttwvcp/video/upload/v1711102453/features-carousel_abu40v.mp4"
+  width={1772}
+  height={1530}
+/>
 
 
 
@@ -217,11 +237,21 @@ All animations respect reduced motion preferences. In cases like the hero, the a
 
 For the customer logos, where in small devices is an infinite marquee animation. In addition to stopping the animation, the layout is adjusted to still properly display each logo.
 
-<MediaComparison 
-  mediaA={<video autoPlay playsInline muted loop width="1132" height="560" src="https://res.cloudinary.com/dhdttwvcp/video/upload/v1711104381/customer-logos-safe_wxiyih.mp4" />}
-  mediaB={<Image width="1132" height="560" src="/assets/posts/building-planetscale-homepage/customer-logos-reduced.png" alt="A list of logos displayed in a two-row layout, horizontally centered." />}
-  labelA="Animation"
-  labelB="Motion reduced"
+<Pair
+  a={{
+    src: 'https://res.cloudinary.com/dhdttwvcp/video/upload/v1711104381/customer-logos-safe_wxiyih.mp4',
+    video: true,
+    width: 1132,
+    height: 560,
+    label: 'Animation',
+  }}
+  b={{
+    src: '/assets/posts/building-planetscale-homepage/customer-logos-reduced.png',
+    width: 1132,
+    height: 560,
+    alt: 'A list of logos displayed in a two-row layout, horizontally centered.',
+    label: 'Motion reduced',
+  }}
 />
 
 
@@ -240,21 +270,41 @@ const LogosMarquee () => (
 For components with more animations such as the diagram, we reduced animations by replacing multiple-level animations with simpler fade-in/fade-out transitions.
 
 
-<MediaComparison 
-  mediaA={<video autoPlay playsInline muted loop width="1348" height="1092" src="https://res.cloudinary.com/dhdttwvcp/video/upload/v1711104383/diagram-safe_d9oknv.mp4" />}
-  mediaB={<video autoPlay playsInline muted loop width="1348" height="1092" src="https://res.cloudinary.com/dhdttwvcp/video/upload/v1711104382/diagram-reduced_oyrupj.mp4" />}
-  labelA="Animation"
-  labelB="Motion reduced"
+<Pair
+  a={{
+    src: 'https://res.cloudinary.com/dhdttwvcp/video/upload/v1711104383/diagram-safe_d9oknv.mp4',
+    video: true,
+    width: 1348,
+    height: 1092,
+    label: 'Animation',
+  }}
+  b={{
+    src: 'https://res.cloudinary.com/dhdttwvcp/video/upload/v1711104382/diagram-reduced_oyrupj.mp4',
+    video: true,
+    width: 1348,
+    height: 1092,
+    label: 'Motion reduced',
+  }}
 />
 
 Or instantly transitioning between states as in the features carousel:
 
 
-<MediaComparison 
-  mediaA={<video autoPlay playsInline muted loop width="1440" height="1366" src="https://res.cloudinary.com/dhdttwvcp/video/upload/v1711104382/carousel-reduced_kfsv3w.mp4" />}
-  mediaB={<video autoPlay playsInline muted loop width="1440" height="1366" src="https://res.cloudinary.com/dhdttwvcp/video/upload/v1711104380/carousel-safe_cphr3x.mp4" />}
-  labelA="Animation"
-  labelB="Motion reduced"
+<Pair
+  a={{
+    src: 'https://res.cloudinary.com/dhdttwvcp/video/upload/v1711104380/carousel-safe_cphr3x.mp4',
+    video: true,
+    width: 1440,
+    height: 1366,
+    label: 'Animation',
+  }}
+  b={{
+    src: 'https://res.cloudinary.com/dhdttwvcp/video/upload/v1711104382/carousel-reduced_kfsv3w.mp4',
+    video: true,
+    width: 1440,
+    height: 1366,
+    label: 'Motion reduced',
+  }}
 />
 
 ```tsx

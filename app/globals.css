@@ -88,3 +88,44 @@ img {
   max-width: 100%;
   display: block;
 }
+
+/* Article bands -------------------------------------------------------------
+   The rest of the site is one 70ch reading column. Posts and case studies keep
+   that column for prose, but media has to escape it: one wider band, the same
+   width for every block, so a case study reads as a single column of media
+   rather than a stack of competing widths.
+
+   Plain block flow rather than a grid, so adjacent margins still collapse and
+   the typography plugin's vertical rhythm survives. Widths are percentages of
+   <main>, not viewport units, so a band can't overflow past a classic
+   scrollbar.
+
+   Unlayered on purpose: `.prose` and `.bands > *` have equal specificity, and
+   the typography plugin's rules sit in Tailwind's components layer, which any
+   unlayered rule outranks. */
+/* `ch` resolves against the font of the element it lands on, so an unregistered
+   custom property would make a semibold h2 ~30px wider than the paragraph above
+   it. Registering it as a length pins 70ch to `.bands`' own font, which is the
+   same regular weight the rest of the site measures max-w-[70ch] against. */
+@property --band-prose {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+
+.bands {
+  --band-gutter: 1.5rem;
+  --band-prose: 70ch;
+  --band-wide: 56rem;
+
+  max-width: none;
+}
+
+.bands > * {
+  margin-inline: auto;
+  max-width: min(var(--band-prose), 100% - var(--band-gutter) * 2);
+}
+
+.bands > .band-wide {
+  max-width: min(var(--band-wide), 100% - var(--band-gutter) * 2);
+}

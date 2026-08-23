@@ -27,5 +27,6 @@ module.exports = {
   },
   outputFileTracingIncludes: {
     '/posts/*': ['./posts/**/*'],
+    '/work/*': ['./work/**/*'],
   },
 }

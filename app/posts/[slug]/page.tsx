@@ -10,7 +10,7 @@ import { notFound } from 'next/navigation'
 import { PostsFooter } from '@components/footer'
 
 export const generateStaticParams = async () => {
-  const posts = await getAllPostsMetadata()
+  const posts = getAllPostsMetadata()
   return posts.map((post) => ({
     slug: post.slug,
   }))
@@ -63,7 +63,7 @@ export default async function BlogPost({
   const { slug } = await params
   const post = await getPostBySlug(slug)
 
-  const posts = await getAllPostsMetadata()
+  const posts = getAllPostsMetadata()
 
   if (!post) {
     notFound()
@@ -80,9 +80,13 @@ export default async function BlogPost({
     <>
       <Header title={post.title} showBackButton />
 
-      <main className="w-full mx-auto min-h-screen max-lg:px-6 pb-10 max-w-[70ch] ">
-        <article>
-          <header className="mt-24 mb-10 md:mt-28">
+      {/* No max-width here: `.bands` sizes the reading column itself, so a post
+          that reaches for a wide block has room to. */}
+      <main className="w-full min-h-screen pb-10">
+        <article className="bands prose">
+          {/* not-prose: the plugin's h1 sizing and margins fight the small type
+              this header is built from. */}
+          <header className="not-prose mt-24 mb-10 md:mt-28">
             <HeaderScrollSpy className='max-sm:translate-y-2' />
             <h1 className="text-lg font-semibold">{post.title}</h1>
             <time
@@ -97,14 +101,13 @@ export default async function BlogPost({
             </time>
           </header>
 
-          <section
-            className="prose"
-          >
-            {post.content}
-          </section>
+          {post.content}
         </article>
 
-        <div className="flex justify-between my-20">
+        {/* Sized the way `.bands > *` sizes the reading column, rather than a
+            padded 70ch box — padding inside the cap would inset these links
+            from the text above them between ~70ch and the lg breakpoint. */}
+        <div className="flex justify-between my-20 mx-auto w-[70ch] max-w-[calc(100%-3rem)]">
           {older ? (
             <Link
               href={`/posts/${older.slug}`}

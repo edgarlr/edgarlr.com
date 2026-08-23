@@ -1,0 +1,160 @@
+---
+title: 'PlanetScale homepage'
+client: 'PlanetScale'
+date: '02/01/2024'
+cover: '/assets/work/planetscale-homepage.png'
+href: 'https://www.planetscale.com'
+summary: "PlanetScale’s new homepage: an animated hero, a scroll-driven diagram, a responsive comparison table and a native-scroll features carousel — each with a reduced-motion counterpart."
+---
+
+{/*
+  Media and captions only — the narrative is yours to write. `summary` above is
+  a placeholder; `role` and `disciplines` are optional frontmatter the header
+  renders if you ever want them. Every block below
+  points at an asset that already exists in this repo or on your Cloudinary,
+  and each one is here to show what the block does with a different shape of
+  media. Drop the ones you don't want.
+
+  Blocks available in case studies (see components/media.tsx):
+    <Wide      src alt width height caption preload />
+    <Pair      a={{...}} b={{...}} caption band />
+    <Gallery   items={[...]} columns aspect caption band />
+    <Detail    src alt width height caption band />
+    <Video     src width height caption band controls poster />
+
+  Every one takes `bare` to drop the screenshot border and radius — use it for
+  photography, print and packaging. They all sit on the same wide band, so the
+  page reads as one column of media; only portrait media is capped by height
+  and centred on a plate rather than stretched across the band.
+*/}
+
+<Wide
+  src="/assets/work/planetscale-homepage.png"
+  width={2400}
+  height={1440}
+  preload
+  alt="The PlanetScale homepage, showing the hero above the fold."
+/>
+
+## Hero
+
+<Video
+  src="https://res.cloudinary.com/dhdttwvcp/video/upload/c_crop,g_south,h_1230,w_2332/v1711101215/hero-composition_amccvv.mp4"
+  width={2332}
+  height={1230}
+  caption="The layers the hero is composed of, each on its own animation loop."
+/>
+
+## Diagram
+
+<Wide
+  src="/assets/work/planetscale-homepage/table-tooltips.png"
+  width={1400}
+  height={816}
+  alt="A tooltip being used to show longer texts on hover within a table cell."
+  caption="Tooltips carry the longer copy so every cell keeps the same rhythm."
+/>
+
+<Video
+  src="https://res.cloudinary.com/dhdttwvcp/video/upload/v1711101757/diagram-explode_pbkjlb.mp4"
+  width={2560}
+  height={1622}
+  caption="Sticky containers and intersection observers, pulled apart."
+/>
+
+## Comparison table
+
+<Detail
+  src="/assets/work/planetscale-homepage/responsive-table.png"
+  width={1400}
+  height={522}
+  band="wide"
+  alt="Three tables side by side. The first, for mobile, has two columns with headings on top of each row. The second, for tablet, has three columns with row headings on the left. The third, for desktop, has four columns with heading rows on the left."
+  caption="The same table restructured for mobile, tablet and desktop."
+/>
+
+<Video
+  src="https://res.cloudinary.com/dhdttwvcp/video/upload/v1711104208/table-headings_phxblj.mp4"
+  width={1400}
+  height={436}
+  caption="Table headings, animating their gradient background-position on scroll."
+/>
+
+## Features carousel
+
+<Video
+  src="https://res.cloudinary.com/dhdttwvcp/video/upload/v1711102453/features-carousel_abu40v.mp4"
+  width={1772}
+  height={1530}
+  caption="Native scroll snap, no carousel library."
+/>
+
+## Reduced motion
+
+<Pair
+  a={{
+    src: 'https://res.cloudinary.com/dhdttwvcp/video/upload/v1711104381/customer-logos-safe_wxiyih.mp4',
+    video: true,
+    width: 1132,
+    height: 560,
+    label: 'Animation',
+  }}
+  b={{
+    src: '/assets/work/planetscale-homepage/customer-logos-reduced.png',
+    width: 1132,
+    height: 560,
+    alt: 'A list of logos displayed in a two-row layout, horizontally centered.',
+    label: 'Motion reduced',
+  }}
+  caption="The customer logo marquee reflows instead of scrolling when motion is reduced."
+/>
+
+<Pair
+  a={{
+    src: 'https://res.cloudinary.com/dhdttwvcp/video/upload/v1711104383/diagram-safe_d9oknv.mp4',
+    video: true,
+    width: 1348,
+    height: 1092,
+    label: 'Animation',
+  }}
+  b={{
+    src: 'https://res.cloudinary.com/dhdttwvcp/video/upload/v1711104382/diagram-reduced_oyrupj.mp4',
+    video: true,
+    width: 1348,
+    height: 1092,
+    label: 'Motion reduced',
+  }}
+  caption="Multi-level diagram animations collapse to fades."
+/>
+
+<Gallery
+  columns={3}
+  aspect="4/3"
+  items={[
+    {
+      src: '/assets/work/planetscale-homepage/responsive-table.png',
+      width: 1400,
+      height: 522,
+      alt: 'The comparison table at three breakpoints.',
+      label: 'Comparison table',
+    },
+    {
+      src: '/assets/work/planetscale-homepage/table-tooltips.png',
+      width: 1400,
+      height: 816,
+      alt: 'A tooltip inside a table cell.',
+      label: 'Tooltips',
+    },
+    {
+      src: '/assets/work/planetscale-homepage/customer-logos-reduced.png',
+      width: 1132,
+      height: 560,
+      alt: 'Customer logos in a two-row layout.',
+      label: 'Customer logos',
+    },
+  ]}
+  caption="A cropped grid — every tile forced to the same shape."
+/>
+
+I wrote up the process, design decisions and implementation details in
+[Building PlanetScale’s new homepage](/posts/building-planetscale-homepage).
