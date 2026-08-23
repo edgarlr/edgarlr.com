@@ -116,7 +116,7 @@ img {
 .bands {
   --band-gutter: 1.5rem;
   --band-prose: 70ch;
-  --band-wide: 64rem;
+  --band-wide: 56rem;
 
   max-width: none;
 }
