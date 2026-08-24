@@ -11,11 +11,9 @@
   --border-secondary: hsla(180, 2%, 8%, 0.6);
   --border-tertiary: hsla(180, 2%, 8%, 0.1);
 
-  --background-primary: hsl(0, 0%, 98%);
+  --background-primary: hsl(0, 0%, 99%);
   --background-secondary: hsl(0, 0%, 95%);
   --background-tertiary: hsl(0, 0%, 97%);
-
-  --background-header: hsla(0, 0%, 98%, 0.6);
 
   --background-selection-1: #a0aff9;
   --background-selection-2: #8ddbaf;
@@ -54,8 +52,6 @@
   --background-secondary: hsl(200, 6%, 12%);
   --background-tertiary: hsl(200, 7%, 11%);
 
-  --background-header: hsla(200, 6%, 10%, 0.6);
-
   --text-selection: var(--background-primary);
 
   --shiki-foreground: hsl(220, 9%, 87%);
@@ -89,6 +85,12 @@ img {
   display: block;
 }
 
+:root {
+  /* On :root rather than on `.bands` because `.article-aside` is a sibling of
+     the article, not a descendant, and has to clear the same width. */
+  --band-wide: 56rem;
+}
+
 /* Article bands -------------------------------------------------------------
    The rest of the site is one 70ch reading column. Posts and case studies keep
    that column for prose, but media has to escape it: one wider band, the same
@@ -113,10 +115,11 @@ img {
   initial-value: 0px;
 }
 
+/* `--band-prose` cannot move to :root the way `--band-wide` did: `ch` has to
+   resolve against `.bands`' own font. */
 .bands {
   --band-gutter: 1.5rem;
   --band-prose: 70ch;
-  --band-wide: 56rem;
 
   max-width: none;
 }
@@ -128,4 +131,53 @@ img {
 
 .bands > .band-wide {
   max-width: min(var(--band-wide), 100% - var(--band-gutter) * 2);
+}
+
+/* The column beside an article ----------------------------------------------
+   The layout is [aside] [article] [empty]: the reading column stays centred in
+   the window and the aside takes the left gutter. Nothing about `.bands`
+   changes — a grid track for the aside would cost the margin collapsing the
+   note above depends on, and there is no flex or grid parent to make a sticky
+   element resolve against, so this is fixed like the homepage rail.
+
+   Holds the back link, and is the slot the table of contents goes in. */
+.article-aside {
+  --article-aside-width: 11rem;
+  --article-aside-gap: 2.5rem;
+  /* Scrolling one axis makes the other a clipping box too — `overflow-x`
+     computes from `visible` to `auto` the moment `overflow-y` is set — so the
+     back link's arrow, which slides 4px left on hover, was being cut off at the
+     edge. This is the room it moves into. The column itself is still
+     `--article-aside-width`; the padding sits outside it. */
+  --article-aside-bleed: 0.5rem;
+
+  position: fixed;
+  top: 7rem;
+  left: calc(
+    50% - var(--band-wide) / 2 - var(--article-aside-gap) -
+      var(--article-aside-width) - var(--article-aside-bleed)
+  );
+  width: calc(var(--article-aside-width) + var(--article-aside-bleed) * 2);
+  padding-inline: var(--article-aside-bleed);
+  /* A table of contents long enough to outrun the window scrolls inside the
+     aside rather than off the bottom of it. */
+  max-height: calc(100svh - 7rem - 2.5rem);
+  overflow-y: auto;
+  display: none;
+}
+
+/* Below the width where the aside clears the wide band it is gone, and the back
+   link it carries has to reappear in the article header — so the two are one
+   switch, not two. 86rem is the geometry, not a taste: 56rem of band plus, on
+   each side, the aside, its gap, and a window margin matching `--band-gutter`.
+   Narrower than that and the aside would sit on top of the media. The bleed
+   spends half that window margin, which is why it stays well under it. */
+@media (min-width: 86rem) {
+  .article-aside {
+    display: block;
+  }
+
+  .article-aside-fallback {
+    display: none;
+  }
 }

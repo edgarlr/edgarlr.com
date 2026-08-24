@@ -1,5 +1,5 @@
-import { Header } from '@components/header'
-import { HeaderScrollSpy } from '@components/header-scroll-spy'
+import { ArticleAside } from '@components/article-aside'
+import { BackLink } from '@components/back-link'
 import ArrowLeft from '@components/icons/ArrowLeft'
 import ArrowRight from '@components/icons/ArrowRight'
 import { getAllPostsMetadata, getPostBySlug } from '@lib/posts'
@@ -78,16 +78,16 @@ export default async function BlogPost({
 
   return (
     <>
-      <Header title={post.title} showBackButton />
-
       {/* No max-width here: `.bands` sizes the reading column itself, so a post
           that reaches for a wide block has room to. */}
       <main className="w-full min-h-screen">
+        <ArticleAside />
+
         <article className="bands prose">
           {/* not-prose: the plugin's h1 sizing and margins fight the small type
               this header is built from. */}
           <header className="not-prose mt-24 mb-10 md:mt-28">
-            <HeaderScrollSpy className='max-sm:translate-y-2' />
+            <BackLink className="article-aside-fallback" />
             <h1 className="text-lg font-semibold">{post.title}</h1>
             <time
               dateTime={date.toISOString()}

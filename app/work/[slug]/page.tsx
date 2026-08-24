@@ -1,5 +1,5 @@
-import { Header } from '@components/header'
-import { HeaderScrollSpy } from '@components/header-scroll-spy'
+import { ArticleAside } from '@components/article-aside'
+import { BackLink } from '@components/back-link'
 import ArrowLeft from '@components/icons/ArrowLeft'
 import ArrowRight from '@components/icons/ArrowRight'
 import { PostsFooter } from '@components/footer'
@@ -37,17 +37,19 @@ export const generateMetadata = async ({
 
   const title = `${project.title} — ${project.client}`
 
+  const description = project.summary
+
   return {
     title,
-    description: project.summary,
+    description,
     twitter: {
       title: `${title} — Edgar López`,
-      description: project.summary,
+      description,
       card: 'summary_large_image',
     },
     openGraph: {
       title: `${title} — Edgar López`,
-      description: project.summary,
+      description,
       url: `${SiteURL}/work/${slug}`,
       type: 'article',
     },
@@ -91,16 +93,16 @@ export default async function CaseStudy({
 
   return (
     <>
-      <Header title={project.title} showBackButton />
-
       {/* No max-width here: the bands inside `.bands` size themselves, so the
           wide media band can reach past the reading column. */}
       <main className="min-h-screen w-full pb-10">
+        <ArticleAside />
+
         <article className="bands prose">
           {/* not-prose: the typography plugin indents <dd>, and its h1 sizing
               and margins fight the small type this header is built from. */}
           <header className="not-prose mt-24 mb-12 md:mt-28">
-            <HeaderScrollSpy className="max-sm:translate-y-2" />
+            <BackLink className="article-aside-fallback" />
             <p className="mb-1 text-sm text-secondary">{project.client}</p>
             <h1 className="text-lg font-semibold">{project.title}</h1>
 
