@@ -22,7 +22,7 @@ export const PreviewLink = ({
         <Link
           href={href}
           rel="noopener"
-          className="max-md:mt-1 w-fit underline decoration-1 underline-offset-2 transition-colors decoration-primary hover:decoration-secondary"
+          className="max-md:mt-1 w-fit text-sm hover:underline decoration-1 underline-offset-2 transition-colors decoration-primary hover:decoration-secondary"
         >
           {title}
         </Link>
@@ -46,7 +46,7 @@ export const PreviewLink = ({
           />
           <Image
             quality={100}
-            priority
+            preload
             src={src}
             alt=""
             width={225}

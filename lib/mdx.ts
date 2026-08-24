@@ -50,6 +50,28 @@ const compileOptions: MDXRemoteProps['options'] = {
   },
 }
 
+/**
+ * What the homepage timeline needs from an entry, whatever collection it came
+ * from. Posts and projects each add their own fields on top; the timeline only
+ * ever reads these, which is what lets the two interleave into one list.
+ */
+export type TimelineMetadata = {
+  title: string
+  date: string
+  /**
+   * Optional so a post can land before its art does. Without a cover an entry
+   * cannot be featured, and its row loses the hover preview but nothing else.
+   */
+  cover?: string
+  /**
+   * Whether the entry leads with its cover instead of sitting in a text row.
+   *
+   * A flag rather than "the most recent N": the timeline is already ordered by
+   * date, so recency can no longer double as the thing that earns the space.
+   */
+  featured?: boolean
+}
+
 /** Everything a collection derives from the file itself rather than frontmatter. */
 export type MdxEntry<Meta> = Meta & {
   slug: string
