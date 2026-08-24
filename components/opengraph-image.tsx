@@ -5,7 +5,6 @@ import { join } from 'node:path'
 import React from 'react'
 
 const interRegular = readFile(join(process.cwd(), 'public/fonts/Inter-Regular.ttf'))
-const newsreaderItalic = readFile(join(process.cwd(), 'public/fonts/Newsreader-Italic.ttf'))
 
 export const OpengraphImage = async ({ date: dateProp, title }: { title?: string, date?: string }) => {
   const date = new Date(dateProp ?? '').toLocaleDateString('default', {
@@ -16,9 +15,10 @@ export const OpengraphImage = async ({ date: dateProp, title }: { title?: string
 
   return new ImageResponse(
     (
-      <div style={{ background: 'radial-gradient(100% 100% at 50% 0%,#FFF,#FAFAFA)' }} tw="flex h-full w-full text-[#131414] flex-col px-48 justify-center">
-        {<p className=' ' style={{ fontFamily: 'Newsreader' }} tw="mb-5 italic leading-tight text-5xl">{title}</p>}
-        {date && <div tw="opacity-60 text-2xl">{date}</div>}
+      <div style={{ background: '#181A1B' }} tw="flex h-full w-full text-[#F2F2F2] flex-col px-48 py-24 justify-end">
+        {<p tw="mb-4 leading-tight text-6xl text-pretty">{title}</p>}
+        {date && <div tw="text-[#f2f2f299] text-2xl">{date}</div>}
+
       </div>
     ),
     {
@@ -29,12 +29,6 @@ export const OpengraphImage = async ({ date: dateProp, title }: { title?: string
           name: 'Inter',
           data: await interRegular,
           style: 'normal',
-          weight: 400,
-        },
-        {
-          name: 'Newsreader',
-          data: await newsreaderItalic,
-          style: 'italic',
           weight: 400,
         },
       ],
