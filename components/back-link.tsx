@@ -16,7 +16,7 @@ export const BackLink = ({ className }: { className?: string }) => (
   <Link
     href="/"
     className={cn(
-      'group mb-8 inline-flex items-center gap-1 text-sm text-secondary opacity-60 transition-opacity hover:opacity-100 focus-visible:opacity-100',
+      'group max-md:mb-8 inline-flex items-center gap-1 text-sm text-secondary opacity-60 transition-opacity hover:opacity-100 focus-visible:opacity-100',
       className
     )}
   >

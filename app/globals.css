@@ -152,7 +152,7 @@ img {
   --article-aside-bleed: 0.5rem;
 
   position: fixed;
-  top: 7rem;
+  top: 4.75rem;
   left: calc(
     50% - var(--band-wide) / 2 - var(--article-aside-gap) -
       var(--article-aside-width) - var(--article-aside-bleed)

@@ -101,7 +101,7 @@ export default async function CaseStudy({
         <article className="bands prose">
           {/* not-prose: the typography plugin indents <dd>, and its h1 sizing
               and margins fight the small type this header is built from. */}
-          <header className="not-prose mt-24 mb-12 md:mt-28">
+          <header className="not-prose pb-10 pt-20">
             <BackLink className="article-aside-fallback" />
             <p className="mb-1 text-sm text-secondary">{project.client}</p>
             <h1 className="text-lg font-semibold">{project.title}</h1>

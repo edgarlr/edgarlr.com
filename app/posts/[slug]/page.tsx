@@ -86,7 +86,7 @@ export default async function BlogPost({
         <article className="bands prose">
           {/* not-prose: the plugin's h1 sizing and margins fight the small type
               this header is built from. */}
-          <header className="not-prose mt-24 mb-10 md:mt-28">
+          <header className="not-prose pb-10 pt-20">
             <BackLink className="article-aside-fallback" />
             <h1 className="text-lg font-semibold">{post.title}</h1>
             <time
@@ -107,18 +107,14 @@ export default async function BlogPost({
         {/* Sized the way `.bands > *` sizes the reading column, rather than a
             padded 70ch box — padding inside the cap would inset these links
             from the text above them between ~70ch and the lg breakpoint. */}
-        <div className="flex justify-between my-20 mx-auto w-[70ch] max-w-[calc(100%-3rem)]">
+        <div className="flex justify-between my-20 border-t-[0.5px] border-tertiary pt-10 mx-auto w-[70ch] max-w-[calc(100%-3rem)]">
           {older ? (
             <Link
               href={`/posts/${older.slug}`}
               className="group max-w-40 md:max-w-60 text-sm transition-opacity opacity-60 hover:opacity-100"
             >
               <span className="flex text-secondary items-center gap-1 mb-1">
-                <ArrowLeft
-                  width={14}
-                  height={14}
-                  className="transition-transform group-hover:-translate-x-1 group-focus-visible:-translate-x-1"
-                />
+
                 Previous
               </span>
               <span className="text-pretty">{older.title}</span>
@@ -134,11 +130,6 @@ export default async function BlogPost({
             >
               <span className="flex text-secondary items-center justify-end gap-1 mb-1">
                 Next
-                <ArrowRight
-                  width={14}
-                  height={14}
-                  className="transition-transform group-hover:translate-x-1 group-focus-visible:translate-x-1"
-                />
               </span>
               <span className="text-pretty">{newer.title}</span>
             </Link>
