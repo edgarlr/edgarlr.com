@@ -1,0 +1,43 @@
+---
+title: 'Growth experiments'
+client: 'PlanetScale'
+date: '07/01/2023'
+summary: 'A/B testing for a static marketing site: GrowthBook on top of the analytics already in place, served through a proxy rewrite so variants arrived pre-rendered and the pages kept their speed.'
+---
+
+## Setup
+
+Analytics was already in place. What was missing was a way to test against it, so
+I set up GrowthBook — and then spent most of the work on trusting it, verifying
+the data and checking measurement accuracy before anything got called a result.
+
+The site was static, and staying fast was the point. That ruled out the usual
+client-side variant swap: it costs a flash of the original and a second render
+behind it. Experiments run through a proxy and a rewrite instead, so a visitor is
+served the variant already rendered — no flicker, no client-side branch, and the
+pages keep their static performance.
+
+## Experiments
+
+Two variations on the homepage, and one on the pricing page.
+
+{/*
+  Shots go here. Uncomment a block and point it at the asset once it lands in
+  public/assets/work/planetscale-growth-experiments/ — captions carry the
+  explaining, so keep the text short.
+
+  <Pair
+    a={{ src: '...', width: 0, height: 0, alt: '', label: 'Control' }}
+    b={{ src: '...', width: 0, height: 0, alt: '', label: 'Variant' }}
+    caption="The homepage hero, tested two ways."
+  />
+
+  <Wide src="..." width={0} height={0} alt="" caption="..." />
+
+  <Gallery
+    columns={2}
+    aspect="4/3"
+    items={[{ src: '...', width: 0, height: 0, alt: '', label: '' }]}
+    caption="..."
+  />
+*/}
