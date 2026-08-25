@@ -157,14 +157,14 @@ const Figure = ({
     <div
       className={cn(
         plate &&
-          'rounded-md border-[0.5px] border-tertiary bg-tertiary p-4 md:p-8',
+        'rounded-md border-[0.5px] border-tertiary bg-tertiary p-4 md:p-8',
       )}
     >
       {children}
     </div>
 
     {caption && (
-      <figcaption className="mt-2 text-center font-serif text-xs italic text-secondary">
+      <figcaption className="mt-3 text-center text-xs text-secondary">
         {caption}
       </figcaption>
     )}
@@ -273,7 +273,7 @@ export const Gallery = ({
               <Media source={source} band={band} sizes={sizes} />
             )}
             {source.label && (
-              <span className="text-center font-serif text-xs italic text-secondary">
+              <span className="text-center text-xs  text-secondary">
                 {source.label}
               </span>
             )}

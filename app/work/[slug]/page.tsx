@@ -66,8 +66,8 @@ const Meta = ({
   label: string
   children: React.ReactNode
 }) => (
-  <div className="flex flex-col gap-1">
-    <dt className="text-xs text-secondary">{label}</dt>
+  <div className="flex flex-col gap-0.5">
+    <dt className="text-[13px] text-secondary">{label}</dt>
     <dd className="text-sm text-pretty">{children}</dd>
   </div>
 )
@@ -101,16 +101,16 @@ export default async function CaseStudy({
         <article className="bands prose">
           {/* not-prose: the typography plugin indents <dd>, and its h1 sizing
               and margins fight the small type this header is built from. */}
-          <header className="not-prose pb-10 pt-20">
+          <header className="not-prose pb-0 pt-20">
             <BackLink className="article-aside-fallback" />
-            <p className="mb-1 text-sm text-secondary">{project.client}</p>
+
             <h1 className="text-lg font-semibold">{project.title}</h1>
 
             {project.summary && (
               <p className="mt-4 text-pretty">{project.summary}</p>
             )}
 
-            <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 border-t-[0.5px] border-tertiary pt-6 sm:grid-cols-4">
+            <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 border-t-[0.5px] border-tertiary pt-6 sm:grid-cols-3">
               <Meta label="Client">{project.client}</Meta>
 
               <Meta label="Date">
@@ -121,18 +121,6 @@ export default async function CaseStudy({
                   })}
                 </time>
               </Meta>
-
-              {project.role && <Meta label="Role">{project.role}</Meta>}
-
-              {project.disciplines && project.disciplines.length > 0 && (
-                <Meta label="Disciplines">
-                  <ul>
-                    {project.disciplines.map((discipline) => (
-                      <li key={discipline}>{discipline}</li>
-                    ))}
-                  </ul>
-                </Meta>
-              )}
 
               {/* The homepage links case studies internally, so the live URL
                   would otherwise have nowhere left to surface. */}

@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import cn from 'clsx'
-import { PreviewLink } from './preview-link'
 import {
   entryDate,
   entryHref,
@@ -131,8 +130,16 @@ const FeaturedEntry = ({
 
 /**
  * Everything not featured: the same title and label, without the cover taking
- * up the room. An entry that has a cover still shows it on hover, which is the
- * one thing a row can offer that a card cannot — a peek without the scroll.
+ * up the room.
+ *
+ * No hover preview. A row used to peek at its cover on hover, back when a
+ * project's title led off-site and the peek was the only way to see the work
+ * without leaving. Every project has a page of its own now, so the peek buys a
+ * glance at one screenshot in exchange for a card that covers the entries
+ * either side of it — and the page it hides is one click away.
+ *
+ * `PreviewLink` still exists for prose, where an inline peek doesn't sit on top
+ * of a list.
  */
 const EntryRow = ({
   entry,
@@ -148,9 +155,7 @@ const EntryRow = ({
       <div className="flex flex-col gap-1 sm:gap-0.5">
 
 
-        {href && entry.cover ? (
-          <PreviewLink title={entry.title} src={entry.cover} href={href} />
-        ) : href ? (
+        {href ? (
           <Link
             href={href}
             rel="noopener"

@@ -1,0 +1,22 @@
+---
+title: 'Growth experiments'
+client: 'PlanetScale'
+date: '07/01/2023'
+summary: 'A/B testing for PlanetScale’s marketing site, GrowthBook on top of the existing analytics, with variants assigned in edge middleware and served as prerendered static pages.'
+---
+
+## Setup
+
+Analytics was already in place; what was missing was a way to test against it. I
+set up GrowthBook, then spent most of the time verifying the data and checking
+measurement accuracy.
+
+The site was static and had to stay that way. The usual client-side variant swap
+costs a flash of the original and a second render behind it. Assignment happens in
+edge middleware instead: a cookie decides which variant a visitor is in, and the
+request is rewritten to a separate prerendered route for it. Every variant is
+built ahead of time, so the response is static either way.
+
+## Experiments
+
+Two variations on the homepage, and one on the pricing page.
