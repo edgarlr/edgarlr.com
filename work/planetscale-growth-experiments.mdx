@@ -2,20 +2,20 @@
 title: 'Growth experiments'
 client: 'PlanetScale'
 date: '07/01/2023'
-summary: 'A/B testing for a static marketing site: GrowthBook on top of the analytics already in place, served through a proxy rewrite so variants arrived pre-rendered and the pages kept their speed.'
+summary: 'A/B testing for PlanetScale’s marketing site, GrowthBook on top of the existing analytics, with variants assigned in edge middleware and served as prerendered static pages.'
 ---
 
 ## Setup
 
-Analytics was already in place. What was missing was a way to test against it, so
-I set up GrowthBook — and then spent most of the work on trusting it, verifying
-the data and checking measurement accuracy before anything got called a result.
+Analytics was already in place; what was missing was a way to test against it. I
+set up GrowthBook, then spent most of the time verifying the data and checking
+measurement accuracy.
 
-The site was static, and staying fast was the point. That ruled out the usual
-client-side variant swap: it costs a flash of the original and a second render
-behind it. Experiments run through a proxy and a rewrite instead, so a visitor is
-served the variant already rendered — no flicker, no client-side branch, and the
-pages keep their static performance.
+The site was static and had to stay that way. The usual client-side variant swap
+costs a flash of the original and a second render behind it. Assignment happens in
+edge middleware instead: a cookie decides which variant a visitor is in, and the
+request is rewritten to a separate prerendered route for it. Every variant is
+built ahead of time, so the response is static either way.
 
 ## Experiments
 

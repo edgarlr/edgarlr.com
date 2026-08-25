@@ -12,11 +12,6 @@ export type ProjectMetadata = TimelineMetadata & {
    * for the project's own page; the timeline shows only a label and a title.
    */
   summary?: string
-  // Both render in the case-study header when set. Nothing sets them yet —
-  // Edgar would rather not list a role or disciplines per project — but the
-  // header handles them, so turning them on is a frontmatter edit.
-  role?: string
-  disciplines?: string[]
   // The external URL the timeline links to while a project has no case study
   // of its own. Ignored once the file has a body.
   href?: string
