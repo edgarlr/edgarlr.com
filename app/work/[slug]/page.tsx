@@ -110,7 +110,6 @@ export default async function CaseStudy({
               <p className="mt-4 text-pretty">{project.summary}</p>
             )}
 
-
             <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 border-t-[0.5px] border-tertiary pt-6 sm:grid-cols-3">
               <Meta label="Client">{project.client}</Meta>
 
