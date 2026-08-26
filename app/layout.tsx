@@ -5,7 +5,7 @@ import { SiteURL, TwitterUsername } from '@lib/constants'
 import { Analytics } from '@vercel/analytics/next'
 import { Metadata } from 'next'
 import { RandomSelectColor } from '@components/random-select-color'
-import { Inter, Newsreader } from 'next/font/google'
+import { Inter } from 'next/font/google'
 
 const title = 'Edgar López'
 const description =
@@ -44,25 +44,13 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
-const serif = Newsreader({
-  subsets: ['latin'],
-  display: 'swap',
-  style: ['italic'],
-  weight: '400',
-  variable: '--font-serif',
-})
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${serif.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body className="antialiased bg-primary font-sans text-primary selection:[text-shadow:none] selection:bg-(--background-selection) selection:text-(--text-selection)">
         <Providers>
           {children}

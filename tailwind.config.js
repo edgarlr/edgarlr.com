@@ -9,7 +9,18 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['var(--font-inter)'],
-        serif: ['var(--font-serif)'],
+        // System serif. The serif only ever sets a footer ending and the odd
+        // media label — a handful of short italic words — which isn't worth
+        // a webfont download. Also gives the CJK endings real glyphs, which a
+        // latin-subset webfont couldn't.
+        serif: [
+          'ui-serif',
+          'Georgia',
+          'Cambria',
+          '"Times New Roman"',
+          'Times',
+          'serif',
+        ],
       },
       backgroundColor: {
         primary: 'var(--background-primary)',
