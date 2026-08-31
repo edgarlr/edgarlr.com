@@ -1,25 +1,26 @@
 import { Providers } from '@components/providers'
 import './globals.css'
 
-import { SiteURL, TwitterUsername } from '@lib/constants'
+import {
+  SiteDescription,
+  SiteName,
+  SiteURL,
+  TwitterUsername,
+} from '@lib/constants'
 import { Analytics } from '@vercel/analytics/next'
 import { Metadata } from 'next'
 import { RandomSelectColor } from '@components/random-select-color'
 import { Inter } from 'next/font/google'
 
-const title = 'Edgar López'
-const description =
-  'A designer and engineer working across brand, product, and marketing.'
-
 export const metadata: Metadata = {
   metadataBase: new URL(SiteURL),
   title: {
-    default: title,
-    template: '%s — Edgar López',
+    default: SiteName,
+    template: `%s — ${SiteName}`,
   },
-  description,
+  description: SiteDescription,
   twitter: {
-    title: title,
+    title: SiteName,
     card: 'summary_large_image',
     site: TwitterUsername,
     creator: TwitterUsername,
@@ -27,9 +28,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://www.edgarlr.com',
-    title,
-    description,
+    url: SiteURL,
+    title: SiteName,
+    description: SiteDescription,
     images: [
       {
         url: '/assets/social-card.jpg',
@@ -51,6 +52,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
+      {/* The discovery relation from the llms.txt spec: `describedby` points at
+          the llms.txt covering this page, and ours covers the whole site. The
+          metadata API can't express it — `alternates.types` only ever emits
+          rel="alternate" — so it's a plain <link>, which React hoists to head.
+
+          The other half of the spec, rel="alternate" type="text/markdown"
+          pointing at a page's own .md, lands with the .md routes. */}
+      <link rel="describedby" href="/llms.txt" />
+
       <body className="antialiased bg-primary font-sans text-primary selection:[text-shadow:none] selection:bg-(--background-selection) selection:text-(--text-selection)">
         <Providers>
           {children}

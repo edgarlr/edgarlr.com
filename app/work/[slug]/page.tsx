@@ -1,6 +1,7 @@
 import { ArticleAside } from '@components/article-aside'
 import { ArticleNav } from '@components/article-nav'
 import { BackLink } from '@components/back-link'
+import { JsonLd } from '@components/json-ld'
 import { PostsFooter } from '@components/footer'
 import {
   getAllProjectsMetadata,
@@ -8,6 +9,7 @@ import {
   hasCaseStudy,
 } from '@lib/work'
 import { SiteURL } from '@lib/constants'
+import { projectSchema } from '@lib/schema'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
@@ -140,6 +142,8 @@ export default async function CaseStudy({
         </article>
 
         <ArticleNav basePath="/work" older={older} newer={newer} />
+
+        <JsonLd schema={projectSchema(project)} />
       </main>
 
       <PostsFooter />

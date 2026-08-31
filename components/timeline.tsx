@@ -5,7 +5,6 @@ import {
   entryDate,
   entryHref,
   entryKey,
-  entryLabel,
   getTimelineEntries,
   isFeatured,
   type TimelineEntry,

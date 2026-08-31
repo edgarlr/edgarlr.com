@@ -128,6 +128,24 @@ export const createMdxCollection = <Meta extends { date: string }>(
       .filter((entry): entry is MdxEntry<Meta> => entry !== undefined)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
+  /**
+   * Frontmatter plus the raw MDX body, for the plain-text renderings at
+   * /llms.txt and /llms-full.txt. Nothing is compiled: the body is already
+   * markdown, and the media components in it carry their meaning in the `alt`
+   * text they would render anyway.
+   */
+  const getRawBySlug = (
+    slug: string,
+  ): (MdxEntry<Meta> & { body: string }) | undefined => {
+    const metadata = getMetadataBySlug(slug)
+
+    if (!metadata) {
+      return undefined
+    }
+
+    return { ...metadata, body: matter(getSource(slug)).content.trim() }
+  }
+
   const getBySlug = async (
     slug: string,
   ): Promise<MdxDocument<Meta> | undefined> => {
@@ -146,5 +164,5 @@ export const createMdxCollection = <Meta extends { date: string }>(
     }
   }
 
-  return { getMetadataBySlug, getAllMetadata, getBySlug }
+  return { getMetadataBySlug, getAllMetadata, getRawBySlug, getBySlug }
 }
