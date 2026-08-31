@@ -18,7 +18,7 @@ export default async function Page() {
   // case study. Every other section sizes itself.
   return (
     <main className="w-full mx-auto min-h-screen pb-12">
-      <section className="flex flex-col relative justify-center h-[85svh] min-h-[25rem] max-h-[50rem] mx-auto w-full max-w-[70ch] max-lg:px-6">
+      <section className="flex flex-col relative justify-center h-[85svh] min-h-[25rem] max-h-[50rem] mx-auto w-full max-w-[70ch] max-lg:px-4">
         <div className="flex flex-col gap-4">
           {/* The intro doubles as the page's only heading. It reads as a
               sentence and is styled like one — preflight resets h1 to inherit

@@ -118,7 +118,7 @@ img {
 /* `--band-prose` cannot move to :root the way `--band-wide` did: `ch` has to
    resolve against `.bands`' own font. */
 .bands {
-  --band-gutter: 1.5rem;
+  --band-gutter: 1rem;
   --band-prose: 70ch;
 
   max-width: none;
