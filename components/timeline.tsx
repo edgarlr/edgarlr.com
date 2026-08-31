@@ -43,7 +43,7 @@ export const Timeline = () => {
 
 /** The section above already sets the gap, so the first entry adds none. */
 const entryClassName = (first: boolean, className?: string) =>
-  cn(first ? 'mt-0' : 'mt-18', className)
+  cn(first ? 'mt-0' : 'mt-10 lg:mt-18', className)
 
 
 
