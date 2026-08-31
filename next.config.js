@@ -9,6 +9,15 @@ module.exports = {
         hostname: 'res.cloudinary.com',
         pathname: '/**',
       },
+      // The Bunny pull zone is only ever reached through this custom domain —
+      // its edgarlr-cdn.b-cdn.net hostname is deliberately not allowed, so a
+      // raw pull-zone URL fails the build instead of quietly splitting the
+      // image cache across two origins.
+      {
+        protocol: 'https',
+        hostname: 'cdn.edgarlr.com',
+        pathname: '/**',
+      },
     ],
   },
   async redirects() {

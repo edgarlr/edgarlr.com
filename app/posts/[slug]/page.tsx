@@ -1,11 +1,9 @@
 import { ArticleAside } from '@components/article-aside'
+import { ArticleNav } from '@components/article-nav'
 import { BackLink } from '@components/back-link'
-import ArrowLeft from '@components/icons/ArrowLeft'
-import ArrowRight from '@components/icons/ArrowRight'
 import { getAllPostsMetadata, getPostBySlug } from '@lib/posts'
 import { SiteURL } from '@lib/constants'
 import { Metadata } from 'next'
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { PostsFooter } from '@components/footer'
 
@@ -104,37 +102,7 @@ export default async function BlogPost({
           {post.content}
         </article>
 
-        {/* Sized the way `.bands > *` sizes the reading column, rather than a
-            padded 70ch box — padding inside the cap would inset these links
-            from the text above them between ~70ch and the lg breakpoint. */}
-        <div className="flex justify-between my-20 border-t-[0.5px] border-tertiary pt-10 mx-auto w-[70ch] max-w-[calc(100%-3rem)]">
-          {older ? (
-            <Link
-              href={`/posts/${older.slug}`}
-              className="group max-w-40 md:max-w-60 text-sm transition-opacity opacity-60 hover:opacity-100"
-            >
-              <span className="flex text-secondary items-center gap-1 mb-1">
-
-                Previous
-              </span>
-              <span className="text-pretty">{older.title}</span>
-            </Link>
-          ) : (
-            <div />
-          )}
-
-          {newer && (
-            <Link
-              href={`/posts/${newer.slug}`}
-              className="group max-w-40 md:max-w-60 text-right text-sm transition-opacity opacity-60 hover:opacity-100"
-            >
-              <span className="flex text-secondary items-center justify-end gap-1 mb-1">
-                Next
-              </span>
-              <span className="text-pretty">{newer.title}</span>
-            </Link>
-          )}
-        </div>
+        <ArticleNav basePath="/posts" older={older} newer={newer} />
       </main>
 
       <PostsFooter />

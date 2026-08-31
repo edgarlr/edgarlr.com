@@ -1,139 +1,85 @@
 ---
-title: 'Homepage'
+title: 'PlanetScale homepage'
 client: 'PlanetScale'
 date: '02/01/2024'
 featured: true
-cover: '/assets/work/planetscale-homepage.png'
-summary: 'A new homepage for PlanetScale, built with the brand team. Animated throughout and built on native web APIs, with a reduced-motion path through all of it.'
+cover: 'https://cdn.edgarlr.com/planetscale-home/pscale-home.png'
+summary: 'Built with the brand team. Animated throughout and built on native web APIs, with a reduced-motion path through all of it.'
 ---
 
-<Wide
-  src="/assets/work/planetscale-homepage.png"
-  width={2400}
-  height={1440}
+
+<Video
+  src="https://cdn.edgarlr.com/planetscale-home/pscale-home-hero-cover.mp4"
+  poster="https://cdn.edgarlr.com/planetscale-home/pscale-home.png"
+  alt="The homepage hero — “The ultimate MySQL database platform” beside a tall gradient panel whose colour drifts from orange through red to blue."
   preload
-  alt="The PlanetScale homepage, showing the hero above the fold."
-/>
-
-## Hero
-
-<Video
-  src="https://res.cloudinary.com/dhdttwvcp/video/upload/c_crop,g_south,h_1230,w_2332/v1711101215/hero-composition_amccvv.mp4"
-  width={2332}
-  height={1230}
-  caption="The layers the hero is composed of, each on its own animation loop."
-/>
-
-## Diagram
-
-<Wide
-  src="/assets/work/planetscale-homepage/table-tooltips.png"
-  width={1400}
-  height={816}
-  alt="A tooltip being used to show longer texts on hover within a table cell."
-  caption="Tooltips carry the longer copy so every cell keeps the same rhythm."
+  width={1920}
+  height={1080}
 />
 
 <Video
-  src="https://res.cloudinary.com/dhdttwvcp/video/upload/v1711101757/diagram-explode_pbkjlb.mp4"
-  width={2560}
-  height={1622}
-  caption="Sticky containers and intersection observers, pulled apart."
+  src="https://cdn.edgarlr.com/planetscale-home/pshome-customers.mp4"
+  poster="https://cdn.edgarlr.com/planetscale-home/pshome-customers.webp"
+  alt="The customer highlight row — cards for Attentive, Barstool Sports and MyFitnessPal sliding across, each opening to its quote as it reaches the middle."
+  width={1920}
+  height={634}
+  
 />
 
-## Comparison table
 
-<Detail
-  src="/assets/work/planetscale-homepage/responsive-table.png"
-  width={1400}
-  height={522}
-  band="wide"
-  alt="Three tables side by side. The first, for mobile, has two columns with headings on top of each row. The second, for tablet, has three columns with row headings on the left. The third, for desktop, has four columns with heading rows on the left."
-  caption="The same table restructured for mobile, tablet and desktop."
-/>
 
 <Video
-  src="https://res.cloudinary.com/dhdttwvcp/video/upload/v1711104208/table-headings_phxblj.mp4"
-  width={1400}
-  height={436}
-  caption="Table headings, animating their gradient background-position on scroll."
+  src="https://cdn.edgarlr.com/planetscale-home/pscale-scroll.mp4"
+  poster="https://cdn.edgarlr.com/planetscale-home/pscale-scroll.webp"
+  alt="The architecture diagram building on scroll — a single flat slab under “Engineered to meet the most demanding data workloads”, rising into a stack of layers, then labelled Product, Features, Infrastructure, DevOps and Vitess."
+  width={1920}
+  height={1080}
 />
 
-## Features carousel
+
+
+
+
+
+<Grid>
+  <Video
+    src="https://cdn.edgarlr.com/planetscale-home/pscale-lightbeam.mp4"
+    poster="https://cdn.edgarlr.com/planetscale-home/pscale-lightbeam.webp"
+    alt="The “Remove database distractions” section — “Focus on your business, not your config scripts” scrolling up into grouped capability lists for Scalability, Manageability and Workflow."
+    width={1080}
+    height={1080}
+    
+  />
+  <Video
+    src="https://cdn.edgarlr.com/planetscale-home/pscale-vitess.mp4"
+    poster="https://cdn.edgarlr.com/planetscale-home/pscale-vitess.webp"
+    alt="The Vitess section — “Built on the best of open source” beside a circuit-board illustration carrying the Vitess V, its gradient turning from orange to blue."
+    width={1080}
+    height={1080}
+   
+  />
+</Grid>
+
 
 <Video
   src="https://res.cloudinary.com/dhdttwvcp/video/upload/v1711102453/features-carousel_abu40v.mp4"
+  poster="https://cdn.edgarlr.com/building-planetscale-homepage/features-carousel_abu40v.webp"
+  alt="The features carousel — tabs for Dashboard, Monitoring, Performance, Developer workflow and Operations, each snapping a new screenshot and caption into place."
   width={1772}
   height={1530}
-  caption="Native scroll snap, no carousel library."
 />
 
-## Reduced motion
-
-<Pair
-  a={{
-    src: 'https://res.cloudinary.com/dhdttwvcp/video/upload/v1711104381/customer-logos-safe_wxiyih.mp4',
-    video: true,
-    width: 1132,
-    height: 560,
-    label: 'Animation',
-  }}
-  b={{
-    src: '/assets/work/planetscale-homepage/customer-logos-reduced.png',
-    width: 1132,
-    height: 560,
-    alt: 'A list of logos displayed in a two-row layout, horizontally centered.',
-    label: 'Motion reduced',
-  }}
-  caption="The customer logo marquee reflows instead of scrolling when motion is reduced."
+<Video
+  src="https://cdn.edgarlr.com/planetscale-home/pscale-home-footer.mp4"
+  poster="https://cdn.edgarlr.com/planetscale-home/pscale-home-footer.webp"
+  alt="The closing section — “The predictable, powerful MySQL database platform” above sign up and contact buttons, over the word “database” set large and faint behind it."
+  width={1920}
+  height={654}
 />
 
-<Pair
-  a={{
-    src: 'https://res.cloudinary.com/dhdttwvcp/video/upload/v1711104383/diagram-safe_d9oknv.mp4',
-    video: true,
-    width: 1348,
-    height: 1092,
-    label: 'Animation',
-  }}
-  b={{
-    src: 'https://res.cloudinary.com/dhdttwvcp/video/upload/v1711104382/diagram-reduced_oyrupj.mp4',
-    video: true,
-    width: 1348,
-    height: 1092,
-    label: 'Motion reduced',
-  }}
-  caption="Multi-level diagram animations collapse to fades."
-/>
 
-<Gallery
-  columns={3}
-  aspect="4/3"
-  items={[
-    {
-      src: '/assets/work/planetscale-homepage/responsive-table.png',
-      width: 1400,
-      height: 522,
-      alt: 'The comparison table at three breakpoints.',
-      label: 'Comparison table',
-    },
-    {
-      src: '/assets/work/planetscale-homepage/table-tooltips.png',
-      width: 1400,
-      height: 816,
-      alt: 'A tooltip inside a table cell.',
-      label: 'Tooltips',
-    },
-    {
-      src: '/assets/work/planetscale-homepage/customer-logos-reduced.png',
-      width: 1132,
-      height: 560,
-      alt: 'Customer logos in a two-row layout.',
-      label: 'Customer logos',
-    },
-  ]}
-  caption="A cropped grid: every tile forced to the same shape."
-/>
+
+
 
 I wrote up the process, design decisions and implementation details in
 [Building PlanetScale’s new homepage](/posts/building-planetscale-homepage).

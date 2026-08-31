@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import cn from 'clsx'
+import { preload as preloadImage } from 'react-dom'
 import { AutoplayVideo } from './autoplay-video'
 
 /**
@@ -77,11 +78,21 @@ const tileSizes = (columns: number, mobileColumns: number) =>
  */
 const isTall = ({ width, height }: MediaSource) => height / width > 1
 
-const frameClass = (source: MediaSource, capped: boolean) =>
+/**
+ * The chrome that makes a screenshot read as a screenshot. Drawn once, and on
+ * whichever element actually bounds the media: the figure's own wrapper for a
+ * single block — `overflow-clip` there is what rounds a playing clip's corners,
+ * which a radius on the `<video>` itself doesn't reliably do — or the media
+ * element inside a plate or a grid, where the wrapper bounds padding or tiles
+ * instead. `bare` drops it either way.
+ */
+const FRAME = 'rounded-md border-[0.5px] border-tertiary'
+
+const frameClass = (source: MediaSource, capped: boolean, framed: boolean) =>
   cn(
     'block h-auto',
     capped ? 'mx-auto max-h-[78svh] w-auto max-w-full' : 'w-full',
-    !source.bare && 'rounded-md border-[0.5px] border-tertiary',
+    framed && !source.bare && FRAME,
   )
 
 const Media = ({
@@ -90,25 +101,32 @@ const Media = ({
   sizes,
   preload,
   controls,
+  framed = true,
 }: {
   source: MediaSource
   band: Band
   sizes?: string
   preload?: boolean
   controls?: boolean
+  /** Off when the figure's wrapper draws the frame instead. */
+  framed?: boolean
 }) => {
-  const className = frameClass(source, isTall(source))
+  const className = frameClass(source, isTall(source), framed)
 
   if (source.video) {
     // Pass `controls` for anything long enough to need scrubbing. Everything
     // else is a short UI clip that reads as an animated still — AutoplayVideo
     // starts those itself so `prefers-reduced-motion` can veto the motion.
+    // `<video>` has no `alt`, so a clip's description has to land as its
+    // accessible name. Left off when there is none rather than set to '': an
+    // empty label would leave the element named by its filename.
     return controls ? (
       <video
         src={source.src}
         poster={source.poster}
         width={source.width}
         height={source.height}
+        aria-label={source.alt || undefined}
         className={className}
         controls
         preload="metadata"
@@ -119,6 +137,7 @@ const Media = ({
         poster={source.poster}
         width={source.width}
         height={source.height}
+        aria-label={source.alt || undefined}
         className={className}
       />
     )
@@ -142,12 +161,19 @@ const Figure = ({
   band,
   caption,
   plate,
+  frame,
   className,
   children,
 }: {
   band: Band
   caption?: string
   plate?: boolean
+  /**
+   * Frame the wrapper itself. For a single block, where the wrapper and the
+   * media are the same box. A plate is always framed; a block that holds tiles
+   * never is, because each tile brings its own.
+   */
+  frame?: boolean
   className?: string
   children: React.ReactNode
 }) => (
@@ -155,10 +181,12 @@ const Figure = ({
     className={cn('not-prose my-10 md:my-14', bandClass[band], className)}
   >
     <div
-      className={cn(
-        plate &&
-        'rounded-md border-[0.5px] border-tertiary bg-tertiary p-4 md:p-8',
-      )}
+      className={
+        cn(
+          (plate || frame) && FRAME,
+          plate ? 'bg-tertiary p-4 md:p-8' : frame && 'overflow-clip',
+        ) || undefined
+      }
     >
       {children}
     </div>
@@ -177,11 +205,17 @@ const Figure = ({
  */
 export type WideProps = MediaSource & { caption?: string; preload?: boolean }
 
-export const Wide = ({ caption, preload, ...source }: WideProps) => (
-  <Figure band="wide" caption={caption} plate={isTall(source)}>
-    <Media source={source} band="wide" preload={preload} />
-  </Figure>
-)
+export const Wide = ({ caption, preload, ...source }: WideProps) => {
+  // On a plate the media keeps its own frame, inset by the plate's padding.
+  // Everywhere else the wrapper carries it, so there is only ever one.
+  const plate = isTall(source)
+
+  return (
+    <Figure band="wide" caption={caption} plate={plate} frame={!source.bare}>
+      <Media source={source} band="wide" preload={preload} framed={plate} />
+    </Figure>
+  )
+}
 
 /** Two pieces of media side by side — a spread, two states, two formats. */
 export type PairProps = {
@@ -245,7 +279,7 @@ export const Gallery = ({
               <div
                 className={cn(
                   'relative w-full overflow-hidden',
-                  !source.bare && 'rounded-md border-[0.5px] border-tertiary',
+                  !source.bare && FRAME,
                 )}
                 style={{ aspectRatio: aspect }}
               >
@@ -256,6 +290,7 @@ export const Gallery = ({
                   <AutoplayVideo
                     src={source.src}
                     poster={source.poster}
+                    aria-label={source.alt || undefined}
                     className="absolute inset-0 size-full object-cover"
                   />
                 ) : (
@@ -285,6 +320,49 @@ export const Gallery = ({
 }
 
 /**
+ * A row of blocks that each bring their own frame — the wrapper supplies only
+ * the band, the columns and the gap.
+ *
+ * `Pair` and `Gallery` take their media as data and render the tiles
+ * themselves, which fixes what a tile can be. This takes children instead, so a
+ * cell is any media block, with its own props and its own caption:
+ *
+ *   <Grid>
+ *     <Video src="…" width={1080} height={1080} bare />
+ *     <Video src="…" width={1080} height={1080} bare />
+ *   </Grid>
+ *
+ * Nesting works because the band rules are child combinators — `.bands > *` and
+ * `.bands > .band-wide` in app/globals.css — so a nested block's own band class
+ * matches nothing and it simply fills its cell. Its vertical margin is not
+ * inert, which is what `[&>figure]:my-0` is for: inside the grid, spacing is
+ * the gap's job.
+ *
+ * Clips are the intended cargo. A nested `Wide` still derives `sizes` from its
+ * own band, so at two columns it asks for roughly twice the image it needs —
+ * stills are better off in `Gallery` until that is plumbed through.
+ */
+export type GridProps = {
+  columns?: 2 | 3
+  band?: Band
+  children: React.ReactNode
+}
+
+export const Grid = ({ columns = 2, band = 'wide', children }: GridProps) => (
+  <div
+    className={cn(
+      'not-prose my-10 grid gap-4 md:my-14 md:gap-6 [&>figure]:my-0',
+      bandClass[band],
+      columns === 3
+        ? 'grid-cols-2 sm:grid-cols-3'
+        : 'grid-cols-1 sm:grid-cols-2',
+    )}
+  >
+    {children}
+  </div>
+)
+
+/**
  * A crop pulled out of a larger piece — a single control, a lockup, a corner of
  * a poster. Sits on a plate so the crop reads as a zoom rather than a new page.
  */
@@ -302,19 +380,39 @@ export type VideoProps = Omit<MediaSource, 'video'> & {
   band?: Band
   /** Show controls instead of autoplaying — for anything worth scrubbing. */
   controls?: boolean
+  /**
+   * Hint the poster as the LCP image. On a page that opens on a clip the
+   * poster is what paints first, and a `poster` attribute is discovered later
+   * than a `<link rel=preload>` — this closes that gap. One per page, on the
+   * first block, the same rule `Wide`'s `preload` follows.
+   */
+  preload?: boolean
 }
 
 export const Video = ({
   caption,
   band = 'wide',
   controls,
+  preload,
   ...source
-}: VideoProps) => (
-  <Figure band={band} caption={caption} plate={isTall(source)}>
-    <Media
-      source={{ ...source, video: true }}
-      band={band}
-      controls={controls}
-    />
-  </Figure>
-)
+}: VideoProps) => {
+  const plate = isTall(source)
+
+  // A `poster` never goes through the image optimizer the way `Wide`'s `src`
+  // does — the browser fetches this URL verbatim, which is what makes it worth
+  // hinting: the hint and the request are the same URL, so they dedupe.
+  if (preload && source.poster) {
+    preloadImage(source.poster, { as: 'image', fetchPriority: 'high' })
+  }
+
+  return (
+    <Figure band={band} caption={caption} plate={plate} frame={!source.bare}>
+      <Media
+        source={{ ...source, video: true }}
+        band={band}
+        controls={controls}
+        framed={plate}
+      />
+    </Figure>
+  )
+}

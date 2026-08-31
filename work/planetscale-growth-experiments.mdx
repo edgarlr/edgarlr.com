@@ -1,15 +1,17 @@
 ---
-title: 'Growth experiments'
+title: 'PlanetScale growth experiments'
 client: 'PlanetScale'
 date: '07/01/2023'
 summary: 'A/B testing for PlanetScale’s marketing site, GrowthBook on top of the existing analytics, with variants assigned in edge middleware and served as prerendered static pages.'
+cover: "https://cdn.edgarlr.com/pscale-product-pages/pscale-growth.png"
+featured: true
 ---
 
 ## Setup
 
 Analytics was already in place; what was missing was a way to test against it. I
-set up GrowthBook, then spent most of the time verifying the data and checking
-measurement accuracy.
+set up GrowthBook and wired it into our own analytics, a private package with its
+own server, rather than a separate third-party pipeline.
 
 The site was static and had to stay that way. The usual client-side variant swap
 costs a flash of the original and a second render behind it. Assignment happens in
@@ -17,6 +19,20 @@ edge middleware instead: a cookie decides which variant a visitor is in, and the
 request is rewritten to a separate prerendered route for it. Every variant is
 built ahead of time, so the response is static either way.
 
+Most of the work after that was verification: confirming each visitor saw the
+variant they'd been assigned, every time, and that exposures and conversions were
+measured correctly as they moved through Segment, our CDP. Tracking runs
+server-side at the proxy, next to where assignment already happens. It held up
+better than the client because it isn't dropped by ad blockers, so the counts are
+closer to complete.
+
 ## Experiments
 
-Two variations on the homepage, and one on the pricing page.
+Three, once the setup held: one on the homepage, one across a few product pages,
+and one on signup.
+
+The homepage tested the control against a shorter, summarized version. The
+summarized version performed better and became the default.
+
+Signup tested the standard self-serve flow against sending people to contact
+instead.

@@ -6,6 +6,8 @@ import {
   DetailProps,
   Gallery,
   GalleryProps,
+  Grid,
+  GridProps,
   Pair,
   PairProps,
   Video,
@@ -26,6 +28,7 @@ export const components: MDXRemoteProps['components'] = {
   Wide: (props: WideProps) => <Wide {...props} />,
   Pair: (props: PairProps) => <Pair {...props} />,
   Gallery: (props: GalleryProps) => <Gallery {...props} />,
+  Grid: (props: GridProps) => <Grid {...props} />,
   Detail: (props: DetailProps) => <Detail {...props} />,
   Video: (props: VideoProps) => <Video {...props} />,
 }
