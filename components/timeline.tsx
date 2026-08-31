@@ -84,6 +84,12 @@ const FeaturedEntry = ({
         // `band-wide` stops being gutter-bound: `--band-wide` + two
         // `--band-gutter`s in app/globals.css.
         sizes="(min-width: 59rem) 56rem, 100vw"
+        // Only the topmost entry: it sits right under the intro, so it is the
+        // first thing a scroll reveals, and a <link> in the head starts it
+        // before the browser reaches the <body>. `preload` replaced `priority`
+        // in Next 16. Every cover below it stays lazy — preloading more than
+        // one would put them in competition for the same early bandwidth.
+        preload={first}
         className="object-cover"
       />
     </div>
