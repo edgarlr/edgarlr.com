@@ -95,6 +95,23 @@ const rawBody = (entry: TimelineEntry) =>
     ? getRawPostBySlug(entry.slug)?.body
     : getRawProjectBySlug(entry.slug)?.body
 
+/**
+ * Site-relative markdown links and images, made absolute. A body is inlined
+ * into a file that is read on its own, where `[…](/work/planetscale-homepage)`
+ * has no base to resolve against.
+ *
+ * Fenced code is left alone: a `](/…)` inside a code block is a sample of
+ * markdown, not a link to follow. The `src` on a media tag stays relative for
+ * the same reason the tags themselves do — nothing here rewrites the MDX.
+ */
+const absoluteLinks = (body: string) =>
+  body
+    .split(/(```[\s\S]*?```)/)
+    .map((chunk, index) =>
+      index % 2 ? chunk : chunk.replace(/\]\((\/[^)\s]*)/g, `](${SiteURL}$1`),
+    )
+    .join('')
+
 const section = (entry: TimelineEntry) => {
   const href = absoluteHref(entry)
   const summary = entrySummary(entry)
@@ -114,7 +131,7 @@ const section = (entry: TimelineEntry) => {
     ...(href ? [`URL: ${href}`] : []),
     '',
     ...(summary ? [summary, ''] : []),
-    ...(body ? [body, ''] : []),
+    ...(body ? [absoluteLinks(body), ''] : []),
   ].join('\n')
 }
 
