@@ -30,4 +30,5 @@ export const hasCaseStudy = (project: Project) => project.hasBody
 
 export const getProjectMetadataBySlug = work.getMetadataBySlug
 export const getAllProjectsMetadata = work.getAllMetadata
+export const getRawProjectBySlug = work.getRawBySlug
 export const getProjectBySlug = work.getBySlug

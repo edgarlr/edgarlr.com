@@ -32,7 +32,6 @@
     "singleQuote": true
   },
   "dependencies": {
-    "@radix-ui/react-hover-card": "^1.1.23",
     "@vercel/analytics": "^2.0.1",
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",

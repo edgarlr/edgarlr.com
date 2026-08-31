@@ -19,4 +19,5 @@ const posts = createMdxCollection<PostMetadata>(join(process.cwd(), 'posts'))
 
 export const getPostMetadataBySlug = posts.getMetadataBySlug
 export const getAllPostsMetadata = posts.getAllMetadata
+export const getRawPostBySlug = posts.getRawBySlug
 export const getPostBySlug = posts.getBySlug
