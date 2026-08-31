@@ -1,7 +1,6 @@
 import { ArticleAside } from '@components/article-aside'
+import { ArticleNav } from '@components/article-nav'
 import { BackLink } from '@components/back-link'
-import ArrowLeft from '@components/icons/ArrowLeft'
-import ArrowRight from '@components/icons/ArrowRight'
 import { PostsFooter } from '@components/footer'
 import {
   getAllProjectsMetadata,
@@ -10,7 +9,6 @@ import {
 } from '@lib/work'
 import { SiteURL } from '@lib/constants'
 import { Metadata } from 'next'
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 // Only projects whose file has a body get a page. Everything else still links
@@ -104,14 +102,14 @@ export default async function CaseStudy({
           <header className="not-prose pb-0 pt-20">
             <BackLink className="article-aside-fallback" />
 
-            <h1 className="text-lg font-semibold">{project.title}</h1>
+            <h1 className="text-lg font-medium">{project.title}</h1>
 
             {project.summary && (
-              <p className="mt-4 text-pretty">{project.summary}</p>
+              <p className="mt-3 text-pretty ">{project.summary}</p>
             )}
 
             <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 border-t-[0.5px] border-tertiary pt-6 sm:grid-cols-3">
-              <Meta label="Client">{project.client}</Meta>
+              <Meta label="Company">{project.client}</Meta>
 
               <Meta label="Date">
                 <time dateTime={date.toISOString()}>
@@ -141,52 +139,7 @@ export default async function CaseStudy({
           {project.content}
         </article>
 
-        {(older || newer) && (
-          // Sized the way `.bands > *` sizes the reading column, rather than a
-          // padded 70ch box — padding inside the cap would inset these links
-          // from the text above them between ~70ch and the lg breakpoint.
-          <div className="mx-auto my-20 flex w-[70ch] max-w-[calc(100%-3rem)] justify-between">
-            {older ? (
-              <Link
-                href={`/work/${older.slug}`}
-                className="group max-w-40 text-sm opacity-60 transition-opacity hover:opacity-100 md:max-w-60"
-              >
-                <span className="mb-1 flex items-center gap-1.5 font-medium">
-                  <ArrowLeft
-                    width={16}
-                    height={16}
-                    className="transition-transform group-hover:-translate-x-1.5 group-focus-visible:-translate-x-1.5"
-                  />
-                  Older
-                </span>
-                <span className="text-pretty text-secondary">
-                  {older.title}
-                </span>
-              </Link>
-            ) : (
-              <div />
-            )}
-
-            {newer && (
-              <Link
-                href={`/work/${newer.slug}`}
-                className="group max-w-40 text-right text-sm opacity-60 transition-opacity hover:opacity-100 md:max-w-60"
-              >
-                <span className="mb-1 flex items-center justify-end gap-1.5 font-medium">
-                  Newer
-                  <ArrowRight
-                    width={16}
-                    height={16}
-                    className="transition-transform group-hover:translate-x-1.5 group-focus-visible:translate-x-1.5"
-                  />
-                </span>
-                <span className="text-pretty text-secondary">
-                  {newer.title}
-                </span>
-              </Link>
-            )}
-          </div>
-        )}
+        <ArticleNav basePath="/work" older={older} newer={newer} />
       </main>
 
       <PostsFooter />

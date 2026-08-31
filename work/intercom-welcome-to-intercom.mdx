@@ -7,10 +7,62 @@ cover: '/assets/work/intercom-welcome-to-intercom.png'
 summary: 'A growth experiment on Intercom’s signup flow, plus the A/B setup behind it.'
 ---
 
+## Setup
+
+The pieces were already in place: an internal analytics tool, Optimizely running
+the experiments, and Segment as the CDP. My part was building the experiments and
+verifying the data behind them, confirming exposures and conversions moved through
+Segment and reached Optimizely intact before we trusted a result.
+
+## Experiments
+
+The work centered on signup. It started as a single email field to get going; from
+there we explored turning it into a short journey that could qualify visitors:
+larger accounts toward sales, smaller ones toward self-serve.
+
+It ran in two phases. The first was an A/B/C test that added a step to the journey.
+After a few days B was clearly behind, so we dropped it and let A and C run head to
+head. C won, and became the baseline for what came next.
+
+The second phase added a second call to action: viewing demos, with the same split
+toward self-serve or talking to sales. The new variant won over the control again.
+
+<Grid>
 <Wide
-  src="/assets/work/intercom-welcome-to-intercom.png"
+  src="https://cdn.edgarlr.com/welcome-to-intercom/intercom-a.png"
+  width={2976}
+  height={1702}
+  preload
+  alt="Variant A of the signup flow."
+  caption="Variant A"
+/>
+<Wide
+  src="https://cdn.edgarlr.com/welcome-to-intercom/intercom-b.png"
+  width={2976}
+  height={1702}
+  alt="Variant B of the signup flow."
+  caption="Variant B"
+/>
+</Grid>
+
+<Wide
+  src="https://cdn.edgarlr.com/welcome-to-intercom/intercom-welcome-to-intercom.png"
   width={2400}
   height={1440}
-  preload
-  alt="Welcome to Intercom."
+  alt="The Welcome to Intercom onboarding screen."
+/>
+
+
+<Wide
+  src="https://cdn.edgarlr.com/welcome-to-intercom/view-demos-1.png"
+  width={2976}
+  height={1706}
+  alt="Viewing product demos in the onboarding flow."
+/>
+
+<Wide
+  src="https://cdn.edgarlr.com/welcome-to-intercom/view-demos-2.png"
+  width={2976}
+  height={1548}
+  alt="Viewing product demos in the onboarding flow."
 />

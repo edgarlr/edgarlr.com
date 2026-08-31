@@ -1,0 +1,56 @@
+import Link from 'next/link'
+
+type NavItem = { slug: string; title: string }
+
+/**
+ * The pair of links at the foot of a post or a case study, reaching only its
+ * chronological neighbours. `older`/`newer` follow the timeline order — older
+ * sits on the left as "Previous", newer on the right as "Next".
+ *
+ * Shared by `/posts/[slug]` and `/work/[slug]`; `basePath` is the segment they
+ * link under (`/posts` or `/work`).
+ */
+export const ArticleNav = ({
+  basePath,
+  older,
+  newer,
+}: {
+  basePath: string
+  older: NavItem | null | undefined
+  newer: NavItem | null | undefined
+}) => {
+  if (!older && !newer) return null
+
+  return (
+    // Sized the way `.bands > *` sizes the reading column, rather than a
+    // padded 70ch box — padding inside the cap would inset these links
+    // from the text above them between ~70ch and the lg breakpoint.
+    <div className="flex justify-between my-16 border-t-[0.5px] border-tertiary pt-16 mx-auto w-[70ch] max-w-[calc(100%-3rem)]">
+      {older ? (
+        <Link
+          href={`${basePath}/${older.slug}`}
+          className="group max-w-40 md:max-w-60 text-sm transition-opacity opacity-60 hover:opacity-100"
+        >
+          <span className="flex text-secondary items-center gap-1 mb-1">
+            Previous
+          </span>
+          <span className="text-pretty">{older.title}</span>
+        </Link>
+      ) : (
+        <div />
+      )}
+
+      {newer && (
+        <Link
+          href={`${basePath}/${newer.slug}`}
+          className="group max-w-40 md:max-w-60 text-right text-sm transition-opacity opacity-60 hover:opacity-100"
+        >
+          <span className="flex text-secondary items-center justify-end gap-1 mb-1">
+            Next
+          </span>
+          <span className="text-pretty">{newer.title}</span>
+        </Link>
+      )}
+    </div>
+  )
+}

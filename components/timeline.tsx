@@ -44,7 +44,7 @@ export const Timeline = () => {
 
 /** The section above already sets the gap, so the first entry adds none. */
 const entryClassName = (first: boolean, className?: string) =>
-  cn(first ? 'mt-0' : 'mt-12', className)
+  cn(first ? 'mt-0' : 'mt-18', className)
 
 
 
@@ -54,7 +54,6 @@ const entryClassName = (first: boolean, className?: string) =>
  */
 const Label = ({ entry }: { entry: TimelineEntry }) => (
   <span className="text-sm text-secondary">
-    {entryLabel(entry)} &middot;{' '}
     <time dateTime={new Date(entry.date).toISOString()} className="tabular-nums">
       {entryDate(entry)}
     </time>
@@ -75,7 +74,7 @@ const FeaturedEntry = ({
   const href = entryHref(entry)
 
   const cover = (
-    <div className="relative aspect-[5/3] w-full overflow-hidden rounded-md border-[0.5px] border-tertiary">
+    <div className="relative aspect-video w-full overflow-hidden rounded-md border-[0.5px] border-tertiary">
       <Image
         src={entry.cover}
         alt=""
@@ -90,13 +89,12 @@ const FeaturedEntry = ({
     </div>
   )
 
-  // Held to the reading column even though the cover reaches past it, so the
-  // section keeps one text axis: card labels and rows all line up.
-  // `--band-prose` rather than a literal 70ch — it is registered as a length in
-  // app/globals.css, so it resolves once against `.bands` own font instead of
-  // against whatever type this label happens to be set in.
+  // Left on the cover's own axis rather than held to the reading column, which
+  // is what puts every entry on one edge: `EntryRow` is `band-wide` too, so a
+  // card's label starts where a row's title does. The intro section above the
+  // timeline is still 70ch, so the list is deliberately the wider column.
   const meta = (
-    <div className="mx-auto mt-3 flex w-full max-w-[var(--band-prose)] flex-col gap-1 sm:gap-0.5">
+    <div className="mx-auto mt-4 flex w-full flex-col gap-1 sm:gap-0.5">
 
       <span
         className={cn(
@@ -151,7 +149,7 @@ const EntryRow = ({
   const href = entryHref(entry)
 
   return (
-    <article className={entryClassName(first)}>
+    <article className={entryClassName(first, "band-wide")}>
       <div className="flex flex-col gap-1 sm:gap-0.5">
 
 
