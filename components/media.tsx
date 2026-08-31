@@ -232,7 +232,7 @@ export const Pair = ({ a, b, caption, band = 'wide' }: PairProps) => (
         <div key={index} className="flex flex-col gap-2">
           <Media source={source} band={band} sizes={tileSizes(2, 1)} />
           {source.label && (
-            <span className="text-center font-serif text-xs italic text-secondary">
+            <span className="text-center font-serif text-xs text-secondary">
               {source.label}
             </span>
           )}
