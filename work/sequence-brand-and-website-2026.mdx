@@ -16,20 +16,23 @@ href: "https://www.sequencehq.com/"
   alt="The Sequence homepage hero."
 />
 
-<Grid>
-  <Wide
-    src="https://cdn.edgarlr.com/sequence-2026/seq-banners.png"
-    width={1080}
-    height={1080}
-    alt="Two Sequence display banners — “AI Billing and Quote to Cash for custom contracts” over a blue pleated gradient, one leading with the headline and a customer logo row, the other with the gradient on top and a Book a demo QR code."
-  />
-   <Wide
-    src="https://cdn.edgarlr.com/sequence-2026/seq-cards.png"
-    width={1080}
-    height={1080}
-    alt="Four product cards — CPQ, Watchtower, Workflows, and Billing — each pairing a headline with the product surface behind it."
-  />
-</Grid>
+<Gallery
+  columns={2}
+  items={[
+    {
+      src: 'https://cdn.edgarlr.com/sequence-2026/seq-banners.png',
+      width: 1080,
+      height: 1080,
+      alt: 'Two Sequence display banners — “AI Billing and Quote to Cash for custom contracts” over a blue pleated gradient, one leading with the headline and a customer logo row, the other with the gradient on top and a Book a demo QR code.',
+    },
+    {
+      src: 'https://cdn.edgarlr.com/sequence-2026/seq-cards.png',
+      width: 2160,
+      height: 2160,
+      alt: 'Four product cards — CPQ, Watchtower, Workflows, and Billing — each pairing a headline with the product surface behind it.',
+    },
+  ]}
+/>
 
 
 <Video
