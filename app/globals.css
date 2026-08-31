@@ -168,11 +168,11 @@ img {
 
 /* Below the width where the aside clears the wide band it is gone, and the back
    link it carries has to reappear in the article header — so the two are one
-   switch, not two. 86rem is the geometry, not a taste: 56rem of band plus, on
+   switch, not two. 85rem is the geometry, not a taste: 56rem of band plus, on
    each side, the aside, its gap, and a window margin matching `--band-gutter`.
    Narrower than that and the aside would sit on top of the media. The bleed
    spends half that window margin, which is why it stays well under it. */
-@media (min-width: 86rem) {
+@media (min-width: 85rem) {
   .article-aside {
     display: block;
   }
