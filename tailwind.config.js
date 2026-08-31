@@ -1,3 +1,5 @@
+const { FontStyle } = require('shiki')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -90,15 +92,15 @@ module.exports = {
               borderRadius: '0.125rem',
               background: 'var(--shiki-token-highlight)',
             },
-
             blockquote: {
               backgroundColor: 'var(--background-tertiary)',
               boxShadow: 'inset 0px 0px 0px 0.5px var(--border-tertiary)',
               border: 'none',
               borderRadius: '6px',
-              padding: '2px 24px',
+              padding: '2px 16px',
               fontSize: '0.875rem',
               lineHeight: '1.25rem',
+              fontStyle: 'normal',
             },
             a: {
               color: 'var(--text-primary)',
@@ -127,6 +129,7 @@ module.exports = {
             'p:has(img) em': {
               fontSize: '0.75rem',
               lineHeight: '1.25rem',
+              fontStyle: 'normal',
             },
             video: {
               border: '1px solid var(--border-tertiary)',
@@ -156,7 +159,7 @@ module.exports = {
               lineHeight: '1rem',
               fontWeight: '400',
               padding: '4px 6px',
-              borderRadius: '4px',
+              borderRadius: '6px',
             },
             'code::before': {
               display: 'none',

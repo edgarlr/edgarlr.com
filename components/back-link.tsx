@@ -17,13 +17,15 @@ export const BackLink = ({ className }: { className?: string }) => (
   <Link
     href="/"
     className={cn(
-      'group max-md:mb-8 inline-flex items-center gap-1.5 text-sm text-secondary opacity-60 transition-opacity hover:opacity-100 focus-visible:opacity-100',
+      'group max-md:mb-8 py-1.5 inline-flex items-center gap-1.5 text-sm text-secondary  transition-colors hover:text-primary focus-visible:text-primary',
       className
     )}
   >
     <UndoIcon
       width={14}
       height={14}
+      aria-hidden="true"
+      className='pointer-events-none'
     />
     Home
   </Link>
