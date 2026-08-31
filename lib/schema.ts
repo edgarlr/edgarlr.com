@@ -74,7 +74,9 @@ export const projectSchema = (project: Project) => ({
   description: project.summary,
   dateCreated: new Date(project.date).toISOString(),
   url: `${SiteURL}/work/${project.slug}`,
-  ...(project.cover && { image: project.cover }),
+  ...(project.cover && {
+    image: new URL(project.cover, SiteURL).toString(),
+  }),
   creator: author,
   about: {
     '@type': 'Organization',

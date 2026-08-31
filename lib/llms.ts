@@ -101,6 +101,11 @@ const section = (entry: TimelineEntry) => {
   const body = rawBody(entry)
 
   return [
+    // A rule before every entry: the bodies below use `##` for their own
+    // sections, so without one the start of a document reads as the next
+    // section of the one before it.
+    '---',
+    '',
     `## ${entry.title}`,
     '',
     // The same two facts the timeline shows above a title: who it was for (or

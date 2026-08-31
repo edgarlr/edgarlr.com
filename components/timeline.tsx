@@ -140,9 +140,6 @@ const FeaturedEntry = ({
  * without leaving. Every project has a page of its own now, so the peek buys a
  * glance at one screenshot in exchange for a card that covers the entries
  * either side of it — and the page it hides is one click away.
- *
- * `PreviewLink` still exists for prose, where an inline peek doesn't sit on top
- * of a list.
  */
 const EntryRow = ({
   entry,
