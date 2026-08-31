@@ -1,11 +1,13 @@
 import { ArticleAside } from '@components/article-aside'
 import { ArticleNav } from '@components/article-nav'
 import { BackLink } from '@components/back-link'
+import { JsonLd } from '@components/json-ld'
 import { getAllPostsMetadata, getPostBySlug } from '@lib/posts'
 import { SiteURL } from '@lib/constants'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { PostsFooter } from '@components/footer'
+import { postSchema } from '@lib/schema'
 
 export const generateStaticParams = async () => {
   const posts = getAllPostsMetadata()
@@ -108,6 +110,8 @@ export default async function BlogPost({
         </article>
 
         <ArticleNav basePath="/posts" older={older} newer={newer} />
+
+        <JsonLd schema={postSchema(post)} />
       </main>
 
       <PostsFooter />

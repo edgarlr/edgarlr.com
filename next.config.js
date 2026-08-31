@@ -91,5 +91,14 @@ module.exports = {
   outputFileTracingIncludes: {
     '/posts/*': ['./posts/**/*'],
     '/work/*': ['./work/**/*'],
+    // These four read both collections. They prerender, so tracing should not
+    // be load-bearing — it is here so a future change that makes one of them
+    // dynamic fails loudly at build rather than 500ing on the first request.
+    '/sitemap.xml': ['./posts/**/*', './work/**/*'],
+    '/llms.txt': ['./posts/**/*', './work/**/*'],
+    '/llms-full.txt': ['./posts/**/*', './work/**/*'],
+    '/': ['./posts/**/*', './work/**/*'],
+    '/llms.md/posts/*': ['./posts/**/*'],
+    '/llms.md/work/*': ['./work/**/*'],
   },
 }

@@ -1,11 +1,11 @@
-import matter from 'gray-matter'
-import { toMarkdown } from '@lib/llms'
-import { getAllPostsMetadata, getPostSource } from '@lib/posts'
-import type { PostMetadata } from '@lib/posts'
-import { SiteURL } from '@lib/constants'
-import { formatDate } from '@lib/llms'
+import { notFound } from 'next/navigation'
+import { pageMarkdown } from '@lib/llms'
+import { getAllPostsMetadata, getRawPostBySlug } from '@lib/posts'
 
+// The markdown twin of /posts/[slug], reached through the rewrites in
+// next.config.js — `[slug].md` is not a segment a route file can express.
 export const dynamic = 'force-static'
+// Every post has a page, so an unknown slug is a 404 here as it is there.
 export const dynamicParams = false
 
 export const generateStaticParams = async () =>
@@ -16,26 +16,18 @@ export const GET = async (
   { params }: { params: Promise<{ slug: string }> },
 ) => {
   const { slug } = await params
-  const { data, content } = matter(getPostSource(slug))
-  const meta = data as PostMetadata
+  const post = getRawPostBySlug(slug)
 
-  const body = [
-    `# ${meta.title}`,
-    `> ${meta.description}`,
-    [
-      `Author: Edgar López`,
-      `Published: ${formatDate(meta.date)}`,
-      `Source: ${SiteURL}/posts/${slug}`,
-    ].join('\n'),
-    await toMarkdown(content),
-  ].join('\n\n')
+  if (!post) {
+    notFound()
+  }
 
-  return new Response(body, {
+  return new Response(await pageMarkdown({ kind: 'post', ...post }), {
     headers: {
-      'content-type': 'text/markdown; charset=utf-8',
+      'Content-Type': 'text/markdown; charset=utf-8',
       // Declared for the Accept-negotiated form, where this same body is
       // served from the HTML page's own URL.
-      vary: 'Accept',
+      Vary: 'Accept',
     },
   })
 }

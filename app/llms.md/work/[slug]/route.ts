@@ -1,15 +1,15 @@
-import matter from 'gray-matter'
-import { toMarkdown } from '@lib/llms'
+import { notFound } from 'next/navigation'
+import { pageMarkdown } from '@lib/llms'
 import {
   getAllProjectsMetadata,
-  getProjectSource,
+  getRawProjectBySlug,
   hasCaseStudy,
 } from '@lib/work'
-import type { ProjectMetadata } from '@lib/work'
-import { SiteURL } from '@lib/constants'
-import { formatDate } from '@lib/llms'
 
+// The markdown twin of /work/[slug], reached through the rewrites in
+// next.config.js — `[slug].md` is not a segment a route file can express.
 export const dynamic = 'force-static'
+// A project without a body has no case study to render, in either format.
 export const dynamicParams = false
 
 export const generateStaticParams = async () =>
@@ -22,31 +22,18 @@ export const GET = async (
   { params }: { params: Promise<{ slug: string }> },
 ) => {
   const { slug } = await params
-  const { data, content } = matter(getProjectSource(slug))
-  const meta = data as ProjectMetadata
+  const project = getRawProjectBySlug(slug)
 
-  const body = [
-    `# ${meta.title}`,
-    meta.summary && `> ${meta.summary}`,
-    [
-      `Client: ${meta.client}`,
-      `Date: ${formatDate(meta.date)}`,
-      meta.href && `Live: ${meta.href}`,
-      `Source: ${SiteURL}/work/${slug}`,
-    ]
-      .filter(Boolean)
-      .join('\n'),
-    await toMarkdown(content),
-  ]
-    .filter(Boolean)
-    .join('\n\n')
+  if (!project) {
+    notFound()
+  }
 
-  return new Response(body, {
+  return new Response(await pageMarkdown({ kind: 'project', ...project }), {
     headers: {
-      'content-type': 'text/markdown; charset=utf-8',
+      'Content-Type': 'text/markdown; charset=utf-8',
       // Declared for the Accept-negotiated form, where this same body is
       // served from the HTML page's own URL.
-      vary: 'Accept',
+      Vary: 'Accept',
     },
   })
 }

@@ -1,19 +1,23 @@
-import 'server-only'
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkMdx from 'remark-mdx'
 import remarkStringify from 'remark-stringify'
 import { visit } from 'unist-util-visit'
 import type { Node, Parent } from 'unist'
+import { SiteURL } from '@lib/constants'
 
 /**
- * Flattens authored MDX into plain markdown for the `.md` responses.
+ * An authored MDX body as plain markdown, for the per-page `.md` routes.
  *
  * The media blocks are the whole reason this exists: a case study is mostly
- * <Wide>/<Video>/<Grid>, and an agent reading the raw file spends most of its
- * context on width/height/poster attributes to reach one sentence of alt text.
- * Every block collapses to a single `![alt](src)` line — the alt text is the
- * description, so nothing that carries meaning is lost.
+ * `<Wide>` / `<Video>` / `<Grid>`, and an agent reading the file as authored
+ * spends most of its context on width, height and poster attributes to reach
+ * one sentence of alt text. Every block collapses to a single `![alt](src)` —
+ * the alt text is the description of the work, so nothing that carries meaning
+ * is lost.
+ *
+ * Done on the mdast rather than the source string: the posts put JSX inside
+ * tsx code fences, and anything matching tags textually eats those too.
  */
 
 type JsxAttribute = {
@@ -28,19 +32,7 @@ type JsxNode = Node & {
   children?: Node[]
 }
 
-/** Pull a plain JS value back out of a JSX attribute, literal or expression. */
-const readAttribute = (attribute: JsxAttribute): unknown => {
-  const { value } = attribute
-  if (value === null || value === undefined) return true
-  if (typeof value === 'string') return value
-
-  const expression = (value as { data?: { estree?: any } }).data?.estree
-    ?.body?.[0]?.expression
-
-  return expression ? readExpression(expression) : undefined
-}
-
-/** The estree subset our MDX actually uses: literals, arrays and objects. */
+/** The estree subset the MDX actually uses: literals, arrays and objects. */
 const readExpression = (node: any): unknown => {
   switch (node?.type) {
     case 'Literal':
@@ -59,14 +51,25 @@ const readExpression = (node: any): unknown => {
   }
 }
 
+/** A plain JS value back out of a JSX attribute, literal or expression. */
+const readAttribute = (attribute: JsxAttribute): unknown => {
+  const { value } = attribute
+
+  // A bare attribute — `preload` — parses with no value at all.
+  if (value === null || value === undefined) return true
+  if (typeof value === 'string') return value
+
+  const expression = (value as { data?: { estree?: any } }).data?.estree
+    ?.body?.[0]?.expression
+
+  return expression ? readExpression(expression) : undefined
+}
+
 const readAttributes = (node: JsxNode): Record<string, unknown> =>
   Object.fromEntries(
     node.attributes
-      .filter((attribute: JsxAttribute) => attribute.type === 'mdxJsxAttribute')
-      .map((attribute: JsxAttribute) => [
-        attribute.name!,
-        readAttribute(attribute),
-      ]),
+      .filter((attribute) => attribute.type === 'mdxJsxAttribute')
+      .map((attribute) => [attribute.name!, readAttribute(attribute)]),
   )
 
 type MediaSource = {
@@ -78,14 +81,18 @@ type MediaSource = {
 }
 
 /**
- * One media source as a markdown image. Video points at its poster: an agent
- * can't watch an mp4, and the poster is a real frame of the same thing.
+ * One media source as a markdown image. A clip points at its poster: an agent
+ * cannot watch an mp4, and the poster is a real frame of the same thing.
  */
 const toImage = (source: MediaSource) => {
-  const url =
-    source.video || source.poster ? (source.poster ?? source.src) : source.src
-  if (!url) return null
+  const url = source.video ? (source.poster ?? source.src) : source.src
 
+  if (!url) {
+    return null
+  }
+
+  // A `label` only ever sits under one half of a pair or one tile of a
+  // gallery, where it names what the alt text then describes.
   const alt = [source.label, source.alt].filter(Boolean).join(' — ')
 
   return {
@@ -94,28 +101,28 @@ const toImage = (source: MediaSource) => {
   }
 }
 
-const CAPTION = (text: string) => ({
+/** A caption is prose about the block above it, so it stays as prose. */
+const toCaption = (text: string) => ({
   type: 'paragraph',
   children: [{ type: 'emphasis', children: [{ type: 'text', value: text }] }],
 })
 
 /**
- * What each authored component becomes. Anything not listed keeps its children
- * and drops its wrapper, so an unknown block degrades to its contents rather
- * than vanishing.
+ * What each authored component becomes. Returning null keeps the node's own
+ * children and drops only its wrapper, so a block that holds media — `<Grid>` —
+ * needs no case of its own, and a component added later degrades to its
+ * contents rather than vanishing.
  */
 const flatten = (node: JsxNode): Node[] | null => {
   const props = readAttributes(node) as MediaSource & {
     caption?: string
-    title?: string
-    href?: string
     a?: MediaSource
     b?: MediaSource
     items?: MediaSource[]
   }
 
   const withCaption = (nodes: (Node | null)[]) =>
-    [...nodes, props.caption ? CAPTION(props.caption) : null].filter(
+    [...nodes, props.caption ? toCaption(props.caption) : null].filter(
       Boolean,
     ) as Node[]
 
@@ -123,26 +130,17 @@ const flatten = (node: JsxNode): Node[] | null => {
     case 'Wide':
     case 'Image':
     case 'Detail':
+      return withCaption([toImage(props)])
+
+    // `<Video>` carries no `video` prop — the tag is the flag.
     case 'Video':
-      return withCaption([
-        toImage(node.name === 'Video' ? { ...props, video: true } : props),
-      ])
+      return withCaption([toImage({ ...props, video: true })])
 
     case 'Pair':
       return withCaption([toImage(props.a ?? {}), toImage(props.b ?? {})])
 
     case 'Gallery':
       return withCaption((props.items ?? []).map(toImage))
-
-    case 'PreviewLink':
-      return [
-        {
-          type: 'link',
-          url: props.href!,
-          title: null,
-          children: [{ type: 'text', value: props.title ?? props.href! }],
-        } as Node,
-      ]
 
     default:
       return null
@@ -159,25 +157,36 @@ const flattenJsx = () => (tree: Node) => {
       const replacement = flatten(node) ?? node.children ?? []
       parent.children.splice(index, 1, ...(replacement as any))
 
+      // Revisit this position: a replacement may itself hold JSX, and the node
+      // that shifted into it has not been seen yet.
       return index
     },
   )
+}
+
+/**
+ * Site-relative links and images made absolute, once the media tags have become
+ * images. A `.md` is read on its own, where `](/work/planetscale-homepage)` has
+ * no base to resolve against.
+ *
+ * On the tree rather than the text, so a `](/…)` inside a code fence — a sample
+ * of markdown, not a link to follow — is left alone without having to be
+ * carved out.
+ */
+const absoluteUrls = () => (tree: Node) => {
+  visit(tree, ['link', 'image'], (node: any) => {
+    if (node.url?.startsWith('/')) {
+      node.url = `${SiteURL}${node.url}`
+    }
+  })
 }
 
 const processor = unified()
   .use(remarkParse)
   .use(remarkMdx)
   .use(flattenJsx)
+  .use(absoluteUrls)
   .use(remarkStringify, { bullet: '-', fences: true, rule: '-' })
 
-export const toMarkdown = async (body: string) =>
-  String(await processor.process(body))
-
-/**
- * `MM/DD/YYYY` frontmatter as `YYYY-MM-DD`, without going through Date: the
- * dates are authored as local wall-clock, so `toISOString` shifts them a day.
- */
-export const formatDate = (date: string) => {
-  const [month, day, year] = date.split('/')
-  return `${year}-${month}-${day}`
-}
+export const flattenMdx = async (body: string) =>
+  String(await processor.process(body)).trim()
