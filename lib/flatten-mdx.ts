@@ -32,13 +32,11 @@ type JsxNode = Node & {
   children?: Node[]
 }
 
-/** The estree subset the MDX actually uses: literals, arrays and objects. */
+/** The estree subset the MDX actually uses: literals and objects. */
 const readExpression = (node: any): unknown => {
   switch (node?.type) {
     case 'Literal':
       return node.value
-    case 'ArrayExpression':
-      return node.elements.map(readExpression)
     case 'ObjectExpression':
       return Object.fromEntries(
         node.properties.map((property: any) => [
@@ -108,17 +106,17 @@ const toCaption = (text: string) => ({
 })
 
 /**
- * What each authored component becomes. Returning null keeps the node's own
- * children and drops only its wrapper, so a block that holds media — `<Grid>` —
- * needs no case of its own, and a component added later degrades to its
- * contents rather than vanishing.
+ * What each authored component becomes. Only the tags that hold their media
+ * somewhere other than their own `src` need naming here: everything else
+ * carrying one collapses to that image, and a wrapper carrying none — `<Grid>`
+ * — returns null, which keeps its children and drops only the tag. A component
+ * authored later lands in one of those two rather than vanishing.
  */
 const flatten = (node: JsxNode): Node[] | null => {
   const props = readAttributes(node) as MediaSource & {
     caption?: string
     a?: MediaSource
     b?: MediaSource
-    items?: MediaSource[]
   }
 
   const withCaption = (nodes: (Node | null)[]) =>
@@ -127,23 +125,19 @@ const flatten = (node: JsxNode): Node[] | null => {
     ) as Node[]
 
   switch (node.name) {
-    case 'Wide':
-    case 'Image':
-    case 'Detail':
-      return withCaption([toImage(props)])
-
     // `<Video>` carries no `video` prop — the tag is the flag.
     case 'Video':
       return withCaption([toImage({ ...props, video: true })])
 
+    // The one block that holds two sources instead of one.
     case 'Pair':
       return withCaption([toImage(props.a ?? {}), toImage(props.b ?? {})])
 
-    case 'Gallery':
-      return withCaption((props.items ?? []).map(toImage))
+    default: {
+      const image = toImage(props)
 
-    default:
-      return null
+      return image ? withCaption([image]) : null
+    }
   }
 }
 
