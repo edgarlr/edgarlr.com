@@ -7,7 +7,6 @@ import {
 } from '@lib/constants'
 import { getRawPostBySlug } from '@lib/posts'
 import { getRawProjectBySlug } from '@lib/work'
-import { flattenMdx } from '@lib/flatten-mdx'
 import {
   entryDate,
   entryHref,
@@ -119,11 +118,12 @@ const absoluteLinks = (body: string) =>
  *
  * Unlike the sections of /llms-full.txt this is read without the file around
  * it, so it opens with an `h1` and carries the same facts the page's own header
- * does. The body is flattened rather than inlined as authored: a `.md` is what
- * an agent reaches for instead of the HTML, and paying for `<Video>` attributes
- * would give back most of what the swap saved.
+ * does. The body is the same one that file inlines, as authored: serving the
+ * markdown at all is what saves an agent the HTML — roughly fifteen times the
+ * bytes — and rewriting the media tags on top of that is worth about a tenth
+ * as much again, which does not pay for a second rendering of every document.
  */
-export const pageMarkdown = async (entry: TimelineEntry) => {
+export const pageMarkdown = (entry: TimelineEntry) => {
   const href = absoluteHref(entry)
   const summary = entrySummary(entry)
   const body = rawBody(entry)
@@ -141,7 +141,7 @@ export const pageMarkdown = async (entry: TimelineEntry) => {
     ...(site ? [`Site: ${site}`] : []),
     '',
     ...(summary ? [summary, ''] : []),
-    ...(body ? [await flattenMdx(body), ''] : []),
+    ...(body ? [absoluteLinks(body), ''] : []),
   ].join('\n')
 }
 

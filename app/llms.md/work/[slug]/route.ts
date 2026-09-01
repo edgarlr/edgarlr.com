@@ -28,7 +28,7 @@ export const GET = async (
     notFound()
   }
 
-  return new Response(await pageMarkdown({ kind: 'project', ...project }), {
+  return new Response(pageMarkdown({ kind: 'project', ...project }), {
     headers: {
       'Content-Type': 'text/markdown; charset=utf-8',
       // Declared for the Accept-negotiated form, where this same body is
