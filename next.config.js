@@ -20,6 +20,60 @@ module.exports = {
       },
     ],
   },
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: '/posts/:slug',
+          has: [
+            {
+              type: 'header',
+              key: 'accept',
+              value: '.*text/markdown.*',
+            },
+          ],
+          destination: '/llms.md/posts/:slug',
+        },
+        {
+          source: '/work/:slug',
+          has: [
+            {
+              type: 'header',
+              key: 'accept',
+              value: '.*text/markdown.*',
+            },
+          ],
+          destination: '/llms.md/work/:slug',
+        },
+      ],
+      afterFiles: [
+        {
+          source: '/posts/:slug\\.md',
+          destination: '/llms.md/posts/:slug',
+        },
+        {
+          source: '/work/:slug\\.md',
+          destination: '/llms.md/work/:slug',
+        },
+      ],
+    }
+  },
+  async headers() {
+    return [
+      {
+        // The slug pattern excludes the .md form so this only ever lands on
+        // the HTML page — otherwise the Link below would point at `.md.md`.
+        source: '/:collection(posts|work)/:slug((?!.*\\.md$)[^/]+)',
+        headers: [
+          {
+            key: 'Link',
+            value:
+              '<https://www.edgarlr.com/:collection/:slug.md>; rel="alternate"; type="text/markdown"',
+          },
+        ],
+      },
+    ]
+  },
   async redirects() {
     return [
       {
@@ -44,5 +98,7 @@ module.exports = {
     '/llms.txt': ['./posts/**/*', './work/**/*'],
     '/llms-full.txt': ['./posts/**/*', './work/**/*'],
     '/': ['./posts/**/*', './work/**/*'],
+    '/llms.md/posts/*': ['./posts/**/*'],
+    '/llms.md/work/*': ['./work/**/*'],
   },
 }

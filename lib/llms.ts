@@ -112,6 +112,39 @@ const absoluteLinks = (body: string) =>
     )
     .join('')
 
+/**
+ * One entry as a document of its own, served at `/posts/<slug>.md` and
+ * `/work/<slug>.md`.
+ *
+ * Unlike the sections of /llms-full.txt this is read without the file around
+ * it, so it opens with an `h1` and carries the same facts the page's own header
+ * does. The body is the same one that file inlines, as authored: serving the
+ * markdown at all is what saves an agent the HTML — roughly fifteen times the
+ * bytes — and rewriting the media tags on top of that is worth about a tenth
+ * as much again, which does not pay for a second rendering of every document.
+ */
+export const pageMarkdown = (entry: TimelineEntry) => {
+  const href = absoluteHref(entry)
+  const summary = entrySummary(entry)
+  const body = rawBody(entry)
+
+  // The live site, which `entryHref` stops pointing at once a project has a
+  // case study of its own. The page keeps showing it; so does this.
+  const site =
+    entry.kind === 'project' && href !== entry.href ? entry.href : undefined
+
+  return [
+    `# ${entry.title}`,
+    '',
+    `${entryLabel(entry)} · ${entryDate(entry)}`,
+    ...(href ? [`URL: ${href}`] : []),
+    ...(site ? [`Site: ${site}`] : []),
+    '',
+    ...(summary ? [summary, ''] : []),
+    ...(body ? [absoluteLinks(body), ''] : []),
+  ].join('\n')
+}
+
 const section = (entry: TimelineEntry) => {
   const href = absoluteHref(entry)
   const summary = entrySummary(entry)

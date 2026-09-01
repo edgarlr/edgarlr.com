@@ -55,6 +55,11 @@ export const generateMetadata = async ({
     },
     alternates: {
       canonical: `${SiteURL}/work/${slug}`,
+      // The same page as plain markdown, for agents that would otherwise pay
+      // for the whole DOM to reach the prose. Served by app/llms.md.
+      types: {
+        'text/markdown': `${SiteURL}/work/${slug}.md`,
+      },
     },
   }
 }
