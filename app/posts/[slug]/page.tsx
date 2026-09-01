@@ -91,9 +91,9 @@ export default async function BlogPost({
         <article className="bands prose">
           {/* not-prose: the plugin's h1 sizing and margins fight the small type
               this header is built from. */}
-          <header className="not-prose  pt-20">
+          <header className="not-prose pt-14 xl:pt-20">
             <BackLink className="article-aside-fallback" />
-            <h1 className="text-lg font-semibold">{post.title}</h1>
+            <h1 className="text-lg font-medium">{post.title}</h1>
             <time
               dateTime={date.toISOString()}
               className="text-secondary text-sm"
