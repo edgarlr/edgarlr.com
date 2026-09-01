@@ -58,7 +58,7 @@
   --shiki-token-punctuation: hsl(220, 7%, 90%);
   --shiki-token-string-expression: hsl(220, 7%, 80%);
   --shiki-token-keyword: hsl(220, 7%, 65%);
-  --shiki-token-comment: hsl(220, 7%, 55%);
+  --shiki-token-comment: hsl(220 7% 45%);
 
   --shiki-token-function: hsl(155, 100%, 80%);
   --shiki-token-highlight: hsla(155, 100%, 90%, 8%);
