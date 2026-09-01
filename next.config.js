@@ -24,6 +24,17 @@ module.exports = {
     return {
       beforeFiles: [
         {
+          source: '/',
+          has: [
+            {
+              type: 'header',
+              key: 'accept',
+              value: '.*text/markdown.*',
+            },
+          ],
+          destination: '/llms.md/index',
+        },
+        {
           source: '/posts/:slug',
           has: [
             {
@@ -48,6 +59,10 @@ module.exports = {
       ],
       afterFiles: [
         {
+          source: '/index.md',
+          destination: '/llms.md/index',
+        },
+        {
           source: '/posts/:slug\\.md',
           destination: '/llms.md/posts/:slug',
         },
@@ -60,6 +75,23 @@ module.exports = {
   },
   async headers() {
     return [
+      {
+        // The entry point an agent lands on first. Both relations are IANA
+        // registered: `alternate` is the same page in another format,
+        // `describedby` is the index of everything the site holds. A crawler
+        // that reads only the headers still finds both without guessing at
+        // /llms.txt.
+        source: '/',
+        headers: [
+          {
+            key: 'Link',
+            value: [
+              '<https://www.edgarlr.com/index.md>; rel="alternate"; type="text/markdown"',
+              '<https://www.edgarlr.com/llms.txt>; rel="describedby"; type="text/plain"',
+            ].join(', '),
+          },
+        ],
+      },
       {
         // The slug pattern excludes the .md form so this only ever lands on
         // the HTML page — otherwise the Link below would point at `.md.md`.
@@ -98,6 +130,7 @@ module.exports = {
     '/llms.txt': ['./posts/**/*', './work/**/*'],
     '/llms-full.txt': ['./posts/**/*', './work/**/*'],
     '/': ['./posts/**/*', './work/**/*'],
+    '/llms.md/index': ['./posts/**/*', './work/**/*'],
     '/llms.md/posts/*': ['./posts/**/*'],
     '/llms.md/work/*': ['./work/**/*'],
   },
