@@ -26,7 +26,7 @@ export default async function Page() {
               its size and weight, so this renders exactly as the <p> it
               replaced. */}
           <h1 className="text-pretty">
-            Hey, I&apos;m Edgar. A designer and engineer working across brand,
+            I&apos;m Edgar. A designer and engineer working across brand,
             product, and marketing.
           </h1>
 
