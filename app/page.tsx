@@ -2,6 +2,7 @@ import { JsonLd } from '@components/json-ld'
 import { Timeline } from '@components/timeline'
 import { GithubURL, LinkedinURL, SiteURL, TwitterURL } from '@lib/constants'
 import { personSchema } from '@lib/schema'
+import { getWorkEntries, getWritingEntries } from '@lib/timeline'
 import { Metadata } from 'next'
 
 // Every other page sets its own canonical in `generateMetadata`; the homepage
@@ -77,12 +78,20 @@ export default async function Page() {
         </div>
       </section>
 
-      {/* Work and writing as one list rather than two sections: they were
-          made in the same years, and splitting them by kind buried when
-          anything happened. The years are the headings now, so the section
-          has none of its own. */}
-      <section id="timeline" className="bands mb-28">
-        <Timeline />
+      {/* Work first, newest project leading with its cover — the section a
+          visitor came for. No heading of its own: it is the default kind, and
+          the intro above already frames it. */}
+      <section id="work" className="bands mb-28">
+        <Timeline entries={getWorkEntries()} />
+      </section>
+
+      {/* Writing after work, under its own small heading so the two read as
+          separate lists rather than one shuffled feed. */}
+      <section id="writing" className="bands mb-28">
+        <h2 className="band-wide text-sm font-medium text-secondary mb-6">
+          Writing
+        </h2>
+        <Timeline entries={getWritingEntries()} />
       </section>
 
       <JsonLd schema={personSchema()} />
