@@ -76,18 +76,21 @@ export const entryDate = (entry: TimelineEntry) => {
   return `${date.toLocaleDateString('en-US', { month: 'long' })} ${year}`
 }
 
+/** Projects alone, newest first. */
+export const getWorkEntries = (): TimelineEntry[] =>
+  getAllProjectsMetadata()
+    .map((project) => ({ kind: 'project' as const, ...project }))
+    .sort(byNewest)
+
+/** Posts alone, newest first. */
+export const getWritingEntries = (): TimelineEntry[] =>
+  getAllPostsMetadata()
+    .map((post) => ({ kind: 'post' as const, ...post }))
+    .sort(byNewest)
+
 /**
  * Projects and posts as one list, newest first. Both collections already sort
  * newest-first on their own, so this only has to merge them.
  */
 export const getTimelineEntries = (): TimelineEntry[] =>
-  [
-    ...getAllProjectsMetadata().map((project) => ({
-      kind: 'project' as const,
-      ...project,
-    })),
-    ...getAllPostsMetadata().map((post) => ({
-      kind: 'post' as const,
-      ...post,
-    })),
-  ].sort(byNewest)
+  [...getWorkEntries(), ...getWritingEntries()].sort(byNewest)

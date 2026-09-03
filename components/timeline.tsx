@@ -5,13 +5,14 @@ import {
   entryDate,
   entryHref,
   entryKey,
-  getTimelineEntries,
   isFeatured,
   type TimelineEntry,
 } from '@lib/timeline'
 
 /**
- * Projects and posts as one chronological list.
+ * A chronological list of entries — work and writing are rendered as two of
+ * these rather than one merged list, so each reads as its own section instead
+ * of a shuffled feed.
  *
  * Emits every entry as a direct child of the section rather than wrapping the
  * list in a <ul>: a band class only takes effect on a direct child of `.bands`
@@ -23,23 +24,19 @@ import {
  * keeps the list one uninterrupted column and lets a year with a single entry
  * cost a line rather than a heading.
  */
-export const Timeline = () => {
-  const entries = getTimelineEntries()
+export const Timeline = ({ entries }: { entries: TimelineEntry[] }) => (
+  <>
+    {entries.map((entry, index) => {
+      const props = { entry, first: index === 0 }
 
-  return (
-    <>
-      {entries.map((entry, index) => {
-        const props = { entry, first: index === 0 }
-
-        return isFeatured(entry) ? (
-          <FeaturedEntry key={entryKey(entry)} {...props} entry={entry} />
-        ) : (
-          <EntryRow key={entryKey(entry)} {...props} />
-        )
-      })}
-    </>
-  )
-}
+      return isFeatured(entry) ? (
+        <FeaturedEntry key={entryKey(entry)} {...props} entry={entry} />
+      ) : (
+        <EntryRow key={entryKey(entry)} {...props} />
+      )
+    })}
+  </>
+)
 
 /** The section above already sets the gap, so the first entry adds none. */
 const entryClassName = (first: boolean, className?: string) =>
