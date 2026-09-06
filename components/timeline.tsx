@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import cn from 'clsx'
+import { BAND_WIDE_SIZES } from '@lib/bands'
 import {
   entryDate,
   entryHref,
@@ -42,15 +43,16 @@ export const Timeline = ({ entries }: { entries: TimelineEntry[] }) => (
 const entryClassName = (first: boolean, className?: string) =>
   cn(first ? 'mt-0' : 'mt-10 lg:mt-18', className)
 
-
-
 /**
  * Who the entry was for and when, above the title — the same order the case
  * study header uses, so an entry reads as a preview of the page it opens.
  */
 const Label = ({ entry }: { entry: TimelineEntry }) => (
   <span className="text-sm text-secondary">
-    <time dateTime={new Date(entry.date).toISOString()} className="tabular-nums">
+    <time
+      dateTime={new Date(entry.date).toISOString()}
+      className="tabular-nums"
+    >
       {entryDate(entry)}
     </time>
   </span>
@@ -76,10 +78,8 @@ const FeaturedEntry = ({
         alt=""
         fill
         quality={100}
-        // One cover across the full wide band. The breakpoint is where
-        // `band-wide` stops being gutter-bound: `--band-wide` + two
-        // `--band-gutter`s in app/globals.css.
-        sizes="(min-width: 59rem) 56rem, 100vw"
+        // One cover across the full wide band.
+        sizes={BAND_WIDE_SIZES}
         // Only the topmost entry: it sits right under the intro, so it is the
         // first thing a scroll reveals, and a <link> in the head starts it
         // before the browser reaches the <body>. `preload` replaced `priority`
@@ -91,18 +91,15 @@ const FeaturedEntry = ({
     </div>
   )
 
-  // Left on the cover's own axis rather than held to the reading column, which
-  // is what puts every entry on one edge: `EntryRow` is `band-wide` too, so a
-  // card's label starts where a row's title does. The intro section above the
-  // timeline is still 70ch, so the list is deliberately the wider column.
+  // Left on the cover's own axis rather than held to the reading column, so the
+  // label starts where the cover does.
   const meta = (
     <div className="mx-auto mt-4 flex w-full flex-col gap-1 sm:gap-0.5">
-
       <span
         className={cn(
           'w-fit',
           href &&
-          'hover:underline text-sm decoration-primary decoration-1 underline-offset-2 transition-colors group-hover:decoration-secondary group-focus-visible:decoration-secondary',
+            'hover:underline text-sm decoration-primary decoration-1 underline-offset-2 transition-colors group-hover:decoration-secondary group-focus-visible:decoration-secondary',
         )}
       >
         {entry.title}
@@ -111,6 +108,9 @@ const FeaturedEntry = ({
     </div>
   )
 
+  // The cover is the only thing in the list with something to fill the wide
+  // band with, so it is the only thing that takes it. Rows stay on the default
+  // band below.
   return (
     <article className={entryClassName(first, 'band-wide')}>
       {href ? (
@@ -148,10 +148,8 @@ const EntryRow = ({
   const href = entryHref(entry)
 
   return (
-    <article className={entryClassName(first, "band-wide")}>
+    <article className={entryClassName(first)}>
       <div className="flex flex-col gap-1 sm:gap-0.5">
-
-
         {href ? (
           <Link
             href={href}
@@ -165,7 +163,6 @@ const EntryRow = ({
         )}
 
         <Label entry={entry} />
-
       </div>
     </article>
   )

@@ -85,7 +85,7 @@ export default async function BlogPost({
     <>
       {/* No max-width here: `.bands` sizes the reading column itself, so a post
           that reaches for a wide block has room to. */}
-      <main className="w-full min-h-screen">
+      <main className="w-full min-h-screen pb-10">
         <ArticleAside />
 
         <article className="bands prose">

@@ -87,8 +87,12 @@ img {
 
 :root {
   /* On :root rather than on `.bands` because `.article-aside` is a sibling of
-     the article, not a descendant, and has to clear the same width. */
-  --band-wide: 56rem;
+     the article, not a descendant, and has to clear the same width.
+
+     `lib/bands.ts` mirrors this and `--band-gutter` for image `sizes`, which a
+     custom property cannot reach; the aside's breakpoint below is derived from
+     it too. Change all three together. */
+  --band-wide: 64rem;
 }
 
 /* Article bands -------------------------------------------------------------
@@ -142,7 +146,7 @@ img {
 
    Holds the back link, and is the slot the table of contents goes in. */
 .article-aside {
-  --article-aside-width: 11rem;
+  --article-aside-width: 8rem;
   --article-aside-gap: 2.5rem;
   /* Scrolling one axis makes the other a clipping box too — `overflow-x`
      computes from `visible` to `auto` the moment `overflow-y` is set — so the
@@ -168,11 +172,12 @@ img {
 
 /* Below the width where the aside clears the wide band it is gone, and the back
    link it carries has to reappear in the article header — so the two are one
-   switch, not two. 85rem is the geometry, not a taste: 56rem of band plus, on
+   switch, not two. 87rem is the geometry, not a taste: 64rem of band plus, on
    each side, the aside, its gap, and a window margin matching `--band-gutter`.
-   Narrower than that and the aside would sit on top of the media. The bleed
-   spends half that window margin, which is why it stays well under it. */
-@media (min-width: 85rem) {
+   The gap holds by construction, so what narrower than that costs is the window
+   margin: the aside spends it, then runs off the left edge. The bleed spends
+   half the margin, which is why it stays well under it. */
+@media (min-width: 87rem) {
   .article-aside {
     display: block;
   }

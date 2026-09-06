@@ -18,10 +18,10 @@ export const PostsFooter = () => {
   const [ending] = useState(() => ENDINGS[Math.floor(Math.random() * ENDINGS.length)])
 
   return (
-    <footer data-animate={`${inView}`} className="group flex justify-center relative py-8">
+    <footer ref={ref} data-animate={`${inView}`} className="group flex justify-center relative py-8">
       <div
-        style={{ transitionDuration: '1s' }}
-        className='absolute top-1/2 delay-[2000ms] ease-out pointer-events-none  -translate-y-1/2  group-data-[animate=true]:opacity-0  group-data-[animate=true]:scale-95 group-data-[animate=true]:blur-xs transition-all'
+        style={{ transitionDuration: '2s' }}
+        className='absolute top-1/2 delay-[2500ms] ease-out pointer-events-none  -translate-y-1/2  group-data-[animate=true]:opacity-0  group-data-[animate=true]:scale-95 group-data-[animate=true]:blur-xs transition-all'
       >
         {inView && (
           <span className='animate-in fade-in duration-700 text-center italic font-serif text-secondary'>
@@ -30,7 +30,7 @@ export const PostsFooter = () => {
         )}
       </div>
 
-      <div ref={ref} className='absolute bottom-0 w-full h-px bg-transparent' />
+      {/* <div ref={ref} className='absolute bottom-0 w-full h-px bg-transparent' /> */}
     </footer>
   )
 }

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import cn from 'clsx'
 import { preload as preloadImage } from 'react-dom'
+import { BAND_WIDE_MIN_REM, BAND_WIDE_REM, BAND_WIDE_SIZES } from '@lib/bands'
 import { AutoplayVideo } from './autoplay-video'
 
 /**
@@ -40,21 +41,12 @@ const bandClass: Record<Band, string> = {
   wide: 'band-wide',
 }
 
-/**
- * Keep in sync with `--band-wide` / `--band-gutter` in app/globals.css. A band
- * is gutter-bound until the viewport can hold its full width, which is the
- * breakpoint every `sizes` below switches on.
- */
-const BAND_WIDE_REM = 56
-const BAND_GUTTER_REM = 1.5
-const BAND_WIDE_MIN_REM = BAND_WIDE_REM + BAND_GUTTER_REM * 2
-
 /** Tailwind's `sm`, where the multi-column blocks stop collapsing. */
 const SM_REM = 40
 
 const bandSizes: Record<Band, string> = {
   prose: '(min-width: 44rem) 40rem, 100vw',
-  wide: `(min-width: ${BAND_WIDE_MIN_REM}rem) ${BAND_WIDE_REM}rem, 100vw`,
+  wide: BAND_WIDE_SIZES,
 }
 
 /**

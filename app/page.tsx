@@ -88,9 +88,9 @@ export default async function Page() {
       {/* Writing after work, under its own small heading so the two read as
           separate lists rather than one shuffled feed. */}
       <section id="writing" className="bands mb-28">
-        <h2 className="band-wide text-sm font-medium text-secondary mb-6">
-          Writing
-        </h2>
+        {/* No `band-wide`: only a featured cover takes that band, and a
+            heading on it would start left of the rows it labels. */}
+        <h2 className="text-sm font-medium text-secondary mb-6">Writing</h2>
         <Timeline entries={getWritingEntries()} />
       </section>
 
