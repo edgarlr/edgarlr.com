@@ -10,7 +10,7 @@ My personal website, portfolio and blog.
   - [CSS Modules](https://nextjs.org/docs/basic-features/built-in-css-support)
   - [Remark](https://remark.js.org/)
 
-- Designed on Figma
+- Designed on Figma. 
   - [Figma File](https://www.figma.com/community/file/951948937037406468/Portfolio---UI-Kit)
 
 ## Running Locally
