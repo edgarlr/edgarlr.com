@@ -89,6 +89,10 @@ out/
 # variants of it, so there is no stable version to commit.
 next-env.d.ts
 
+# Separate repo cloned in by the Conductor setup script. Ignored here so git
+# doesn't see a nested repo and `prettier .` doesn't rewrite its markdown.
+/growth/
+
 # Nuxt.js build / generate output
 .nuxt
 dist

@@ -1,0 +1,10 @@
+"$schema" = "https://conductor.build/schemas/settings.repo.schema.json"
+
+[scripts]
+# growth/ is a separate private repo, cloned over SSH on the Mac only: a cloud
+# sandbox has no key for it. It is gitignored here.
+setup = 'pnpm install && if [ "$CONDUCTOR_IS_LOCAL" = "1" ]; then git clone git@github.com:edgarlr/edgarlr-growth.git growth; fi'
+
+[scripts.run.run]
+command = "pnpm dev"
+icon = "play"
