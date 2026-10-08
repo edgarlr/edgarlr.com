@@ -16,8 +16,8 @@ My personal website, portfolio and blog.
 ## Running Locally
 
 1. Clone this repository
-2. Run `yarn install` to install the dependencies
-3. Once the dependencies are installed, run `yarn run dev` to start the dev server on `localhost:3000`
+2. Run `pnpm install` to install the dependencies
+3. Once the dependencies are installed, run `pnpm dev` to start the dev server on `localhost:3000`
 
 ## License
 
