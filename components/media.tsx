@@ -78,7 +78,7 @@ const isTall = ({ width, height }: MediaSource) => height / width > 1
  * element inside a plate or a grid, where the wrapper bounds padding or tiles
  * instead. `bare` drops it either way.
  */
-const FRAME = 'rounded-md border-[0.5px] border-tertiary'
+const FRAME = 'rounded-md after:ring-offset-[0.5px] relative after:ring-offset-black/10 after:ring-[0.5px] after:ring-inset after:ring-white/90 after:absolute after:pointer-events-none after:inset-0 after:rounded-md'
 
 const frameClass = (source: MediaSource, capped: boolean, framed: boolean) =>
   cn(
