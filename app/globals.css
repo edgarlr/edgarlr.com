@@ -10,6 +10,8 @@
   --border-primary: hsla(180, 2%, 8%, 0.2);
   --border-secondary: hsla(180, 2%, 8%, 0.6);
   --border-tertiary: hsla(180, 2%, 8%, 0.1);
+  /* The light line just inside a framed screenshot's edge. */
+  --border-highlight: hsla(0, 0%, 100%, 0.9);
 
   --background-primary: hsl(0, 0%, 99%);
   --background-secondary: hsl(0, 0%, 95%);
@@ -47,6 +49,7 @@
   --border-primary: hsla(0, 0%, 95%, 0.2);
   --border-secondary: hsla(0, 0%, 95%, 0.6);
   --border-tertiary: hsla(0, 0%, 95%, 0.1);
+  --border-highlight: hsla(0, 0%, 95%, 0.1);
 
   --background-primary: hsl(200, 6%, 10%);
   --background-secondary: hsl(200, 6%, 12%);

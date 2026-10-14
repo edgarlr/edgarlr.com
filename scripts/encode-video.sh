@@ -185,6 +185,15 @@ for input in "${inputs[@]}"; do
 
   dir="$source_dir/encoded"
   name="$(basename "${input%.*}")"
+  # The name becomes the CDN path. A recorder's default ("CleanShot 2026-10-14
+  # at 10.00.00") would end up as a URL with spaces in it.
+  case "$name" in
+    *[!A-Za-z0-9._-]*)
+      echo "Skipping $input: the filename becomes the CDN filename, so it can only use letters, digits, dots, dashes and underscores. Rename it first." >&2
+      failed=1
+      continue
+      ;;
+  esac
   video="$dir/$name.mp4"
   poster="$dir/$name-cover.webp"
   frames="$dir/$name-frames.jpg"
@@ -224,9 +233,9 @@ for input in "${inputs[@]}"; do
       failed=1
       continue
     fi
-    for pair in "$video video/mp4" "$poster image/webp"; do
-      file="${pair% *}"
-      result="$(upload_file "$file" "${pair##* }" "$slug" "$listing")"
+    for file in "$video" "$poster"; do
+      case "$file" in *.mp4) type=video/mp4 ;; *) type=image/webp ;; esac
+      result="$(upload_file "$file" "$type" "$slug" "$listing")"
       url="$base/$(basename "$file")"
       case "$result" in
         conflict)

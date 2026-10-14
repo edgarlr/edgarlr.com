@@ -53,6 +53,8 @@ recording, because the encode may have been scaled down.
 - A clip whose folder isn't a slug in `work/` or `posts/` is refused, so a
   typo can't create a stray Bunny folder.
 - The input filename is the CDN filename. Rename before encoding, not after.
+  Only letters, digits, dots, dashes and underscores: the script refuses a
+  recorder's default name with spaces in it.
 - `CRF=16 pnpm encode-video …` for a clip packed with small text,
   `CRF=20` for one that's mostly flat colour.
 - `.context/` is gitignored, and the sandbox can only write inside the
