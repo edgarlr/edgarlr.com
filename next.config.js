@@ -113,6 +113,19 @@ module.exports = {
         destination: '/posts/infinite-marquee-animation',
         permanent: true,
       },
+      // The two by-year Sequence case studies were regrouped by project. Most of
+      // what either held is on the website entry now; the .md form is listed
+      // separately because a redirect matches the whole path.
+      {
+        source: '/work/sequence-brand-and-website-:year(2025|2026)',
+        destination: '/work/sequence-website',
+        permanent: true,
+      },
+      {
+        source: '/work/sequence-brand-and-website-:year(2025|2026)\\.md',
+        destination: '/work/sequence-website.md',
+        permanent: true,
+      },
       {
         source: '/articles/:path*',
         destination: '/posts/:path*',

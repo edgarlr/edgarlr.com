@@ -71,20 +71,24 @@ const tileSizes = (columns: number, mobileColumns: number) =>
 const isTall = ({ width, height }: MediaSource) => height / width > 1
 
 /**
- * The chrome that makes a screenshot read as a screenshot. Drawn once, and on
- * whichever element actually bounds the media: the figure's own wrapper for a
- * single block — `overflow-clip` there is what rounds a playing clip's corners,
- * which a radius on the `<video>` itself doesn't reliably do — or the media
- * element inside a plate or a grid, where the wrapper bounds padding or tiles
- * instead. `bare` drops it either way.
+ * The chrome that makes a screenshot read as a screenshot: a hairline at the
+ * edge and a lighter one just inside it, both from the theme so dark mode
+ * doesn't get a white line. Drawn once, as an overlay on whichever box
+ * actually bounds the media: the figure's own wrapper for a single block —
+ * `overflow-clip` there is what rounds a playing clip's corners, which a
+ * radius on the `<video>` itself doesn't reliably do — or a wrapper that hugs
+ * the media inside a plate or a grid, where the outer box bounds padding or
+ * tiles instead. It has to be an overlay on a box rather than a class on the
+ * `<img>` or `<video>`: a replaced element renders no `::after`, and an inset
+ * shadow on one paints underneath its pixels. `bare` drops it either way.
  */
-const FRAME = 'rounded-md border-[0.5px] border-tertiary'
+const FRAME =
+  'relative rounded-md after:pointer-events-none after:absolute after:inset-0 after:rounded-md after:ring-[0.5px] after:ring-inset after:ring-(--border-highlight) after:ring-offset-[0.5px] after:ring-offset-(--border-tertiary)'
 
-const frameClass = (source: MediaSource, capped: boolean, framed: boolean) =>
+const mediaClass = (capped: boolean) =>
   cn(
     'block h-auto',
     capped ? 'mx-auto max-h-[78svh] w-auto max-w-full' : 'w-full',
-    framed && !source.bare && FRAME,
   )
 
 const Media = ({
@@ -103,8 +107,10 @@ const Media = ({
   /** Off when the figure's wrapper draws the frame instead. */
   framed?: boolean
 }) => {
-  const className = frameClass(source, isTall(source), framed)
+  const capped = isTall(source)
+  const className = mediaClass(capped)
 
+  let element: React.ReactNode
   if (source.video) {
     // Pass `controls` for anything long enough to need scrubbing. Everything
     // else is a short UI clip that reads as an animated still — AutoplayVideo
@@ -112,7 +118,7 @@ const Media = ({
     // `<video>` has no `alt`, so a clip's description has to land as its
     // accessible name. Left off when there is none rather than set to '': an
     // empty label would leave the element named by its filename.
-    return controls ? (
+    element = controls ? (
       <video
         src={source.src}
         poster={source.poster}
@@ -133,19 +139,36 @@ const Media = ({
         className={className}
       />
     )
+  } else {
+    element = (
+      <Image
+        src={source.src}
+        alt={source.alt ?? ''}
+        width={source.width}
+        height={source.height}
+        quality={100}
+        sizes={sizes ?? bandSizes[band]}
+        preload={preload}
+        className={className}
+      />
+    )
   }
 
+  if (!framed || source.bare) return element
+
+  // The wrapper hugs the media: full width for landscape, shrink-wrapped and
+  // centred for a height-capped portrait, so the frame lands on the pixels and
+  // not on the empty plate around them.
   return (
-    <Image
-      src={source.src}
-      alt={source.alt ?? ''}
-      width={source.width}
-      height={source.height}
-      quality={100}
-      sizes={sizes ?? bandSizes[band]}
-      preload={preload}
-      className={className}
-    />
+    <div
+      className={cn(
+        FRAME,
+        'overflow-clip',
+        capped ? 'mx-auto w-fit max-w-full' : 'w-full',
+      )}
+    >
+      {element}
+    </div>
   )
 }
 

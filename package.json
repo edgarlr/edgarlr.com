@@ -16,6 +16,7 @@
     "lint": "eslint .",
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier . --write",
+    "encode-video": "bash scripts/encode-video.sh",
     "prepare": "husky",
     "preinstall": "npx only-allow pnpm"
   },
