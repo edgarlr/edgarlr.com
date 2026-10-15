@@ -36,6 +36,11 @@
 #
 # CRF=16 for a clip dense with small text, CRF=20 for one that's mostly flat.
 #
+# Shaders with film grain are the exception to all of the above: the grain is
+# new noise every frame, so at 2048px and CRF 18 a 12s clip came out at 67 MB.
+# MAX_WIDTH=1600 CRF=24 brought it to ~10 MB with the grain still visible on a
+# 2x screen; halving the frame rate saved under 10%, so it stays at 60.
+#
 # An upload never overwrites a different file. The CDN tells browsers to keep
 # a clip for a year, so a replaced file would only reach people who have never
 # seen the old one; a re-encode gets a new name instead (`labs-v2.mp4`).
@@ -43,7 +48,7 @@
 set -euo pipefail
 
 CRF="${CRF:-18}"
-MAX_WIDTH=2048
+MAX_WIDTH="${MAX_WIDTH:-2048}"
 CDN="https://cdn.edgarlr.com"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
@@ -51,6 +56,7 @@ usage() {
   echo "Usage: pnpm encode-video [--upload] <page-slug>/<clip> [...]" >&2
   echo "       The folder a clip sits in is the slug of its work or post MDX." >&2
   echo "       CRF=$CRF by default; CRF=16 for dense text, CRF=20 for flat clips" >&2
+  echo "       MAX_WIDTH=1600 CRF=24 for shaders with film grain" >&2
   exit 1
 }
 
