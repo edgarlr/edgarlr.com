@@ -70,6 +70,11 @@ export type TimelineMetadata = {
    * date, so recency can no longer double as the thing that earns the space.
    */
   featured?: boolean
+  /**
+   * Keeps an entry off the site entirely — timeline, sitemap, llms.txt and its
+   * own page, which 404s because every route builds its params from the list.
+   */
+  draft?: boolean
 }
 
 /** Everything a collection derives from the file itself rather than frontmatter. */
@@ -95,7 +100,9 @@ export type MdxDocument<Meta> = MdxEntry<Meta> & { content: ReactElement }
  * to `process.cwd()` in here reads as dynamic and traces the whole project —
  * source and `public/` included — into the server output.
  */
-export const createMdxCollection = <Meta extends { date: string }>(
+export const createMdxCollection = <
+  Meta extends { date: string; draft?: boolean },
+>(
   directory: string,
 ) => {
   const getSource = (slug: string) =>
@@ -125,7 +132,10 @@ export const createMdxCollection = <Meta extends { date: string }>(
       .readdirSync(directory)
       .filter((file) => file.endsWith('.mdx'))
       .map((file) => getMetadataBySlug(file.replace(/\.mdx$/, '')))
-      .filter((entry): entry is MdxEntry<Meta> => entry !== undefined)
+      .filter(
+        (entry): entry is MdxEntry<Meta> =>
+          entry !== undefined && !entry.draft,
+      )
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
   /**
