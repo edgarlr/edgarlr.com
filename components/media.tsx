@@ -98,6 +98,7 @@ const Media = ({
   preload,
   controls,
   framed = true,
+  capped,
 }: {
   source: MediaSource
   band: Band
@@ -106,8 +107,14 @@ const Media = ({
   controls?: boolean
   /** Off when the figure's wrapper draws the frame instead. */
   framed?: boolean
+  /**
+   * Height-cap portrait media instead of letting it fill its box. Defaults to
+   * `isTall`; forced off for a portrait block that fills a grid cell, where the
+   * cell already bounds the width.
+   */
+  capped?: boolean
 }) => {
-  const capped = isTall(source)
+  capped ??= isTall(source)
   const className = mediaClass(capped)
 
   let element: React.ReactNode
@@ -218,16 +225,31 @@ const Figure = ({
  * The band every media block lands on: wider than the reading column, still
  * inset from the edges of the page.
  */
-export type WideProps = MediaSource & { caption?: string; preload?: boolean }
+export type WideProps = MediaSource & {
+  caption?: string
+  preload?: boolean
+  /**
+   * Override the auto-plate. Portrait media plates by default so it doesn't
+   * tower over the page; pass `plate={false}` for a portrait block inside a
+   * `Grid`, where the cell already bounds it and the plate is just noise.
+   */
+  plate?: boolean
+}
 
-export const Wide = ({ caption, preload, ...source }: WideProps) => {
+export const Wide = ({ caption, preload, plate, ...source }: WideProps) => {
   // On a plate the media keeps its own frame, inset by the plate's padding.
   // Everywhere else the wrapper carries it, so there is only ever one.
-  const plate = isTall(source)
+  const plated = plate ?? isTall(source)
 
   return (
-    <Figure band="wide" caption={caption} plate={plate} frame={!source.bare}>
-      <Media source={source} band="wide" preload={preload} framed={plate} />
+    <Figure band="wide" caption={caption} plate={plated} frame={!source.bare}>
+      <Media
+        source={source}
+        band="wide"
+        preload={preload}
+        framed={plated}
+        capped={plated}
+      />
     </Figure>
   )
 }
