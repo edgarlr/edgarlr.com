@@ -1,0 +1,372 @@
+---
+title: "Building Sequence's new homepage"
+description: "How I designed and built Sequence's new homepage with an AI agent: what it did at each stage, what I decided, and what changed since the PlanetScale one."
+date: "10/23/2026"
+---
+
+On October 5 we launched a new [Sequence homepage](https://www.sequencehq.com/). The hero on it is the fourteenth one we tried, and the last one made.
+
+Two years ago I wrote about [building PlanetScale's homepage](/posts/building-planetscale-homepage). This is the sequel: the same kind of page, built in a different order.
+
+Before, I had an idea in my head and spent hours in Figma working out the layout and the details. Then I moved it to code to find out how the interaction felt as part of the page, and sometimes threw it away because it didn't feel good enough. If I had 14 ideas, I had time to test four or five.
+
+Now all of them can go on the real page, and I work from the feel back into the look: pick what feels right, then polish once the interaction and the layout are locked.
+
+This post follows that process: explore, build, debug, ship. At each stage I'll say what the agent did and what I decided. [EDGAR: name the tool and model here, or keep "an AI agent". The Sequence commits are co-authored by Claude.]
+
+## Explore: variants
+
+[EDGAR: two or three sentences of design brief. What the old page couldn't say, and what the hero had to do. The title says "designed" and nothing else in the post covers it.]
+
+Every section I wasn't sure about lived behind a switcher: a pill bar listing the variants of that section, hidden until ⌘+. reveals the dev panels. Six sections had one: hero, outcomes, agent builder, integrations, customers and tech. This is the hero's:
+
+```tsx
+const VARIANTS = [
+  { id: 'a', label: 'Hero A', Comp: HeroA },
+  { id: 'b', label: 'Hero B · Halo', Comp: HeroB },
+  { id: 'c', label: 'Hero C · Waterfall', Comp: HeroC },
+  // ...
+  { id: 'l', label: 'L · Stream', Comp: HeroL },
+  { id: 'm', label: 'M · Stream GL', Comp: HeroM },
+  { id: 'n', label: 'N · Stream Arms', Comp: HeroN },
+] as const
+
+export function HeroSwitcher({ caseStudyLinks }: { caseStudyLinks: CaseStudyLinks }) {
+  const [active, setActive] = useState<(typeof VARIANTS)[number]['id']>('n')
+  const Active = (VARIANTS.find((v) => v.id === active) ?? VARIANTS[0]).Comp
+  // ...
+}
+```
+
+{/* CLIP SLOT: hero-variants. Dev-only. ⌘+. reveals the pill, then flip through the heroes, including the video one and the alternative background. Not exported yet; width and height are placeholders. */}
+
+<Video
+  src="https://cdn.edgarlr.com/building-sequence-homepage/hero-variants.mp4"
+  poster="https://cdn.edgarlr.com/building-sequence-homepage/hero-variants.webp"
+  alt="The hero with the dev pill bar revealed, switching between several of the 14 variants on the real page."
+  preload
+  width={1920}
+  height={1080}
+/>
+
+[EDGAR: how a variant got made. My guess is you described the idea and the agent built the file; say how you briefed it (a sentence, a reference, a sketch) and what it got wrong.] I picked by flipping the pill on the real page, with the real copy above it and the next section below. A couple came close: one with a video in place of the shader, and one with a different background. [EDGAR: one line on why each lost.] N was the last element we polished before launch. With the old process I would have stopped at four or five.
+
+The way a variant is set up is now written down in a skill, a markdown file of instructions the agent loads when a task matches it. Every rule in it is there because a clean-up script reads these files later (the script is in the ship section):
+
+> **One component per variant file.** `reachability.mjs` walks imports from `page.tsx`; a variant file that also exports a helper used by another variant keeps the losing file alive.
+>
+> **Page imports the switcher, not the variants.** The switcher is the pin point the script replaces.
+
+That file was written the day after the first clean-up, from what that run had needed. [EDGAR: say who wrote the skills. The commit is co-authored.] The heroes are older than the rules, which is why the switcher above is a hand-rolled `useState` and not the shared one the rules now ask for.
+
+## Explore: dials
+
+The second half of exploring is tuning. I used to fine-tune a transition by changing one parameter in code, testing, going back for the next one and trying again. Now each interaction gets its own panel of controls with [dialkit](https://www.npmjs.com/package/dialkit). [EDGAR: check the link and credit the author.]
+
+This is the config for the shader on the outcomes cards. Each tuple is default, min, max, step:
+
+```tsx /LABS_DIALS/
+const EFFECTS = ['none', 'dither', 'pixelate', 'halftone', 'weave'] as const
+
+export const LABS_DIALS = {
+  // ...
+  field: {
+    zoom: [1, 0.3, 3, 0.05],
+    frequency: [1.2, 0.5, 4, 0.05],
+    // ...
+    // Hash noise fed into each distortion step, as on the connectors hero; roughens the flow.
+    noiseMult: [0.1, 0, 2, 0.01],
+    // ...
+  },
+  // ...
+  texture: {
+    effect: { type: 'select', options: [...EFFECTS], default: 'none' },
+    scale: [7.5, 1, 12, 0.5],
+    // ...
+    ditherLevels: [4, 2, 16, 1],
+    halftoneDotSize: [0.64, 0, 1, 0.01],
+    // ...
+  },
+  // ...
+} satisfies DialConfig
+
+// In the section component:
+const dials = useDialKit('Outcomes — Labs', LABS_DIALS)
+```
+
+{/* CLIP SLOT: outcomes-dials. Dev-only. The dial panel open next to the outcomes cards, changing the texture effect and a couple of sliders while the card reacts. Not exported yet; width and height are placeholders. */}
+
+<Video
+  src="https://cdn.edgarlr.com/building-sequence-homepage/outcomes-dials.mp4"
+  poster="https://cdn.edgarlr.com/building-sequence-homepage/outcomes-dials.webp"
+  alt="The dial panel open beside the outcomes cards, a texture dropdown switching between dither, halftone and weave while the hovered card updates live."
+  width={1920}
+  height={1080}
+/>
+
+With this shader I didn't know if I wanted noise or a dither, or how much, how big, how fast. So the effect is a dropdown and each option has its own sliders. The options are still in the file. The default that shipped is `none`.
+
+Building a panel like this by hand used to be work I skipped. Now it's close to one request: add a control to every adjustable value. The agent wires the panel. I move the sliders until it feels right, pass the page around for feedback, and adjust again.
+
+And what I'm tuning is the production code. It isn't a prototype in Figma that might behave differently once it's rebuilt. When a value feels right it becomes the default in that config, and the config is what ships.
+
+One rule in the skill came from a mistake: a dial changes a number, a variant changes structure. The integrations section had a dropdown dial that switched between layouts, and when the dials were frozen its branches stayed behind as dead code to prune by hand. A choice like that is now a second variant file.
+
+## Build: outcomes cards
+
+The outcomes section is three stat cards. On hover a WebGL field fills the card, and the number and its label blend over it.
+
+{/* CLIP SLOT: outcomes. Exists as outcomes.mp4 (2984×1346) in the workspace attachments; needs uploading to the CDN with a poster. */}
+
+<Video
+  src="https://cdn.edgarlr.com/building-sequence-homepage/outcomes.mp4"
+  poster="https://cdn.edgarlr.com/building-sequence-homepage/outcomes.webp"
+  alt="Three outcome cards: 15% revenue recovered, 90% of AR queries handled automatically, 1 day to close the books. A colored field flows into each card on hover and the text inverts over it."
+  width={2984}
+  height={1346}
+/>
+
+In Chrome the blend was one CSS class, `mix-blend-difference`, on the text. In Safari 18.6 the text came out unblended: Safari wouldn't blend DOM text with the WebGL canvas under it. Removing the overflow and rounded clip around it didn't help. [EDGAR: retest on current Safari, or keep every mention scoped to 18.6.]
+
+I caught this one testing the page by hand in Safari. The agent's own checks couldn't see it, because the screenshots it takes through safaridriver repaint the page in software, and in those the blend looked correct.
+
+The fix was to draw the text in the shader. [EDGAR: whose idea this was, and who wrote the glyph tracing.] The text stays in the HTML. Each glyph is traced into a 2D canvas at the box where the browser laid it out, so wrapping, kerning and tracking all come from the DOM:
+
+```tsx
+container.querySelectorAll<HTMLElement>('[data-canvas-ink]').forEach((el) => {
+  text2d.globalAlpha = parseFloat(getComputedStyle(el).opacity)
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT)
+  for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+    const text = node as Text
+    // ...
+    for (let i = 0; i < text.data.length; i++) {
+      const char = text.data[i]
+      if (/\s/.test(char)) continue
+      range.setStart(text, i)
+      range.setEnd(text, i + 1)
+      const box = range.getBoundingClientRect()
+      const ascent = text2d.measureText(char).fontBoundingBoxAscent
+      text2d.fillText(char, box.left - base.left, box.top - base.top + ascent)
+    }
+  }
+})
+```
+
+That canvas becomes a coverage texture, and the fragment shader does the difference blend itself:
+
+```glsl
+float cover = texture2D(u_text, gl_FragCoord.xy / u_res).a;
+if (cover < 0.002) { gl_FragColor = fill; return; }
+
+// mix-blend-difference against what's behind the text: the field over the white grid.
+vec3 backdrop = fill.rgb + (1.0 - fill.a);
+gl_FragColor = vec4(mix(backdrop, abs(ink - backdrop), cover), 1.0);
+```
+
+Once the canvas has drawn the text, the DOM copy turns transparent. The result matches Chrome's CSS blend pixel for pixel.
+
+Canvas text had one more surprise. The numbers use tabular figures, and canvas has no `font-variant-numeric`. A `FontFace` can carry the feature itself:
+
+```tsx /featureSettings/
+const face = new FontFace(`${family} tnum`, src, {
+  featureSettings: '"tnum" 1',
+})
+await face.load()
+// ...
+document.fonts.add(face)
+```
+
+## Build: the agent builder rail
+
+The agents section is an accordion rail. Every panel shows the same gradient through a window, and the width of that window depends on how far the panel is from the focused one. Nothing slides. A step is every panel easing to a new width, the mechanism behind Jhey Tompkins' `:has()` speaker carousel [EDGAR: link], done with state so the row can loop.
+
+{/* CLIP SLOT: agents. Exists as agents.mp4 (2984×1676) in the workspace attachments; needs uploading to the CDN with a poster. */}
+
+<Video
+  src="https://cdn.edgarlr.com/building-sequence-homepage/agents.mp4"
+  poster="https://cdn.edgarlr.com/building-sequence-homepage/agents.webp"
+  alt="The agent builder rail: a focused card with a dashboard inside, narrow gray strips on either side that swell on hover, and the row easing to new widths as the focus steps along."
+  width={2984}
+  height={1676}
+/>
+
+My own motion rule says to animate only `transform` and `opacity`, because `width` runs layout on every frame. The rail animates `width` anyway, and does it in JavaScript. [EDGAR: who made that call.]
+
+The reason is hover. The focused card has to stay still when you hover a strip next to it. The row is centered, so when one strip grows, the whole track has to slide back by half of that growth. With CSS that is two transitions, one on the strip and one on the track, and they don't stay in step: when a transition is reversed part-way the browser shortens it, while the track's slide starts fresh at full duration. One tween moves every width and the track's offset on the same curve, so the two cancel exactly, even mid-move:
+
+```tsx
+const run = (now: number) => {
+  const p = Math.min(1, (now - t.start) / duration)
+  const e = EASE(p)
+  for (const i of t.moving) {
+    const a = t.from[i]
+    t.cur[i] = { w: a.w + (t.to[i].w - a.w) * e, m: a.m + (t.to[i].m - a.m) * e }
+  }
+  t.shift = t.shiftFrom + (t.shiftTo - t.shiftFrom) * e
+  apply(t.moving)
+  // ...
+}
+```
+
+To keep the cost down, React never writes a width, and a frame only touches the panels that are moving.
+
+## Build: what changed since 2024
+
+Four patterns from the PlanetScale post that I do differently now.
+
+Data attributes signal state by presence, not by value. In 2024 I wrote `data-animate={inView}` and styled it with `data-[animate=true]:`. Now the attribute is only rendered when the state is on, and Tailwind 4's `data-x:` and `not-data-x:` variants do the rest. It's how Base UI marks state (`data-open`), and there's never a `data-x="false"` in the DOM.
+
+The same idea reaches into components. A component takes one `className` for its root and marks inner parts with a data attribute, and the caller styles them from outside. There are no `surfaceClassName` props, partly because Tailwind IntelliSense only completes `className` by default:
+
+```tsx /data-surface/
+<ExpandingBand className="*:data-surface:bg-brand-off-white *:data-surface:border-[0.5px]">
+  <Customers />
+  <BuyerStories />
+  <Tech />
+</ExpandingBand>
+```
+
+In-view reveals only define the hidden state. In 2024 each element carried both states (`opacity-0` plus `data-[animate=true]:opacity-100`). Now the visible state is the element's natural style, only the hidden one is written, and the transition lists only the properties that change:
+
+```tsx /not-data-inview:opacity-0/
+<div
+  data-inview={morphed || undefined}
+  // ...
+  className="max-1079:flex-col max-1079:gap-6 mx-auto mt-6 flex items-start justify-between gap-8 transition-opacity ease-out not-data-inview:opacity-0"
+>
+```
+
+Reduced motion and low-powered devices go through one hook. The PlanetScale post had a whole reduced-motion section, but low-powered devices came up once, for the hero's pixel grid. Here the hero, the outcomes canvas and the film card all ask the same question:
+
+```tsx
+const isLowPoweredDevice = () => {
+  if ('deviceMemory' in navigator) {
+    return (navigator.deviceMemory as number) <= 4 // RAM in GB
+  }
+  return navigator.hardwareConcurrency <= 2 // number of CPU cores
+}
+
+const prefersReducedMotion = () => {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches
+}
+
+export const useShouldAnimate = () => {
+  const [shouldAnimate, setShouldAnimate] = useState(false)
+
+  useLayoutEffect(() => {
+    if (!prefersReducedMotion() && !isLowPoweredDevice()) {
+      setShouldAnimate(true)
+    }
+  }, [])
+
+  return shouldAnimate
+}
+```
+
+In the hero that means those visitors get a poster and never touch WebGL. The sections that animate the DOM, like the rail, only check reduced motion. The rail then lands each step at once instead of easing.
+
+## Debug: Safari
+
+The rail was smooth in Chrome and janky in Safari 18.6. The agent drove real Safari through safaridriver, timed the frames around a click, and removed one suspect per run:
+
+```text
+base              195ms per frame
+no filters         37ms
+no dashboard      171ms
+no border-radius  176ms
+no will-change    141ms
+```
+
+Automation Safari runs slower than normal Safari, so read these as a ratio. Each panel held two filtered copies of one gradient, and Safari re-ran the filters on every frame the panel changed size. `will-change` didn't help. Baking each hue into its own image did: 195ms to 32ms, about 6×.
+
+Then two panels went blank for a frame or two on each step. The agent found them by diffing the frames of my screen recording. Swapping those CSS backgrounds for images with `decoding="sync"` fixed it, which I confirmed by recording again. The cause is inferred: Safari seems to drop the decoded pixels and redraw a background asynchronously.
+
+We also replaced nine `mix-blend-color-burn` labels with baked colors. I never isolated what that alone was worth.
+
+Two dead ends: Playwright's WebKit reproduced neither bug, and one run of 180ms frames was an occluded Safari window throttling `requestAnimationFrame`.
+
+{/* CLIP SLOT (optional): rail-safari-before and rail-safari-after. Your two Safari screen recordings from 2 October, if you still have them. Delete this Pair if not. Width and height are placeholders. */}
+
+<Pair
+  a={{
+    src: 'https://cdn.edgarlr.com/building-sequence-homepage/rail-safari-before.mp4',
+    poster: 'https://cdn.edgarlr.com/building-sequence-homepage/rail-safari-before.webp',
+    alt: 'The rail stepping in Safari before the fix, dropping frames as the panels resize.',
+    video: true,
+    width: 1920,
+    height: 1080,
+    label: 'Safari, filters',
+  }}
+  b={{
+    src: 'https://cdn.edgarlr.com/building-sequence-homepage/rail-safari-after.mp4',
+    poster: 'https://cdn.edgarlr.com/building-sequence-homepage/rail-safari-after.webp',
+    alt: 'The same step in Safari with the hues baked into images, easing smoothly.',
+    video: true,
+    width: 1920,
+    height: 1080,
+    label: 'Safari, baked',
+  }}
+/>
+
+## Ship: the clean-up
+
+The clean-up has its own skill. It opens like this:
+
+> An experiment page is a page plus a graph of variants hanging off switchers. Shipping it means choosing one path through that graph and deleting the rest without changing what renders.
+
+The first step is a script that reads every switcher, pins it to the current pick and walks the imports. This is its report on the experiment as it stood before the first clean-up, re-run for this post:
+
+```text
+Switchers pinned (6):
+  _components/hero/switcher.tsx  ->  _components/hero/variant-n.tsx
+  _components/sections/agent-builder/switcher.tsx  ->  _components/sections/agent-builder/rail.tsx
+  _components/sections/customers/switcher.tsx  ->  _components/sections/customers/grid.tsx
+  ...
+
+KEEP (58 files, 11287 lines)
+DROP — only reachable through losing variants (35)
+ORPHANS — not reachable at all (8)
+```
+
+From there the steps are mechanical, with a type-check and lint gate after each: copy what's kept, flatten the thin variant wrappers, prune the props and branches that only chose between variants, replace the theme tokens with literals, and compare screenshots of the old and new routes.
+
+The first run, on September 27, took the folder from 107 source files to 48, and from about 16,300 lines to about 9,900. Page height was identical at 1440 and 390 wide. The pixel diff was 0.3% and 0.5%, all of it inside the WebGL hero and the animated counters.
+
+The agent did the run. I made six decisions: where the page lives, whether to freeze the dials, what replaces the theme tokens, whether to match the site layout now or later, whether to keep all seven customer cards, and whether to rename the files.
+
+The scripts answer questions of fact, and neither they nor a read of the code was enough alone. The exports audit missed two dead components because they weren't exported. And a layout helper that looked safe to delete was used by several sections; there the audit was right and the read was wrong.
+
+What didn't work: I cleaned up too early. The next day every change was committed twice, once to the experiment and once to the clean copy. Two days after that the clean copy was deleted, with a commit message that says the experiment "is now the only source of truth for the new homepage". [EDGAR: one line on why, in your words.] The page that merged on October 2 is a second run. It is also 48 source files, and about 10,800 lines. [EDGAR: the before count and pixel diff for the second run, if you have them. Its source folder isn't in my copy of the repo.]
+
+One difference between the runs: the first froze the dials into constants, and the one that shipped left them live. The panel is hidden, but the `useDialKit` call above is production code, and the skill's own note puts the cost at about 100 KB of unminified runtime in the page's client bundle. Freezing is a one-line swap per panel that I didn't make before launch. [EDGAR: keep or cut this paragraph.]
+
+## Ship: the checks
+
+Before a launch I used to spend a good while checking small things by hand: image sizes, accessibility, HTML semantics, that every shader has a poster, that animations only run on screen. With generated code there's one more: that it still animates the way I'd write it, with transitions and data attributes instead of keyframes.
+
+Those checks are now seven skills: conventions, copy, motion, media, SEO, accessibility and performance. `/preflight` reads the diff, decides how deep to go, runs them in parallel and merges one report. It only reports on changed lines, and sorts what it finds into blockers, should-fixes and nits. This is the triage for the launch diff (the homepage PR and its polish follow-up), re-run for this post:
+
+```text
+triage: FULL (+ runtime: axe, lighthouse)
+  - new page or layout
+  - new section file
+  - dependencies changed
+  - global config / layout / fonts / metadata touched
+  - shared component touched (>3 routes)
+  - large diff (11695 lines, 79 source files)
+  leaves: conventions, copy, motion, media, seo, a11y, perf
+```
+
+A one-line color change gets two static checks instead. Each rule has an id and a severity, and every report lists what passed. An empty findings list without that is indistinguishable from a skipped check.
+
+One thing writing the performance check taught me: Lighthouse often measures your fallback. Shader heroes fall back on low-powered devices, and the throttled run often takes that path, so a clean LCP there doesn't prove the animated one is fine.
+
+On this page the checks came late. They merged on October 1, a day before the homepage did. I ran them before merging and again on the live page. [EDGAR: one real finding it caught on the homepage, with its rule id, or paste part of the report. Without one this section is a feature list.]
+
+[EDGAR: a closing line in your words. Your note says the checks make it easier to try things without worrying about shipping bad work; here they ran at the end, so say it as what they change from now on.]
+
+The page is live at [sequencehq.com](https://www.sequencehq.com/).
+
+## Credits
+
+[EDGAR: the Sequence team, with handles.] The rail borrows its mechanism from Jhey Tompkins' `:has()` carousel [EDGAR: handle and link], and the outcomes shader is adapted from [a CodePen by masuwa](https://codepen.io/ma_suwa/pen/abXKNjp).
